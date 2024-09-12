@@ -1,0 +1,12 @@
+// src/styles/custom.scss
+
+@import "~bootstrap/scss/bootstrap"; // นำเข้า Bootstrap SCSS
+@import "variables"; // นำเข้า _variables.scss เพื่อให้สามารถใช้ตัวแปรที่กำหนดไว้
+@import "colors"; // นำเข้า _colors.scss เพื่อให้ใช้สไตล์ที่กำหนดไว้
+
+// คุณสามารถเพิ่มสไตล์อื่น ๆ ได้ที่นี่
+// src/styles/custom.scss
+
+@import "fonts"; // นำเข้า _fonts.scss เพื่อใช้ฟอนต์ที่กำหนดไว้
+
+@import "teststyle"

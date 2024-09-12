@@ -1,0 +1,107 @@
+// ใช้ฟอนต์จากไฟล์ SCSS หลักที่กำหนดไว้แล้ว
+@import 'colors'; // นำเข้าค่าของธีมสี
+
+// สไตล์สำหรับ header
+header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  
+  h1 {
+    margin: 0;
+    color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+  }
+
+  nav {
+    margin-top: 10px;
+    
+    a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// สไตล์สำหรับ main-content
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  
+  section {
+    flex: 3;
+    
+    h1 {
+      font-size: 2em;
+      color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: map-get($theme-colors, "danger"); // ใช้สีรองจากธีม
+    }
+
+    h3 {
+      font-size: 1.2em;
+      color: map-get($theme-colors, "hot-pink"); // ใช้สี hot-pink จากธีม
+    }
+
+    p {
+      font-size: 1em;
+      line-height: 1.6;
+      color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+    }
+
+    .btn-primary {
+      background-color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1em;
+      display: inline-block;
+      
+      &:hover {
+        background-color: darken(map-get($theme-colors, "primary"), 10%); // ใช้สีหลักที่เข้มขึ้นเมื่อ hover
+      }
+    }
+  }
+
+  .sidebar {
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 15px;
+    
+    h3 {
+      margin-top: 0;
+      color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+    }
+  }
+}
+
+// สไตล์สำหรับ footer
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  
+  p {
+    margin: 0;
+    color: map-get($theme-colors, "primary"); // ใช้สีหลักจากธีม
+  }
+}
+@import 'styles/variables';
+@import 'styles/mixins';
+@import 'styles/fonts';
+@import 'styles/global';  // สไตล์ที่ใช้ทั่วทั้งแอป
+
+// นำเข้าสไตล์เฉพาะหน้า
+@import 'styles/home';
+@import 'styles/about';
+@import 'styles/contact';

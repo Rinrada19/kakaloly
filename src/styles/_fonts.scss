@@ -1,0 +1,53 @@
+// src/styles/_fonts.scss
+
+// นำเข้าฟอนต์จาก Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+// กำหนดฟอนต์และขนาดฟอนต์สำหรับ body
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; // ขนาดฟอนต์พื้นฐานสำหรับ body
+}
+
+// กำหนดฟอนต์และขนาดฟอนต์สำหรับ headings
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem; // ขนาดฟอนต์สำหรับ h1
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 2rem; // ขนาดฟอนต์สำหรับ h2
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1.75rem; // ขนาดฟอนต์สำหรับ h3
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem; // ขนาดฟอนต์สำหรับ h4
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem; // ขนาดฟอนต์สำหรับ h5
+}
+
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1rem; // ขนาดฟอนต์สำหรับ h6
+}
+
+// กำหนดฟอนต์และขนาดฟอนต์สำหรับ paragraphs
+p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; // ขนาดฟอนต์สำหรับ p
+}

@@ -1,0 +1,55 @@
+$breakpoints: (
+  "xs": 0,      // Mobile phones
+  "sm": 576px,  // Small devices (tablets)
+  "md": 768px,  // Medium devices (small laptops)
+  "lg": 992px,  // Large devices (desktops)
+  "xl": 1200px  // Extra large devices (large desktops)
+);
+
+// body {
+//     font-family: 'Inter', sans-serif;
+//     font-size: 16px;
+//     margin: 0;
+//     padding: 0;
+//   }
+  
+//   // Header
+//   .header {
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 10px;
+  
+//     @media (max-width: map-get($breakpoints, "sm")) {
+//       flex-direction: column;
+//       text-align: center;
+//     }
+//   }
+  
+//   // Main Content
+//   .main-content {
+//     padding: 20px;
+  
+//     @media (max-width: map-get($breakpoints, "md")) {
+//       padding: 15px;
+//     }
+//   }
+  
+//   // Sidebar
+//   .sidebar {
+//     display: block;
+//     width: 250px;
+  
+//     @media (max-width: map-get($breakpoints, "lg")) {
+//       display: none; // ซ่อน sidebar บนอุปกรณ์ที่มีหน้าจอเล็ก
+//     }
+//   }
+  
+//   // Footer
+//   .footer {
+//     padding: 10px;
+//     background-color: #f8f9fa;
+  
+//     @media (max-width: map-get($breakpoints, "xs")) {
+//       text-align: center;
+//     }
+//   }

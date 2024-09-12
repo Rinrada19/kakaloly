@@ -1,0 +1,14 @@
+// src/styles/_colors.scss
+
+@import "variables"; // นำเข้า _variables.scss เพื่อใช้ตัวแปรที่กำหนดไว้
+
+
+.text-primary {
+  color: map-get($theme-colors, "primary");
+}
+.text-secondary {
+    color: map-get($theme-colors, "secondary");
+  }
+.text-hot-pink {
+    color: map-get($theme-colors, "hot-pink");
+}
