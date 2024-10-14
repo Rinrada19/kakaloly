@@ -1,0 +1,21 @@
+// src/pages/Home/Home.scss
+
+@import "../../styles/color"; // นำเข้า _colors.scss
+
+.home {
+  background-color: map-get($theme-colors, "fonts color");
+  padding: 20px; 
+  text-align: center; 
+
+  h1 {
+    color: map-get($theme-colors, "main_colors2");
+    font-size: 2.5rem; // ขนาดฟอนต์
+    margin-bottom: 20px; // ระยะห่างด้านล่าง
+  }
+
+  // สไตล์เพิ่มเติมสำหรับเนื้อหาอื่น ๆ
+  p {
+    font-size: 1.2rem; // ขนาดฟอนต์สำหรับย่อหน้า
+    color: map-get($theme-colors, "main_colors1"); 
+  }
+}
