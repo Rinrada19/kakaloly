@@ -1,53 +1,290 @@
-// src/styles/_fonts.scss
+// // src/styles/_fonts.scss
 
-// นำเข้าฟอนต์จาก Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+// // นำเข้าฟอนต์จาก Google Fonts
+// // @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-// กำหนดฟอนต์และขนาดฟอนต์สำหรับ body
+// // กำหนดฟอนต์และขนาดฟอนต์สำหรับ body
+// body {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-size: 16px; // ขนาดฟอนต์พื้นฐานสำหรับ body
+// }
+
+// // กำหนดฟอนต์และขนาดฟอนต์สำหรับ headings
+// h1 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 2.5rem; // ขนาดฟอนต์สำหรับ h1
+// }
+
+// h2 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 2rem; // ขนาดฟอนต์สำหรับ h2
+// }
+
+// h3 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 1.75rem; // ขนาดฟอนต์สำหรับ h3
+// }
+
+// h4 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 1.5rem; // ขนาดฟอนต์สำหรับ h4
+// }
+
+// h5 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 1.25rem; // ขนาดฟอนต์สำหรับ h5
+// }
+
+// h6 {
+//   font-family: 'FC Minimal', sans-serif;
+//   font-weight: bold;
+//   font-size: 1rem; // ขนาดฟอนต์สำหรับ h6
+// }
+
+// // กำหนดฟอนต์และขนาดฟอนต์สำหรับ paragraphs
+// p {
+//   font-family: 'Inter', sans-serif;
+//   font-size: 1rem; // ขนาดฟอนต์สำหรับ p
+// }
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Thin-ver-110.eot');
+  src: url('./font/FC-Minimal-Thin-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Thin-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Thin-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Thin-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Thin-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Thin-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Thin-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Thin-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Thin-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Thin-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Thin-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-ExtraLight-ver-110.eot');
+  src: url('./font/FC-Minimal-ExtraLight-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-ExtraLight-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-ExtraLight-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-ExtraLight-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-ExtraLight-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-ExtraLight-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-ExtraLight-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-ExtraLight-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-ExtraLight-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-ExtraLight-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-ExtraLight-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Light-ver-110.eot');
+  src: url('./font/FC-Minimal-Light-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Light-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Light-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Light-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Light-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Light-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Light-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Light-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Light-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Light-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Light-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Regular-ver-110.eot');
+  src: url('./font/FC-Minimal-Regular-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Regular-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Regular-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Regular-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Regular-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Medium-ver-110.eot');
+  src: url('./font/FC-Minimal-Medium-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Medium-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Medium-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Medium-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Medium-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Medium-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Medium-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Medium-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Medium-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Medium-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Medium-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-SemiBold-ver-110.eot');
+  src: url('./font/FC-Minimal-SemiBold-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-SemiBold-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-SemiBold-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-SemiBold-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-SemiBold-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-SemiBold-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-SemiBold-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-SemiBold-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-SemiBold-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-SemiBold-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-SemiBold-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Bold-ver-110.eot');
+  src: url('./font/FC-Minimal-Bold-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Bold-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Bold-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Bold-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Bold-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Bold-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Bold-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Bold-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Bold-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Bold-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Bold-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-ExtraBold-ver-110.eot');
+  src: url('./font/FC-Minimal-ExtraBold-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-ExtraBold-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-ExtraBold-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-ExtraBold-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-ExtraBold-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-ExtraBold-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-ExtraBold-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-ExtraBold-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-ExtraBold-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-ExtraBold-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-ExtraBold-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Black-ver-110.eot');
+  src: url('./font/FC-Minimal-Black-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Black-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Black-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Black-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Black-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FC Minimal';
+  src: url('./font/FC-Minimal-Black-Italic-ver-110.eot');
+  src: url('./font/FC-Minimal-Black-Italic-ver-110.eot?#iefix') format('embedded-opentype'),
+       url('./font/FC-Minimal-Black-Italic-ver-110.woff2') format('woff2'),
+       url('./font/FC-Minimal-Black-Italic-ver-110.woff') format('woff'),
+       url('./font/FC-Minimal-Black-Italic-ver-110.ttf') format('truetype'),
+       url('./font/FC-Minimal-Black-Italic-ver-110.svg#FC Minimal') format('svg');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 body {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px; // ขนาดฟอนต์พื้นฐานสำหรับ body
-}
 
-// กำหนดฟอนต์และขนาดฟอนต์สำหรับ headings
-h1 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 2.5rem; // ขนาดฟอนต์สำหรับ h1
-}
-
-h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 2rem; // ขนาดฟอนต์สำหรับ h2
-}
-
-h3 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 1.75rem; // ขนาดฟอนต์สำหรับ h3
-}
-
-h4 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem; // ขนาดฟอนต์สำหรับ h4
-}
-
-h5 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 1.25rem; // ขนาดฟอนต์สำหรับ h5
-}
-
-h6 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 1rem; // ขนาดฟอนต์สำหรับ h6
-}
-
-// กำหนดฟอนต์และขนาดฟอนต์สำหรับ paragraphs
-p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem; // ขนาดฟอนต์สำหรับ p
+  font-family: "FC Minimal";
 }
