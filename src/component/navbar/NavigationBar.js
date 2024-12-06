@@ -1,7 +1,7 @@
 
 import React from 'react';
 import NavItem from './NavItem'; //เเท็ก a
-import "./stylescomponent.scss" 
+import "./navigationbarcss.scss" 
 
 
 //นำรูปเข้ามา
@@ -17,7 +17,7 @@ const NavigationBar = () => {
       <ul>
         <NavItem img={mainicon} label="หน้าเเรก" link="/" />
         <NavItem img={historyicon} label="ประวัติ" link="#" />
-        <NavItem className="icon-photo" img={photoicon}link="/contact" />
+        <NavItem img={photoicon} className="icon-photo" link="/contact" />
         <NavItem img={recipesicon} label="เมนู" link="/contact" />
         <NavItem img={shareicon} label="เเชร์เพื่อน" link="/contact" />
       </ul>
