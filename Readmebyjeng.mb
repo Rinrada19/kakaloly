@@ -8,7 +8,7 @@
 วิธีอัพงานขึ้น Git
 1. git add .
 2. git commit -m "อะไรก็ได้"
-3. git push (ตามด้วยชื่อbranch)
+3. git push -u origin develop
 
 วิธีดึงโค้ดลงมา
 1.ถ้าจะอัพทั้งหมดลงเลย !! เเต่ต้องระวังงานที่ทำปัจจุบันอาจหาย git fetch
