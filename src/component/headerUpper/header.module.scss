@@ -1,9 +1,26 @@
 .h1__header{
-    font-size: 1rem;
+    font-size: 24px;
     color: #EF7430;
 }
 header{
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
     display: flex;
+}
+.nameCustomer{
+    color: #915B43;
+    font-weight: 400;
+    
+}
+p{
+    font-weight: 500;
+    font-size: 18px;
+}
+.header__left{
+    background-color: red;
+}
+.icon__person{
+    width: 35px;
+    height: 35px;
+
 }

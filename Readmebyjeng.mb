@@ -2,13 +2,15 @@
 1. โหลด Git เเล้วพิมคิมคำสั่งใน command ตามลำดับ
 2. git clone https://github.com/Rinrada19/kakaloly.git
 3. npm i
+
+เปลี่ยน branch
 4. เช็ค branch โดยพิม git branch
 5. ถ้าเปลี่ยน branch ; git checkout -ตามด้วยชื่อbranch
 
 วิธีอัพงานขึ้น Git
 1. git add .
 2. git commit -m "อะไรก็ได้"
-3. git push -u origin develop
+3. git push -u origin develop หรือ git push origin develop
 
 วิธีดึงโค้ดลงมา
 1.ถ้าจะอัพทั้งหมดลงเลย !! เเต่ต้องระวังงานที่ทำปัจจุบันอาจหาย git fetch

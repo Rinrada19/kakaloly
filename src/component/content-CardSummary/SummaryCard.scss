@@ -1,0 +1,101 @@
+
+p , h3{
+    margin: 0;
+}
+.summary-card {
+    gap: 20px;
+    margin: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .circle-chart {
+      margin-top: 30px;
+      width: 100px;
+      height: 100px;
+      background: conic-gradient(#ff7f4f 75%, #ddd 75%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      
+    }
+    .summary-info {
+        h3{
+            padding-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+      p {
+        padding-bottom: 10px;
+        // margin-bottom: 10px;
+        font-size: 14px;
+        
+      }
+    }
+  }
+.summary-detail-info{
+  display: flex;
+  gap: 27px;
+}
+
+.fade_text {
+  color: #747B82; /* สีเทาสำหรับข้อความที่ต้องการ fade */
+  opacity: 0.7; /* เพิ่มความโปร่งใสเล็กน้อย (ถ้าต้องการ) */
+}
+.highlight__green {
+  color: #76C660; /* สีเขียวที่กำหนด */
+  font-weight: bold; /* ทำให้ข้อความดูเด่น */
+}
+.sumCal_info{
+  text-align: right;
+}
+.highlight__red{
+  color: #FD4600;
+  font-weight: bold;
+}
+.cal-unit{
+  font-weight: 400;
+  color:#ABABAB;
+}
+.highlight__black{
+  color: black;
+  font-weight: bold;
+}
+.bar-Eachnutriion{
+  
+  width: 78px;
+  gap: 10px;
+  p{
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .proteinIntake{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .proteinGoal{
+    color: #ABABAB;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+.container-box{
+  gap: 45px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+.bar-Allnutrition{
+  display: flex;
+  gap: 30px;
+}

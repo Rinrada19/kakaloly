@@ -1,13 +1,19 @@
 import React from 'react';
+import { users } from "../test_mock/MockData";
 import styles from './header.module.scss';  // นำเข้าไฟล์ SCSS Module
 
 // import รูปมา
-import icon__profile from '../../imgAll/icon/pofile-circle-outline.webp'
-const Header = () =>{
+import icon__profile from '../../imgAll/icon/person-circle-outline.jpg'
+const Header = () => {
+    const item = users[0]; // เลือกผู้ใช้คนแรกจาก array
     return(
         <header>
-            <h1 className={styles.h1__header}>Kakalory</h1>
-            <img src={icon__profile} alt= "Iconprofile" ></img>
+            <div className="header__left">
+                <h1 className= {styles.h1__header} >Kakalory</h1>
+                <p>สวัสดีคุณ <span className = {styles.nameCustomer} > {item.name} </span></p>
+            </div>
+            
+            <img src={icon__profile} alt= "Iconprofile" className= {styles.icon__person} ></img>
         </header>
     );
 }
