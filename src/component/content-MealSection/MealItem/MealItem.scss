@@ -1,15 +1,15 @@
 .meal-item {
   border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 20px;
+  padding: 25px;
   margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px #CBCBCB ;
 
   .meal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 
     .imgfood {
       width: 50px;
@@ -21,12 +21,13 @@
     h3 {
       margin: 0;
       font-size: 18px;
-      color: #ff7f4f;
+      color: black;
     }
 
     .total-calories {
-      font-size: 16px;
-      color: #555;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff7f4f;
     }
   }
 
@@ -40,8 +41,9 @@
       padding: 4px 0;
 
       .food-name {
+        font-weight: 400;
         font-size: 14px;
-        color: #333;
+        color: #ABABAB;
       }
 
       .food-calories {
@@ -62,4 +64,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cal-unit{
+  font-size: 14px;
+  font: #ABABAB;
 }

@@ -27,8 +27,8 @@ const MealsSection = () => {
   return (
     <section className="meals-section">
       <p className="head">มื้อที่รับประทาน</p>
-      {mealData.map((meal, index) => (
-        <MealItem key={index} meal={meal} />
+      {mealData.map((mealItem, index) => (
+        <MealItem key={index} mealItem={mealItem} />
       ))}
     </section>
   );
