@@ -2,6 +2,7 @@
 import React from "react";
 import MealsSection from "./component/content-MealSection/MealsSection"
 import "./styles/custom.scss"; 
+import ProgressChart from "./component/content-CardSummary/cicle-chart/circle-chart";
 
 // import { Home } from "./pages/home/Home";
 import  NavigationBar  from "./component/navbar/NavigationBar";
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <MealsSection />
+         <SummaryCard value={760} max={2000} />
       </div>
     </div>
   );

@@ -1,70 +1,88 @@
 import React from 'react';
 import './SummaryCard.scss';
-import { dailyNutrition } from "../test_mock/MockData";
+import { meals, dailyNutrition } from "../test_mock/MockData";
+import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
+import ProgressBar from "./progressbar/progressbar";
+
+
 const SummaryCard = () => {
-  // เลือกรายการแรกใน dailyNutrition
-  const item = dailyNutrition[0];
-  const remaining = item.goal - item.calories - item.exercise; // คำนวณแคลอรีที่ต้องกินอีก
+  // เลือกข้อมูล nutrition ของวันที่ต้องการ (ในที่นี้ใช้ index 0)
+  const nutritionData = dailyNutrition[0];
+
+  // คำนวณแคลอรีที่กินไปทั้งหมดสำหรับ userId = 1
+  const userId = 1; // ระบุ userId
+  const totalCaloriesConsumed = meals
+    .filter((meal) => meal.userId === userId) // เลือกมื้ออาหารของ userId ที่ระบุ
+    .reduce((total, meal) => total + meal.calories, 0); // รวมค่าแคลอรีทั้งหมด
+
+  // คำนวณแคลอรีที่เหลือ
+  const remainingCalories = Math.max(
+    nutritionData.goal - totalCaloriesConsumed - nutritionData.exercise,
+    0
+  );
 
   return (
     <section className="summary-card">
-     <div className='container-box'>
-        <div className="circle-chart">  {/* ส่วนของ chart */}
-                <p>{item.calories} cal</p>
-              </div>
-              <div className="summary-info">
+      <div className="container-box">
+        <div className="cicle-chart">
+        <ProgressChart value={760} max={2000} />
+        {/* <div className="circle-chart">
+          <p>{totalCaloriesConsumed} cal</p>
+        </div> */}
+        </div>
+            <div className="summary-info">
                 <h3>สรุป</h3>
                 <div className="summary-detail-info">
                   <div>
                     <p>กินไป</p>
                     <p>เป้าหมาย</p>
-                    <p>ออกกำลังกาย</p>
                     <p className="fade_text">ต้องกินอีก</p>
                   </div>
-
-                {/* ส่วนของ ค่าตัวเลขต่างๆ etc consumed goal */}
                   <div className="sumCal_info">
                     <p className="highlight__black">
-                      {item.calories} <span className="cal-unit">cal</span>
+                      {totalCaloriesConsumed} <span className="cal-unit">cal</span>
                     </p>
                     <p className="highlight__black">
-                      {item.goal} <span className="cal-unit">cal</span>
-                    </p>
-                    <p className="highlight__red">
-                      {item.exercise} <span className="cal-unit">cal</span>
+                      {nutritionData.goal} <span className="cal-unit">cal</span>
                     </p>
                     <p className="highlight__green">
-                      {remaining > 0 ? remaining : 0} <span className="cal-unit">cal</span>
+                      {remainingCalories} <span className="cal-unit">cal</span>
                     </p>
                   </div>
                 </div>
-            </div>
-     </div>
-     
-      {/* ส่วนของ Nutritione -โปรตีน ไขมัน คาโบ */}
+           </div>
+      </div>
+      
       <div className="bar-Allnutrition">
 
         <div className="bar-Eachnutriion">
           <p>คาร์โบไฮเดรต</p>
+          <ProgressBar value={60} max={100} />
           <p className="proteinIntake">
-            {item.carbs}<span className="proteinGoal">/{item.goalcarbs}g</span>
+            {nutritionData.carbs}
+            {/* เอา component มาใช้ */}
+            <span className="proteinGoal">/{nutritionData.goalcarbs}g</span>
           </p>
         </div>
 
         <div className="bar-Eachnutriion">
           <p>โปรตีน</p>
+          <ProgressBar value={15} max={100} />
           <p className="proteinIntake">
-            {item.protein}<span className="proteinGoal">/{item.goalprotein}g</span>
+            {nutritionData.protein}
+            <span className="proteinGoal">/{nutritionData.goalprotein}g</span>
           </p>
         </div>
 
         <div className="bar-Eachnutriion">
           <p>ไขมัน</p>
+          <ProgressBar value={40} max={100} />
           <p className="proteinIntake">
-            {item.fats}<span className="proteinGoal">/{item.goalfats}g</span>
+            {nutritionData.fats}
+            <span className="proteinGoal">/{nutritionData.goalfats}g</span>
           </p>
         </div>
-        
+
       </div>
     </section>
   );

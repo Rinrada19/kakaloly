@@ -10,7 +10,7 @@ const Header = () => {
         <header>
             <div className="header__left">
                 <h1 className= {styles.h1__header} >Kakalory</h1>
-                <p>สวัสดีคุณ <span className = {styles.nameCustomer} > {item.name} </span></p>
+                <p className = {styles.nameCustomer1}>สวัสดีคุณ <span className = {styles.nameCustomer} > {item.name} </span></p>
             </div>
             
             <img src={icon__profile} alt= "Iconprofile" className= {styles.icon__person} ></img>

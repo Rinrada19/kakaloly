@@ -1,0 +1,48 @@
+.circle-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circle-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ddd; /* สีเทา */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .circle-progress {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+      #ff7f4f var(--progress),
+      transparent var(--progress)
+    );
+  }
+  
+  .circle-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .circle-text p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .circle-text p span {
+    font-size: 14px;
+    color: #555;
+  }
+  
