@@ -3,7 +3,7 @@
   border-radius: 20px;
   padding: 25px;
   margin-bottom: 16px;
-  box-shadow: 0 1px 4px #CBCBCB ;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
 
   .meal-header {
     display: flex;
@@ -68,4 +68,8 @@
 .cal-unit{
   font-size: 14px;
   font: #ABABAB;
+}
+img{
+  width: 56px;
+ 
 }

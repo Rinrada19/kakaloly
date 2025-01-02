@@ -2,8 +2,9 @@
     font-size: 24px;
     color: #EF7430;
 }
-header{
-    justify-content: space-around;
+.container{
+    padding: 0 12px;
+    justify-content:space-between !important; 
     align-items: flex-start;
     display: flex;
 }

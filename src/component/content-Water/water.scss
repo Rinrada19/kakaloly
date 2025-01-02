@@ -1,0 +1,49 @@
+.wrapper-water {
+  border: 1px solid #ddd;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 27px 33px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px; /* ระยะห่างระหว่างส่วนต่าง ๆ */
+}
+
+.header {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.minus-icon,
+.plus-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.water-icon {
+  width: 50px;
+  height: 30px;
+  transition: transform 0.2s ease;
+}
+
+.water-icon:hover {
+  transform: scale(1.1);
+}
+
+.count-water {
+  display: flex;
+  flex-direction: column;
+   gap: 10px; /* ระยะห่างระหว่างแถว */
+}
+
+.row {
+  display: flex;
+  justify-content: center; /* จัดแก้วให้อยู่ตรงกลางแถว */
+  gap: 4px; /* ระยะห่างระหว่างแก้วในแถว */
+}
+.watericon{
+  width: 32px;
+  height: 32px;
+}

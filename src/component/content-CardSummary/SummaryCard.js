@@ -1,8 +1,9 @@
 import React from 'react';
-import './SummaryCard.scss';
+import './summaryCard.scss';
 import { meals, dailyNutrition } from "../test_mock/MockData";
 import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
 import ProgressBar from "./progressbar/progressbar";
+
 
 
 const SummaryCard = () => {
@@ -22,7 +23,8 @@ const SummaryCard = () => {
   );
 
   return (
-    <section className="summary-card">
+    <div className='container'>
+    <section className="wrapper-sum">
       <div className="container-box">
         <div className="cicle-chart">
         <ProgressChart value={760} max={2000} />
@@ -85,6 +87,7 @@ const SummaryCard = () => {
 
       </div>
     </section>
+    </div>
   );
 };
 

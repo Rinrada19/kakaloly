@@ -2,7 +2,7 @@
 
 @import "~bootstrap/scss/bootstrap"; // นำเข้า Bootstrap SCSS
 @import "color"; // นำเข้า _variables.scss เพื่อให้สามารถใช้ตัวแปรที่กำหนดไว้
-
+@import "./custom.css";
 
 // คุณสามารถเพิ่มสไตล์อื่น ๆ ได้ที่นี่
 // src/styles/custom.scss

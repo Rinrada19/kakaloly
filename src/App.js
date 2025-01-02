@@ -8,15 +8,25 @@ import ProgressChart from "./component/content-CardSummary/cicle-chart/circle-ch
 import  NavigationBar  from "./component/navbar/NavigationBar";
 import Header from "./component/headerUpper/Header";
 import SummaryCard from "./component/content-CardSummary/SummaryCard";
+import Water from "./component/content-Water/Water";
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App row">
       <div>
-         <SummaryCard value={760} max={2000} />
+        <Header />
       </div>
-    </div>
-  );
+
+      <div className="d-flex justify-content-center align-items-cente"> 
+        <SummaryCard/>
+      </div >
+
+      <div className="d-flex justify-content-center align-items-cente">
+       <Water />
+      </div>
+     
+   </div>
+);
 }
 export default App;
