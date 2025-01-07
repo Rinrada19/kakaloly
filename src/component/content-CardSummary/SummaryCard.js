@@ -1,5 +1,5 @@
 import React from 'react';
-import "../content-CardSummary/summaryCard.scss"
+import '../content-CardSummary/summarycard.scss';
 import { meals, dailyNutrition } from "../../test_mock/MockData";
 import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
 import ProgressBar from "./progressbar/progressbar";

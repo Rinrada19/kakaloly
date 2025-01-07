@@ -4,7 +4,7 @@ import "./styles/custom.scss";
 
 
 // import { Home } from "./pages/home/Home";
-import NavigationBar  from "./component/navbar/NavigationBar";
+// import NavigationBar  from "./component/navbar/NavigationBar";
 import Header from "./component/headerUpper/Header";
 import SummaryCard from "./component/content-CardSummary/SummaryCard";
 import Water from "./component/content-Water/Water";

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './header.module.scss';  // นำเข้าไฟล์ SCSS Module
-import { users } from "../../../../test_mock/MockData";
+// import { users } from "../../../../test_mock/MockData";
 
 
 // import รูปมา
@@ -8,9 +8,7 @@ import icon__profile from '../../../../imgAll/icon/person-circle-outline.png'
 import goback from "../../../../imgAll/element/goback.png"
 
 const HeaderSum = () => {
-    const item = users[0]; // เลือกผู้ใช้คนแรกจาก array
     return(
-      
         <header className= {styles.container }>
             <div className="header__left">
                 <h1 className= {styles.h1__header}>Kakalory</h1>

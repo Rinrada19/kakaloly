@@ -4,7 +4,7 @@ const NavItem = ({label,link,img,className}) => {
   return (
     <li className={className}>
       <a href={link}>
-        <img className="icon-img" src={img}></img>{label}
+        <img className="icon-img" src={img} alt='icon'></img>{label}
       </a>
     </li>
   );

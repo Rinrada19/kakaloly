@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './ButtonSum_DandW.module.scss'; // นำเข้าไฟล์ SCSS Module
+import styles from '../ButtonSumDandW/ButtonSumDandW.module.scss'; // นำเข้าไฟล์ SCSS Module
 
-const ButtonSum_DandW = () => {
+const ButtonSumDandW = () => {
     const [activeButton, setActiveButton] = useState('button1'); // เก็บสถานะของปุ่มที่ถูกเลือก
 
     const handleClick = (buttonName) => {
@@ -30,4 +30,4 @@ const ButtonSum_DandW = () => {
     );
 };
 
-export default ButtonSum_DandW;
+export default ButtonSumDandW;

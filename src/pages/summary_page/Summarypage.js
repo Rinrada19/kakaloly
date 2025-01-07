@@ -1,7 +1,8 @@
 import React from 'react';
+import "../../styles/custom.scss"; 
 import HeaderSum from './component/header/HeaderSum';
 import Weight from '../../component/summay-Weight/Weight';
-import ButtonSum_DandW from './component/button_sumdayandweek/ButtonSum_DandW';
+import ButtonSumDandW from './component/ButtonSumDandW/ButtonSumDandW';
 
 
 function Summarypage() {
@@ -9,9 +10,9 @@ function Summarypage() {
   
         <div className='container'>
           <HeaderSum/> 
-          <ButtonSum_DandW/>
+          <ButtonSumDandW/>
           <Weight/>
-         
+  
         </div>
 
   );
