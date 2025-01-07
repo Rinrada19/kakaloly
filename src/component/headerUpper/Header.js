@@ -1,5 +1,5 @@
 import React from 'react';
-import { users } from "../test_mock/MockData";
+import { users } from "../../test_mock/MockData";
 import styles from './header.module.scss';  // นำเข้าไฟล์ SCSS Module
 
 // import รูปมา

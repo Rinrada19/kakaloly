@@ -24,6 +24,7 @@ const MealItem = ({ mealItem }) => {
   };
   
   return (
+    
     <div className="meal-item">
       {/* บรรทัดแรก: รูปภาพ, ชื่อมื้อ, แคลอรี่รวม */}
       <div className="meal-header">

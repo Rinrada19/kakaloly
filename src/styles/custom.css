@@ -17,6 +17,7 @@ body::before {
 
 
 .App {
+  
   display: flex;         /* หรือ grid */
   flex-direction: column; /* เรียง child component จากบนลงล่าง */
   gap: 16px;             /* เพิ่มช่องว่างระหว่าง component */

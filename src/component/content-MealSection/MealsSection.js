@@ -1,7 +1,7 @@
 import React from 'react';
 import MealItem from './MealItem/MealItem';
 import './mealsSection.scss';
-import { meals } from '../test_mock/MockData'; // นำเข้าข้อมูล mock
+import { meals } from '../../test_mock/MockData'; // นำเข้าข้อมูล mock
 
 const MealsSection = () => {
   // จัดกลุ่มมื้ออาหารตาม mealType
@@ -25,12 +25,14 @@ const MealsSection = () => {
   ];
 
   return (
-    <section className="meals-section">
-      <p className="head">มื้อที่รับประทาน</p>
-      {mealData.map((mealItem, index) => (
-        <MealItem key={index} mealItem={mealItem} />
-      ))}
-    </section>
+    <div className='container'>
+      <section className="meals-section">
+        <p className="head">มื้อที่รับประทาน</p>
+        {mealData.map((mealItem, index) => (
+          <MealItem key={index} mealItem={mealItem} />
+        ))}
+      </section>
+    </div>
   );
 };
 
