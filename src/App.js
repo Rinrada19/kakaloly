@@ -2,7 +2,6 @@
 import React from "react";
 import "./styles/custom.scss"; 
 
-import ProgressChart from "./component/content-CardSummary/cicle-chart/circle-chart";
 
 // import { Home } from "./pages/home/Home";
 import NavigationBar  from "./component/navbar/NavigationBar";

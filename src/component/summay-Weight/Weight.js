@@ -18,12 +18,12 @@ function Weight() {
         }}
     >
         <div className={styles.weightbox1}>
-            <div><span className={styles.fontchange}>น้ำหนักปัจจุบัน</span> <img src={editpen} className={styles.pen}></img></div>
+            <div><span className={styles.fontchange}>น้ำหนักปัจจุบัน</span> <img src={editpen} className={styles.pen} alt='editpen'></img></div>
             <div><span className={styles.weight_current}>70</span> <span className={styles.kilo}>kg</span></div>
         </div>
 
         <div className={styles.weightbox1}>
-            <div><span className={styles.fontchange}>น้ำหนักปัจจุบัน</span> <img src={editpen} className={styles.pen}></img></div>
+            <div><span className={styles.fontchange}>น้ำหนักปัจจุบัน</span> <img src={editpen} className={styles.pen} alt='editpen'></img></div>
             <div><span className={styles.weight_goal}>65</span> <span className={styles.kilogoal}>kg</span></div>
         </div>
         

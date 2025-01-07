@@ -1,10 +1,10 @@
 import React from 'react';
 import HeaderSum from './component/header/HeaderSum';
 import Weight from '../../component/summay-Weight/Weight';
-import ButtonSum_DandW from '../../pages/summary_page/component/button_sumdayandweek/ButtonSum_DandW';
+import ButtonSum_DandW from './component/button_sumdayandweek/ButtonSum_DandW';
 
 
-function Summary_page() {
+function Summarypage() {
   return (
   
         <div className='container'>
@@ -17,4 +17,4 @@ function Summary_page() {
   );
 }
 
-export default Summary_page;
+export default Summarypage;
