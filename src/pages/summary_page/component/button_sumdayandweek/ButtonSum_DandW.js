@@ -24,7 +24,7 @@ const ButtonSum_DandW = () => {
                 }`} // เพิ่ม class active ถ้า activeButton === 'button2'
                 onClick={() => handleClick('button2')} // กดแล้วเลือกปุ่ม 2
             >
-                น้ำหนักปัจจุบัน.
+                น้ำหนักปัจจุบัน
             </div>
         </div>
     );
