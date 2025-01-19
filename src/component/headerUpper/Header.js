@@ -3,11 +3,10 @@ import { users } from "../../test_mock/MockData";
 import styles from './header.module.scss';  // นำเข้าไฟล์ SCSS Module
 
 // import รูปมา
-import icon__profile from '../../imgAll/icon/person-circle-outline.jpg'
+import icon__profile from '../../imgAll/icon/person-circle-outline.png'
 const Header = () => {
     const item = users[0]; // เลือกผู้ใช้คนแรกจาก array
     return(
-        <div className='container'>
         <header className= {styles.container }>
             <div className="header__left">
                 <h1 className= {styles.h1__header} >Kakalory</h1>
@@ -16,7 +15,7 @@ const Header = () => {
             
             <img src={icon__profile} alt= "Iconprofile" className= {styles.icon__person} ></img>
         </header>
-        </div>
+        
     );
 }
 export default Header;

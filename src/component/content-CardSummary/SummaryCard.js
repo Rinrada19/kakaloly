@@ -23,7 +23,8 @@ const SummaryCard = () => {
   );
 
   return (
-    <div className='container'>
+    <div className='container' 
+    style={{padding:"0"}}>
     <section className="wrapper-sum">
       <div className="container-box">
         <div className="cicle-chart">

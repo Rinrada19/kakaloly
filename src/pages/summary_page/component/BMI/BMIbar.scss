@@ -1,0 +1,23 @@
+.wapper{
+    background-color: #ffff;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 26px 20px;
+}
+.thin-divider {
+    width: 100%; /* ให้เส้นยาวเต็มความกว้างของคอนเทนเนอร์ */
+    height: 1.5px; /* ความหนาของเส้น */
+    border-radius: 20px;
+    background-color: #E3E7E6; /* สีของเส้น */
+    margin: 10px 0; /* ระยะห่างด้านบนและด้านล่าง */
+  }
+.bmivalues{
+    font-size: 30px;
+    color: #915B43;
+    font-weight: 600;
+}
+.statusBMI{
+    font-size: 16px;
+    color: #7DDE47;
+    font-weight: 500;
+}

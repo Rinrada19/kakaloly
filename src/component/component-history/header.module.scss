@@ -1,0 +1,9 @@
+.go__backicon {
+    width: 10px !important; /* กำหนดความกว้าง */
+    height: 19px !important; /* กำหนดความสูง */
+    object-fit: cover; /* ปรับการครอบรูป */
+  }
+.go__back{
+    display: flex;
+    align-items: center;
+}

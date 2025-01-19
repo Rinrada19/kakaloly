@@ -7,6 +7,14 @@
     border: none;
     border-radius: 10px;
     overflow: hidden;
+
+    &::-webkit-progress-value {
+      background-color: var(--progress-bar-color, #EF7430); /* สี Default หรือรับจาก Props */
+    }
+    /* สำหรับ Firefox */
+    &::-moz-progress-bar {
+      background-color: var(--progress-bar-color, #EF7430); /* สี Default หรือรับจาก Props */
+    }
   }
   
   /* พื้นหลังของ progress bar */
@@ -17,7 +25,6 @@
   
   /* สีของ progress ที่เพิ่มขึ้น */
   .custom-progress::-webkit-progress-value {
-    background-color: #EF7430; /* สีส้ม */
     border-radius: 10px;
   }
   
@@ -26,4 +33,3 @@
     background-color: #EF7430;
     border-radius: 10px;
   }
-  

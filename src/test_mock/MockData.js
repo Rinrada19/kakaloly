@@ -1,6 +1,4 @@
 // mockdata.js
-
-
 //ที่จะเเก้ไข
 //1.goal เอาความสูง น้ำหนัก กิจกรรม อายุ หรือเรียกว่า TDEE
 //2.พวกสารอาหาร เเคล ต่างๆ เอามาจากอาหาร meals เเล้วมาคำนวณค่าต่างๆเเทน เดวคุยกับน้ำ 
@@ -15,8 +13,18 @@ export const users = [
     isVerified: true,
     wight: 70 , // ** เพิ่มมาใหม่
     hight: 181, // ** เพิ่มมาใหม่
+    BMI: 21.5,
+    statusBMI: "สุขภาพดี",
   },
 ];
+
+export const LimitNutrition = [
+  {
+   limitsodium: 2300,
+   limitsugar: 50,
+  },
+];
+
 
 export const dailyNutrition = [
   {
@@ -30,6 +38,10 @@ export const dailyNutrition = [
     goalprotein: 80,
     goalcarbs: 300,
     goalfats: 120,
+    carbs: 120,
+    sodium: 1200,
+    sugar:60,
+    water:6,
   },
   {
     date: "2024-12-11",
@@ -55,6 +67,7 @@ export const meals = [
     mealType: "Lunch",
     mealDate: "2024-01-15",
     notes: "Added extra peanuts and lime",
+    by_date: "7 กันยายน"
   },
   {
     mealId: "M001",
@@ -91,5 +104,13 @@ export const meals = [
     mealType: "Breakfast",
     mealDate: "2024-01-17",
     notes: "Extra sauce",
+  },
+];
+
+export const mockData = [
+  {
+    carbohydrates: { consumed:300, target: 300 },
+    protein: { consumed: 80, target: 80 },
+    fat: { consumed: 120, target: 120 },
   },
 ];

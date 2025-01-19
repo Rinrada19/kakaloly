@@ -17,7 +17,7 @@ body::before {
 
 
 .App {
-  
+
   display: flex;         /* หรือ grid */
   flex-direction: column; /* เรียง child component จากบนลงล่าง */
   gap: 16px;             /* เพิ่มช่องว่างระหว่าง component */
@@ -27,7 +27,5 @@ body::before {
   border: 1px solid red; /* ใช้เพื่อตรวจสอบ */
 }
 /* .container{
-  border: 1px solid #ddd;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-} */
+ gap: 15px;
+}  */

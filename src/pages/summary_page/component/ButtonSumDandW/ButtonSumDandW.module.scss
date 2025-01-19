@@ -2,19 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
-
 .wapper,
 .wapper2 {
-    display: flex;
-    justify-content: center;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
     padding: 16px 55px;
     color: #915B43; /* สีตัวอักษรเริ่มต้น */
     background-color: #FFFFFF; /* สีพื้นหลังเริ่มต้น */
     border-radius: 12px;
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
     cursor: pointer; /* เปลี่ยนเคอร์เซอร์ให้ดูเหมือนปุ่ม */
     transition: background-color 0.3s, color 0.3s; /* เพิ่ม transition */
 }
@@ -24,3 +25,11 @@
     color: #FFFFFF; /* สีตัวอักษรเมื่อ active */
     background-color: #EF7430; /* สีพื้นหลังเมื่อ active */
 }
+@media (max-width: 440px) {
+    .wapper,.wapper2 {
+      font-size: 14px;
+    }
+    .container{
+        flex-wrap: wrap;
+    }
+  }

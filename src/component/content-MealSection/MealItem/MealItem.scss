@@ -38,15 +38,17 @@
     .food-item {
       display: flex;
       justify-content: space-between;
-      padding: 4px 0;
+      // padding: 4px 0;
 
       .food-name {
+        margin: 0;
         font-weight: 400;
         font-size: 14px;
         color: #ABABAB;
       }
 
       .food-calories {
+        margin-bottom: 8px;
         font-size: 14px;
         color: #777;
       }

@@ -1,0 +1,42 @@
+.toggle-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px; /* กำหนดขนาดของ toggle button */
+  background-color: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  .indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* ครอบครองครึ่งหนึ่งของ toggle */
+    height: 100%;
+    background-color: #ff7a33;
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out; /* ทำให้มี transition นุ่มนวล */
+    z-index: 0;
+  }
+  .tab {
+    position: relative;
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1; /* ให้ปุ่มอยู่ด้านบน indicator */
+    transition: color 0.3s ease-in-out;
+
+    &.active {
+      color: #fff;
+    }
+
+    &:not(.active) {
+      color: #ff7a33;
+    }
+  }
+}

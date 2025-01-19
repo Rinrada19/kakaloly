@@ -14,7 +14,7 @@ function Weight() {
             display: "flex",
             justifyContent: "center",
             gap: "40px",
-            padding: "23px 39px"
+            padding: "26px 39px"
         }}
     >
         <div className={styles.weightbox1}>
