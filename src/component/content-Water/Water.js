@@ -29,7 +29,7 @@ const Water = () => {
     };
 
     return (
-        <div className="container">
+        <div>
         <div className="wrapper-water">
             <div className="header">
                 <img

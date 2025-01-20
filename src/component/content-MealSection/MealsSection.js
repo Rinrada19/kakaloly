@@ -25,7 +25,7 @@ const MealsSection = () => {
   ];
 
   return (
-    <div className='container'>
+    <div>
       <section className="meals-section">
         <p className="head">มื้อที่รับประทาน</p>
         {mealData.map((mealItem, index) => (

@@ -7,7 +7,11 @@ import icon__profile from '../../imgAll/icon/person-circle-outline.png'
 const Header = () => {
     const item = users[0]; // เลือกผู้ใช้คนแรกจาก array
     return(
-        <header className= {styles.container }>
+        <header style={{
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            display: 'flex',
+        }}>
             <div className="header__left">
                 <h1 className= {styles.h1__header} >Kakalory</h1>
                 <p className = {styles.nameCustomer1}>สวัสดีคุณ <span className = {styles.nameCustomer} > {item.name} </span></p>

@@ -23,7 +23,7 @@ function Frame1({ nextStep , prevStep }) {
       />
       <Title>ยืนยันข้อมูลส่วนตัว</Title>
       <Image src={resummin} alt="resub" style={{
-        width: '80%',
+        width: '450px',
         height: 'auto',
         margin: '0 auto',
         display: 'block',

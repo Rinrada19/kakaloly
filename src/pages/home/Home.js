@@ -12,20 +12,20 @@ import MealsSection from "../../component/content-MealSection/MealsSection"
 
 function Home() {
   return (
-    <div className="Home">
+    <div className="container ">
       <div>
         <Header />
       </div>
 
-      <div className="d-flex justify-content-center align-items-cente"> 
+      <div > 
         <SummaryCard/>
       </div >
 
-      <div className="d-flex justify-content-center align-items-cente"> 
+      <div > 
         <MealsSection/>
       </div >
 
-      <div className="d-flex justify-content-center align-items-cente">
+      <div>
        <Water />
       </div>
      
