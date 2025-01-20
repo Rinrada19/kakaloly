@@ -29,7 +29,7 @@ export const LimitNutrition = [
 export const dailyNutrition = [
   {
     date: "2024-12-12",
-    calories: 450, // แคลอรีที่กินไป
+    calories: 800, // แคลอรีที่กินไป
     exercise: 200, // แคลอรีที่เผาผลาญจากการออกกำลังกาย
     goal: 1750, // เป้าหมายแคลอรีสุทธิ  // อาจจะไม่ใช้ค่านี้ เเต่จะเอามาจากการคำนวณน้ำหนังส่วนสูงกิจกรรม 
     protein: 15, // พวกค่าโภชการต่างๆก็จะเอาออก เเล้วเอาข้อมูลตรงอาหาร ex. กะเพรา 200 carb + อื่นๆ เเทน 
@@ -44,7 +44,7 @@ export const dailyNutrition = [
   },
   {
     date: "2024-12-11",
-    calories: 120,
+    calories: 550,
     exercise: 100,
     goal: 1630,
     protein: 4,
@@ -62,7 +62,7 @@ export const meals = [
     mealId: "M001",
     userId: 1,
     foodName: "Pad Thai",
-    calories: 400,
+    calories: 250,
     mealType: "Lunch",
     mealDate: "2024-01-15",
     notes: "Added extra peanuts and lime",

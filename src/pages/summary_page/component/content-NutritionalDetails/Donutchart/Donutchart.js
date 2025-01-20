@@ -11,7 +11,6 @@ const DonutChart = () => {
 
   // คำนวณผลรวมการบริโภคและเป้าหมายทั้งหมด
   const totalConsumed = carbohydrates.consumed + protein.consumed + fat.consumed;
-  const totalTarget = carbohydrates.target + protein.target + fat.target;
 
   // คำนวณเปอร์เซ็นต์การบริโภคจากผลรวมทั้งหมด
   const carbPercentage = Math.floor((carbohydrates.consumed / totalConsumed) * 100);
