@@ -38,7 +38,6 @@ export const dailyNutrition = [
     goalprotein: 80,
     goalcarbs: 300,
     goalfats: 120,
-    carbs: 120,
     sodium: 1200,
     sugar:60,
     water:6,

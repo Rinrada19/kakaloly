@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Title, Button, Input } from './styles';
 import backbutton from '../../imgAll/icon/backbutton.webp';
 

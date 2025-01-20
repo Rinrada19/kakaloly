@@ -41,14 +41,14 @@ function Loginpage() {
     <div className={styles.container} style={{backgroundColor:"#FFF2EA"}}>
       {/* img */}
       <div className={styles.div1}>
-        <img src={imgfood1} className={styles.responsiveimg1} />
+        <img src={imgfood1} className={styles.responsiveimg1} alt="imgfood1"/>
       </div>
       <div className="rightcolumn">
         {/* welcome and Header */}
         <div className={styles.div2}>
           <h3 className={styles.wellcome}>Welcome</h3>
           <h3 className={styles.wellcome}>To <span className={styles.kakaloryhead}>Kakalory</span></h3>
-          <img src={imgfood1} className={styles.responsiveimg} />
+          <img src={imgfood1} className={styles.responsiveimg} alt="imgfood1" />
         </div> 
         {/* content form */}
         <div className={styles.div3}>

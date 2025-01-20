@@ -8,7 +8,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 // import Summarypage from './pages/summary_page/Summarypage'
 // import Historypage from './pages/history_page/Historypage'
 // import RegistrationForm from '../src/pages/registration/RegistrationForm'
-import Home from "../src/pages/home/Home";
+// import Home from "../src/pages/home/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
