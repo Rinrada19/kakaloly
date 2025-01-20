@@ -51,7 +51,7 @@ function RegistrationForm() {
 
   return (
     <div>
-      {currentStep === 1 && <Frame1 nextStep={nextStep} formData={formData} setFormData={setFormData} />}
+      {currentStep === 1 && <Frame1  nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData}/>}
       {currentStep === 2 && <Frame2 nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData}/>}
       {currentStep === 3 && <Frame3 nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData} />}
       {currentStep === 4 && <Frame4 nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData} />}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './mealItem.scss';
 
-import iconMorning from '../../../imgAll/icon/icon-morningfood.webp';
+import iconMorning from '../../../imgAll/icon/iconicon-morningfood.webp';
 import iconLunch from '../../../imgAll/icon/icon-lunchfood.webp';
 import iconDinner from '../../../imgAll/icon/icon-dinnerfood.webp';
 
