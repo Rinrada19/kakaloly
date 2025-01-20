@@ -12,23 +12,19 @@ import MealsSection from "../../component/content-MealSection/MealsSection"
 
 function Home() {
   return (
-    <div className="container ">
+    <div className="container">
       <div>
         <Header />
       </div>
-
       <div > 
         <SummaryCard/>
       </div >
-
       <div > 
         <MealsSection/>
       </div >
-
       <div>
        <Water />
       </div>
-     
    </div>
 );
 }
