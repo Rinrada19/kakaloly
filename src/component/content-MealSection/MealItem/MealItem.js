@@ -1,5 +1,5 @@
 import React from 'react';
-import './mealItem.scss';
+import './MealItem.scss';
 
 import iconMorning from '../../../imgAll/icon/iconicon-morningfood.webp';
 import iconLunch from '../../../imgAll/icon/icon-lunchfood.webp';
