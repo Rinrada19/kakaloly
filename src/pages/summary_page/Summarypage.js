@@ -16,7 +16,7 @@ function Summarypage() {
         <div className='custombackground' style={{backgroundColor:"#FFF2EA"}}>
           <div className='container'  
           style={{ display: "flex", flexDirection: "column", gap: "15px" }}> 
-            <HeaderSum/> 
+            <HeaderSum link="/home" title="สรุปข้อมูล" />
             <ButtonSumDandW/>
             <Weight/>
             <SummaryCard/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MealItem.scss';
+import styles from './MealItem.module.scss';
 
 import iconMorning from '../../../imgAll/icon/iconicon-morningfood.webp';
 import iconLunch from '../../../imgAll/icon/icon-lunchfood.webp';
@@ -19,34 +19,37 @@ const MealItem = ({ mealItem }) => {
       case 'มื้อเย็น':
         return iconDinner;
       default:
-        return null; // หรือใส่ไอคอน default ถ้ามี
+        return null; // หรือใส่ไอคอน default ถ้ามมี
     }
   };
-  
+
   return (
-    
-    <div className="meal-item">
+    <div className={styles['meal-item']}>
       {/* บรรทัดแรก: รูปภาพ, ชื่อมื้อ, แคลอรี่รวม */}
-      <div className="meal-header">
-        <div className="boxleft">
-            <img src={getMealIcon(mealItem.name)} alt={mealItem.name} /> {/* รูปภาพอาหาร */}
-            <h3>{mealItem.name}</h3>  {/* ชื่อมื้ออาหาร */}
+      <div className={styles['meal-header']}>
+        <div className={styles['boxleft']}>
+          <img src={getMealIcon(mealItem.name)} alt={mealItem.name} /> {/* รูปภาพอาหาร */}
+          <h3>{mealItem.name}</h3>  {/* ชื่อมื้ออาหาร */}
         </div>
-         
-        <p className="total-calories">{totalCalories} <span className="cal-unit">cal</span></p> {/* จำนวนแคลอรี่รวม */}
+
+        <p className={styles['total-calories']}>
+          {totalCalories} <span className={styles['cal-unit']}>cal</span>
+        </p> {/* จำนวนแคลอรี่รวม */}
       </div>
 
       {/* บรรทัดที่สอง: รายการอาหารและแคลอรี่ */}
-      <div className="meal-details">
+      <div className={styles['meal-details']}>
         {mealItem.meals.length > 0 ? (
           mealItem.meals.map((item, index) => (
-            <div key={index} className="food-item">
-              <p className="food-name">{item.foodName}</p>
-              <p className="food-calories">{item.calories} <span className="cal-unit">cal</span></p>
+            <div key={index} className={styles['food-item']}>
+              <p className={styles['food-name']}>{item.foodName}</p>
+              <p className={styles['food-calories']}>
+                {item.calories} <span className={styles['cal-unit']}>cal</span>
+              </p>
             </div>
           ))
         ) : (
-          <p className="no-data">-- ไม่มีข้อมูล --</p>
+          <p className={styles['no-data']}>-- ไม่มีข้อมูล --</p>
         )}
       </div>
     </div>

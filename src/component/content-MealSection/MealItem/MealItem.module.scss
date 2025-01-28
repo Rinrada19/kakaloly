@@ -2,8 +2,9 @@
     border: 1px solid #ddd;
     border-radius: 20px;
     padding: 25px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
   
     .meal-header {
       display: flex;
@@ -50,7 +51,7 @@
         .food-calories {
           margin-bottom: 8px;
           font-size: 14px;
-          color: #777;
+          color: #ABABAB;
         }
       }
     }
@@ -69,7 +70,8 @@
   }
   .cal-unit{
     font-size: 14px;
-    font: #ABABAB;
+    font-weight: 400;
+    color: #18171A;
   }
   img{
     width: 56px;

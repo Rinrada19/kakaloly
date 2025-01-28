@@ -39,7 +39,7 @@
  
 }
 // Responsive
-@media (min-width: 1500px) { /* กำหนดจอใหญ่กว่า 768px */
+@media (min-width: 1500px) { /* กำหนดจอใหญ่กว่า 1500px  ขึ้นไป */
   .responsiveimg{
     display: none;
    } 
@@ -65,7 +65,7 @@
   display: none;
  }
  .responsiveimg{
-  width: 500px;
+  width: 300px;
  }
 }
 @media (max-width: 992px) { /* กำหนดจอใหญ่กว่า 768px */

@@ -1,0 +1,44 @@
+.searchMenu {
+    display: flex;
+    justify-content: center; /* จัดให้อยู่ตรงกลาง */
+    align-items: center;
+    width: 100%; /* ใช้ความกว้างเต็ม */
+    padding: 0px 5px;
+  }
+  
+  .inputWrapper {
+    position: relative; /* ใช้สำหรับจัดตำแหน่งไอคอน */
+    width: 100%;
+    max-width: 400px; /* กำหนดขนาดความกว้างของกล่อง */
+  }
+  
+  .searchIcon {
+    position: absolute; /* วางไอคอนให้อยู่ใน input */
+    top: 50%; /* กึ่งกลางแนวตั้ง */
+    left: 26px; /* ระยะจากขอบซ้าย */
+    transform: translateY(-50%); /* เลื่อนกึ่งกลางจริง */
+    width: 18px; /* ขนาดของไอคอน */
+    height: 18px; /* ขนาดของไอคอน */
+    pointer-events: none; /* ไม่ให้ไอคอนโดนคลิก */
+  }
+  
+  .searchInput {
+    height: 50px;
+    letter-spacing: 0.5px;
+    width: 100%;
+    padding: 10px 10px 10px 55px; /* เพิ่ม padding ซ้ายเพื่อเว้นที่สำหรับไอคอน */
+    border: 0px ;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+  
+    &:focus {
+      border-color: #007BFF; /* เปลี่ยนสีขอบเมื่อโฟกัส */
+    }
+  }
+
+.searchInput {
+    color: #F49E6E;
+    -webkit-text-fill-color: #F49E6E; /* สำหรับ Safari/Chrome */
+  }
