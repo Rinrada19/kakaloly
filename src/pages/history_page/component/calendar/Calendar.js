@@ -6,33 +6,17 @@ function Calendar() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [highlightedDay, setHighlightedDay] = useState(new Date().getDate());
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [direction, setDirection] = useState(''); // เก็บทิศทางของการเลื่อน
+  const [direction, setDirection] = useState('');
   const today = new Date();
 
   const generateDays = (baseDate) => {
     const days = [];
     const startDay = new Date(baseDate);
-    const todayDate = today.getDate();
 
-    if (baseDate.getTime() === today.getTime()) {
-      for (let i = 0; i < 5; i++) {
-        const day = new Date(today);
-        day.setDate(today.getDate() + i);
-        days.push(day);
-      }
-    } else {
-      startDay.setDate(startDay.getDate() - Math.floor(5 / 2));
-      let index = 0;
-      while (days.length < 5) {
-        const day = new Date(startDay);
-        day.setDate(startDay.getDate() + index);
-        if (day.getDate() === todayDate) {
-          days.unshift(day);
-        } else {
-          days.push(day);
-        }
-        index++;
-      }
+    for (let i = 0; i < 5; i++) {
+      const day = new Date(startDay);
+      day.setDate(startDay.getDate() + i);
+      days.push(day);
     }
 
     return days;
@@ -45,7 +29,7 @@ function Calendar() {
   }, [selectedDate]);
 
   const handlePreviousDays = () => {
-    setDirection('left'); // เลื่อนซ้าย
+    setDirection('left');
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() - 5);
     setSelectedDate(newDate);
@@ -53,7 +37,7 @@ function Calendar() {
   };
 
   const handleNextDays = () => {
-    setDirection('right'); // เลื่อนขวา
+    setDirection('right');
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() + 5);
     setSelectedDate(newDate);
