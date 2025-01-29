@@ -2,7 +2,7 @@ import { API_URL } from "../api/main"; // นำเข้า api ที่ตั
 
 export const getMeal = async (data, token) => {
   try {
-    const response = await API_URL.get("/meals", {
+    const response = await API_URL.get("/meals/today", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
