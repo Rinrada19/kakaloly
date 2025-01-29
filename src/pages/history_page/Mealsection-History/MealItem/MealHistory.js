@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './mealItem.scss';
+import styles from './mealItem.module.scss';
 
-import iconMorning from '../../../imgAll/icon/iconicon-morningfood.webp';
-import iconLunch from '../../../imgAll/icon/icon-lunchfood.webp';
-import iconDinner from '../../../imgAll/icon/icon-dinnerfood.webp';
+import iconMorning from '../../../../imgAll/icon/iconicon-morningfood.webp';
+import iconLunch from '../../../../imgAll/icon/icon-lunchfood.webp';
+import iconDinner from '../../../../imgAll/icon/icon-dinnerfood.webp';
 
 const MealItem = ({ mealItem }) => {
   const [isExpanded, setIsExpanded] = useState(false); // สถานะการแสดงข้อมูล
@@ -31,27 +31,27 @@ const MealItem = ({ mealItem }) => {
   };
 
   return (
-    <div className={`meal-item ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`${styles['meal-item']} ${isExpanded ? styles.expanded : ''}`}>
       {/* บรรทัดแรก: รูปภาพ, ชื่อมื้อ, แคลอรี่รวม */}
-      <div className="meal-header" onClick={toggleDetails}>
-        <div className="boxleft">
+      <div className={styles['meal-header']} onClick={toggleDetails}>
+        <div className={styles.boxleft}>
           <img src={getMealIcon(mealItem.name)} alt={mealItem.name} />
           <h3>{mealItem.name}</h3>
         </div>
-        <p className="total-calories">{totalCalories} <span className="cal-unit">cal</span></p>
+        <p className={styles['total-calories']}>{totalCalories} <span className={styles['cal-unit']}>cal</span></p>
       </div>
 
       {/* ถ้ามีการขยาย (isExpanded = true) จะแสดงข้อมูลอาหาร */}
-      <div className={`meal-details ${isExpanded ? 'expanded' : ''}`}>
+      <div className={`${styles['meal-details']} ${isExpanded ? styles.expanded : ''}`}>
         {mealItem.meals.length > 0 ? (
           mealItem.meals.map((item, index) => (
-            <div key={index} className="food-item">
-              <p className="food-name">{item.foodName}</p>
-              <p className="food-calories">{item.calories} <span className="cal-unit">cal</span></p>
+            <div key={index} className={styles['food-item']}>
+              <p className={styles['food-name']}>{item.foodName}</p>
+              <p className={styles['food-calories']}>{item.calories} <span className={styles['cal-unit']}>cal</span></p>
             </div>
           ))
         ) : (
-          <p className="no-data">-- ไม่มีข้อมูล --</p>
+          <p className={styles['no-data']}>-- ไม่มีข้อมูล --</p>
         )}
       </div>
     </div>

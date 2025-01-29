@@ -1,9 +1,9 @@
 import React from 'react';
-import MealItem from './MealItem/MealItem';
+import MealItem from './MealItem/MealHistory';
 import './mealsSection.scss';
-import { meals } from '../../test_mock/MockData'; // นำเข้าข้อมูล mock
+import { meals } from '../../../test_mock/MockData'; // นำเข้าข้อมูล mock
 
-const MealsSection = () => {
+const MealsSectionHistory = () => {
   // จัดกลุ่มมื้ออาหารตาม mealType
   const groupedMeals = {
     Breakfast: [],
@@ -38,4 +38,4 @@ const MealsSection = () => {
   );
 };
 
-export default MealsSection;
+export default MealsSectionHistory;

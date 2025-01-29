@@ -1,39 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "../content-CardSummary/SummaryCard.scss";
-import { dailyNutrition } from "../../test_mock/MockData";
+import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API
 import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
 import ProgressBar from "./progressbar/progressbar";
 
 const SummaryCard = () => {
-  // เลือกข้อมูล nutrition ของวันที่ต้องการ (ในที่นี้ใช้ index 0)
-  const nutritionData = dailyNutrition[0] || {};
+  const [nutritionData, setNutritionData] = useState(null); // สถานะเก็บข้อมูลโภชนาการ
+  const [loading, setLoading] = useState(true); // สถานะโหลดข้อมูล
 
-  // คำนวณแคลอรีที่กินไปทั้งหมดจาก dailyNutrition
-  const totalCaloriesConsumed = nutritionData.calories || 0;
+  useEffect(() => {
+    const fetchNutritionData = async () => {
+      try {
+        const data = await getEatToDay(); // เรียกใช้งาน API
+        setNutritionData(data); // อัปเดตสถานะด้วยข้อมูลที่ได้รับ
+      } catch (error) {
+        console.error("Error fetching nutrition data:", error);
+      } finally {
+        setLoading(false); // ตั้งสถานะโหลดข้อมูลเป็น false
+      }
+    };
 
-  // คำนวณแคลอรีที่เหลือ
-  const remainingCalories = Math.max(
-    nutritionData.goal - totalCaloriesConsumed,
-    0
-  );
+    fetchNutritionData();
+  }, []);
 
-  // ตัวแปรสำหรับข้อมูลการโภชนาการ
+  if (loading) {
+    return (
+      <div className="container">
+        <p>กำลังโหลดข้อมูล...</p>
+      </div>
+    );
+  }
+
   const {
-    goal,
-    goalcarbs,
-    goalprotein,
-    goalfats,
-    carbs,
+    cal_goal,
+    carb_goal,
+    protein_goal,
+    fat_goal,
+    carb,
     protein,
-    fats,
+    fat,
+    total_cal,
   } = nutritionData;
 
+  // คำนวณแคลอรีที่กินไปทั้งหมดจาก nutritionData
+  const totalCaloriesConsumed = Math.floor(total_cal) || 0; // ปัดเศษเป็นจำนวนเต็ม
+  const remainingCalories = Math.max(
+    Math.floor(cal_goal - totalCaloriesConsumed),
+    0
+  ); // ปัดเศษเป็นจำนวนเต็ม
+
+  // ตัวแปรสำหรับข้อมูลการโภชนาการ
+  const carbConsumed = Math.floor(carb) || 0;
+  const proteinConsumed = Math.floor(protein) || 0;
+  const fatConsumed = Math.floor(fat) || 0;
+
   return (
-    <div className='container' style={{ padding: "0" }}>
+    <div className="container" style={{ padding: "0" }}>
       <section className="wrapper-sum">
         <div className="container-box">
           <div className="cicle-chart">
-            <ProgressChart value={totalCaloriesConsumed} max={goal} />
+            <ProgressChart
+              value={totalCaloriesConsumed}
+              max={Math.floor(cal_goal)}
+            />
           </div>
           <div className="summary-info">
             <h3>สรุป</h3>
@@ -48,7 +77,7 @@ const SummaryCard = () => {
                   {totalCaloriesConsumed} <span className="cal-unit">cal</span>
                 </p>
                 <p className="highlight__black">
-                  {goal} <span className="cal-unit">cal</span>
+                  {Math.floor(cal_goal)} <span className="cal-unit">cal</span>
                 </p>
                 <p className="highlight__green">
                   {remainingCalories} <span className="cal-unit">cal</span>
@@ -61,28 +90,31 @@ const SummaryCard = () => {
         <div className="bar-Allnutrition">
           <div className="bar-Eachnutriion">
             <p>คาร์โบไฮเดรต</p>
-            <ProgressBar value={carbs || 0} max={goalcarbs || 100} />
+            <ProgressBar value={carbConsumed} max={Math.floor(carb_goal)} />
             <p className="proteinIntake">
-              {carbs}
-              <span className="proteinGoal">/{goalcarbs}g</span>
+              {carbConsumed}
+              <span className="proteinGoal">/{Math.floor(carb_goal)}g</span>
             </p>
           </div>
 
           <div className="bar-Eachnutriion">
             <p>โปรตีน</p>
-            <ProgressBar value={protein || 0} max={goalprotein || 100} />
+            <ProgressBar
+              value={proteinConsumed}
+              max={Math.floor(protein_goal)}
+            />
             <p className="proteinIntake">
-              {protein}
-              <span className="proteinGoal">/{goalprotein}g</span>
+              {proteinConsumed}
+              <span className="proteinGoal">/{Math.floor(protein_goal)}g</span>
             </p>
           </div>
 
           <div className="bar-Eachnutriion">
             <p>ไขมัน</p>
-            <ProgressBar value={fats || 0} max={goalfats || 100} />
+            <ProgressBar value={fatConsumed} max={Math.floor(fat_goal)} />
             <p className="proteinIntake">
-              {fats}
-              <span className="proteinGoal">/{goalfats}g</span>
+              {fatConsumed}
+              <span className="proteinGoal">/{Math.floor(fat_goal)}g</span>
             </p>
           </div>
         </div>

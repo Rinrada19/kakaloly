@@ -1,0 +1,31 @@
+.container{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+.backbutton{
+    width: 11px;
+}
+.backbutton2{
+    rotate: 180deg;
+    width: 10px;
+}
+.navigation{
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.mouth{
+    color: #EF7430;
+    font-size: 20px;
+    font-weight: 400;
+}
+.daysRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

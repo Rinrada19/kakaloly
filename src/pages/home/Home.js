@@ -13,6 +13,8 @@ import MealsSection from "../../component/content-MealSection/MealsSection";
 
 import { useUser } from "../../api/UserContext";
 import { getUser } from "../../api/api_user";
+//import MealsSection from "../../component/content-MealSection/MealsSection";
+import NavigationBar from "../../component//navbar/NavigationBar";
 
 function Home() {
   const { user, setUser } = useUser();
@@ -50,28 +52,45 @@ function Home() {
   }
 
   return (
-    <div className="container">
-      <div>
-        <Header />
+    <div
+      style={{
+        backgroundColor: "#FFF2EA", // พื้นหลังทั้งหมดของหน้า
+        minHeight: "100vh", // ให้ครอบคลุมทั้งความสูงของหน้า
+      }}
+    >
+      <div
+        className="container"
+        style={{
+          position: "relative",
+          paddingBottom: "150px",
+          paddingTop: "30px",
+        }}
+      >
+        <div style={{ marginBottom: "40px" }}>
+          <Header />
+        </div>
+        <div>
+          <Link
+            to="/Summarypage"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              marginBottom: "40px",
+            }}
+          >
+            <SummaryCard />
+          </Link>
+        </div>
+        <div>
+          <MealsSection />
+        </div>
+        <div>
+          <Water />
+        </div>
       </div>
-      <div>
-        <Link
-          to="/Summarypage"
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <SummaryCard />
-        </Link>
-      </div>
-      <div>
-        <MealsSection />
-      </div>
-      <div>
-        <Water />
-      </div>
+      <NavigationBar />
     </div>
   );
 }
+
 export default Home;

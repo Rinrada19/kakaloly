@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './water.scss';
+import styles from "./Water.module.scss";
 
 import minus from "../../imgAll/element/minus.png";
 import waterelement from "../../imgAll/element/waterelement.png";
@@ -14,7 +14,7 @@ const Water = () => {
         const index = glasses.indexOf(false); // หาแก้วว่างตัวแรก
         if (index !== -1) {
             const newGlasses = [...glasses];
-            newGlasses[index] = true; // เปลี่ยนแก้วว่างเป็นมีน้ำ
+            newGlasses[index] = true; // เปลี่นแก้วว่างเป็นมีน้ำ
             setGlasses(newGlasses);
         }
     };
@@ -23,50 +23,50 @@ const Water = () => {
         const index = glasses.lastIndexOf(true); // หาแก้วสุดท้ายที่มีน้ำ
         if (index !== -1) {
             const newGlasses = [...glasses];
-            newGlasses[index] = false; // เปลี่ยนแก้วที่มีน้ำกลับเป็นว่าง
+            newGlasses[index] = false; // เปลี่นแก้วที่มีน้ำกลับเป็นว่าง
             setGlasses(newGlasses);
         }
     };
 
     return (
         <div>
-        <div className="wrapper-water">
-            <div className="header">
+        <div className={styles["wrapper-water"]}>
+            <div className={styles.header}>
                 <img
-                    className="minus-icon"
+                    className={styles["minus-icon"]}
                     src={minus}
                     alt="minus"
                     onClick={handleRemove}
                 />
                 <div>
-                    <img className="watericon" src={waterelement} alt="water element" />
+                    <img className={styles.watericon} src={waterelement} alt="water element" />
                     <span>ปริมาณน้ำที่ดื่ม</span>
                 </div>
                 <img
-                    className="plus-icon"
+                    className={styles["plus-icon"]}
                     src={plus}
                     alt="plus"
                     onClick={handleAdd}
                 />
             </div>
-            <div className="count-water">
+            <div className={styles["count-water"]}>
                 {/* แถวที่ 1 */}
-                <div className="row">
+                <div className={styles.row}>
                     {glasses.slice(0, 6).map((filled, index) => (
                         <img
                             key={`row1-${index}`}
-                            className="water-icon"
+                            className={styles["water-icon"]}
                             src={filled ? water1 : water0}
                             alt={`water ${index}`}
                         />
                     ))}
                 </div>
                 {/* แถวที่ 2 */}
-                <div className="row">
+                <div className={styles.row}>
                     {glasses.slice(6, 12).map((filled, index) => (
                         <img
                             key={`row2-${index}`}
-                            className="water-icon"
+                            className={styles["water-icon"]}
                             src={filled ? water1 : water0}
                             alt={`water ${index + 6}`}
                         />
