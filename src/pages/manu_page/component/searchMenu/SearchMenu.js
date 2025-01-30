@@ -1,18 +1,17 @@
 import React from "react";
-import styles from "./SearchMenu.module.scss"; // นำเข้าไฟล์ SCSS
-import searchIcon from "../../../../imgAll/element/searchMenuIcon.png"; // นำเข้าไอคอน
+import styles from "./SearchMenu.module.scss"; 
+import searchIcon from "../../../../imgAll/element/searchMenuIcon.png"; 
 
-function SearchMenu() {
+function SearchMenu({ setSearchQuery }) {
   return (
     <div className={styles.searchMenu}>
-      {/* กล่องที่ครอบไอคอนและ input */}
       <div className={styles.inputWrapper}>
         <img src={searchIcon} alt="Search Icon" className={styles.searchIcon} />
         <input 
-          
           type="text" 
           placeholder="Search . . ." 
           className={styles.searchInput} 
+          onChange={(e) => setSearchQuery(e.target.value)} // อัปเดตค่าค้นหา
         />
       </div>
     </div>

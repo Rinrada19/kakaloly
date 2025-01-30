@@ -1,29 +1,23 @@
-// import React, { useState } from "react";
-import React from "react";
-
+import React, { useState } from "react";
 import styles from "./Manupage.module.scss"; 
 import "../../styles/custom.scss"; 
 
-// import { Link } from "react-router-dom";
-// import { Home } from "./pages/home/Home";
-// import NavigationBar  from "./component/navbar/NavigationBar";
-import NavigationBar from "../../component//navbar/NavigationBar";
-import SearchMenu from "./component/searchMenu/SearchMenu"
-import ManuCard from "./component/manuCard/ManuCard.js"
-
+import NavigationBar from "../../component/navbar/NavigationBar";
+import SearchMenu from "./component/searchMenu/SearchMenu";
+import ManuCard from "./component/manuCard/ManuCard.js";
 
 function Manupage() {
+  const [searchQuery, setSearchQuery] = useState(""); // เก็บค่าค้นหา
+
   return (
     <>
       <div className={styles.wapper}>
         <div className="container"> 
-        {/* content All */}
-        <h1>เมนูอาหาร</h1>
-        <SearchMenu/>
-        <ManuCard/>
-
-
-          
+          <h1 style={{
+            marginBottom: "35px",
+          }}>เมนูอาหาร</h1>
+          <SearchMenu setSearchQuery={setSearchQuery} /> {/* ส่งฟังก์ชันอัปเดตค่า */}
+          <ManuCard searchQuery={searchQuery} /> {/* ส่งค่าค้นหาไปที่ ManuCard */}
         </div>
         <NavigationBar/>
       </div>
@@ -32,5 +26,3 @@ function Manupage() {
 }
 
 export default Manupage;
-
-
