@@ -5,7 +5,6 @@ import searchIcon from "../../../../imgAll/element/searchMenuIcon.png"; // น�
 function SearchMenu({ searchQuery, setSearchQuery }) {
   return (
     <div className={styles.searchMenu}>
-      {/* กล่องที่ครอบไอคอนและ input */}
       <div className={styles.inputWrapper}>
         <img src={searchIcon} alt="Search Icon" className={styles.searchIcon} />
         <input

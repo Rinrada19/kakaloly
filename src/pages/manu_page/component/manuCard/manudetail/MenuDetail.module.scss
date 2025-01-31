@@ -1,0 +1,77 @@
+.container{
+    padding-top: 30px;
+    min-height: 100vh;
+    background-color: #FFF2EA;
+}
+.backButton{
+    cursor: pointer;
+    width: 10px;
+    height: 18px;
+    color: #915B43;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #915B43;
+    margin-bottom: 30px;
+}
+.image{
+    border-radius: 20px;
+    width: 353px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 26px;
+}
+.contentder{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.imageicon{
+    width: 20px;
+}
+.info{
+    width: 100%;
+    padding: 4px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.nameinfo{
+    gap: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+.namecal{
+   font-size: 16px;
+   color: #915B43;
+}
+.mount{
+    font-size: 16px;
+    font-weight: 500;
+    color: #EF7430;
+}
+.unit{
+    font-size: 16px;
+    font-weight: 500;
+    color: #915B43;
+}
+.button{
+    color: #fff;
+    background-color: #4A8854;
+    padding: 12px 50px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin: 10px 0; /* บน-ล่าง 10px, ซ้าย-ขวา 0px */
+   
+}
+  .buttoncontainer {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* ให้ปุ่มอยู่ตรงกลาง */
+  }
