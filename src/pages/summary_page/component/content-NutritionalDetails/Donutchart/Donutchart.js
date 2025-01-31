@@ -27,18 +27,24 @@ const DonutChart = ({ nutritionData }) => {
   console.log("Protein:", proteinPercentage);
   console.log("Fat:", fatPercentage);
 
-  // ตั้งค่าข้อมูลสำหรับ Doughnut Chart
+  const isZeroConsumption =
+    carbPercentage === 0 && proteinPercentage === 0 && fatPercentage === 0;
+
   const data = {
     labels: ["Carbohydrates", "Protein", "Fat"],
     datasets: [
       {
         label: "Nutrient Consumption",
-        data: [carbPercentage, proteinPercentage, fatPercentage],
-        backgroundColor: [
-          "rgb(243, 126, 31)", // สีสำหรับคาร์โบไฮเดรต
-          "rgb(254, 184, 0)", // สีสำหรับโปรตีน
-          "rgb(253, 70, 0)", // สีสำหรับไขมัน
-        ],
+        data: isZeroConsumption
+          ? [33, 33, 33]
+          : [carbPercentage, proteinPercentage, fatPercentage], // ถ้าเป็น 0% ให้แสดง 33% เท่ากัน
+        backgroundColor: isZeroConsumption
+          ? ["#d6d6d6", "#d6d6d6", "#d6d6d6"] // สีเทาสำหรับ 0%
+          : [
+              "rgb(243, 126, 31)", // สีสำหรับคาร์โบไฮเดรต
+              "rgb(254, 184, 0)", // สีสำหรับโปรตีน
+              "rgb(253, 70, 0)", // สีสำหรับไขมัน
+            ],
         hoverOffset: 4,
         borderRadius: 10, // เพิ่ม border radius
       },

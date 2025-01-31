@@ -1,26 +1,24 @@
-// import React, { useState } from "react";
 import React, { useState, useEffect } from "react";
-
 import "../../styles/custom.scss";
-
 import { Link } from "react-router-dom";
-// import { Home } from "./pages/home/Home";
-// import NavigationBar  from "./component/navbar/NavigationBar";
 import Header from "../../component/headerUpper/Header";
 import SummaryCard from "../../component/content-CardSummary/SummaryCard";
-import Water from "../../component/content-Water/Water";
+import Water from "../../component/content-Water/Water"; // นำเข้า Water component
 import MealsSection from "../../component/content-MealSection/MealsSection";
-
+import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API สำหรับโภชนาการ
 import { useUser } from "../../api/UserContext";
 import { getUser } from "../../api/api_user";
-//import MealsSection from "../../component/content-MealSection/MealsSection";
-import NavigationBar from "../../component//navbar/NavigationBar";
+import { getWaterIntake } from "../../api/api_water"; // นำเข้า API สำหรับน้ำดื่ม
+import NavigationBar from "../../component/navbar/NavigationBar";
 
 function Home() {
   const { user, setUser } = useUser();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
+  const [nutritionData, setNutritionData] = useState(null);
+  const [waterData, setWaterData] = useState(null); // สถานะเก็บข้อมูลน้ำดื่ม
 
+  // ดึงข้อมูล user จาก API
   useEffect(() => {
     const fetchUser = async () => {
       if (token) {
@@ -28,20 +26,50 @@ function Home() {
           const data = {};
           const response = await getUser(data, token);
           if (Array.isArray(response) && response.length > 0) {
-            setUser(response[0]); // อัปเดต user
+            setUser(response[0]);
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
         } finally {
-          setLoading(false); // ตั้งสถานะ loading เป็น false
+          setLoading(false);
         }
       } else {
-        setLoading(false); // กรณีไม่มี token
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, [token, setUser]);
+
+  // ดึงข้อมูลโภชนาการจาก API
+  useEffect(() => {
+    const fetchNutritionData = async () => {
+      try {
+        const data = await getEatToDay();
+        setNutritionData(data);
+      } catch (error) {
+        console.error("Error fetching nutrition data:", error);
+      }
+    };
+
+    fetchNutritionData();
+  }, []);
+
+  // ดึงข้อมูลน้ำดื่มจาก API
+  useEffect(() => {
+    const fetchWaterData = async () => {
+      if (token) {
+        try {
+          const data = await getWaterIntake(token); // เรียกใช้ฟังก์ชัน getWaterIntake
+          setWaterData(data); // อัปเดตสถานะน้ำดื่ม
+        } catch (error) {
+          console.error("Error fetching water intake data:", error);
+        }
+      }
+    };
+
+    fetchWaterData();
+  }, [token]); // เมื่อ token เปลี่ยนแปลง
 
   if (loading) {
     return (
@@ -54,8 +82,8 @@ function Home() {
   return (
     <div
       style={{
-        backgroundColor: "#FFF2EA", // พื้นหลังทั้งหมดของหน้า
-        minHeight: "100vh", // ให้ครอบคลุมทั้งความสูงของหน้า
+        backgroundColor: "#FFF2EA",
+        minHeight: "100vh",
       }}
     >
       <div
@@ -78,14 +106,15 @@ function Home() {
               marginBottom: "40px",
             }}
           >
-            <SummaryCard />
+            <SummaryCard nutritionData={nutritionData} />
           </Link>
         </div>
         <div>
           <MealsSection />
         </div>
+        {/* ส่งข้อมูลน้ำดื่มไปที่คอมโพเนนต์ Water */}
         <div>
-          <Water />
+          <Water waterData={waterData} />
         </div>
       </div>
       <NavigationBar />

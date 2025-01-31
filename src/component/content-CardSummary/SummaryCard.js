@@ -4,29 +4,11 @@ import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API
 import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
 import ProgressBar from "./progressbar/progressbar";
 
-const SummaryCard = () => {
-  const [nutritionData, setNutritionData] = useState(null); // สถานะเก็บข้อมูลโภชนาการ
-  const [loading, setLoading] = useState(true); // สถานะโหลดข้อมูล
-
-  useEffect(() => {
-    const fetchNutritionData = async () => {
-      try {
-        const data = await getEatToDay(); // เรียกใช้งาน API
-        setNutritionData(data); // อัปเดตสถานะด้วยข้อมูลที่ได้รับ
-      } catch (error) {
-        console.error("Error fetching nutrition data:", error);
-      } finally {
-        setLoading(false); // ตั้งสถานะโหลดข้อมูลเป็น false
-      }
-    };
-
-    fetchNutritionData();
-  }, []);
-
-  if (loading) {
+const SummaryCard = ({ nutritionData }) => {
+  if (!nutritionData) {
     return (
       <div className="container">
-        <p>กำลังโหลดข้อมูล...</p>
+        <p>กำลังโหลดข้อมูลโภชนาการ...</p>
       </div>
     );
   }
@@ -42,14 +24,12 @@ const SummaryCard = () => {
     total_cal,
   } = nutritionData;
 
-  // คำนวณแคลอรีที่กินไปทั้งหมดจาก nutritionData
-  const totalCaloriesConsumed = Math.floor(total_cal) || 0; // ปัดเศษเป็นจำนวนเต็ม
+  const totalCaloriesConsumed = Math.floor(total_cal) || 0;
   const remainingCalories = Math.max(
     Math.floor(cal_goal - totalCaloriesConsumed),
     0
-  ); // ปัดเศษเป็นจำนวนเต็ม
+  );
 
-  // ตัวแปรสำหรับข้อมูลการโภชนาการ
   const carbConsumed = Math.floor(carb) || 0;
   const proteinConsumed = Math.floor(protein) || 0;
   const fatConsumed = Math.floor(fat) || 0;

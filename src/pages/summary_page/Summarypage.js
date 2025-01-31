@@ -22,6 +22,7 @@ function Summarypage() {
         if (token) {
           const data = await getEatToDay(); // เรียกใช้งาน API
           setNutritionData(data); // อัปเดตสถานะด้วยข้อมูลที่ได้รับ
+          console.log("userrrrrrrrrrrrrr", user);
         } else {
           console.error("Token is missing or invalid.");
         }
@@ -56,7 +57,7 @@ function Summarypage() {
         ) : (
           <p>กรุณาล็อกอินเพื่อดูข้อมูลน้ำหนัก</p>
         )}
-        <SummaryCard />
+        <SummaryCard nutritionData={nutritionData} />
         <BMIbar user={user} />
         <Nutrients nutritionData={nutritionData} />
         <NutritionalDetails nutritionData={nutritionData} />
