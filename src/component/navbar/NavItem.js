@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const NavItem = ({label,link,img,className}) => {
+const NavItem = ({ label, link, img, className, onClick }) => {
   return (
-    <li className={className}>
+    <li className={className} onClick={onClick}>
       <a href={link}>
-        <img className="icon-img" src={img} alt='icon'></img>{label}
+        <img className="icon-img" src={img} alt="icon" />
+        {label}
       </a>
     </li>
   );
-}
+};
 
 export default NavItem;

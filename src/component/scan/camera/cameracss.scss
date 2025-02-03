@@ -1,0 +1,121 @@
+.camera-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* ขนาดความกว้างตามที่กำหนด */
+    height: 72vh; /* ขนาดความสูงตามที่กำหนด */
+    position: absolute;
+    bottom: 0;
+    
+    left: 0; /* ตั้งค่าตำแหน่งด้านซ้าย */
+    right: 0;
+    background-color: white;
+    border-radius: 15px 15px 4px 4px;
+    z-index: -1; /* ตั้งค่า z-index ต่ำกว่าเพื่อให้รูปภาพอยู่ด้านหน้า */
+  }
+  @media (min-width: 600px) {
+    .video-container {
+        height:65vh; /* ความสูงเมื่อหน้าจอใหญ่กว่า 400px */
+    }
+    }
+    @media (min-width: 1000px) {
+        .video-container {
+            height:75vh; /* ความสูงเมื่อหน้าจอใหญ่กว่า 400px */
+        }
+    }
+  .taken-photo {
+    max-width: 100%;
+    max-height: 400px;
+    margin-top: 20px;
+    z-index: 1; /* ตั้งค่า z-index สูงกว่า video-container */
+    position: relative; /* เพิ่ม position relative เพื่อให้ z-index ทำงาน */
+  }
+  
+  video {
+    justify-content: center; /* จัดให้อยู่กลางแนวนอน */
+    align-items: center;
+    width: 90vw !important;;
+    height: 50vh;
+    position: absolute;
+    top: 5vh;
+    border-radius: 15px ;
+    left: 5%;
+  }
+  .htBoaK {
+    width: 70vw;
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    top: -400%;
+    left: 15%;
+    right: 0;
+  }
+ 
+  
+ //ไอคอนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนน 
+ .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw; /* ระยะห่างระหว่างปุ่ม */
+    margin-top: 0px;
+    position: absolute;
+    bottom: 0; /* ให้วางอยู่ที่ด้านล่างสุด */
+    left: 50%;
+    transform: translateX(-50%); /* จัดให้อยู่ตรงกลางแนวนอน */
+    z-index: 2;
+    background-color:#FDF1EA;
+    width: 100%;
+    height: 100px; /* ความสูงของแถบปุ่ม */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15); /* เงาด้านบน สีดำ */
+    border-radius: 15px ;
+  }
+  
+  
+  .take_photo-btn{
+    padding: 0;
+    background-color: transparent; /* เอา background-color ออก */
+    color: black;  /* กำหนดสีข้อความให้เป็นสีดำ หรือเลือกสีอื่นที่ต้องการ */
+    border: none;
+    border-radius: 5px;
+    height: 68px;
+    width: 68px;
+    cursor: pointer;
+  }
+  .gallery-btn, .menu_book-btn {
+    padding: 0;
+    background-color: transparent; /* เอา background-color ออก */
+    color: black;  /* กำหนดสีข้อความให้เป็นสีดำ หรือเลือกสีอื่นที่ต้องการ */
+    border: none;
+    border-radius: 5px;
+    height: 68px;
+    width: 40px;
+    cursor: pointer;
+  }
+  
+  
+//   .take-photo-btn:hover, .toggle-camera-btn:hover, .new-button:hover {
+//     background-color: #45a049;
+//   }
+
+.take_photo-icon{
+    width: 68px;
+  }
+  .gallery-icon,.menu_book-icon{
+    width: 40px;
+  }
+  .gallery-label,.menu_book-label {
+    color:black;
+    font-size: 10px; /* ปรับขนาดตัวอักษร */
+}
+
+  
+  
