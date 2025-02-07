@@ -1,6 +1,7 @@
 export const mockMenuData = [
   {
     id: 1,
+    date: "20 กุมภาพันธ์ 2567",
     name: "กะเพราหมู",
     calories: 628,
     carbs: 55,
@@ -12,6 +13,7 @@ export const mockMenuData = [
   },
   {
     id: 2,
+    date: "21 กุมภาพันธ์ 2567",
     name: "คอหมูย่าง",
     calories: 189,
     carbs: 5,
@@ -23,6 +25,7 @@ export const mockMenuData = [
   },
   {
     id: 3,
+    date: "22 กุมภาพันธ์ 2567",
     name: "ข้าวเหนียวมะม่วง",
     calories: 250,
     carbs: 60,
@@ -34,6 +37,7 @@ export const mockMenuData = [
   },
   {
     id: 4,
+    date: "23 กุมภาพันธ์ 2567",
     name: "ส้มตำ",
     calories: 36,
     carbs: 10,
@@ -108,5 +112,48 @@ export const mockMenuData = [
     sodium: 1000,
     sugar: 10,
     image: "https://www.shutterstock.com/image-vector/image-not-available-photo-coming-260nw-2147632255.jpg",
+  }
+];
+
+export const frirend = [
+  {
+    id: 1,
+    name: "Muay",
+    consumed: 750,
+    goal: 1700,
+    avarta: "https://www.shutterstock.com/image-vector/image-not-available-photo-coming-260nw-2147632255.jpg",
+    foodAll: 350,
+    snackAll: 400,
+    drinkAll:0,
+  },
+  {
+    id: 2, // id ต้องไม่ซ้ำกัน
+    name: "Jeng",
+    consumed: 400,
+    goal: 2500,
+    avarta: "https://www.shutterstock.com/image-vector/image-not-available-photo-coming-260nw-2147632255.jpg",
+    foodAll: 200,
+    snackAll: 200,
+    drinkAll:0,
+  },
+  {
+    id: 3, // เพิ่ม id ให้ครบทุกอัน
+    name: "Luknum",
+    consumed: 1200,
+    goal: 2100,
+    avarta: "https://www.shutterstock.com/image-vector/image-not-available-photo-coming-260nw-2147632255.jpg",
+    foodAll: 350,
+    snackAll: 400,
+    drinkAll:450,
+  },
+  {
+    id: 4, // เพิ่ม id ให้ครบทุกอัน
+    name: "Mana",
+    consumed: 1200,
+    goal: 2100,
+    avarta: "https://www.shutterstock.com/image-vector/image-not-available-photo-coming-260nw-2147632255.jpg",
+    foodAll: 350,
+    snackAll: 400,
+    drinkAll:450,
   }
 ];

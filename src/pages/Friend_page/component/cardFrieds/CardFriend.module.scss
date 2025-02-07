@@ -1,0 +1,28 @@
+.box_friend{
+    border: 1px solid #EF7430 ;
+    height: 102px;
+    border-radius: 20px;
+    margin: 0 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+.avarta{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 80px;
+}
+.leftside{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.info p{
+    font-size: 14px;
+}
+.selected {
+    background-color: #FFE1CC; /* สีพื้นหลังเมื่อ card ถูกเลือก */
+}

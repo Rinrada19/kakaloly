@@ -7,6 +7,7 @@ import Historypage from "../src/pages/history_page/Historypage";
 import Summarypage from "../src/pages/summary_page/Summarypage";
 import Manupage from "../src/pages/manu_page/Manupage";
 import MenuDetail from "../src/pages/manu_page/component/manuCard/manudetail/ManuDetail"
+import Friendpage from "../src/pages/Friend_page/Friendpage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/historypage" element={<Historypage />} />
         <Route path="/Manupage" element={< Manupage/>} />
         <Route path="/menu/:id" element={<MenuDetail />} />
+        <Route path="/friendpage" element={<Friendpage/>} />
       </Routes>
     </Router>
   );

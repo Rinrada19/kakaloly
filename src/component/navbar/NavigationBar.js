@@ -3,8 +3,6 @@ import React from 'react';
 import NavItem from './NavItem'; //เเท็ก a
 import "./navigationbarcss.scss" 
 
-
-
 //นำรูปเข้ามา
 import historyicon from '../../imgAll/icon/historyicon.webp';
 import mainicon from '../../imgAll/icon/mainicon.webp';
@@ -20,7 +18,7 @@ const NavigationBar = () => {
         <NavItem img={historyicon} label="ประวัติ" link="/historypage" />
         <NavItem img={photoicon} className="icon-photo" link="/contact" />
         <NavItem img={recipesicon} label="เมนู" link="/Manupage" />
-        <NavItem img={shareicon} label="เเชร์เพื่อน" link="/contact" />
+        <NavItem img={shareicon} label="เเชร์เพื่อน" link="/friendpage" />
       </ul>
     </nav>
   );
