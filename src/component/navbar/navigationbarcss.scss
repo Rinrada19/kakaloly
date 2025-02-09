@@ -1,6 +1,5 @@
 @import "../../styles/color"; // สี
 
-
 nav {
     position: fixed;
     bottom: 0;
@@ -15,7 +14,6 @@ nav {
     border-top-right-radius: 20px;
     z-index: 1000;
     box-shadow: 0px -1px 4px rgba(80, 80, 80, 0.25);
-    
     ul{
     gap: 30px;
     display: flex;
@@ -24,10 +22,10 @@ nav {
     margin: 0;
     padding: 0;   
     }
-   
 }
 a {
-    color: #000000;
+    text-decoration:none !important; 
+    color: #000000 !important;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -35,7 +33,7 @@ a {
     font-size: 10px;
     line-height: 1.5rem;
 }   
-.icon-photo {
+.icon_photo {
      img {
       width: 68px; // กำหนดขนาดของรูปภาพ
       height: 68px;
