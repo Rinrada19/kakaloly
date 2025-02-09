@@ -1,61 +1,71 @@
 import React, { useState, useRef } from "react";
 import { Camera } from "react-camera-pro";
-import "./cameracss.scss"; // สร้างไฟล์ CSS สำหรับสไตล์
+import { Scan } from "../../../api/api_scan"; // เรียก API Scan
+import "./cameracss.scss";
 
 import gallery from "../../../imgAll/icon/gallery.svg";
 import menu_book from "../../../imgAll/icon/menu_book.svg";
 import take_photo from "../../../imgAll/icon/take_photo.svg";
 
-const CameraComponent = ({ setImage, setStep }) => {
-  const [isCameraVisible, setIsCameraVisible] = useState(true); // state สำหรับการแสดง/ซ่อนกล้อง
+const CameraComponent = ({ setImage, setStep, setImageData }) => {
   const cameraRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  // ฟังก์ชันถ่ายรูป
-  const takePhoto = async () => {
-    console.log("ถ่ายรูป...");
-    if (cameraRef.current) {
-      try {
-        const photo = await cameraRef.current.takePhoto();
-        console.log("รูปที่ถ่าย:", photo); // ตรวจสอบว่าได้รับผลลัพธ์จากการถ่ายรูป
-        setImage(photo); // ส่งภาพที่ถ่ายไปยัง Step 2
-        setStep(2); // เปลี่ยนขั้นตอนเป็น Step 2
-      } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการถ่ายรูป", error);
+  const handleUpload = async (image) => {
+    try {
+      const response = await Scan(image); // ส่งไฟล์ภาพไปให้ Scan
+      if (response) {
+        console.log("ข้อมูลที่ได้จาก API:", response); // ตรวจสอบข้อมูลที่ได้
+        setImageData(response); // ส่งข้อมูลที่ได้ไปยัง Step
+        setStep(2); // ไปยัง Step 2
+      } else {
+        console.log("ไม่พบข้อมูลจาก API");
       }
+    } catch (error) {
+      console.log("ไม่มีเมนูนี้");
     }
   };
 
-  // ฟังก์ชันเลือกไฟล์จากคลังภาพ
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result); // อัพโหลดรูปจากคลัง
-        setStep(2); // เปลี่ยนขั้นตอนเป็น Step 2
-      };
-      reader.readAsDataURL(file);
+      setImage(URL.createObjectURL(file)); // แสดงรูปที่เลือก
+      handleUpload(file); // อัปโหลดรูปไป API
+    }
+  };
+  const takePhoto = async () => {
+    if (cameraRef.current) {
+      try {
+        const photo = await cameraRef.current.takePhoto();
+        setImage(photo); // เก็บภาพที่ถ่าย
+
+        // ตรวจสอบว่า photo เป็น base64 หรือไฟล์
+        if (photo) {
+          const imageFile = await fetch(photo)
+            .then((res) => res.blob()) // แปลงจาก base64 เป็นไฟล์
+            .then(
+              (blob) => new File([blob], "photo.jpg", { type: "image/jpeg" })
+            );
+
+          await handleUpload(imageFile); // อัปโหลดรูปไป API
+        }
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการถ่ายรูป", error);
+        alert("ไม่สามารถถ่ายรูปได้");
+      }
     }
   };
 
   return (
     <div className="camera-container">
-      {/* ถ้ากล้องยังแสดงอยู่จะแสดง Camera */}
       <div className="video-container">
-        {isCameraVisible && (
-          <Camera
-            ref={cameraRef}
-            facingMode="environment" // ตั้งค่ากล้องให้ใช้กล้องหลัง
-          />
-        )}
+        <Camera ref={cameraRef} facingMode="environment" />
       </div>
 
-      {/* ปุ่มถ่ายรูปและปุ่มปิดกล้อง */}
       <div className="controls">
         <button
+          onClick={() => fileInputRef.current?.click()}
           className="gallery-btn"
-          onClick={() => fileInputRef.current?.click()} // คลิกที่ input file เมื่อกดปุ่ม
         >
           <img src={gallery} alt="Gallery icon" className="gallery-icon" />
           <span className="gallery-label">คลังภาพ</span>
@@ -69,10 +79,7 @@ const CameraComponent = ({ setImage, setStep }) => {
           />
         </button>
 
-        <button
-          onClick={() => setIsCameraVisible(false)}
-          className="menu_book-btn"
-        >
+        <button onClick={() => setStep(2)} className="menu_book-btn">
           <img
             src={menu_book}
             alt="menu_book icon"
@@ -81,13 +88,12 @@ const CameraComponent = ({ setImage, setStep }) => {
           <span className="menu_book-label">เมนู</span>
         </button>
 
-        {/* เพิ่ม input file ที่ซ่อน */}
         <input
           type="file"
           accept="image/*"
           style={{ display: "none" }}
           onChange={handleFileChange}
-          ref={fileInputRef} // เชื่อมโยงกับ ref
+          ref={fileInputRef}
         />
       </div>
     </div>

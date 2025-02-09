@@ -60,7 +60,7 @@ body.no-scroll {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.6); /* ให้พื้นหลังมืดลง 60% */
-    z-index: 1000; /* overlay อยู่ด้านล่างสุด */
+    z-index: 1001; /* overlay อยู่ด้านล่างสุด */
     cursor: pointer; /* แสดง pointer เมื่อ hover บนพื้นหลัง */
   }
   

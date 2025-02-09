@@ -61,11 +61,17 @@ const MealsSection = () => {
 
   if (Array.isArray(meals) && meals.length > 0) {
     meals.forEach((meal) => {
-      if (meal.meal_type === "Breakfast") {
+      const mealType = meal.meal_type.trim(); // ตัดช่องว่างเผื่อมี
+
+      if (mealType === "มื้อเช้า" || mealType === "Breakfast") {
         groupedMeals.Breakfast.push(meal);
-      } else if (meal.meal_type === "Lunch") {
+      } else if (
+        mealType === "มื้อเที่ยง" ||
+        mealType === "มื้อกลางวัน" ||
+        mealType === "Lunch"
+      ) {
         groupedMeals.Lunch.push(meal);
-      } else if (meal.meal_type === "Dinner") {
+      } else if (mealType === "มื้อเย็น" || mealType === "Dinner") {
         groupedMeals.Dinner.push(meal);
       }
     });
@@ -77,6 +83,7 @@ const MealsSection = () => {
     { name: "มื้อเที่ยง", meals: groupedMeals.Lunch },
     { name: "มื้อเย็น", meals: groupedMeals.Dinner },
   ];
+  console.log("Grouped Meals:", groupedMeals);
 
   return (
     <div>

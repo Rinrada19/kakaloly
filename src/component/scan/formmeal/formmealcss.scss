@@ -1,17 +1,17 @@
-.form-container{
+.form-container {
     width: 100vw;
-    height: 75vh;
+    height: auto; /* ✅ ให้ขนาดตามเนื้อหาจริง */
+    max-height: 90vh; /* ✅ จำกัดไม่ให้สูงเกิน viewport */
     background-color: rgb(255, 255, 255);
     position: absolute;
     left: 0px;
-    bottom: -100px;
-    border-radius: 15px;
+    bottom: 0; /* ✅ ตั้งค่าที่ 0 เพื่อให้ไม่ล้น */
+    border-radius: 15px 15px 0px 0px;
     padding: 28px 20px;
     padding-right: 0px;
-    overflow-y: auto;
-    max-height: 100vh;
-    
+    overflow-y: auto; /* ✅ ให้ scroll ได้ */
 }
+
 .type-container {
     color: #915B43;
   
@@ -27,6 +27,12 @@
 .sugar-container{
     color: #915B43;
     margin-top:60px;
+    margin-bottom:20px;
+    
+}
+.meat-container,.egg-container {
+    color: #915B43;
+    margin-top:20px;
     margin-bottom:20px;
     
 }

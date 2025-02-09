@@ -1,5 +1,5 @@
 import React from "react";
-import cal from "../../../imgAll/icon/cal.svg";
+import calorie from "../../../imgAll/icon/calorie.svg";
 import "./succsefulcss.scss"; // ไฟล์ CSS
 
 const Succesful = ({ setShowCamera }) => {
@@ -7,7 +7,7 @@ const Succesful = ({ setShowCamera }) => {
   return (
     <div className="succesful-container">
       <div className="img-section">
-        <img src={cal} />
+        <img src={calorie} />
       </div>
       <div className="text-section">
         <span>บันทึกข้อมูลสำเร็จ! 🎉</span>
