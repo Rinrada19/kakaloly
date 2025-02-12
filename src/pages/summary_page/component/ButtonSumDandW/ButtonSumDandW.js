@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
-import styles from '../ButtonSumDandW/ButtonSumDandW.module.scss'; // นำเข้าไฟล์ SCSS Module
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; 
+import styles from "../ButtonSumDandW/ButtonSumDandW.module.scss";
 
 const ButtonSumDandW = () => {
-    const [activeButton, setActiveButton] = useState('button1'); // เก็บสถานะของปุ่มที่ถูกเลือก
+    const navigate = useNavigate();
+    const location = useLocation(); // ตรวจสอบ path ปัจจุบัน
 
-    const handleClick = (buttonName) => {
-        setActiveButton(buttonName); // กำหนดปุ่มที่ถูกเลือก
-    };
+    useEffect(() => {
+        if (location.pathname === "/") {
+            navigate("/Summarypage", { replace: true });
+        }
+    }, [location.pathname, navigate]);
 
     return (
         <div className={styles.container}>
             <div
-                className={`${styles.wapper} ${
-                    activeButton === 'button1' ? styles.active : ''
-                }`} // เพิ่ม class active ถ้า activeButton === 'button1'
-                onClick={() => handleClick('button1')} // กดแล้วเลือกปุ่ม 1
+                className={`${styles.wapper} 
+                            ${location.pathname === "/Summarypage" ? styles.active : ""}`} 
+                onClick={() => navigate("/Summarypage")} 
             >
                 สรุปรายวัน
             </div>
             <div
-                className={`${styles.wapper2} ${
-                    activeButton === 'button2' ? styles.active : ''
-                }`} // เพิ่ม class active ถ้า activeButton === 'button2'
-                onClick={() => handleClick('button2')} // กดแล้วเลือกปุ่ม 2
+                className={`${styles.wapper2} 
+                            ${location.pathname === "/weeklysummary" ? styles.active : ""}`} 
+                onClick={() => navigate("/weeklysummary")} 
             >
-                น้ำหนักปัจจุบัน
+                สรุปรายสัปดาห์
             </div>
         </div>
     );

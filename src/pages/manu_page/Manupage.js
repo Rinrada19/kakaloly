@@ -14,8 +14,9 @@ function Manupage() {
     <>
       <div className={styles.wapper}>
         <div className="container"> 
-          <Gobackhead text="เมนูอาหาร" link="/home" />
-          <SearchMenu setSearchQuery={setSearchQuery} /> {/* ส่งฟังก์ชันอัปเดตค่า */}
+          <div className={styles.box}><Gobackhead text="เมนูอาหาร" link="/home"/></div>  
+          <div style={{marginBottom:"20px"}}><SearchMenu setSearchQuery={setSearchQuery} /> {/* ส่งฟังก์ชันอัปเดตค่า */}</div>   
+         
           <ManuCard searchQuery={searchQuery} /> {/* ส่งค่าค้นหาไปที่ ManuCard */}
         </div>
         <NavigationBar/>

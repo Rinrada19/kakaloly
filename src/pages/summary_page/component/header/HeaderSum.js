@@ -29,11 +29,15 @@ const HeaderSum = ({ link, title = "ภาพรวม" }) => { // รับ pro
                     </span>
                 </div>
             </div>
-            <img
-                src={icon__profile}
-                alt="Iconprofile"
-                className={styles.icon__person}
-            />
+            <Link
+              to="/Profilepage"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+             <img src={icon__profile} alt= "Iconprofile" className= {styles.icon__person} ></img>
+            </Link>
         </header>
     );
 };

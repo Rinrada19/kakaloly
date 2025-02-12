@@ -35,8 +35,7 @@ function Home() {
             <Header />
           </div>
           <div>
-            <Link
-              to="/Summarypage"
+            <Link to="/Summarypage"
               style={{
                 textDecoration: "none",
                 color: "inherit",
