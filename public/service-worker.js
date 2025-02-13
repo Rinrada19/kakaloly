@@ -49,3 +49,23 @@ self.addEventListener("activate", (event) => {
     })
   );
 });
+
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener("fetch", (event) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("No valid token, re-login required");
+    return;
+  }
+
+  // ส่งคำขอ API พร้อมกับ token
+  event.respondWith(
+    fetch(event.request, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((error) => {
+      console.error("Fetch request failed", error);
+    })
+  );
+});

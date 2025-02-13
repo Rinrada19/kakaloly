@@ -31,6 +31,17 @@ export const getUser = async (data, token) => {
     return response.data;
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการเข้าสู่ระบบ: ", error);
-    throw error;
+
+    if (error.response && error.response.status === 401) {
+      // ถ้า token หมดอายุ หรือไม่ถูกต้อง ให้รีไดเรกต์ผู้ใช้ไปยังหน้า login
+      alert("Token หมดอายุ กรุณาเข้าสู่ระบบใหม่");
+      // อาจจะทำการลบ token ออกจาก localStorage
+      localStorage.removeItem("token");
+
+      // นำทางผู้ใช้ไปหน้า login
+      window.location.href = "/"; // เปลี่ยนเป็นเส้นทางที่เหมาะสม
+    }
+
+    throw error; // ส่งข้อผิดพลาดต่อไป
   }
 };

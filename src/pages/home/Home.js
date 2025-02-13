@@ -13,18 +13,22 @@ import NavigationBar from "../../component/navbar/NavigationBar";
 
 function Home() {
   const { user, setUser } = useUser();
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  // const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
   const [nutritionData, setNutritionData] = useState(null);
   const [waterData, setWaterData] = useState(null); // สถานะเก็บข้อมูลน้ำดื่ม
 
+  const token = localStorage.getItem("token");
+  console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
+
   // ดึงข้อมูล user จาก API
   useEffect(() => {
     const fetchUser = async () => {
+      console.log("Token from useEffect:", token);
       if (token) {
         try {
           const data = {};
-          const response = await getUser(data, token);
+          const response = await getUser(data, token); // ตรวจสอบว่า token มีค่าหรือไม่
           if (Array.isArray(response) && response.length > 0) {
             setUser(response[0]);
           }
@@ -34,7 +38,8 @@ function Home() {
           setLoading(false);
         }
       } else {
-        setLoading(false);
+        console.log("Token is missing");
+        setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
       }
     };
 

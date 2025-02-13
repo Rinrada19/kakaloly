@@ -121,7 +121,7 @@ export const updateWaterIntake = async (data) => {
   try {
     // ส่งข้อมูลอัปเดตน้ำที่ดื่ม
     const response = await axios.put(
-      "http://127.0.0.1:5000/water-intake",
+      "http:/54.79.173.230:5000/water-intake",
       data,
       {
         headers: {

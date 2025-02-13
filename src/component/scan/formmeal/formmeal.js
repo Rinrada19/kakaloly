@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
+import { getUser } from "../../../api/api_user";
 import { useUser } from "../../../api/UserContext";
 import "./formmealcss.scss"; // ไฟล์ CSS
 import { addMeal } from "../../../api/api_add_meal"; // เรียก API addMeal
@@ -12,8 +13,36 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [selectMeat, setselectMeat] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
   const [selectEgg, setselectEgg] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
   const [selectValueEgg, setselectValueEgg] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  const { user } = useUser();
-  // console.log("userrrrrrrrr", user);
+  //nst { user } = useUser();
+  const [loading, setLoading] = useState(true);
+  const { user, setUser } = useUser();
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      console.log("Token from useEffect:", token);
+      if (token) {
+        try {
+          const data = {};
+          const response = await getUser(data, token); // ตรวจสอบว่า token มีค่าหรือไม่
+          if (Array.isArray(response) && response.length > 0) {
+            setUser(response[0]);
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        console.log("Token is missing");
+        setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
+      }
+    };
+
+    fetchUser();
+  }, [token, setUser]);
+
   const [calories, setCalories] = useState(selectedMenu?.cal || 0);
   const {
     food_name,

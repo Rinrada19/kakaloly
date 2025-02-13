@@ -4,7 +4,7 @@ export const getEatToDay = async () => {
   try {
     // ดึง token จาก localStorage
     const token = localStorage.getItem("token");
-
+    console.log("TOKENNNNN ---------", token);
     // ตรวจสอบว่า token มีอยู่หรือไม่
     if (!token) {
       throw new Error("Token is required to access this resource");
@@ -13,17 +13,22 @@ export const getEatToDay = async () => {
     // ดึงวันที่ปัจจุบันในรูปแบบ YYYY-MM-DD
     const currentDate = new Date().toISOString().split("T")[0];
 
+    console.log("Token from localStorage:", token); // ดูว่า token มีค่าหรือไม่
+
     // เรียก API ด้วย POST และส่ง headers และ body
     const response = await API_URL.post(
       "/eat_today",
-      { date: currentDate }, // ส่งวันที่ปัจจุบันใน body
+      { date: currentDate },
       {
         headers: {
-          Authorization: `Bearer ${token}`, // ส่ง token ไปใน header
-          "Content-Type": "application/json", // ตั้งค่า Content-Type เป็น JSON
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       }
     );
+    console.log("Header:", {
+      Authorization: `Bearer ${token}`,
+    });
 
     // ตรวจสอบ response และ return ข้อมูล
     return response.data;

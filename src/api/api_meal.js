@@ -5,6 +5,8 @@ export const getMeal = async (data, token) => {
     const response = await API_URL.get("/meals/today", {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       params: data,
     });

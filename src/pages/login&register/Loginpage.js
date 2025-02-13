@@ -17,6 +17,11 @@ function Loginpage() {
   // const [confirmPassword, setConfirmPassword] = useState("");
   // const [email, setEmail] = useState("");
   const navigate = useNavigate(); // ใช้เพื่อเปลี่ยนหน้า
+  const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] =
+    useState("");
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
@@ -24,6 +29,131 @@ function Loginpage() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+  });
+
+  const handleInputChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const [errorMessage, setErrorMessage] = useState(""); // เพิ่ม state สำหรับเก็บข้อความผิดพลาด
+
+  const handleInputUsernameChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    if (name === "username") {
+      console.log(`Sending request with data: {username: '${value}'}`);
+      const isUsernameAvailable = await checkUsernameAvailability(value);
+      if (isUsernameAvailable !== true) {
+        setUsernameErrorMessage(isUsernameAvailable); // แสดงข้อความผิดพลาดในฟอร์ม
+      } else {
+        setUsernameErrorMessage(""); // เคลียร์ข้อความผิดพลาดเมื่อข้อมูลถูกต้อง
+      }
+    }
+  };
+
+  const handleInputEmailChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    if (name === "email") {
+      const emailValue = value.trim();
+
+      // ตรวจสอบว่าอีเมลมี @ หรือไม่
+      if (!emailValue.includes("@")) {
+        setEmailErrorMessage("อีเมลต้องมี @");
+        return;
+      }
+
+      try {
+        console.log(`🔍 Checking email availability for: ${emailValue}`);
+        const isEmailAvailable = await checkEmailAvailability(emailValue);
+        console.log("✅ API Response:", isEmailAvailable);
+
+        // ตรวจสอบค่าที่ได้รับจาก API
+        if (isEmailAvailable === false) {
+          setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
+        } else if (typeof isEmailAvailable === "string") {
+          setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
+        } else {
+          setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
+        }
+      } catch (error) {
+        console.error("❌ Error checking email:", error);
+        setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
+      }
+    }
+  };
+  // const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
+  // const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] = useState("");
+
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    const passwordValue = value.trim();
+
+    // ตรวจสอบความยาวของรหัสผ่าน
+    if (passwordValue.length < 8) {
+      setPasswordErrorMessage("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร");
+    } else {
+      setPasswordErrorMessage(""); // เคลียร์ข้อความเมื่อรหัสผ่านถูกต้อง
+    }
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    const confirmPasswordValue = value.trim();
+    const passwordValue = formData.password.trim();
+
+    // ตรวจสอบความตรงกันของรหัสผ่านและการยืนยันรหัสผ่าน
+    if (confirmPasswordValue !== passwordValue) {
+      setconfirmPasswordErrorMessage("การยืนยันรหัสผ่านต้องตรงกับรหัสผ่าน");
+    } else {
+      setconfirmPasswordErrorMessage(""); // เคลียร์ข้อความเมื่อยืนยันรหัสผ่านถูกต้อง
+    }
+  };
+
+  const checkUsernameAvailability = async (username) => {
+    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username }),
+    });
+    const result = await res.json();
+    return result.available || result.message;
+  };
+
+  const checkEmailAvailability = async (email) => {
+    const res = await fetch("http://54.79.173.230:5000/users/check-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const result = await res.json();
+    return result.available || result.message;
+  };
 
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
@@ -32,13 +162,13 @@ function Loginpage() {
   //     [name]: value,
   //   }));
   // };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -69,20 +199,20 @@ function Loginpage() {
     event.preventDefault();
 
     // ตรวจสอบข้อมูลก่อน
-    if (formData.password && formData.password.length < 8) {
-      alert("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร");
-      return;
-    }
+    // if (formData.password && formData.password.length < 8) {
+    //   alert("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร");
+    //   return;
+    // }
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("การยืนยันรหัสผ่านต้องตรงกับรหัสผ่าน");
-      return;
-    }
+    // if (formData.password !== formData.confirmPassword) {
+    //   alert("การยืนยันรหัสผ่านต้องตรงกับรหัสผ่าน");
+    //   return;
+    // }
 
-    if (!formData.email.includes("@")) {
-      alert("อีเมลต้องมี @");
-      return;
-    }
+    // if (!formData.email.includes("@")) {
+    //   alert("อีเมลต้องมี @");
+    //   return;
+    // }
 
     // เก็บข้อมูลพื้นฐาน เช่น อีเมล
     const userData = {
@@ -211,7 +341,7 @@ function Loginpage() {
                   sx={{
                     fontFamily: "'FC Minimal', sans-serif",
                     backgroundColor: "#4A8854",
-                    marginTop: "50px",
+                    marginTop: "30px",
                     padding: "10px 0",
                     borderRadius: "50px",
                     textTransform: "none",
@@ -247,7 +377,7 @@ function Loginpage() {
                       variant="outlined"
                       fullWidth
                       value={formData.username}
-                      onChange={handleInputChange}
+                      onChange={handleInputUsernameChange}
                       placeholder=" "
                       sx={{
                         marginBottom: "6px",
@@ -257,19 +387,31 @@ function Loginpage() {
                         "& .MuiOutlinedInput-root": {
                           borderRadius: "20px",
                           height: "36px",
+                          borderColor: usernameErrorMessage ? "red" : "#915B43",
                         },
                         "& fieldset": {
-                          borderColor: "#915B43",
+                          borderColor: usernameErrorMessage ? "red" : "#915B43",
                         },
                       }}
                       InputProps={{
                         style: {
                           borderRadius: "20px",
                           fontSize: "16px",
-                          color: "gray",
+                          color: usernameErrorMessage ? "red" : "gray", // เปลี่ยนสีข้อความให้เป็นแดงเมื่อมีข้อผิดพลาด
                         },
                       }}
                     />
+                    {usernameErrorMessage && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {usernameErrorMessage}
+                      </p>
+                    )}
                   </div>
                   {/* อีเมล */}
                   <div className={styles.formfield}>
@@ -290,7 +432,7 @@ function Loginpage() {
                       variant="outlined"
                       fullWidth
                       value={formData.email}
-                      onChange={handleInputChange}
+                      onChange={handleInputEmailChange}
                       placeholder=" "
                       sx={{
                         marginBottom: "6px",
@@ -300,20 +442,35 @@ function Loginpage() {
                         "& .MuiOutlinedInput-root": {
                           borderRadius: "20px",
                           height: "36px",
+                          // เปลี่ยนสีกรอบเมื่อมีข้อผิดพลาด
+                          borderColor: emailErrorMessage ? "red" : "#915B43",
                         },
                         "& fieldset": {
-                          borderColor: "#915B43",
+                          // เปลี่ยนสีกรอบให้แดงเมื่อมีข้อผิดพลาด
+                          borderColor: emailErrorMessage ? "red" : "#915B43",
                         },
                       }}
                       InputProps={{
                         style: {
                           borderRadius: "20px",
                           fontSize: "16px",
-                          color: "gray",
+                          color: emailErrorMessage ? "red" : "gray", // เปลี่ยนสีข้อความให้เป็นแดงเมื่อมีข้อผิดพลาด
                         },
                       }}
                     />
+                    {emailErrorMessage && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {emailErrorMessage}
+                      </p>
+                    )}
                   </div>
+
                   {/* รหัสผ่าน */}
                   <div className={styles.formfield}>
                     <p
@@ -334,7 +491,7 @@ function Loginpage() {
                       fullWidth
                       type="password"
                       value={formData.password}
-                      onChange={handleInputChange}
+                      onChange={handlePasswordChange}
                       placeholder=" "
                       sx={{
                         marginBottom: "6px",
@@ -346,19 +503,23 @@ function Loginpage() {
                           height: "36px",
                         },
                         "& fieldset": {
-                          borderColor: "#915B43",
-                        },
-                      }}
-                      InputProps={{
-                        style: {
-                          borderRadius: "20px",
-                          fontSize: "16px",
-                          color: "gray",
+                          borderColor: PasswordErrorMessage ? "red" : "#915B43",
                         },
                       }}
                     />
+                    {PasswordErrorMessage && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {PasswordErrorMessage}
+                      </p>
+                    )}
                   </div>
-                  {/* ยืนยันรหัสผ่าน */}
+
                   <div className={styles.formfield}>
                     <p
                       style={{
@@ -377,8 +538,8 @@ function Loginpage() {
                       variant="outlined"
                       fullWidth
                       type="password"
-                      value={formData.confirmPassword || ""}
-                      onChange={handleInputChange}
+                      value={formData.confirmPassword}
+                      onChange={handleConfirmPasswordChange}
                       placeholder=" "
                       sx={{
                         marginBottom: "6px",
@@ -390,18 +551,25 @@ function Loginpage() {
                           height: "36px",
                         },
                         "& fieldset": {
-                          borderColor: "#915B43",
-                        },
-                      }}
-                      InputProps={{
-                        style: {
-                          borderRadius: "20px",
-                          fontSize: "16px",
-                          color: "gray",
+                          borderColor: confirmPasswordErrorMessage
+                            ? "red"
+                            : "#915B43",
                         },
                       }}
                     />
+                    {confirmPasswordErrorMessage && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {confirmPasswordErrorMessage}
+                      </p>
+                    )}
                   </div>
+
                   <Button
                     variant="contained"
                     fullWidth
