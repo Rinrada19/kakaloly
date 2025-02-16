@@ -155,21 +155,6 @@ function Loginpage() {
     return result.available || result.message;
   };
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -184,14 +169,21 @@ function Loginpage() {
       const response = await loginUser(formData);
 
       // ตรวจสอบว่าได้รับข้อมูลจาก API หรือไม่
-      console.log("ผลการล็อกอิน:", response);
 
-      // สามารถใช้ response เพื่อทำงานต่อไป เช่น redirect หรือจัดเก็บข้อมูล session
+      if (response.error) {
+        throw new Error(
+          response.error.message || "รหัสหรือชื่อผู้ใช้ไม่ถูกต้อง"
+        );
+      }
+
+      console.log("ผลการล็อกอิน:", response);
       alert("ล็อกอินสำเร็จ");
+
+      // ล็อกอินสำเร็จจึงเปลี่ยนหน้า
       navigate("/Home");
     } catch (error) {
       console.error("การล็อกอินไม่สำเร็จ:", error);
-      alert("รหัสหรือชื่อผู้ใช้ไม่ถูกต้อง");
+      alert(error.message);
     }
   };
 

@@ -47,7 +47,7 @@ const SummaryCard = ({ nutritionData }) => {
           <div className="summary-info">
             <h3>สรุป</h3>
             <div className="summary-detail-info">
-              <div>
+              <div className="sumCal_inforight">
                 <p>กินไป</p>
                 <p>เป้าหมาย</p>
                 <p className="fade_text">ต้องกินอีก</p>

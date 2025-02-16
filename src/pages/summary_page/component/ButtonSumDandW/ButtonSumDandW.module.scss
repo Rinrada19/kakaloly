@@ -1,11 +1,12 @@
 .container {
+    gap: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .wapper,
 .wapper2 {
+    box-shadow:  0px 1px 4px rgba(0, 0, 0, 0.1);
     letter-spacing: 1px;
     font-size: 16px;
     font-weight: 400;
@@ -29,7 +30,16 @@
     .wapper,.wapper2 {
       font-size: 14px;
     }
+    // .wapper{
+    //     border-bottom-right-radius: 0px;
+    //     border-bottom-left-radius: 0px;
+    // }
+    // .wapper2{
+    //     border-top-right-radius: 0px;
+    //     border-top-left-radius: 0px;
+    // }
     .container{
+        gap: 10px;
         flex-wrap: wrap;
     }
   }

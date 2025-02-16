@@ -5,6 +5,9 @@
 export const users = [
   {
     id: 1,
+    Food_restrictions: ["มังสวิรัติ", "แพ้ถั่ว"], // Array ใน Object
+    Disease: ["โรคเบาหวาน","โรคความดันโลหิตสูง"],
+    goalweight:"รักษาน้ำหนัก",
     name: "John Doe",
     email: "john.doe@example.com",
     age: 25,

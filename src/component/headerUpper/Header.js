@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 //import { users } from "../../test_mock/MockData";
 import styles from "./header.module.scss"; // นำเข้าไฟล์ SCSS Module
 import { useUser } from "../../api/UserContext";
+import { Link } from "react-router-dom";
 
 import icon__profile from "../../imgAll/icon/person-circle-outline.png";
 const Header = () => {
@@ -29,11 +30,19 @@ const Header = () => {
         </p>
       </div>
 
-      <img
-        src={icon__profile}
-        alt="Iconprofile"
-        className={styles.icon__person}
-      ></img>
+      <Link
+        to="/Profilepage"
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+        }}
+      >
+        <img
+          src={icon__profile}
+          alt="Iconprofile"
+          className={styles.icon__person}
+        ></img>
+      </Link>
     </header>
   );
 };

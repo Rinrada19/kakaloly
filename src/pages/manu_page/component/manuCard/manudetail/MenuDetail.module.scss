@@ -1,6 +1,4 @@
 .container{
-    padding-top: 30px;
-    min-height: 100vh;
     background-color: #FFF2EA;
 }
 .backButton{
@@ -15,13 +13,14 @@
     align-items: baseline;
     border-bottom: 1px solid #915B43;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 .image{
     border-radius: 20px;
     width: 353px;
     height: 300px;
     object-fit: cover;
-    margin-bottom: 26px;
+    margin-bottom: 25px;
 }
 .contentder{
   flex-direction: column;
@@ -64,14 +63,11 @@
     border: none;
     font-size: 16px;
     letter-spacing: 0.5px;
-    margin: 10px 0; /* บน-ล่าง 10px, ซ้าย-ขวา 0px */
-   
+    margin-bottom: 30px;
 }
-  .buttoncontainer {
+.buttoncontainer {
     text-align: center;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%; /* ให้ปุ่มอยู่ตรงกลาง */
-  }
+}
+.contents {
+    flex-grow: 1; /* ดัน logout ลงล่าง */
+}

@@ -6,6 +6,7 @@ import NavigationBar from "../../component//navbar/NavigationBar";
 import SearchMenu from "./component/searchMenu/SearchMenu";
 import ManuCard from "./component/manuCard/ManuCard.js";
 import { getFood } from "../../api/api_food.js";
+import Gobackhead from "../../component/component-history/gobackhead";
 
 function Manupage() {
   const [foods, setFoods] = useState([]); // สถานะสำหรับเก็บข้อมูลอาหาร
@@ -43,8 +44,11 @@ function Manupage() {
       <div className={styles.wapper}>
         <div className="container">
           {/* content All */}
-          <h1>เมนูอาหาร</h1>
+          <div className={styles.box}>
+            <Gobackhead text="เมนูอาหาร" link="/home" />
+          </div>
           <SearchMenu
+            style={{ marginBottom: "20px" }}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
           />

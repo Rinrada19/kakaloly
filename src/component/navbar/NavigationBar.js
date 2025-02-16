@@ -58,7 +58,7 @@ const NavigationBar = () => {
         )}
 
         <NavItem img={recipesicon} label="เมนู" link="/Manupage" />
-        <NavItem img={shareicon} label="เเชร์เพื่อน" link="/contact" />
+        <NavItem img={shareicon} label="เเชร์เพื่อน" link="/friendpage" />
       </ul>
     </nav>
   );

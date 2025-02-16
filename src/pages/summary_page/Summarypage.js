@@ -50,7 +50,7 @@ function Summarypage() {
         className="container"
         style={{ display: "flex", flexDirection: "column", gap: "15px" }}
       >
-        <HeaderSum link="/home" title="สรุปข้อมูล" />
+        <HeaderSum link="/home" title="ภาพรวม" />
         <ButtonSumDandW />
         {user ? (
           <Weight user={user} />

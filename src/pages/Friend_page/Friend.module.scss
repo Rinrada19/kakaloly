@@ -1,0 +1,124 @@
+.wapper{
+    min-height: 100vh;
+}
+.date{
+    color: #915B43;
+    font-size: 16;
+    padding-left: 35px;
+    padding-bottom: 54px;
+}
+.modalContainer {
+    height: 500px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF; /* ทำให้ดูโปร่งแสงเล็กน้อย */
+    z-index: 1000;
+  }
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); // สีดำโปร่งแสง
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+.elementicon{
+  width: 40px;
+  border: 1px solid #EF7430;
+  border-radius: 60px;
+  object-fit: cover;
+  
+}
+.wrappercard{
+  margin-bottom: 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  width: 100%;
+  border: 1px solid #EF7430;
+}
+.box1{
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+.box2{
+  display: flex;
+  align-items: center;
+}
+.addfriend{
+  width: 32px;
+}
+.modal_content{
+  padding: 20px 40px;
+  border-radius: 20px;
+  width: 357px;
+  height: 433px;
+  background-color: #fff;
+  position: absolute;
+  top: 10%; /* ปรับค่าให้เหมาะสม */
+  left: 50%;
+  transform: translateX(-50%);
+}
+.modal_body{
+  border: 1px solid #EF7430;
+  border-radius: 10px;
+  width: 100%;
+  padding: 25px 16px;
+  margin-bottom: 40px;
+}
+
+.input{
+  background-color: #FFE9DA;
+  box-shadow: inset 0px 3px 6px #D8D8D8;
+  margin-top: 15px;
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid #EF7430;
+  text-align: center;
+  outline: none; /* เอาเส้นขอบเริ่มต้นของเบราว์เซอร์ออก */
+  transition: border 0.3s ease-in-out; /* ทำให้เปลี่ยนสีขอบนุ่มขึ้น */
+}
+.input::placeholder {
+  color: #F4B490; /* เปลี่ยนเป็นสีที่ต้องการ */
+  font-size: 14px; /* ปรับขนาด */
+  font-weight: 500; /* ปรับความหนาของตัวอักษร */
+  letter-spacing: 1px;
+}
+.input:focus {
+  border: 1px solid #EF7430; /* เปลี่ยนเป็นสีที่ต้องการเมื่อกด */
+}
+.buttonAddFriend-section {
+  display: flex;
+  justify-content: center;  // จัดกลางในแนวนอน
+  align-items: center;      // จัดกลางในแนวตั้ง
+  gap: 15px;                // ระยะห่างระหว่างปุ่ม
+  width: 100%;              // ให้ container ใช้พื้นที่ 100%
+  max-width: 500px;         // ขนาดสูงสุดของ container
+  margin: 0 auto;           // จัดกลางใน container
+
+  .confirm-btn {
+    background-color: orange !important;  // สีพื้นหลังของปุ่ม
+    border-color: orange !important;      // สีขอบของปุ่ม
+    color: white;                        // ข้อความในปุ่ม
+    padding: 10px 20px;                  // ขนาด padding ของปุ่ม
+    border-radius: 5px;                  // มุมปุ่มโค้ง
+    cursor: pointer;                    // ให้ปุ่มแสดง cursor เป็น pointer
+
+    &:hover {
+      background-color: darkorange !important; // สีเมื่อ hover
+      border-color: darkorange !important;
+    }
+  }
+}
