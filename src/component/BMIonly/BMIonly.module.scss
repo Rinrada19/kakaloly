@@ -31,3 +31,12 @@
     font-weight: 400;
     color: #EF7430;
 }
+.boxweight{
+    padding: 26px 39px,    
+}
+@media (max-width: 393px) {
+    .boxweight{
+        padding: 20px 10px;
+    }
+    
+}

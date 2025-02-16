@@ -4,3 +4,55 @@
     padding: 30px 0;
     padding-bottom: 150px;
 }
+.weeklySummary{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 33px 0px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+.fontstyles{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+.fontSizebox{
+    padding-left: 30px;
+    margin-bottom: 25px;
+}
+.boxinfo{
+    display: flex;
+    justify-content: space-between;
+}
+.cotainerinfo{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+}
+.inforight{
+
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+}
+.infoleft{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+@media (max-width: 500px) {
+    .inforight{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .infoleft{
+        font-size: 14px;
+    }
+  }
+.lineinfo{
+    border-bottom: 1px solid #E5E5E5;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+  

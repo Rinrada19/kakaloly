@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../pages/history_page/custom.module.scss"; 
+import styles from "../../pages/history_page/custom.module.scss";
 import "../../styles/custom.scss"; 
 
 import WeightOnly from "../../component/Weight/WeightOnly"
@@ -48,13 +48,13 @@ function Historypage() {
                     </div>
                      {/* น้ำหนักปัจุบัน เเละ BMI */}
                     <div className={styles.wrapper}>
-                        <div className="row g-3" style={{
+                        <div className="roow row g-3" style={{
                         marginBottom: "15px"
                     }}>
-                            <div className="col-6">
+                            <div className="cool col-6">
                                 <WeightOnly/>
                             </div>
-                            <div className="col-6">
+                            <div className="cool col-6">
                                 <BMIonly/>
                             </div>
                         </div>

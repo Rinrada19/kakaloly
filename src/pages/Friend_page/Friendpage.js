@@ -85,6 +85,8 @@ function Friendpage() {
                     <div> 
                       <input className={styles.input} placeholder="ใส่ ID เพื่อนของคุณ"></input>
                     </div>
+                    <button className={styles.buttonfriend}>ยืนยัน</button>
+                   
                   </div>
                   {/* <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>ปิด</button>
