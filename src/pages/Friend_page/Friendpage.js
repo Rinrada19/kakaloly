@@ -282,17 +282,17 @@ function Friendpage() {
                       <p style={{ color: "red" }}>{errorAddfriend}</p>
                     )}
                     {success && <p style={{ color: "green" }}>{success}</p>}
-                    <div className="buttonAddfrined-section">
-                      <button
+                    <div className="modal-footer">
+                      {/* <button
                         type="button"
                         className="btn btn-secondary"
                         onClick={() => setShowModal(false)}
                       >
                         ปิด
-                      </button>
+                      </button> */}
                       <button
                         type="button"
-                        className="btn btn-primary"
+                        className={styles.buttonfriend}
                         onClick={handleAddFriend}
                       >
                         ยืนยัน
