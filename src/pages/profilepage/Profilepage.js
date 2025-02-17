@@ -56,7 +56,7 @@ const Profilepage = () => {
                 <div className='col-12'>
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
-                            <div className={styles.insideleft}><img src={weighticon} className={styles.iconall} style={{width:"17px",height:"17px"}}></img></div>
+                            <div className={styles.insideleft}><img src={weighticon} alt='img' className={styles.iconal} style={{width:"17px",height:"17px"}}></img></div>
                             <span style={{color:"#EF7430",}}>น้ำหนัก</span>
                         </div>
                         <div className={styles.contentright}>
@@ -69,7 +69,7 @@ const Profilepage = () => {
                 <div className='col-12'>
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
-                        <div className={styles.insideleft}><img src={heighticon} className={styles.iconall} style={{width:"14px",height:"21px"}}></img></div>
+                        <div className={styles.insideleft}><img src={heighticon}  alt='img' className={styles.iconall} style={{width:"14px",height:"21px"}}></img></div>
                             <span style={{color:"#EF7430",}}>ส่วนสูง</span>
                         </div>
                         <div className={styles.contentright}>
@@ -82,7 +82,7 @@ const Profilepage = () => {
                 <div className='col-12'>
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
-                        <div className={styles.insideleft}><img src={goalicon} className={styles.iconall} style={{width:"17px",height:"17px"}}></img></div>
+                        <div className={styles.insideleft}><img src={goalicon} alt='imgdd' className={styles.iconall} style={{width:"17px",height:"17px"}}></img></div>
                             <span style={{color:"#EF7430",}}>เป้าหมาย</span></div>
                         <div className={styles.contentright}>
                             <div style={{color:"#915B43",fontWeight:"400"}}>{users[0]?.goalweight}</div> 
@@ -94,7 +94,7 @@ const Profilepage = () => {
                 <div className='col-12'>
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
-                            <div className={styles.insideleft}><img src={appleicon} className={styles.iconall} style={{width:"17px",height:"19px"}}></img></div>
+                            <div className={styles.insideleft}><img src={appleicon} className={styles.iconall} alt='img' style={{width:"17px",height:"19px"}}></img></div>
                             <span style={{color:"#EF7430",}}>ข้อจำกัดด้านอาหาร</span>
                         </div>
                         <div className={styles.contentright}>
@@ -138,7 +138,7 @@ const Profilepage = () => {
                 <div className='col-12'>
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
-                            <div className={styles.insideleft}><img src={pillicon} className={styles.iconall} style={{width:"17px",height:"19px"}}></img></div>
+                            <div className={styles.insideleft}><img src={pillicon} alt='img' className={styles.iconall} style={{width:"17px",height:"19px"}}></img></div>
                             <span style={{color:"#EF7430",}}>โรคประจำตัว</span>
                         </div>
                         <div className={styles.contentright}>
@@ -186,7 +186,7 @@ const Profilepage = () => {
                     <div className={styles.content}>
                         <div className={styles.contentleft}>
                             <div className={styles.insideleft}>
-                                <img src={exiticon} className={styles.iconall} style={{width:"24px",height:"24px"}} />
+                                <img src={exiticon} alt='img' className={styles.iconall} style={{width:"24px",height:"24px"}} />
                             </div>
                             <span style={{color:"#EF7430"}}>ออกจากระบบ</span>
                         </div>
