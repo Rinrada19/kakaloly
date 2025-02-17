@@ -15,14 +15,14 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
     try {
       const response = await Scan(image); // ส่งไฟล์ภาพไปให้ Scan
       if (response) {
-        console.log("ข้อมูลที่ได้จาก API:", response); // ตรวจสอบข้อมูลที่ได้
+        // console.log("ข้อมูลที่ได้จาก API:", response); // ตรวจสอบข้อมูลที่ได้
         setImageData(response); // ส่งข้อมูลที่ได้ไปยัง Step
         setStep(2); // ไปยัง Step 2
       } else {
-        console.log("ไม่พบข้อมูลจาก API");
+        // console.log("ไม่พบข้อมูลจาก API");
       }
     } catch (error) {
-      console.log("ไม่มีเมนูนี้");
+      // console.log("ไม่มีเมนูนี้");
     }
   };
 

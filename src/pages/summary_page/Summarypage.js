@@ -22,7 +22,7 @@ function Summarypage() {
         if (token) {
           const data = await getEatToDay(); // เรียกใช้งาน API
           setNutritionData(data); // อัปเดตสถานะด้วยข้อมูลที่ได้รับ
-          console.log("userrrrrrrrrrrrrr", user);
+          // console.log("userrrrrrrrrrrrrr", user);
         } else {
           console.error("Token is missing or invalid.");
         }

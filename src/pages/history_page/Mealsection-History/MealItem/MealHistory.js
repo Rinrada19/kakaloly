@@ -8,7 +8,7 @@ import iconDinner from "../../../../imgAll/icon/icon-dinnerfood.webp";
 const MealItem = ({ mealItem }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  console.log("mealItem.....", mealItem);
+  // console.log("mealItem.....", mealItem);
 
   // คำนวณแคลอรี่รวมทั้งหมด (ถ้าไม่มีข้อมูลให้เป็น 0)
   const totalCalories = mealItem.meals?.length

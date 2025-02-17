@@ -26,7 +26,7 @@ const MealsSection = () => {
     try {
       const data = {}; // ถ้าต้องการส่ง params อื่น ๆ ก็ใส่ที่นี่
       const fetchedMeals = await getMeal(data, token);
-      console.log("fetchedMeals:", fetchedMeals);
+      //  console.log ("fetchedMeals:", fetchedMeals);
 
       if (
         fetchedMeals.message &&
@@ -83,7 +83,7 @@ const MealsSection = () => {
     { name: "มื้อเที่ยง", meals: groupedMeals.Lunch },
     { name: "มื้อเย็น", meals: groupedMeals.Dinner },
   ];
-  console.log("Grouped Meals:", groupedMeals);
+  // console.log("Grouped Meals:", groupedMeals);
 
   return (
     <div>

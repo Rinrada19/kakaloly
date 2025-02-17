@@ -8,7 +8,7 @@ const MealsSectionHistory = ({ date, token }) => {
   const [loading, setLoading] = useState(true); // สถานะการโหลดข้อมูล
   const [error, setError] = useState(null); // สถานะข้อผิดพลาด
 
-  console.log("ค่า date ที่ได้รับ:", date);
+  // console.log("ค่า date ที่ได้รับ:", date);
   // ฟังก์ชันในการดึงข้อมูลมื้ออาหารตามวันที่
   const fetchMealsByDate = async () => {
     if (!date) {
@@ -43,7 +43,7 @@ const MealsSectionHistory = ({ date, token }) => {
   };
 
   useEffect(() => {
-    console.log("useEffect - ค่า date ที่ได้รับ:", date); // ดูค่าของ date
+    // console.log("useEffect - ค่า date ที่ได้รับ:", date); // ดูค่าของ date
     fetchMealsByDate();
   }, [date]);
 
@@ -87,7 +87,7 @@ const MealsSectionHistory = ({ date, token }) => {
     { name: "มื้อเที่ยง", meals: groupedMeals.Lunch },
     { name: "มื้อเย็น", meals: groupedMeals.Dinner },
   ];
-  console.log("mealData", mealData);
+  // console.log("mealData", mealData);
   return (
     <section className="meals-section">
       <p className="head">{formatThaiDate(date)}</p>{" "}

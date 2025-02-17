@@ -18,7 +18,7 @@ export const getMeal = async (data, token) => {
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
     const errorResponse = await error.response?.text();
-    console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
+    // console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
     throw error;
   }
 };
@@ -33,7 +33,7 @@ export const getMealDate = async (date) => {
     // ถ้า date ไม่ได้ถูกส่งเข้ามา ให้ใช้วันที่ปัจจุบัน
     const currentDate = date || new Date().toISOString().split("T")[0]; // ใช้วันที่ปัจจุบันถ้าไม่มีกำหนด
 
-    console.log("Using date:", currentDate);
+    // console.log("Using date:", currentDate);
 
     const response = await API_URL.get("/meals/by_date", {
       params: { date: currentDate }, // ส่ง date ใน query parameter
@@ -41,7 +41,7 @@ export const getMealDate = async (date) => {
         Authorization: `Bearer ${token}`, // ส่ง token ใน headers
       },
     });
-    console.log("data ======", response.data);
+    // console.log("data ======", response.data);
     return response.data; // คืนค่าข้อมูลที่ได้รับจาก API
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);

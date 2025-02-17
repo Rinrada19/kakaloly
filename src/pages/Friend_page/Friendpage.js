@@ -29,7 +29,7 @@ function Friendpage() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      console.log("Token from useEffect:", token);
+      // console.log("Token from useEffect:", token);
       if (token) {
         try {
           const data = {};
@@ -43,7 +43,7 @@ function Friendpage() {
           setLoading(false);
         }
       } else {
-        console.log("Token is missing");
+        // console.log("Token is missing");
         setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
       }
     };
@@ -58,7 +58,7 @@ function Friendpage() {
       setLoading(true); // เปิดสถานะโหลดก่อนดึงข้อมูล
       try {
         const friendData = await getFriend({}, token); // เรียก API
-        console.log("friendData----", friendData);
+        // console.log("friendData----", friendData);
 
         if (Array.isArray(friendData)) {
           setFriends(friendData); // ตั้งค่าข้อมูลเพื่อน
@@ -91,8 +91,8 @@ function Friendpage() {
     }
 
     const response = await createFriend(friendUsername);
-    console.log("📌 API Response:", response);
-    console.log("📌 response?.error:", response?.error);
+    // console.log("📌 API Response:", response);
+    // console.log("📌 response?.error:", response?.error);
 
     if (friendUsername === user.username) {
       // ✅ เช็คว่าเป็น username ตัวเอง
@@ -100,7 +100,7 @@ function Friendpage() {
       return;
     }
     if (response?.error) {
-      console.log("📌 พบ error จาก API:", response.error);
+      // console.log("📌 พบ error จาก API:", response.error);
       setErrorAddfriend(response.error); // ✅ แสดง error
       return; // ❌ ไม่ให้ alert "เพิ่มเพื่อนสำเร็จ!"
     }
@@ -121,7 +121,7 @@ function Friendpage() {
           setError(null);
           const response = await getFriendInfo({ id: selectedFriendId }, token);
           setFriendData(response.meals); // เก็บข้อมูลใน state
-          console.log("fetchFriendData", response); // แสดงผลข้อมูลที่ได้รับ
+          // console.log("fetchFriendData", response); // แสดงผลข้อมูลที่ได้รับ
         } catch (err) {
           setError("เกิดข้อผิดพลาดในการดึงข้อมูล");
           console.error("Error fetching friend data", err);
@@ -137,7 +137,7 @@ function Friendpage() {
   // ในภายนอก useEffect สามารถใช้ friendData ได้เลย เช่น
   useEffect(() => {
     if (friendDataInfo) {
-      console.log("Friend data outside useEffect:", friendDataInfo);
+      // console.log("Friend data outside useEffect:", friendDataInfo);
     }
   }, [friendDataInfo]); // เมื่อ friendData อัปเดต ให้แสดงผลภายนอก useEffect
 
@@ -146,7 +146,7 @@ function Friendpage() {
   //   setSelectedFriendId((prevId) => (prevId === id ? null : id));
   // };
   const handleSelectFriend = (id) => {
-    console.log("Selected friend id:", id); // ตรวจสอบว่าเลือกเพื่อนแล้วหรือยัง
+    // console.log("Selected friend id:", id); // ตรวจสอบว่าเลือกเพื่อนแล้วหรือยัง
     setSelectedFriendId(id);
   };
 
@@ -160,7 +160,7 @@ function Friendpage() {
   //   .filter((meal) => meal.type === "อาหาร")
   //   .reduce((total, meal) => total + meal.cal, 0);
 
-  console.log("frienddddd", friends);
+  //  console.log ("frienddddd", friends);
   return (
     <>
       {/* ส่วนหัวมีheader วันที่ เเอดเพื่อน */}

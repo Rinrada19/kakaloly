@@ -21,7 +21,7 @@ export const registerUser = async (data) => {
     // ตรวจสอบว่า response มี token หรือไม่
     if (response.data && response.data.token) {
       localStorage.setItem("token", response.data.token);
-      console.log("Token saved in localStorage:", response.data.token);
+      // console.log("Token saved in localStorage:", response.data.token);
     }
 
     return response.data; // ส่งข้อมูลกลับ

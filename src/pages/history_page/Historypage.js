@@ -27,7 +27,7 @@ function Historypage() {
       try {
         const userData = await getUser(); // ดึงข้อมูลผู้ใช้จาก getUser
         setUser(userData); // เก็บข้อมูลผู้ใช้
-        console.log("ข้อมูลผู้ใช้:", userData);
+        // console.log("ข้อมูลผู้ใช้:", userData);
 
         setToken(userData?.token || localStorage.getItem("token")); // เก็บ token
       } catch (error) {
@@ -45,7 +45,7 @@ function Historypage() {
       console.warn("⚠️ No user data available");
       setLoading(false);
     } else {
-      console.log("✅ User data loaded:", user);
+      // console.log("✅ User data loaded:", user);
       setLoading(false);
     }
   }, [user]);
@@ -54,7 +54,7 @@ function Historypage() {
   useEffect(() => {
     const receivedDate = new Date().toISOString().split("T")[0]; // ได้รูปแบบ YYYY-MM-DD
     setDate(receivedDate);
-    console.log("receivedDate ---", receivedDate);
+    // console.log("receivedDate ---", receivedDate);
   }, []);
 
   // ดึงข้อมูลจาก API
@@ -69,13 +69,13 @@ function Historypage() {
         }
 
         if (!date) {
-          console.log("No date selected yet.");
+          // console.log("No date selected yet.");
           return; // ถ้าไม่มี date ก็คงไม่ดึงข้อมูล
         }
 
-        console.log("Fetching nutrition data for date:", date);
+        // console.log("Fetching nutrition data for date:", date);
         const data = await getEatDate(date); // เรียก API
-        console.log("Nutrition data:", data);
+        // console.log("Nutrition data:", data);
         setNutritionData(data); // ตั้งค่า nutritionData ด้วยข้อมูลที่ได้รับ
       } catch (error) {
         console.error("Error fetching nutrition data:", error); // ถ้ามีข้อผิดพลาดเกิดขึ้น

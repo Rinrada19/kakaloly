@@ -6,7 +6,7 @@ function WeightOnly({ user }) {
   const currentWeight = user?.[0]?.weight || 0; // ใช้ user[0]?.weight ถ้า user เป็นอาร์เรย์
 
   // เพิ่มการตรวจสอบเพื่อป้องกันกรณีที่ user หรือ user[0]?.weight ไม่มีค่า
-  console.log("น้ำหนักที่ได้รับจาก props:", currentWeight);
+  // console.log("น้ำหนักที่ได้รับจาก props:", currentWeight);
 
   return (
     <div

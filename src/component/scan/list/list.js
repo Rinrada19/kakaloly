@@ -18,14 +18,14 @@ const List = ({
   const handleButtonClick = (food) => {
     setSelectMenu(food.food_name); // เลือกเมนูที่คลิก
     setSelectedMenu(food); // เก็บข้อมูลเมนูที่เลือก
-    console.log("food ที่ส่ง ---", food); // ส่งข้อมูลทั้งหมดของอาหารที่เลือก
+    // console.log("food ที่ส่ง ---", food); // ส่งข้อมูลทั้งหมดของอาหารที่เลือก
   };
 
   // ฟังก์ชันต่อไปเมื่อเลือกเมนูแล้ว
   const handleNextStep = () => {
     if (availableMenus.length === 0) {
       setStep(6); // ปิดหรือกลับไปหน้าแรก
-      console.log("ไม่มีเมนูที่เหลือ ปิดหน้าต่าง");
+      // console.log("ไม่มีเมนูที่เหลือ ปิดหน้าต่าง");
       return;
     }
 
@@ -34,7 +34,7 @@ const List = ({
       setCompletedMenus(updatedCompletedMenus); // อัพเดต completedMenus
 
       setStep(3); // เลื่อนไปขั้นตอนถัดไป
-      console.log("กำลังเปลี่ยนไปขั้นตอนที่ 3");
+      // console.log("กำลังเปลี่ยนไปขั้นตอนที่ 3");
     } else {
       alert("โปรดเลือกเมนูที่ต้องการ");
     }

@@ -30,8 +30,8 @@ const Step = ({ setShowCamera }) => {
 
     // ✅ แก้ไขให้ตรวจสอบว่า imageData ไม่ว่างก่อน
     if (completedMenus.length === 0 && imageData) {
-      console.log("จำนวนเมนู", completedMenus.length);
-      console.log("จำนวนเมนู+1", completedMenus.length + 1);
+      // console.log("จำนวนเมนู", completedMenus.length);
+      // console.log("จำนวนเมนู+1", completedMenus.length + 1);
       alert("กรุณาเลือกเมนูให้ครบ");
     } else if (imageData && selectedMenu) {
       setStep(2);

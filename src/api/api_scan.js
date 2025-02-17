@@ -12,7 +12,7 @@ export const Scan = async (imageFile) => {
       },
     });
 
-    console.log("ข้อมูลที่ได้รับจาก API:", response.data); // ตรวจสอบข้อมูลที่ได้รับจาก API
+    // console.log("ข้อมูลที่ได้รับจาก API:", response.data); // ตรวจสอบข้อมูลที่ได้รับจาก API
 
     if (response.data) {
       return response.data; // ส่งข้อมูลที่ได้รับกลับไป
@@ -21,11 +21,11 @@ export const Scan = async (imageFile) => {
     }
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการอัปโหลด:", error);
-    if (error.response) {
-      console.log("ข้อผิดพลาดจาก API:", error.response.data);
-    } else {
-      console.log("ข้อผิดพลาดจากเครือข่าย:", error.message);
-    }
+    // if (error.response) {
+    //   console.log("ข้อผิดพลาดจาก API:", error.response.data);
+    // } else {
+    //   console.log("ข้อผิดพลาดจากเครือข่าย:", error.message);
+    // }
     return null; // คืนค่า null หากเกิดข้อผิดพลาด
   }
 };

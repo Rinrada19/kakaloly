@@ -65,13 +65,13 @@ export const loginUser = async (data) => {
 
     // ตรวจสอบว่า response มี data ที่ต้องการหรือไม่
     if (response && response.data) {
-      console.log("Login successful:", response.data);
+      // console.log("Login successful:", response.data);
 
       // เก็บ token ลงใน localStorage
       const token = response.data.token; // สมมติว่า token มาจาก response.data.token
       if (token) {
         localStorage.setItem("token", token); // เก็บ token ใน localStorage
-        console.log("Token saved:", token);
+        // console.log("Token saved:", token);
       }
 
       return response.data; // คืนค่าข้อมูลที่ได้จากการเข้าสู่ระบบ

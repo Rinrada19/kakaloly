@@ -21,7 +21,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      console.log("Token from useEffect:", token);
+      // console.log("Token from useEffect:", token);
       if (token) {
         try {
           const data = {};
@@ -35,7 +35,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           setLoading(false);
         }
       } else {
-        console.log("Token is missing");
+        // console.log("Token is missing");
         setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
       }
     };
@@ -55,17 +55,17 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     sodium,
     default_meat,
   } = selectedMenu || {};
-  console.log(
-    food_name,
-    cal,
-    carb,
-    protein,
-    fat,
-    food_description,
-    sugar,
-    sodium,
-    default_meat
-  );
+  // console.log(
+  //   food_name,
+  //   cal,
+  //   carb,
+  //   protein,
+  //   fat,
+  //   food_description,
+  //   sugar,
+  //   sodium,
+  //   default_meat
+  // );
 
   const {
     register,
@@ -77,52 +77,47 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     let updatedCal = cal || 0; // ใช้ค่าแคลเริ่มต้นจากเมนูที่เลือก
 
     // 🎯 ปรับแคลอรี่ตามประเภทเนื้อสัตว์
-    if (default_meat === "เนื้อหมูสับ") {
-      updatedCal = 260; // หมูสับ 260 kcal
-    } else if (default_meat === "เนื้อหมู") {
-      updatedCal = 165; // เนื้อหมู 165 kcal
-    } else if (default_meat === "เนื้อหมูสามชั้น") {
-      updatedCal = 518; // หมูสามชั้น 518 kcal
-    } else if (default_meat === "เนื้อไก่") {
-      updatedCal = 165; // เนื้อไก่ 165 kcal
-    } else if (default_meat === "เนื้อไก่สับ") {
-      updatedCal = 165; // เนื้อไก่ 165 kcal
-    } else if (default_meat === "กุ้ง") {
-      updatedCal = 99; // กุ้ง 99 kcal
-    } else if (default_meat === "ปลา") {
-      updatedCal = 110; // ปลา 110 kcal
+    if (default_meat === "none") {
+      updatedCal = cal; // ใช้แคลอรี่เดิมที่มีอยู่
+    } else {
+      // คำนวณแคลอรี่จาก default_meat
+      if (default_meat === "เนื้อหมูสับ") {
+        updatedCal = 260; // หมูสับ 260 kcal
+      } else if (default_meat === "เนื้อหมู") {
+        updatedCal = 165; // เนื้อหมู 165 kcal
+      } else if (default_meat === "เนื้อหมูสามชั้น") {
+        updatedCal = 518; // หมูสามชั้น 518 kcal
+      } else if (default_meat === "เนื้อไก่") {
+        updatedCal = 165; // เนื้อไก่ 165 kcal
+      } else if (default_meat === "เนื้อไก่สับ") {
+        updatedCal = 165; // เนื้อไก่ 165 kcal
+      } else if (default_meat === "กุ้ง") {
+        updatedCal = 99; // กุ้ง 99 kcal
+      } else if (default_meat === "ปลา") {
+        updatedCal = 110; // ปลา 110 kcal
+      }
+
+      // 🎯 ลบแคลอรี่จาก default_meat ที่เลือกในตอนแรก
+      updatedCal -= cal;
+
+      // 🎯 คำนวณแคลอรี่ตาม selectMeat ที่เลือกใหม่
+      if (selectMeat === "หมูสับ") {
+        updatedCal += 260; // หมูสับ 260 kcal
+      } else if (selectMeat === "เนื้อหมู") {
+        updatedCal += 165; // เนื้อหมู 165 kcal
+      } else if (selectMeat === "หมูสามชั้น") {
+        updatedCal += 518; // หมูสามชั้น 518 kcal
+      } else if (selectMeat === "เนื้อไก่") {
+        updatedCal += 165; // เนื้อไก่ 165 kcal
+      } else if (selectMeat === "กุ้ง") {
+        updatedCal += 99; // กุ้ง 99 kcal
+      } else if (selectMeat === "ปลา") {
+        updatedCal += 110; // ปลา 110 kcal
+      }
     }
 
-    // ลบแคลอรี่จาก default_meat
-    updatedCal -= cal;
-
-    // คำนวณแคลอรี่ตาม selectMeat ที่เลือกใหม่
-    if (selectMeat === "หมูสับ") {
-      updatedCal += 260; // หมูสับ 260 kcal
-    } else if (selectMeat === "เนื้อหมู") {
-      updatedCal += 165; // เนื้อหมู 165 kcal
-    } else if (selectMeat === "หมูสามชั้น") {
-      updatedCal += 518; // หมูสามชั้น 518 kcal
-    } else if (selectMeat === "เนื้อไก่") {
-      updatedCal += 165; // เนื้อไก่ 165 kcal
-    } else if (selectMeat === "กุ้ง") {
-      updatedCal += 99; // กุ้ง 99 kcal
-    } else if (selectMeat === "ปลา") {
-      updatedCal += 110; // ปลา 110 kcal
-    }
-
-    console.log("setselectSugar:", setselectSugar);
-    console.log("selectSugar:", selectSugar);
-
-    console.log("setselectSugar:", setselectSugar);
-    console.log("selectSugar:", selectSugar);
-
-    //let sugar = selectedMenu?.sugar || 0; // รับค่า sugar จาก API หรือใช้ 0 ถ้าไม่มี
-
-    console.log("น้ำตาลที่เลือก:", selectSugar); // ตรวจสอบค่าทุกครั้งที่ selectSugar เปลี่ยนแปลง
-
+    // 🎯 คำนวณแคลอรี่จากน้ำตาล
     let sugar = selectedMenu?.sugar || 0; // ค่าเริ่มต้นของน้ำตาลจาก API
-
     if (selectSugar === "ไม่มีน้ำตาล") {
       sugar = 0; // ไม่มีน้ำตาล
     } else if (selectSugar === "ใส่น้ำตาล") {
@@ -130,7 +125,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     } else if (selectSugar === "ใส่น้ำตาลเยอะ") {
       sugar += 11; // เพิ่มน้ำตาลเยอะ (เพิ่ม 6 กรัม)
     }
-    console.log("น้ำตาล =", sugar); // แสดงผลค่า sugar ที่คำนวณแล้ว
+    // console.log("น้ำตาล =", sugar); // แสดงผลค่า sugar ที่คำนวณแล้ว
 
     // 🎯 ปรับแคลอรี่ตามจำนวนไข่
     if (selectEgg === "ไข่ดาว") {
@@ -144,8 +139,18 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     // 🎯 คำนวณแคลอรี่จากข้าว (1 ทัพพี = 60 แคล)
     updatedCal += selectRice * 60;
 
+    // 🎯 อัพเดตค่าแคลอรี่
     setCalories(updatedCal);
-  }, [selectMeat, selectEgg, selectValueEgg, selectRice, cal]);
+  }, [
+    selectMeat,
+    selectEgg,
+    selectValueEgg,
+    selectRice,
+    selectSugar,
+    default_meat,
+    cal,
+    selectedMenu?.sugar,
+  ]);
 
   const onSubmit = async (data) => {
     // ตรวจสอบค่าที่จะใช้ก่อน
@@ -172,14 +177,14 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     };
 
     // ตรวจสอบข้อมูลก่อนการส่ง
-    console.log("Data being sent:", mealData);
+    // console.log("Data being sent:", mealData);
 
     try {
       const response = await addMeal(mealData);
-      console.log("API response:", response); // เพิ่มการแสดงผลของ response ที่ได้รับจาก API
+      // console.log("API response:", response); // เพิ่มการแสดงผลของ response ที่ได้รับจาก API
 
       if (response && response.message === "Meal created successfully!") {
-        console.log("Meal added successfully");
+        // console.log("Meal added successfully");
         setStep(5); // ไปที่ขั้นตอนถัดไป
       }
     } catch (error) {
@@ -190,28 +195,28 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   // ฟังก์ชันที่ทำให้ปุ่มมีสีเปลี่ยนไปตามที่เลือก
   const handleButtonClick = (meal) => {
     setselectType(meal); // เปลี่ยนค่า selectType
-    console.log(meal); // แสดงค่าใน console
+    // console.log(meal); // แสดงค่าใน console
   };
   const handleSugarButtonClick = (sugar) => {
     setselectSugar(sugar); // เปลี่ยนค่า selectType
-    console.log(sugar); // แสดงค่าใน console
+    // console.log(sugar); // แสดงค่าใน console
   };
   const handleMeatButtonClick = (meat) => {
     setselectMeat(meat); // เปลี่ยนค่า selectType
-    console.log(meat); // แสดงค่าใน console
+    // console.log(meat); // แสดงค่าใน console
   };
   const handleEggButtonClick = (egg) => {
     setselectEgg(egg); // เปลี่ยนค่า selectType
-    console.log(egg); // แสดงค่าใน console
+    // console.log(egg); // แสดงค่าใน console
   };
   const handleValueEggButtonClick = (e) => {
     setselectValueEgg(e.target.value); // เก็บค่าที่กรอกใน input สำหรับข้าว
-    console.log(e.target.value); // แสดงค่าที่กรอกใน console
+    // console.log(e.target.value); // แสดงค่าที่กรอกใน console
   };
 
   const handleRiceButtonClick = (e) => {
     setselectRice(e.target.value); // เก็บค่าที่กรอกใน input สำหรับข้าว
-    console.log(e.target.value); // แสดงค่าที่กรอกใน console
+    // console.log(e.target.value); // แสดงค่าที่กรอกใน console
   };
 
   return (
@@ -284,7 +289,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
         </div>
         {/* ****************************************************************************** */}
         <div className="meat-container">
-          <span>เนื้อสัตว์</span>
+          <span>เนื้อสัตว์ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)</span>
           <div className="sugar-button-container">
             <button
               type="button"
@@ -353,7 +358,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
         </div>
         {/* ***************************************************************************** */}
         <div className="egg-container">
-          <span>เพิ่มไข่</span>
+          <span>เพิ่มไข่ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก) </span>
           <div className="sugar-button-container">
             <button
               type="button"
@@ -405,7 +410,10 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
         </div>
         {/* ****************************************************************************** */}
         <div className="rice-container">
-          <span>ปริมาณข้าวทัพพี (1 ทัพพี = 60 กรัม)</span>
+          <span>
+            ปริมาณข้าวทัพพี (1 ทัพพี = 60 กรัม) <br />
+            (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)
+          </span>
           <div className="rice-button-container">
             <input
               type="number"

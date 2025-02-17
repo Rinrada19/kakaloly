@@ -12,7 +12,7 @@ export const addMeal = async (data) => {
     if (!data.food_name || !data.user_id) {
       throw new Error("Missing required fields: food_name or user_id");
     }
-    console.log("Data being sent: ใน api", data); // ตรวจสอบข้อมูลที่ส่งไป
+    // console.log("Data being sent: ใน api", data); // ตรวจสอบข้อมูลที่ส่งไป
     const response = await API_URL.post("/meals", data, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -22,7 +22,7 @@ export const addMeal = async (data) => {
 
     if (response.data.token) {
       localStorage.setItem("token", response.data.token);
-      console.log("Token saved in localStorage:", response.data.token);
+      // console.log("Token saved in localStorage:", response.data.token);
     }
 
     return response.data;

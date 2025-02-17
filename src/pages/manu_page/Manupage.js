@@ -22,7 +22,7 @@ function Manupage() {
     const fetchFood = async () => {
       try {
         const foodData = await getFood(data, token);
-        console.log("foodssssssss", foodData);
+        // console.log("foodssssssss", foodData);
         setFoods(foodData); // ตั้งค่าข้อมูลที่ได้รับจาก API
       } catch (error) {
         setError("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู"); // ตั้งค่าข้อผิดพลาด

@@ -22,10 +22,10 @@ const DonutChart = ({ nutritionData }) => {
   const fatPercentage =
     totalConsumed > 0 ? Math.floor((fatValue / totalConsumed) * 100) : 0;
 
-  console.log("Total Consumed:", totalConsumed);
-  console.log("Carb:", carbPercentage);
-  console.log("Protein:", proteinPercentage);
-  console.log("Fat:", fatPercentage);
+  // console.log("Total Consumed:", totalConsumed);
+  // console.log("Carb:", carbPercentage);
+  // console.log("Protein:", proteinPercentage);
+  // console.log("Fat:", fatPercentage);
 
   const isZeroConsumption =
     carbPercentage === 0 && proteinPercentage === 0 && fatPercentage === 0;

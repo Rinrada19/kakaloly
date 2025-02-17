@@ -11,7 +11,7 @@ export const getEatDate = async (date) => {
     // ถ้า date ไม่ได้ถูกส่งเข้ามา ให้ใช้วันที่ปัจจุบัน
     const currentDate = date || new Date().toISOString().split("T")[0];
 
-    console.log("Using date:", currentDate);
+    // console.log("Using date:", currentDate);
 
     const response = await API_URL.post(
       "/eat_today",

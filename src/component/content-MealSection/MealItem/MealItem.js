@@ -6,7 +6,7 @@ import iconLunch from "../../../imgAll/icon/icon-lunchfood.webp";
 import iconDinner from "../../../imgAll/icon/icon-dinnerfood.webp";
 
 const MealItem = ({ mealItem }) => {
-  console.log("mealItem received:", mealItem); // เพิ่มการพิมพ์ค่า mealItem ลงในคอนโซล
+  // console.log("mealItem received:", mealItem); // เพิ่มการพิมพ์ค่า mealItem ลงในคอนโซล
 
   // คำนวณแคลอรี่รวมทั้งหมด
   const totalCalories = mealItem.meals.reduce(

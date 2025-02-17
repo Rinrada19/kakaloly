@@ -52,7 +52,7 @@ function Loginpage() {
     }));
 
     if (name === "username") {
-      console.log(`Sending request with data: {username: '${value}'}`);
+      // console.log(`Sending request with data: {username: '${value}'}`);
       const isUsernameAvailable = await checkUsernameAvailability(value);
       if (isUsernameAvailable !== true) {
         setUsernameErrorMessage(isUsernameAvailable); // แสดงข้อความผิดพลาดในฟอร์ม
@@ -79,9 +79,9 @@ function Loginpage() {
       }
 
       try {
-        console.log(`🔍 Checking email availability for: ${emailValue}`);
+        // console.log(`🔍 Checking email availability for: ${emailValue}`);
         const isEmailAvailable = await checkEmailAvailability(emailValue);
-        console.log("✅ API Response:", isEmailAvailable);
+        // console.log("✅ API Response:", isEmailAvailable);
 
         // ตรวจสอบค่าที่ได้รับจาก API
         if (isEmailAvailable === false) {
@@ -176,7 +176,7 @@ function Loginpage() {
         );
       }
 
-      console.log("ผลการล็อกอิน:", response);
+      // console.log("ผลการล็อกอิน:", response);
       alert("ล็อกอินสำเร็จ");
 
       // ล็อกอินสำเร็จจึงเปลี่ยนหน้า
@@ -213,7 +213,7 @@ function Loginpage() {
       email: formData.email,
     };
     localStorage.setItem("userData", JSON.stringify(userData)); // เก็บข้อมูลใน localStorage
-    console.log(userData);
+    // console.log(userData);
     // ถ้าผ่านการตรวจสอบทั้งหมดแล้ว
     navigate("/RegistrationForm"); // นำทางไปยังหน้าลงทะเบียน
   };

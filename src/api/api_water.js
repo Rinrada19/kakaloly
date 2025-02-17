@@ -101,16 +101,20 @@ export const getWaterIntake = async (token) => {
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการดึงข้อมูลน้ำดื่ม: ", error);
     const errorResponse = await error.response?.text();
-    console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
+    // console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
     throw error;
   }
 };
 
 export const updateWaterIntake = async (data) => {
-  // ตรวจสอบให้แน่ใจว่า water_amount มีค่า (สามารถเป็น 0 ได้)
-  if (data === undefined || data.water_amount === undefined) {
+  // ตรวจสอบให้แน่ใจว่า water_amount และ water_intake_id มีค่า
+  if (
+    data === undefined ||
+    data.water_amount === undefined ||
+    data.water_intake_id === undefined
+  ) {
     console.error("Invalid data: ", data);
-    throw new Error("Invalid data provided.");
+    throw new Error("Missing water_intake_id or water_amount");
   }
 
   const token = localStorage.getItem("token");
@@ -120,9 +124,49 @@ export const updateWaterIntake = async (data) => {
 
   try {
     // ส่งข้อมูลอัปเดตน้ำที่ดื่ม
-    const response = await axios.put(
-      "http:/54.79.173.230:5000/water-intake",
-      data,
+    const response = await API_URL.put("/water-intake", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    // console.log("Water intake updated:", response.data);
+    return response.data;
+  } catch (error) {
+    // ตรวจสอบข้อผิดพลาดจาก API
+    if (error.response) {
+      console.error("Error Response:", error.response.data); // แสดงข้อมูลที่ตอบกลับจาก API
+      alert("Error updating water intake: " + error.response.data.message); // แสดงข้อความแสดงข้อผิดพลาด
+    } else if (error.request) {
+      console.error("No response received:", error.request);
+      alert("No response from server.");
+    } else {
+      console.error("Error details:", error.message);
+      alert("An error occurred: " + error.message);
+    }
+    throw error;
+  }
+};
+
+export const postWater = async (waterAmount) => {
+  try {
+    // ตรวจสอบว่า waterAmount เป็นตัวเลขที่ถูกต้อง
+    if (typeof waterAmount !== "number" || waterAmount <= 0) {
+      throw new Error("Invalid water amount provided");
+    }
+
+    // ดึง token จาก localStorage
+    const token = localStorage.getItem("token");
+
+    // ตรวจสอบว่า token มีอยู่หรือไม่
+    if (!token) {
+      throw new Error("Token is required to access this resource");
+    }
+
+    // เรียก API ด้วย POST และส่ง headers และ body ที่มีเฉพาะ water_amount
+    const response = await API_URL.post(
+      "/water-intake",
+      { water_amount: waterAmount }, // ส่งแค่ค่า water_amount
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -130,14 +174,28 @@ export const updateWaterIntake = async (data) => {
         },
       }
     );
-    console.log("Water intake updated:", response.data);
+
+    // console.log("Header:", {
+    //   Authorization: `Bearer ${token}`,
+    // });
+
+    // ตรวจสอบ response และ return ข้อมูล
     return response.data;
   } catch (error) {
-    // console.error("Error updating water intake:", error);
-    // // ตรวจสอบข้อผิดพลาดจาก API
-    // if (error.response) {
-    //   console.error("Error Response:", error.response.data);
-    // }
-    // throw error;
+    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลโภชนาการที่ทานวันนี้:", error);
+
+    // จัดการข้อผิดพลาดเพิ่มเติม
+    if (error.response) {
+      if (error.response.status === 401) {
+        console.error("Token is invalid or expired, please refresh the token.");
+      }
+      console.error("Response error:", error.response.data);
+    } else if (error.request) {
+      console.error("No response received:", error.request);
+    } else {
+      console.error("Error details:", error.message);
+    }
+
+    throw error;
   }
 };

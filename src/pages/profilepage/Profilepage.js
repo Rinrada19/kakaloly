@@ -25,12 +25,12 @@ const Profilepage = () => {
   const { user, setUser } = useUser();
 
   const token = localStorage.getItem("token");
-  console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
+  // console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
 
   // ดึงข้อมูล user จาก API
   useEffect(() => {
     const fetchUser = async () => {
-      console.log("Token from useEffect:", token);
+      // console.log("Token from useEffect:", token);
       if (token) {
         try {
           const data = {};
@@ -44,14 +44,14 @@ const Profilepage = () => {
           setLoading(false);
         }
       } else {
-        console.log("Token is missing");
+        // console.log("Token is missing");
         setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
       }
     };
 
     fetchUser();
   }, [token, setUser]);
-  console.log(user);
+  // console.log(user);
   return (
     <>
       {user ? (
