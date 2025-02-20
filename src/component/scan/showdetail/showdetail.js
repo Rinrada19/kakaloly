@@ -16,9 +16,9 @@ const ShowDetail = ({ imageData, selectedMenu, setStep }) => {
         <img src={dinner_dining} className="header-icon" alt="dinner" />
         <span>{food_name || "ชื่ออาหาร"}</span>
       </div>
-      <div className="img-container">
+      {/* <div className="img-container">
         <img src={imageData} alt="Taken photo" className="img-food" />
-      </div>
+      </div> */}
       <div className="detail-section">
         <div className="row-item-cal">
           <div className="title-cal">

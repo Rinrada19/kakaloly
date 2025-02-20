@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./MenuDetail.module.scss";
-import { mockMenuData } from "../../../../../test_mock/Mockdata2";
+import FormMeal from "../../../../../component/scan/formmeal/formmeal";
 
 // img icon
 import backbutton from "../../../../../imgAll/icon/backgray.png";
@@ -15,10 +15,18 @@ function MenuDetail() {
   const location = useLocation();
   const { food } = location.state || {}; // ดึงข้อมูล food ที่ส่งมาจาก state
 
+  const [step, setStep] = useState(1); // สเตตัสที่ใช้ในการควบคุมขั้นตอน
+
+  console.log("foddddd--", food);
   // ถ้าไม่มีข้อมูลอาหาร
   if (!food) {
     return <div>ไม่พบข้อมูลอาหาร</div>;
   }
+
+  const handleAddMeal = () => {
+    // เปลี่ยนขั้นตอนเป็น 4 เมื่อเลือกเมนู
+    setStep(4);
+  };
 
   const { food_description } = food;
 
@@ -40,14 +48,6 @@ function MenuDetail() {
         </div>
 
         <div className={styles.contentder}>
-          <img
-            src={
-              food.image ||
-              "https://www.shutterstock.com/image-vector/food-icon-lunch-fork-knife-260nw-399958996.jpg"
-            }
-            alt={food.food_name}
-            className={styles.image}
-          />
           {/* info แคลอรี่ */}
           <div className={styles.info}>
             <div className={styles.nameinfo}>
@@ -76,7 +76,7 @@ function MenuDetail() {
             </div>
             <div>
               <p className={styles.mount}>
-                {food.carbs} <span className={styles.unit}>g</span>
+                {food.carb} <span className={styles.unit}>g</span>
               </p>
             </div>
           </div>
@@ -133,10 +133,15 @@ function MenuDetail() {
         </div>
 
         <div className={styles.buttoncontainer}>
-          <button className={styles.button}>เพิ่มมื้ออาหาร</button>
+          <button className={styles.button} onClick={handleAddMeal}>
+            เพิ่มมื้ออาหาร
+          </button>
         </div>
         <div style={{ padding: "20px" }}>{food_description}</div>
       </div>
+
+      {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
+      {step === 4 && <FormMeal selectedMenu={food} />}
     </div>
   );
 }

@@ -18,7 +18,7 @@ function Loginpage() {
   // const [email, setEmail] = useState("");
   const navigate = useNavigate(); // ใช้เพื่อเปลี่ยนหน้า
   const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  // const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] =
     useState("");
@@ -62,41 +62,41 @@ function Loginpage() {
     }
   };
 
-  const handleInputEmailChange = async (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  // const handleInputEmailChange = async (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
 
-    if (name === "email") {
-      const emailValue = value.trim();
+  //   if (name === "email") {
+  //     const emailValue = value.trim();
 
-      // ตรวจสอบว่าอีเมลมี @ หรือไม่
-      if (!emailValue.includes("@")) {
-        setEmailErrorMessage("อีเมลต้องมี @");
-        return;
-      }
+  //     // ตรวจสอบว่าอีเมลมี @ หรือไม่
+  //     if (!emailValue.includes("@")) {
+  //       setEmailErrorMessage("อีเมลต้องมี @");
+  //       return;
+  //     }
 
-      try {
-        // console.log(`🔍 Checking email availability for: ${emailValue}`);
-        const isEmailAvailable = await checkEmailAvailability(emailValue);
-        // console.log("✅ API Response:", isEmailAvailable);
+  //     try {
+  //       // console.log(`🔍 Checking email availability for: ${emailValue}`);
+  //       const isEmailAvailable = await checkEmailAvailability(emailValue);
+  //       // console.log("✅ API Response:", isEmailAvailable);
 
-        // ตรวจสอบค่าที่ได้รับจาก API
-        if (isEmailAvailable === false) {
-          setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
-        } else if (typeof isEmailAvailable === "string") {
-          setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
-        } else {
-          setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
-        }
-      } catch (error) {
-        console.error("❌ Error checking email:", error);
-        setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
-      }
-    }
-  };
+  //       // ตรวจสอบค่าที่ได้รับจาก API
+  //       if (isEmailAvailable === false) {
+  //         setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
+  //       } else if (typeof isEmailAvailable === "string") {
+  //         setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
+  //       } else {
+  //         setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
+  //       }
+  //     } catch (error) {
+  //       console.error("❌ Error checking email:", error);
+  //       setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
+  //     }
+  //   }
+  // };
   // const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   // const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] = useState("");
 
@@ -145,15 +145,15 @@ function Loginpage() {
     return result.available || result.message;
   };
 
-  const checkEmailAvailability = async (email) => {
-    const res = await fetch("http://54.79.173.230:5000/users/check-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    });
-    const result = await res.json();
-    return result.available || result.message;
-  };
+  // const checkEmailAvailability = async (email) => {
+  //   const res = await fetch("http://54.79.173.230:5000/users/check-email", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ email }),
+  //   });
+  //   const result = await res.json();
+  //   return result.available || result.message;
+  // };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -405,7 +405,7 @@ function Loginpage() {
                       </p>
                     )}
                   </div>
-                  {/* อีเมล */}
+                  {/* อีเมล
                   <div className={styles.formfield}>
                     <p
                       style={{
@@ -461,7 +461,7 @@ function Loginpage() {
                         {emailErrorMessage}
                       </p>
                     )}
-                  </div>
+                  </div> */}
 
                   {/* รหัสผ่าน */}
                   <div className={styles.formfield}>

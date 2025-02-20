@@ -105,9 +105,9 @@ const Profilepage = () => {
                       {user.username}
                     </p>
                   </div>
-                  <p style={{ color: "#747B82", fontWeight: "500" }}>
+                  {/* <p style={{ color: "#747B82", fontWeight: "500" }}>
                     {user.email}
-                  </p>
+                  </p> */}
                 </div>
               </div>
               {/* เส้น */}

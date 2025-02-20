@@ -25,7 +25,6 @@ function ManuCard({ foods }) {
             >
               <img
                 src={
-                  item.image ||
                   "https://www.shutterstock.com/image-vector/food-icon-lunch-fork-knife-260nw-399958996.jpg"
                 }
                 alt={item.name}
