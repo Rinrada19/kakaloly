@@ -17,7 +17,7 @@ function MenuDetail() {
 
   const [step, setStep] = useState(1); // สเตตัสที่ใช้ในการควบคุมขั้นตอน
 
-  console.log("foddddd--", food);
+  // console.log("foddddd--", food);
   // ถ้าไม่มีข้อมูลอาหาร
   if (!food) {
     return <div>ไม่พบข้อมูลอาหาร</div>;
