@@ -4,7 +4,7 @@
  *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
  *   src\styles\custom.scss 1:9  root stylesheet */
-
+/* 
 body::before {
   font-family: 'FC Minimal', sans-serif;
   white-space: pre;
@@ -13,4 +13,19 @@ body::before {
   margin-bottom: 1em;
   border-bottom: 2px solid black;
   content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"../node_modules/bootstrap/scss/bootstrap\";\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\styles\\custom.scss 1:9  root stylesheet";
+} */
+
+
+.App {
+
+  display: flex;         /* หรือ grid */
+  flex-direction: column; /* เรียง child component จากบนลงล่าง */
+  gap: 16px;             /* เพิ่มช่องว่างระหว่าง component */
 }
+
+.App {
+  border: 1px solid red; /* ใช้เพื่อตรวจสอบ */
+}
+/* .container{
+ gap: 15px;
+}  */

@@ -1,0 +1,98 @@
+.detail-container{
+    width: 100vw;
+    height: 70vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 0px;
+    bottom: -100px;
+    border-radius: 15px;
+    padding: 28px 20px;
+    overflow-y: auto; 
+    max-height: 100vh; /* ป้องกันการล้นของหน้าจอ */
+}
+.hearder{
+    text-align: left;
+    padding-left: 20px;
+}
+.header-icon{
+    width: 18px ;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.img-container{
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+.img-food{
+    width: 89vw;
+    height: 60vw;
+    border-radius: 15px;
+}
+.detail-section{
+    margin: 20px;
+
+}
+.row-item ,.row-item-cal{
+    display: flex;
+    justify-content: space-between; /* ✅ ทำให้ซ้าย-ขวา */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    width: 100%; /* ให้ขยายเต็ม */
+    margin-top: 10px;
+  }
+ 
+  .row-item-cal span {
+    color: #7A7A82;
+    font-weight: bold; /* ✅ ทำให้ตัวหนา */
+  }
+  .row-item-cal .title span {
+    color: #EF7430;
+    font-weight: bold; /* ✅ ทำให้ตัวหนา */
+  }
+
+  .row-item .title span {
+    color: #915B43;
+    
+  }
+  .row-item span{
+    color: #7A7A82;
+
+  }
+  .title-cal span {
+    color: #EF7430;
+    font-weight: bold; /* ✅ ทำให้ตัวหนา */
+  }
+  
+  .title-cal img {
+    width: 16px; /* ✅ ปรับขนาดรูป */
+    height: auto;
+    
+  }
+  
+  .title ,.title-cal{
+    display: flex;
+    align-items: center; /* ทำให้ข้อความอยู่ตรงกลางแนวตั้ง */
+    gap: 8px; /* ✅ เพิ่มระยะห่างระหว่างรูปกับข้อความ */
+  }
+  
+  .title img {
+    width: 16px; /* ✅ ปรับขนาดรูป */
+    height: auto;
+  }
+  .title span {
+    
+    height: auto;
+  }
+.button-container{
+    text-align: center;
+    margin-top: 5vh;
+}
+  .next-button{
+    width: 300px;
+    height: 50px;
+    border: none;
+    background: #EF7430;
+    border-radius: 40px;
+    color: white;
+  }
+  

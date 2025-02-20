@@ -1,0 +1,82 @@
+@import "../../styles/color"; // สี
+
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 122px;
+    background-color: #fdf1ea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 1000;
+    box-shadow: 0px -1px 4px rgba(80, 80, 80, 0.25);
+    ul{
+    gap: 4vw;
+    display: flex;
+    align-items: flex-end;
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;   
+    }
+}
+a {
+    text-decoration:none !important; 
+    color: #000000 !important;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    text-decoration: none;
+    font-size: 10px;
+    line-height: 1.5rem;
+}   
+.icon-photo {
+     img {
+      width: 68px !important; // กำหนดขนาดของรูปภาพ
+      height: 68px !important; ;
+}
+}
+.icon_img{
+    width: 40px;
+    height: 31px;
+}
+/* สไตล์สำหรับ Overlay */
+/* สไตล์สำหรับ Overlay ที่ครอบคลุมหน้าจอ */
+
+body.no-scroll {
+  overflow: hidden; /* ปิดการเลื่อนหน้าเว็บ */
+  height: 100vh;
+}
+
+.overlay {
+    position: fixed; /* ให้ครอบคลุมทั้งหน้าจอ */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* ให้พื้นหลังมืดลง 60% */
+    z-index: 1001; /* overlay อยู่ด้านล่างสุด */
+    cursor: pointer; /* แสดง pointer เมื่อ hover บนพื้นหลัง */
+  }
+  
+  /* CameraComponent อยู่ด้านบน overlay */
+  .section-container {
+    z-index: 1001; /* ให้ CameraComponent อยู่ด้านบน overlay */
+    //  position: absolute; /* ให้กล้องอยู่ในตำแหน่งที่ต้องการ */
+    top: 50%;
+    left: 50%;
+    //  transform: translate(-50%, -50%); /* จัดกล้องให้อยู่กลางหน้าจอ */
+    position: static;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* ให้ video ของ CameraComponent ขยายเต็มพื้นที่ */
+  .section-container video {
+    // width: 100%;
+    // height: 100%;
+  }
+  

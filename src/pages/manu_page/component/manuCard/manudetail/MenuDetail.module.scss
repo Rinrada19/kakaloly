@@ -1,0 +1,75 @@
+.container{
+    background-color: #FFF2EA;
+    height: 100vh;
+}
+.backButton{
+    cursor: pointer;
+    width: 10px;
+    height: 18px;
+    color: #915B43;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #915B43;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+.image{
+    border-radius: 20px;
+    width: 353px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+.contentder{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.imageicon{
+    width: 20px;
+}
+.info{
+    width: 100%;
+    padding: 4px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.nameinfo{
+    gap: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+.namecal{
+   font-size: 16px;
+   color: #915B43;
+}
+.mount{
+    font-size: 16px;
+    font-weight: 500;
+    color: #EF7430;
+}
+.unit{
+    font-size: 16px;
+    font-weight: 500;
+    color: #915B43;
+}
+.button{
+    color: #fff;
+    background-color: #4A8854;
+    padding: 12px 50px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.buttoncontainer {
+    text-align: center;
+}
+.contents {
+    flex-grow: 1; /* ดัน logout ลงล่าง */
+}

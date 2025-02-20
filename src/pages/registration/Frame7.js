@@ -1,0 +1,117 @@
+import React, { useState, useEffect } from "react";
+import { Container, Title, Button } from "./styles";
+import backbutton from "../../imgAll/icon/backbutton.webp";
+
+function PhysicalActivitySelection({
+  nextStep,
+  prevStep,
+  formData,
+  setFormData,
+}) {
+  const [physical_activity, setPhysicalActivity] = useState(
+    formData.physical_activity || ""
+  ); // Initialize with formData
+
+  useEffect(() => {
+    setPhysicalActivity(formData.physical_activity || ""); // Update state when formData changes
+  }, [formData]);
+
+  const activityLevels = [
+    { label: "นั่งทำงานอยู่กับที่", value: "Sedentary" },
+    {
+      label: "ออกกำลังกาย หรือเล่นกีฬา แบบเบาๆ 1-3 วันต่อสัปดาห์",
+      value: "Light",
+    },
+    {
+      label: "ออกกำลังกาย หรือเล่นกีฬา ความหนักปานกลาง 3-5 วันต่อสัปดาห์",
+      value: "Moderate",
+    },
+    {
+      label: "ออกกำลังกาย หรือเล่นกีฬา ความหนักสูง 6-7 วันต่อสัปดาห์",
+      value: "High",
+    },
+    {
+      label:
+        "ออกกำลังกาย หรือเล่นกีฬาหนัก แบบการซ้อมเพื่อแข่งขัน เป็นประจำทุกวัน",
+      value: "Very High",
+    },
+  ];
+
+  const handleActivitySelection = (selectedActivity) => {
+    setPhysicalActivity(selectedActivity);
+    setFormData({ ...formData, physical_activity: selectedActivity }); // Update formData with selected activity level
+  };
+
+  const handleNextStep = () => {
+    if (physical_activity) {
+      nextStep();
+    } else {
+      alert("Please select your physical activity level");
+    }
+  };
+
+  return (
+    <Container>
+      <img
+        src={backbutton}
+        alt="Back"
+        style={{
+          width: "46px",
+          height: "46px",
+          position: "absolute",
+          top: "30px",
+          left: "30px",
+          cursor: "pointer",
+        }}
+        onClick={prevStep}
+      />
+      <div>
+        <Title>กิจกรรมทางกายภาพ</Title>
+        <h1
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#ABABAB",
+            marginTop: "-10px",
+            textAlign: "center",
+          }}
+        >
+          เลือกระดับกิจกรรมของคุณ
+        </h1>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "20px",
+        }}
+      >
+        {activityLevels.map(({ label, value }) => (
+          <Button
+            key={value}
+            onClick={() => handleActivitySelection(value)}
+            style={{
+              height: "75px",
+              width: "280px",
+              fontSize: value === "Very High" ? "12px" : "14px",
+              backgroundColor:
+                physical_activity === value ? "#FF7F32" : "#FBF3E6",
+              border:
+                physical_activity === value ? "none" : "1px solid #915B43",
+              color: physical_activity === value ? "#FFF" : "#915B43",
+              textAlign: "center",
+            }}
+          >
+            {label}
+          </Button>
+        ))}
+      </div>
+      <Button onClick={handleNextStep} disabled={!physical_activity}>
+        ถัดไป
+      </Button>
+    </Container>
+  );
+}
+
+export default PhysicalActivitySelection;

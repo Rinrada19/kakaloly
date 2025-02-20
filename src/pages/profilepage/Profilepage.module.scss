@@ -1,0 +1,71 @@
+.wrapper{
+    min-height: 100vh;
+    background-color: #FBF3E6;
+}
+.gobackicon{
+    width: 10px;
+    height: 18px;
+}
+.header{
+    padding-top: 30px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.namehead{
+    color: #915B43;
+    font-weight: 600;
+    font-size: 24px;
+}
+.info{
+    margin-left: 12px;
+    margin-top: 40px;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+}
+.linebox{
+    position: relative;
+    height: 44px;
+}
+.line {
+    margin-top:  22px;
+    background-color: #EF7430;
+    width: 90%;
+    border-radius: 20px;
+    height: 1px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.content{
+    border: 1px solid #EF7430;
+    min-height: 55px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.contentleft{
+    gap: 14px;
+    display: flex;
+    align-items: center;
+}
+.contentright{
+    gap: 15px;
+    display: flex;
+}
+.insideleft{
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logout {
+    padding-bottom: 30px;
+    margin-top: 30px;
+}
+.contents {
+    flex-grow: 1; /* ดันเนื้อหาหลักให้อยู่ด้านบน */
+}

@@ -1,0 +1,57 @@
+
+.bar-Eachnutriion{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 78px;
+    gap: 5px;
+    p{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500 ;
+    }
+    .proteinIntake{
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .proteinGoal{
+      color: #ABABAB;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+  .container-box{
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .bar-Allnutrition{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    
+  }
+  .warpperAllnutrition{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    background-color: #ffff;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
+  .Warningtext{
+    letter-spacing:1px;
+    font-weight: 600;
+    color: #F0B100;
+    margin-left: 0; /* ไม่เว้นระยะทางซ้าย */
+  }
+  .Eachnutriion {
+   width: 294px;
+   display: flex;
+   justify-content: flex-start;
+  }
+  

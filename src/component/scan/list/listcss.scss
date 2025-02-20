@@ -1,0 +1,65 @@
+.list-container {
+    width: 100vw;
+    height: 75vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 0px;
+    bottom: -100px;
+    border-radius: 15px;
+    padding: 28px 20px;
+    padding-right: 0px;
+    overflow-y: auto;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // จัดให้ทุกอย่างอยู่ตรงกลาง
+  }
+  .list-container span{
+    color: #EF7430;
+  }
+  .list-button-container {
+    display: flex;
+    flex-direction: column; // ปรับให้ปุ่มเรียงลงแนวตั้ง
+    align-items: center; // จัดให้อยู่ตรงกลาง
+    gap: 15px; // ระยะห่างระหว่างปุ่ม
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .Menu-button {
+    width: 80%; // กำหนดให้ปุ่มกว้างขึ้นเพื่อดูดีขึ้น
+    max-width: 300px; // จำกัดความกว้างไม่ให้ใหญ่เกินไป
+    padding: 12px 0;
+    font-size: 16px;
+    border: solid 1px  #EF7430;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    color: #EF7430;
+  }
+  
+  .Menu-button.selected {
+    background-color: #EF7430;
+    color: white;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 5vh;
+    margin-right: 3vw;
+}
+
+  .next-button{
+    width: 300px;
+    height: 50px;
+    border: none;
+    background: #EF7430;
+    border-radius: 40px;
+    color: white;
+  }
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -46,11 +46,11 @@
 //   font-size: 1rem; // ขนาดฟอนต์สำหรับ h6
 // }
 
-// // กำหนดฟอนต์และขนาดฟอนต์สำหรับ paragraphs
-// p {
-//   font-family: 'Inter', sans-serif;
-//   font-size: 1rem; // ขนาดฟอนต์สำหรับ p
-// }
+// กำหนดฟอนต์และขนาดฟอนต์สำหรับ paragraphs
+p {
+  font-family: 'FC Minimal', sans-serif;
+  font-size: 16px; // ขนาดฟอนต์สำหรับ p
+}
 @font-face {
   font-family: 'FC Minimal';
   src: url('./font/FC-Minimal-Thin-ver-110.eot');
