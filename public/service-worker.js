@@ -41,41 +41,39 @@ self.addEventListener("activate", (event) => {
 // จัดการกับ fetch request ทั้งหมด
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse; // ถ้าเจอ cache ก็ส่ง cache กลับ
-      }
+  // ตรวจสอบว่าเป็น GET request หรือไม่
+  if (event.request.method === "GET") {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        // ถ้ามี cache ที่ตรงกับ request
+        if (cachedResponse) {
+          return cachedResponse; // ส่ง cache กลับ
+        }
 
-      // ดึงจากเครือข่าย และบันทึกลง cache ใหม่
-      return fetch(event.request)
-        .then((networkResponse) => {
-          // ตรวจสอบว่า request สำเร็จ
-          if (
-            !networkResponse ||
-            networkResponse.status !== 200 ||
-            networkResponse.type !== "basic"
-          ) {
-            return networkResponse;
-          }
-
-          // บันทึก response ลง cache ใหม่
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-
-          return networkResponse;
-        })
-        .catch((error) => {
-          console.error("Network fetch failed:", error);
-
-          // ในกรณีที่เกิดข้อผิดพลาดการเชื่อมต่อ, ให้ดึงข้อมูลจาก cache (ถ้ามี)
-          return caches.match(event.request).then((cachedResponse) => {
-            // ถ้าไม่พบ cache ให้ส่งข้อความ error
-            if (cachedResponse) {
-              return cachedResponse;
+        // ดึงข้อมูลจากเครือข่ายและบันทึกลง cache
+        return fetch(event.request)
+          .then((networkResponse) => {
+            // ตรวจสอบว่า request สำเร็จ (status 200)
+            if (
+              !networkResponse ||
+              networkResponse.status !== 200 ||
+              networkResponse.type !== "basic"
+            ) {
+              return networkResponse;
             }
+
+            // บันทึก response ลง cache ใหม่
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+
+            return networkResponse;
+          })
+          .catch((error) => {
+            console.error("Network fetch failed:", error);
+
+            // กรณีเกิดข้อผิดพลาดจากการเชื่อมต่อ: ให้ส่งข้อความ error
             return new Response(
               "Network error occurred and no cache available.",
               {
@@ -84,7 +82,10 @@ self.addEventListener("fetch", (event) => {
               }
             );
           });
-        });
-    })
-  );
+      })
+    );
+  } else {
+    // ถ้าเป็น request แบบอื่น ๆ (POST, PUT, DELETE) ไม่ทำการแคช
+    event.respondWith(fetch(event.request));
+  }
 });
