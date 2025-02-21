@@ -69,7 +69,21 @@ self.addEventListener("fetch", (event) => {
         })
         .catch((error) => {
           console.error("Network fetch failed:", error);
-          throw error;
+
+          // ในกรณีที่เกิดข้อผิดพลาดการเชื่อมต่อ, ให้ดึงข้อมูลจาก cache (ถ้ามี)
+          return caches.match(event.request).then((cachedResponse) => {
+            // ถ้าไม่พบ cache ให้ส่งข้อความ error
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+            return new Response(
+              "Network error occurred and no cache available.",
+              {
+                status: 408,
+                statusText: "Request Timeout",
+              }
+            );
+          });
         });
     })
   );
