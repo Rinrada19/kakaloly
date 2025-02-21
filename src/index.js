@@ -1,24 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// eslint-disable-next-line no-unused-vars
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-// import Summarypage from './pages/summary_page/Summarypage'
-// import Historypage from './pages/history_page/Historypage'
-// import RegistrationForm from '../src/pages/registration/RegistrationForm'
-// import Home from "../src/pages/home/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// ส่ง token จาก localStorage ไปยัง Service Worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log(
+          "Service Worker registered with scope:",
+          registration.scope
+        );
+
+        // ตรวจสอบว่า Service Worker ได้รับการควบคุมแล้ว
+        if (navigator.serviceWorker.controller) {
+          const token = localStorage.getItem("token");
+          if (token) {
+            navigator.serviceWorker.controller.postMessage({ token });
+          }
+        }
+      })
+      .catch((error) => {
+        console.log("Service Worker registration failed:", error);
+      });
+  });
+}
+
+// หากต้องการเริ่มวัดประสิทธิภาพในแอปของคุณ
 reportWebVitals();
 serviceWorkerRegistration.register();
