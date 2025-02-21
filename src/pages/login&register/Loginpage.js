@@ -136,7 +136,7 @@ function Loginpage() {
   };
 
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
+    const res = await fetch("http://54.79.173.230//users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
@@ -180,11 +180,10 @@ function Loginpage() {
       alert("ล็อกอินสำเร็จ");
 
       // ล็อกอินสำเร็จจึงเปลี่ยนหน้า
-      // navigate("/Home");
-      window.location.href = "http://43.254.133.128/api";
+      navigate("/Home");
     } catch (error) {
       console.error("การล็อกอินไม่สำเร็จ:", error);
-      window.location.href = "http://43.254.133.128/api";
+
       alert(error.message);
     }
   };
