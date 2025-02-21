@@ -180,7 +180,8 @@ function Loginpage() {
       alert("ล็อกอินสำเร็จ");
 
       // ล็อกอินสำเร็จจึงเปลี่ยนหน้า
-      navigate("/Home");
+      // navigate("/Home");
+      window.location.href = "http://43.254.133.128/api";
     } catch (error) {
       console.error("การล็อกอินไม่สำเร็จ:", error);
       alert(error.message);
