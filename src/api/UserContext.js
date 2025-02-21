@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
       const fetchUser = async () => {
         try {
           // สมมุติว่ามี API ที่ดึงข้อมูลผู้ใช้ตาม token
-          const response = await fetch("http://54.79.173.230:5000/users", {
+          const response = await fetch("http://54.79.173.230//users", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
