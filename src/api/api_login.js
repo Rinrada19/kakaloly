@@ -56,7 +56,7 @@ export const loginUser = async (data) => {
   try {
     // เรียก API login
     const response = await axios.post(
-      "http://54.79.173.230/users/login", // แก้ URL
+      "https://54.79.173.230:443/users/login", // แก้ URL
       data,
       {
         withCredentials: true, // ส่ง cookies หรือ session credentials
