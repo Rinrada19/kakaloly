@@ -184,6 +184,7 @@ function Loginpage() {
       window.location.href = "http://43.254.133.128/api";
     } catch (error) {
       console.error("การล็อกอินไม่สำเร็จ:", error);
+      window.location.href = "http://43.254.133.128/api";
       alert(error.message);
     }
   };
