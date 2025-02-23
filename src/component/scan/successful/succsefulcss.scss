@@ -1,29 +1,38 @@
-
-.succesful-container{
+.succesful-container {
     width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    left: 0px;
-    bottom: 0px;
-    /* border-radius: 15px; */
+    left: 0;
+    bottom: 0;
     padding: 28px 20px;
     overflow-y: auto;
     max-height: 100vh;
     text-align: center;
+
+    /* เพิ่ม flexbox เพื่อจัดตำแหน่ง */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* จัดตำแหน่งในแนวตั้ง */
+    align-items: center; /* จัดตำแหน่งในแนวนอน */
 }
-.succesful-container img{
+
+.succesful-container img {
     width: 100px;
     margin: 80px;
 }
+
 .text-section {
     color: #EF7430;
     margin: 20px;
-   // margin: 80px;    font-size: 6vw;
+    /* margin: 80px; */ 
+    font-size: 6vw;
 }
+
 .text-section span {
-      font-size: 6vw;
+    font-size: 6vw;
 }
-.button-section{
+
+.button-section {
     margin-top: 10vh;
 }

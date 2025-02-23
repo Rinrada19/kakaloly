@@ -8,6 +8,7 @@ import HeaderSum from "../../summary_page/component/header/HeaderSum";
 import NavigationBar from "../../../component/navbar/NavigationBar";
 import WeeklyBarChart from "../../../component/bar-chart/weekly_barchart";
 import { getEatWeek } from "../../../api/api_eat_week"; // นำเข้าฟังก์ชัน API
+import Loading from "../../../component/loading/loading";
 
 const WeeklySummary = () => {
   const [eatWeek, setEatWeek] = useState([]); // เก็บข้อมูลที่ได้จาก API
@@ -44,7 +45,11 @@ const WeeklySummary = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   if (error) {

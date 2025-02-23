@@ -186,7 +186,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       // console.log("API response:", response); // เพิ่มการแสดงผลของ response ที่ได้รับจาก API
 
       if (response && response.message === "Meal created successfully!") {
-        // console.log("Meal added successfully");
+        console.log("Meal added successfully");
         setStep(5); // ไปที่ขั้นตอนถัดไป
       }
     } catch (error) {

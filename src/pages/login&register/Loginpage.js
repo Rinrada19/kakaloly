@@ -42,7 +42,7 @@ function Loginpage() {
     }));
   };
 
-  const [errorMessage, setErrorMessage] = useState(""); // เพิ่ม state สำหรับเก็บข้อความผิดพลาด
+  // const [errorMessage, setErrorMessage] = useState(""); // เพิ่ม state สำหรับเก็บข้อความผิดพลาด
 
   const handleInputUsernameChange = async (e) => {
     const { name, value } = e.target;
@@ -61,44 +61,6 @@ function Loginpage() {
       }
     }
   };
-
-  // const handleInputEmailChange = async (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-
-  //   if (name === "email") {
-  //     const emailValue = value.trim();
-
-  //     // ตรวจสอบว่าอีเมลมี @ หรือไม่
-  //     if (!emailValue.includes("@")) {
-  //       setEmailErrorMessage("อีเมลต้องมี @");
-  //       return;
-  //     }
-
-  //     try {
-  //       // console.log(`🔍 Checking email availability for: ${emailValue}`);
-  //       const isEmailAvailable = await checkEmailAvailability(emailValue);
-  //       // console.log("✅ API Response:", isEmailAvailable);
-
-  //       // ตรวจสอบค่าที่ได้รับจาก API
-  //       if (isEmailAvailable === false) {
-  //         setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
-  //       } else if (typeof isEmailAvailable === "string") {
-  //         setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
-  //       } else {
-  //         setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
-  //       }
-  //     } catch (error) {
-  //       console.error("❌ Error checking email:", error);
-  //       setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
-  //     }
-  //   }
-  // };
-  // const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
-  // const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] = useState("");
 
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
@@ -136,7 +98,7 @@ function Loginpage() {
   };
 
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("https://54.79.173.230/users/check-username", {
+    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),

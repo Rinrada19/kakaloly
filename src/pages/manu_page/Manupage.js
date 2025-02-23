@@ -7,6 +7,7 @@ import SearchMenu from "./component/searchMenu/SearchMenu";
 import ManuCard from "./component/manuCard/ManuCard.js";
 import { getFood } from "../../api/api_food.js";
 import Gobackhead from "../../component/component-history/gobackhead";
+import Loading from "../../component/loading/loading.js";
 
 function Manupage() {
   const [foods, setFoods] = useState([]); // สถานะสำหรับเก็บข้อมูลอาหาร
@@ -39,6 +40,13 @@ function Manupage() {
     food.food_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  if (loading) {
+    return (
+      <div className="container">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <>
       <div className={styles.wapper}>

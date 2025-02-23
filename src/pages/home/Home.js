@@ -10,6 +10,7 @@ import { useUser } from "../../api/UserContext";
 import { getUser } from "../../api/api_user";
 import { getWaterIntake } from "../../api/api_water"; // นำเข้า API สำหรับน้ำดื่ม
 import NavigationBar from "../../component/navbar/NavigationBar";
+import Loading from "../../component/loading/loading.js";
 
 function Home() {
   const { user, setUser } = useUser();
@@ -79,7 +80,7 @@ function Home() {
   if (loading) {
     return (
       <div className="container">
-        <p>กำลังโหลดข้อมูล...</p>
+        <Loading />
       </div>
     );
   }
@@ -102,6 +103,7 @@ function Home() {
         <div style={{ marginBottom: "40px" }}>
           <Header />
         </div>
+
         <div>
           <Link
             to="/Summarypage"

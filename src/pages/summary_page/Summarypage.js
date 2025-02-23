@@ -9,6 +9,7 @@ import BMIbar from "../summary_page/component/BMI/BMIbar";
 import NutritionalDetails from "../summary_page/component/content-NutritionalDetails/NutritionalDetails";
 import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API
 import { useUser } from "../../api/UserContext"; // นำเข้า context ถ้ามี
+import Loading from "../../component/loading/loading";
 
 function Summarypage() {
   const [nutritionData, setNutritionData] = useState(null); // สถานะเก็บข้อมูลโภชนาการ
@@ -39,7 +40,7 @@ function Summarypage() {
   if (loading) {
     return (
       <div className="container">
-        <p>กำลังโหลดข้อมูล...</p>
+        <Loading />
       </div>
     );
   }

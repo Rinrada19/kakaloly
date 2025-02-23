@@ -35,7 +35,7 @@ export const getMealDate = async (date) => {
 
     // console.log("Using date:", currentDate);
 
-    const response = await API_URL.get("/meals/by_date", {
+    const response = await API_URL.get("/meals/today", {
       params: { date: currentDate }, // ส่ง date ใน query parameter
       headers: {
         Authorization: `Bearer ${token}`, // ส่ง token ใน headers

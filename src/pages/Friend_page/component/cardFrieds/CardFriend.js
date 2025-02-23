@@ -12,7 +12,7 @@ function CardFriend({ friend, isSelected, onClick }) {
       onClick={onClick}
     >
       <div className={styles.leftside}>
-        <img src={avarta} alt="Friend Avatar" className={styles.avarta} />
+        {/* <img src={avarta} alt="Friend Avatar" className={styles.avarta} /> */}
         <div className={styles.info}>
           <p style={{ fontWeight: "600", fontSize: "16px" }}>
             {friend_username}

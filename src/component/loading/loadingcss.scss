@@ -1,0 +1,109 @@
+/* คอนเทนเนอร์สำหรับจัดกลาง */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;  /* ใช้ความสูงเต็มหน้าจอ */
+    flex-direction: column;  /* จัดตำแหน่งเป็นแนวตั้ง */
+    text-align: center;
+  }
+  /* styles สำหรับ loading */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* ใช้พื้นหลังที่โปร่งแสง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ให้แสดงเหนือคอนเทนต์ทั้งหมด */
+  }
+  
+  
+  /* สไตล์ข้อความที่เคลื่อนไหว */
+//   .loading-message {
+//     font-size: 1.5em;
+//     color: #333;
+//     text-align: center;
+//     font-family: Arial, sans-serif;
+//     animation: wave 1.5s ease-in-out infinite;
+//     margin-top: 20px;  /* เพิ่มช่องว่างระหว่างข้อความและแอปเปิ้ล */
+//   }
+  
+//   /* การเคลื่อนไหวคลื่น (ซ้ายขวา) */
+//   @keyframes wave {
+//     0%, 100% {
+//       transform: translateX(0);
+//     }
+//     25% {
+//       transform: translateX(-5px); /* ขยับไปทางซ้าย */
+//     }
+//     50% {
+//       transform: translateX(0);
+//     }
+//     75% {
+//       transform: translateX(5px); /* ขยับไปทางขวา */
+//     }
+//   }
+  
+  /* สไตล์แอปเปิ้ล */
+  .loader {
+    width: 6em;
+    height: 5em;
+    background-color: #ff4355; /* สีแอปเปิ้ล */
+    box-shadow: inset 0.2em -0.2em #cc1022; /* เงาสีเข้มด้านใน */
+    border-radius: 2em 2em 3em 3em; /* การปัดมุมให้กลมๆ */
+    position: relative;
+    top: 1em;
+    left: 0.3em;
+    animation: bounce 0.8s infinite ease-in-out; /* เพิ่มการกระโดด */
+  }
+  
+  /* ใบไม้ */
+  .loader::before {
+    content: "";
+    position: absolute;
+    width: 2em;
+    height: 1.2em;
+    background-color: #4c9a2a; /* สีใบไม้ */
+    border-radius: 1em;
+    top: -0.9em; /* เลื่อนขึ้นไปข้างบน */
+    left: 50%; /* จัดกึ่งกลาง */
+    transform: translateX(-50%) rotate(45deg); /* หมุนใบให้ดูเป็นธรรมชาติ */
+    animation: leaf-bounce 1s infinite ease-in-out; /* ใบไม้เด้ง */
+  }
+  
+  /* อนิเมชั่นกระโดดของแอปเปิ้ล */
+  @keyframes bounce {
+    0% {
+      transform: translateY(0) scale(1); /* สถานะเริ่มต้น */
+    }
+    25% {
+      transform: translateY(-5px) scale(1.05); /* กระโดดขึ้นเล็กน้อย */
+    }
+    50% {
+      transform: translateY(0) scale(1); /* กลับลง */
+    }
+    75% {
+      transform: translateY(-2px) scale(1.02); /* กระโดดขึ้นอีกครั้ง */
+    }
+    100% {
+      transform: translateY(0) scale(1); /* กลับลงที่เดิม */
+    }
+  }
+  
+  /* อนิเมชั่นกระโดดของใบไม้ */
+  @keyframes leaf-bounce {
+    0% {
+      transform: translateX(-50%) rotate(45deg) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) rotate(45deg) translateY(-3px); /* ใบไม้ขึ้น */
+    }
+    100% {
+      transform: translateX(-50%) rotate(45deg) translateY(0); /* ใบไม้ลง */
+    }
+  }
+  

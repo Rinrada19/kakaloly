@@ -3,12 +3,13 @@ import "../content-CardSummary/SummaryCard.scss";
 import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API
 import ProgressChart from "../content-CardSummary/cicle-chart/circle-chart";
 import ProgressBar from "./progressbar/progressbar";
+import Loading from "../loading/loading";
 
 const SummaryCard = ({ nutritionData }) => {
   if (!nutritionData) {
     return (
       <div className="container">
-        <p>กำลังโหลดข้อมูลโภชนาการ...</p>
+        <Loading />
       </div>
     );
   }

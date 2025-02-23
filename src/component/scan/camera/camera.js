@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Camera } from "react-camera-pro";
 import { Scan } from "../../../api/api_scan"; // เรียก API Scan
 import "./cameracss.scss";
+import { useNavigate } from "react-router-dom";
 
 import gallery from "../../../imgAll/icon/gallery.svg";
 import menu_book from "../../../imgAll/icon/menu_book.svg";
@@ -10,6 +11,7 @@ import take_photo from "../../../imgAll/icon/take_photo.svg";
 const CameraComponent = ({ setImage, setStep, setImageData }) => {
   const cameraRef = useRef(null);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleUpload = async (image) => {
     try {
@@ -33,6 +35,11 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
       handleUpload(file); // อัปโหลดรูปไป API
     }
   };
+
+  // const goToMenuPage = () => {
+  //   navigate("/pageitem"); // ใช้ navigate เพื่อไปที่หน้าที่ต้องการ
+  // };
+
   const takePhoto = async () => {
     if (cameraRef.current) {
       try {
@@ -79,7 +86,7 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
           />
         </button>
 
-        <button onClick={() => setStep(2)} className="menu_book-btn">
+        <button className="menu_book-btn">
           <img
             src={menu_book}
             alt="menu_book icon"

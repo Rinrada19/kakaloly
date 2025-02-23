@@ -5,6 +5,7 @@ import { useUser } from "../../api/UserContext";
 import { Link } from "react-router-dom";
 
 import icon__profile from "../../imgAll/icon/person-circle-outline.png";
+import Loading from "../loading/loading";
 const Header = () => {
   const { user } = useUser(); // ใช้ข้อมูล user จาก Context
 
@@ -24,7 +25,7 @@ const Header = () => {
             {user ? (
               <span className={styles.nameCustomer}>{user.username}</span>
             ) : (
-              <span>Loading...</span>
+              <Loading />
             )}
           </>
         </p>

@@ -18,7 +18,7 @@ import exiticon from "./icon/exit.png";
 
 import { getUser } from "../../api/api_user";
 import { useUser } from "../../api/UserContext";
-
+import Loading from "../../component/loading/loading";
 const Profilepage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -52,6 +52,15 @@ const Profilepage = () => {
     fetchUser();
   }, [token, setUser]);
   // console.log(user);
+
+  if (loading) {
+    return (
+      <div className="container">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <>
       {user ? (

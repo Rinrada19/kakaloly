@@ -13,6 +13,7 @@ import MealsSectionHistory from "./Mealsection-History/MealsSectionHistory";
 
 import { getEatDate } from "../../api/api_eat_date";
 import { getUser } from "../../api/api_user";
+import Loading from "../../component/loading/loading";
 
 function Historypage() {
   const [nutritionData, setNutritionData] = useState(null);
@@ -93,7 +94,7 @@ function Historypage() {
   if (loading) {
     return (
       <div className="container">
-        <p>กำลังโหลดข้อมูล...</p>
+        <Loading />
       </div>
     );
   }

@@ -141,7 +141,7 @@ function MenuDetail() {
       </div>
 
       {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-      {step === 4 && <FormMeal selectedMenu={food} />}
+      {step === 4 && <FormMeal selectedMenu={food} setStep={setStep} />}
     </div>
   );
 }
