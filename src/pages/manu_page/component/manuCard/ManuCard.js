@@ -23,13 +23,13 @@ function ManuCard({ foods }) {
               className={styles.card}
               onClick={() => handleNavigate(item)} // เมื่อคลิกจะไปยังหน้า MenuDetail
             >
-              <img
+              {/* <img
                 src={
                   "https://www.shutterstock.com/image-vector/food-icon-lunch-fork-knife-260nw-399958996.jpg"
                 }
                 alt={item.name}
                 className={styles.image}
-              />
+              /> */}
               <div className={styles.info}>
                 <h3 className={styles.name}>{item.food_name}</h3>
                 <p className={styles.calories}>

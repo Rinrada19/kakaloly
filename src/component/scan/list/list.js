@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./listcss.scss";
+import Loading from "../../loader/loading";
 
 const List = ({
   imageData,
@@ -61,7 +62,7 @@ const List = ({
 
       {/* แสดงข้อมูลจาก API */}
       {loading ? (
-        <p>กำลังโหลด...</p> // แสดงข้อความกำลังโหลดก่อน 10 วินาที
+        <Loading /> // แสดงข้อความกำลังโหลดก่อน 10 วินาที
       ) : availableMenus.length > 0 ? (
         <div className="list-button-container">
           {availableMenus.map((food, index) => (

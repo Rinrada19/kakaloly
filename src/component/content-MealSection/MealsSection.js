@@ -3,6 +3,7 @@ import MealItem from "./MealItem/MealItem";
 import "./mealsSection.scss";
 import { getMeal } from "../../api/api_meal";
 import { useUser } from "../../api/UserContext"; // นำเข้า context ถ้ามี
+import Loading from "../loader/loading";
 
 const MealsSection = () => {
   const [meals, setMeals] = useState([]); // สถานะในการเก็บข้อมูลมื้ออาหาร
@@ -89,9 +90,13 @@ const MealsSection = () => {
     <div>
       <section className="meals-section">
         <p className="head">มื้อที่รับประทาน</p>
-        {mealData.map((mealItem, index) => (
-          <MealItem key={index} mealItem={mealItem} />
-        ))}
+        {loading ? (
+          <Loading /> // ถ้ากำลังโหลดให้แสดง Loading
+        ) : (
+          mealData.map((mealItem, index) => (
+            <MealItem key={index} mealItem={mealItem} />
+          ))
+        )}
       </section>
     </div>
   );
