@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./header.module.scss"; // นำเข้าไฟล์ SCSS Module
 import { useUser } from "../../api/UserContext";
 import { Link } from "react-router-dom";
-
-import icon__profile from "../../imgAll/icon/person-circle-outline.png";
+import imgprofile from "../../imgAll/img/imgprofile.webp";
+//import icon__profile from "../../imgAll/icon/person-circle-outline.png";
 import Loading from "../loader/loading";
 const Header = () => {
   const { user } = useUser(); // ใช้ข้อมูล user จาก Context
@@ -39,7 +39,7 @@ const Header = () => {
         }}
       >
         <img
-          src={icon__profile}
+          src={imgprofile}
           alt="Iconprofile"
           className={styles.icon__person}
         ></img>

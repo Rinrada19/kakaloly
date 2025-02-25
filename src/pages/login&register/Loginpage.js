@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../pages/login&register/custom.module.scss";
 import "../../styles/custom.scss";
 import { useNavigate } from "react-router-dom";
@@ -12,17 +12,14 @@ import imgfood1 from "../../imgAll/img/imgfood1.webp";
 
 function Loginpage() {
   const [activeTab, setActiveTab] = useState("login");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [email, setEmail] = useState("");
+
   const navigate = useNavigate(); // ใช้เพื่อเปลี่ยนหน้า
   const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
-  // const [emailErrorMessage, setEmailErrorMessage] = useState("");
+
   const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] =
     useState("");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -41,6 +38,15 @@ function Loginpage() {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    // ตรวจสอบว่า token อยู่ใน localStorage หรือ sessionStorage หรือไม่
+    const token = localStorage.getItem("token"); // หรือ sessionStorage.getItem("token") ขึ้นอยู่กับว่าใช้ตัวไหน
+    if (token) {
+      // ถ้ามี token, เปลี่ยนหน้าไปที่หน้าหลัก
+      navigate("/Home");
+    }
+  }, [navigate]);
 
   const [errorMessage, setErrorMessage] = useState(""); // เพิ่ม state สำหรับเก็บข้อความผิดพลาด
 
@@ -145,16 +151,6 @@ function Loginpage() {
     return result.available || result.message;
   };
 
-  // const checkEmailAvailability = async (email) => {
-  //   const res = await fetch("http://54.79.173.230:5000/users/check-email", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ email }),
-  //   });
-  //   const result = await res.json();
-  //   return result.available || result.message;
-  // };
-
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -188,36 +184,63 @@ function Loginpage() {
     }
   };
 
-  const handleRegister = async (event) => {
+  const handleRegister = (event) => {
     event.preventDefault();
 
-    // ตรวจสอบข้อมูลก่อน
-    // if (formData.password && formData.password.length < 8) {
-    //   alert("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร");
-    //   return;
-    // }
+    // ตรวจสอบว่ามีการกรอกข้อมูลครบถ้วนหรือไม่
+    if (!formData.username || !formData.password || !formData.confirmPassword) {
+      alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+      return;
+    }
 
-    // if (formData.password !== formData.confirmPassword) {
-    //   alert("การยืนยันรหัสผ่านต้องตรงกับรหัสผ่าน");
-    //   return;
-    // }
+    // ตรวจสอบรหัสผ่านกับการยืนยันรหัสผ่าน
+    if (formData.password !== formData.confirmPassword) {
+      alert("การยืนยันรหัสผ่านต้องตรงกับรหัสผ่าน");
+      return;
+    }
 
-    // if (!formData.email.includes("@")) {
-    //   alert("อีเมลต้องมี @");
-    //   return;
-    // }
+    // ตรวจสอบความยาวรหัสผ่าน
+    if (formData.password.length < 8) {
+      alert("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร");
+      return;
+    }
 
-    // เก็บข้อมูลพื้นฐาน เช่น อีเมล
+    // ถ้าผ่านการตรวจสอบทั้งหมดแล้ว
     const userData = {
       username: formData.username,
       password: formData.password,
-      email: formData.email,
     };
     localStorage.setItem("userData", JSON.stringify(userData)); // เก็บข้อมูลใน localStorage
-    // console.log(userData);
-    // ถ้าผ่านการตรวจสอบทั้งหมดแล้ว
     navigate("/RegistrationForm"); // นำทางไปยังหน้าลงทะเบียน
   };
+
+  // Disable the register button if any required field is empty or there are errors
+  const isFormValid =
+    formData.username &&
+    formData.password &&
+    formData.confirmPassword &&
+    !PasswordErrorMessage &&
+    !confirmPasswordErrorMessage;
+
+  <Button
+    variant="contained"
+    fullWidth
+    onClick={handleRegister}
+    disabled={!isFormValid} // Disable if form is not valid
+    sx={{
+      fontFamily: "'FC Minimal', sans-serif",
+      backgroundColor: "#4A8854",
+      marginTop: "35px",
+      padding: "10px 0",
+      borderRadius: "50px",
+      textTransform: "none",
+      fontSize: "16px",
+      fontWeight: "400",
+      letterSpacing: "1px",
+    }}
+  >
+    สมัครสมาชิก
+  </Button>;
 
   return (
     <div className={styles.container} style={{ backgroundColor: "#FFF2EA" }}>
@@ -406,63 +429,6 @@ function Loginpage() {
                       </p>
                     )}
                   </div>
-                  {/* อีเมล
-                  <div className={styles.formfield}>
-                    <p
-                      style={{
-                        color: "#915B43",
-                        fontWeight: "600",
-                        letterSpacing: "0.5px",
-                        marginBottom: "4px",
-                        width: "267px",
-                        paddingLeft: "6px",
-                      }}
-                    >
-                      อีเมล
-                    </p>
-                    <TextField
-                      name="email"
-                      variant="outlined"
-                      fullWidth
-                      value={formData.email}
-                      onChange={handleInputEmailChange}
-                      placeholder=" "
-                      sx={{
-                        marginBottom: "6px",
-                        borderRadius: "20px",
-                        width: "100%",
-                        height: "36px",
-                        "& .MuiOutlinedInput-root": {
-                          borderRadius: "20px",
-                          height: "36px",
-                          // เปลี่ยนสีกรอบเมื่อมีข้อผิดพลาด
-                          borderColor: emailErrorMessage ? "red" : "#915B43",
-                        },
-                        "& fieldset": {
-                          // เปลี่ยนสีกรอบให้แดงเมื่อมีข้อผิดพลาด
-                          borderColor: emailErrorMessage ? "red" : "#915B43",
-                        },
-                      }}
-                      InputProps={{
-                        style: {
-                          borderRadius: "20px",
-                          fontSize: "16px",
-                          color: emailErrorMessage ? "red" : "gray", // เปลี่ยนสีข้อความให้เป็นแดงเมื่อมีข้อผิดพลาด
-                        },
-                      }}
-                    />
-                    {emailErrorMessage && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontSize: "12px",
-                          marginTop: "4px",
-                        }}
-                      >
-                        {emailErrorMessage}
-                      </p>
-                    )}
-                  </div> */}
 
                   {/* รหัสผ่าน */}
                   <div className={styles.formfield}>
@@ -561,26 +527,26 @@ function Loginpage() {
                         {confirmPasswordErrorMessage}
                       </p>
                     )}
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      type="submit" // ใช้ 'submit' เพื่อให้ฟอร์มส่งข้อมูล
+                      disabled={!isFormValid} // ปิดปุ่มถ้าฟอร์มยังไม่ถูกต้อง
+                      sx={{
+                        fontFamily: "'FC Minimal', sans-serif",
+                        backgroundColor: "#4A8854",
+                        marginTop: "35px",
+                        padding: "10px 0",
+                        borderRadius: "50px",
+                        textTransform: "none",
+                        fontSize: "16px",
+                        fontWeight: "400",
+                        letterSpacing: "1px",
+                      }}
+                    >
+                      สมัครสมาชิก
+                    </Button>
                   </div>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={handleRegister}
-                    sx={{
-                      fontFamily: "'FC Minimal', sans-serif",
-                      backgroundColor: "#4A8854",
-                      marginTop: "35px",
-                      padding: "10px 0",
-                      borderRadius: "50px",
-                      textTransform: "none",
-                      fontSize: "16px",
-                      fontWeight: "400",
-                      letterSpacing: "1px",
-                    }}
-                  >
-                    สมัครสมาชิก
-                  </Button>
                 </div>
               </form>
             </div>
