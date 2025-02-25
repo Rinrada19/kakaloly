@@ -13,8 +13,8 @@
     text-align: center;
 }
 .succesful-container img{
-    width: 100px;
-    margin: 80px;
+    width: 300px;
+    margin-top: 20vh;
 }
 .text-section {
     color: #EF7430;
@@ -27,3 +27,58 @@
 .button-section{
     margin-top: 10vh;
 }
+
+.close-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+    
+    /* จัดวางให้อยู่ตรงกลางทั้งแนวนอนและแนวตั้ง */
+    align-content: space-around;
+
+     /* จัดให้อยู่กึ่งกลางแนวนอน */
+    align-items: center;     /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    text-align: center;
+  }
+  
+.close-img {
+    width: 300px;
+    margin-top: 5vh;
+}
+.back-button {
+    background-color: #FF7F32;
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 15px; /* ขอบโค้ง */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  
+    /* จัดให้อยู่ตรงกลาง */
+    position: absolute;
+    
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+    transition: all 0.3s ease; /* ให้ hover ลื่นไหล */
+  }
+  
+  /* Hover Effect - เอาขอบออก */
+  .back-button:hover {
+    outline: none;
+    box-shadow: none;
+    background-color: #ff9659; /* สี hover ที่อ่อนลง */
+  }
+  

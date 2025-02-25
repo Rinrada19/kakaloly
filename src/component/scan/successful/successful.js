@@ -1,5 +1,5 @@
 import React from "react";
-import calorie from "../../../imgAll/icon/calorie.svg";
+import Complete from "../../../imgAll/img/save_complete.jpg";
 import "./succsefulcss.scss"; // ไฟล์ CSS
 
 const Succesful = ({ setShowCamera }) => {
@@ -7,10 +7,10 @@ const Succesful = ({ setShowCamera }) => {
   return (
     <div className="succesful-container">
       <div className="img-section">
-        <img src={calorie} />
+        <img src={Complete} />
       </div>
       <div className="text-section">
-        <span>บันทึกข้อมูลสำเร็จ! 🎉</span>
+        <span>บันทึกข้อมูลสำเร็จ!</span>
       </div>
       <div className="button-section">
         <button className="next-button" onClick={() => setShowCamera(false)}>

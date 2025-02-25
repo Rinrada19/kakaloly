@@ -14,8 +14,8 @@ function MenuDetail() {
   const { id } = useParams(); // รับค่า id จาก URL
   const location = useLocation();
   const { food } = location.state || {}; // ดึงข้อมูล food ที่ส่งมาจาก state
-
-  const [step, setStep] = useState(1); // สเตตัสที่ใช้ในการควบคุมขั้นตอน
+  const [step, setStep] = useState(0);
+  // สเตตัสที่ใช้ในการควบคุมขั้นตอน
 
   console.log("foddddd--", food);
   // ถ้าไม่มีข้อมูลอาหาร
@@ -141,7 +141,7 @@ function MenuDetail() {
       </div>
 
       {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-      {step === 4 && <FormMeal selectedMenu={food} />}
+      {step === 4 && <FormMeal selectedMenu={food} setStep={setStep} />}
     </div>
   );
 }

@@ -51,7 +51,7 @@ const ShowDetail = ({ imageData, selectedMenu, setStep }) => {
       </div>
       <div className="button-container">
         <button className="next-button" onClick={() => setStep(4)}>
-          ไป Step 4
+          ต่อไป
         </button>
       </div>
     </div>

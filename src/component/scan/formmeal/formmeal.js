@@ -5,28 +5,27 @@ import { getUser } from "../../../api/api_user";
 import { useUser } from "../../../api/UserContext";
 import "./formmealcss.scss"; // ไฟล์ CSS
 import { addMeal } from "../../../api/api_add_meal"; // เรียก API addMeal
+import Succesful from "../successful/successful";
 
 const FormMeal = ({ imageData, setStep, selectedMenu }) => {
-  const [selectType, setselectType] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  const [selectSugar, setselectSugar] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  const [selectRice, setselectRice] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  const [selectMeat, setselectMeat] = useState("defual_meat"); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-
-  const [selectEgg, setselectEgg] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  const [selectValueEgg, setselectValueEgg] = useState(null); // สร้าง state สำหรับเก็บค่าเมนูที่เลือก
-  //nst { user } = useUser();
+  const [selectType, setselectType] = useState(null);
+  const [selectSugar, setselectSugar] = useState(null);
+  const [selectRice, setselectRice] = useState(null);
+  const [selectMeat, setselectMeat] = useState("defual_meat");
+  const [selectEgg, setselectEgg] = useState(null);
+  const [selectValueEgg, setselectValueEgg] = useState(null);
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useUser();
+  // const [step, setStep] = useState(0); // กำหนดค่าเริ่มต้นของ step เป็น 0
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUser = async () => {
-      // console.log("Token from useEffect:", token);
       if (token) {
         try {
           const data = {};
-          const response = await getUser(data, token); // ตรวจสอบว่า token มีค่าหรือไม่
+          const response = await getUser(data, token);
           if (Array.isArray(response) && response.length > 0) {
             setUser(response[0]);
           }
@@ -36,8 +35,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           setLoading(false);
         }
       } else {
-        // console.log("Token is missing");
-        setLoading(false); // หรือสามารถนำผู้ใช้ไปที่หน้า login ได้
+        setLoading(false);
       }
     };
 
@@ -56,17 +54,6 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     sodium,
     default_meat,
   } = selectedMenu || {};
-  // console.log(
-  //   food_name,
-  //   cal,
-  //   carb,
-  //   protein,
-  //   fat,
-  //   food_description,
-  //   sugar,
-  //   sodium,
-  //   default_meat
-  // );
 
   const {
     register,
@@ -75,9 +62,6 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   } = useForm();
 
   useEffect(() => {
-    // let updatedCal = cal || 0; // ใช้ค่าแคลเริ่มต้นจากเมนูที่เลือก
-
-    // 🎯 ปรับแคลอรี่ตามประเภทเนื้อสัตว์
     const meatCalories = {
       ไม่มี: 0,
       หมูสับ: 260,
@@ -109,39 +93,34 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       let updatedCal = cal;
 
       if (default_meat !== "none") {
-        updatedCal -= meatCalories[default_meat] || 0; // ลบแคลอรี่ของเนื้อสัตว์เดิม
+        updatedCal -= meatCalories[default_meat] || 0;
       }
 
-      updatedCal += meatCalories[selectMeat] || 0; // เพิ่มแคลอรี่ของเนื้อสัตว์ใหม่
+      updatedCal += meatCalories[selectMeat] || 0;
 
       return updatedCal;
     }
     let updatedCal = calculateCalories(default_meat, selectMeat, cal);
 
-    // 🎯 คำนวณแคลอรี่จากน้ำตาล
-    let sugar = selectedMenu?.sugar || 0; // ค่าเริ่มต้นของน้ำตาลจาก API
+    let sugar = selectedMenu?.sugar || 0;
     if (selectSugar === "ไม่มีน้ำตาล") {
-      sugar = 0; // ไม่มีน้ำตาล
+      sugar = 0;
     } else if (selectSugar === "ใส่น้ำตาล") {
-      sugar += 5; // เพิ่มน้ำตาลตามที่เลือก
+      sugar += 5;
     } else if (selectSugar === "ใส่น้ำตาลเยอะ") {
-      sugar += 11; // เพิ่มน้ำตาลเยอะ (เพิ่ม 6 กรัม)
+      sugar += 11;
     }
-    // console.log("น้ำตาล =", sugar); // แสดงผลค่า sugar ที่คำนวณแล้ว
 
-    // 🎯 ปรับแคลอรี่ตามจำนวนไข่
     if (selectEgg === "ไข่ดาว") {
-      updatedCal += selectValueEgg * 90; // 1 ฟอง = 90 แคล
+      updatedCal += selectValueEgg * 90;
     } else if (selectEgg === "ไข่เจียว") {
-      updatedCal += selectValueEgg * 110; // ไข่เจียว 1 ฟอง = 110 แคล
+      updatedCal += selectValueEgg * 110;
     } else if (selectEgg === "ไข่ต้ม") {
-      updatedCal += selectValueEgg * 70; // ไข่ต้ม 1 ฟอง = 70 แคล
+      updatedCal += selectValueEgg * 70;
     }
 
-    // 🎯 คำนวณแคลอรี่จากข้าว (1 ทัพพี = 60 แคล)
     updatedCal += selectRice * 60;
 
-    // 🎯 อัพเดตค่าแคลอรี่
     setCalories(updatedCal);
   }, [
     selectMeat,
@@ -155,18 +134,16 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   ]);
 
   const onSubmit = async (data) => {
-    // ตรวจสอบค่าที่จะใช้ก่อน
     if (!selectedMenu || !user.user_id) {
       console.error("Missing selected menu or user_id");
       return;
     }
 
-    // รวมข้อมูลที่ได้จากฟอร์มและข้อมูลจาก API
     const mealData = {
       food_name: selectedMenu.food_name || "",
       food_description: selectedMenu.food_description || "",
       type: selectedMenu.food_category || "",
-      rice: Number(selectRice) || 0, // แปลงเป็นตัวเลข
+      rice: Number(selectRice) || 0,
       egg: selectEgg || "",
       meal_type: selectType || "",
       cal: calories || 0,
@@ -178,47 +155,41 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       sodium: selectedMenu.sodium || 0,
     };
 
-    // ตรวจสอบข้อมูลก่อนการส่ง
-    // console.log("Data being sent:", mealData);
+    console.log("Data being sent:", mealData);
 
     try {
       const response = await addMeal(mealData);
-      // console.log("API response:", response); // เพิ่มการแสดงผลของ response ที่ได้รับจาก API
+      console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
-        // console.log("Meal added successfully");
-        setStep(5); // ไปที่ขั้นตอนถัดไป
+        console.log("Meal added successfully");
+        setStep(5); // ✅ อัปเดตไปยังขั้นตอน 5
+      } else {
+        console.error("Meal creation failed:", response?.message);
       }
     } catch (error) {
-      console.error("Error adding meal:", error.response || error); // ตรวจสอบข้อผิดพลาดจาก API
+      console.error("Error adding meal:", error.response || error);
     }
   };
 
-  // ฟังก์ชันที่ทำให้ปุ่มมีสีเปลี่ยนไปตามที่เลือก
   const handleButtonClick = (meal) => {
-    setselectType(meal); // เปลี่ยนค่า selectType
-    // console.log(meal); // แสดงค่าใน console
+    setselectType(meal);
   };
   const handleSugarButtonClick = (sugar) => {
-    setselectSugar(sugar); // เปลี่ยนค่า selectType
-    // console.log(sugar); // แสดงค่าใน console
+    setselectSugar(sugar);
   };
   const handleMeatButtonClick = (meat) => {
-    setselectMeat(meat); // เปลี่ยนค่า selectType
-    // console.log(meat); // แสดงค่าใน console
+    setselectMeat(meat);
   };
   const handleEggButtonClick = (egg) => {
-    setselectEgg(egg); // เปลี่ยนค่า selectType
-    // console.log(egg); // แสดงค่าใน console
+    setselectEgg(egg);
   };
   const handleValueEggButtonClick = (e) => {
-    setselectValueEgg(e.target.value); // เก็บค่าที่กรอกใน input สำหรับข้าว
-    // console.log(e.target.value); // แสดงค่าที่กรอกใน console
+    setselectValueEgg(e.target.value);
   };
 
   const handleRiceButtonClick = (e) => {
-    setselectRice(e.target.value); // เก็บค่าที่กรอกใน input สำหรับข้าว
-    // console.log(e.target.value); // แสดงค่าที่กรอกใน console
+    setselectRice(e.target.value);
   };
 
   return (
@@ -383,7 +354,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           <div className="rice-button-container">
             <input
               type="number"
-              value={selectValueEgg} // ใช้ค่าใน state ที่เก็บค่าของข้าว
+              value={selectValueEgg ?? ""} // ใช้ค่าว่างหากเป็น null หรือ undefined
               onChange={handleValueEggButtonClick} // อัพเดตค่าตามที่กรอก
             />
           </div>
@@ -397,7 +368,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           <div className="rice-button-container">
             <input
               type="number"
-              value={selectRice} // ใช้ค่าใน state ที่เก็บค่าของข้าว
+              value={selectRice ?? ""} // ใช้ค่าว่างหากเป็น null หรือ undefined
               onChange={handleRiceButtonClick} // อัพเดตค่าตามที่กรอก
             />
           </div>
@@ -417,6 +388,8 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           </button>
         </div>
       </div>
+
+      {/* {step === 5 && <Succesful />} */}
     </form>
   );
 };
