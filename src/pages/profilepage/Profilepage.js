@@ -8,6 +8,7 @@ import imgprofile from "../../imgAll/img/imgprofile.webp";
 import gobackicon from "../../imgAll/element/goback.png";
 import facepro from "../../imgAll/element/facepro.png";
 import { users } from "../../test_mock/MockData";
+
 //icon
 import weighticon from "./icon/weight.png";
 import heighticon from "./icon/heighticon.png";
@@ -52,6 +53,13 @@ const Profilepage = () => {
     fetchUser();
   }, [token, setUser]);
   // console.log(user);
+
+  const handleLogout = () => {
+    localStorage.clear(); // Clears all data in localStorage
+    sessionStorage.clear(); // Clears all data in sessionStorage
+    navigate("/");
+  };
+
   return (
     <>
       {user ? (
@@ -318,7 +326,12 @@ const Profilepage = () => {
                         style={{ width: "24px", height: "24px" }}
                       />
                     </div>
-                    <span style={{ color: "#EF7430" }}>ออกจากระบบ</span>
+                    <span
+                      style={{ color: "#EF7430", cursor: "pointer" }}
+                      onClick={handleLogout}
+                    >
+                      ออกจากระบบ
+                    </span>
                   </div>
                 </div>
               </div>
