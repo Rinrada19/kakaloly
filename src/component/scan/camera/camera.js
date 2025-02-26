@@ -79,7 +79,10 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
           />
         </button>
 
-        <button onClick={() => setStep(2)} className="menu_book-btn">
+        <button
+          onClick={() => alert("ยังไม่พร้อมใช้งาน")}
+          className="menu_book-btn"
+        >
           <img
             src={menu_book}
             alt="menu_book icon"

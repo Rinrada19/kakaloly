@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./header.module.scss"; // นำเข้าไฟล์ SCSS Module
 import { useUser } from "../../api/UserContext";
 import { Link } from "react-router-dom";
-import imgprofile from "../../imgAll/img/imgprofile.webp";
+import imgprofile from "../../imgAll/img/man.png";
+import imgprofile2 from "../../imgAll/img/woman.png";
 //import icon__profile from "../../imgAll/icon/person-circle-outline.png";
 import Loading from "../loader/loading";
 const Header = () => {
@@ -39,10 +40,10 @@ const Header = () => {
         }}
       >
         <img
-          src={imgprofile}
+          src={user ? imgprofile : imgprofile2} // เช็คว่า user เป็น true หรือ false
           alt="Iconprofile"
           className={styles.icon__person}
-        ></img>
+        />
       </Link>
     </header>
   );

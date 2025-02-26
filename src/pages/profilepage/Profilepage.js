@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Profilepage.module.scss";
 
 //import compoentn and img
-import imgprofile from "../../imgAll/img/imgprofile.webp";
+import imgprofile from "../../imgAll/img/man.png";
+import imgprofile2 from "../../imgAll/img/woman.png";
 import gobackicon from "../../imgAll/element/goback.png";
 import facepro from "../../imgAll/element/facepro.png";
 import { users } from "../../test_mock/MockData";
@@ -59,7 +60,7 @@ const Profilepage = () => {
     sessionStorage.clear(); // Clears all data in sessionStorage
     navigate("/");
   };
-
+  console.log("userrr", user);
   return (
     <>
       {user ? (
@@ -87,14 +88,10 @@ const Profilepage = () => {
               {/* ชื่อ อีเมล */}
               <div className={styles.info}>
                 <img
-                  src={imgprofile}
-                  alt="img"
-                  style={{
-                    width: "66px",
-                    border: "1px solid #ADADAD",
-                    borderRadius: "180px",
-                  }}
-                ></img>
+                  src={user ? imgprofile : imgprofile2} // เช็คว่า user เป็น true หรือ false
+                  alt="Iconprofile"
+                  className={styles.icon__person}
+                />
                 <div>
                   <div
                     style={{

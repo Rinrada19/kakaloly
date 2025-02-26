@@ -34,7 +34,7 @@ function Home() {
             setUser(response[0]);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          //  console.error("Error fetching user data:", error);
         } finally {
           setLoading(false);
         }
@@ -54,7 +54,7 @@ function Home() {
         const data = await getEatToDay();
         setNutritionData(data);
       } catch (error) {
-        console.error("Error fetching nutrition data:", error);
+        //  console.error("Error fetching nutrition data:", error);
       }
     };
 
@@ -69,7 +69,7 @@ function Home() {
           const data = await getWaterIntake(token); // เรียกใช้ฟังก์ชัน getWaterIntake
           setWaterData(data); // อัปเดตสถานะน้ำดื่ม
         } catch (error) {
-          console.error("Error fetching water intake data:", error);
+          //   console.error("Error fetching water intake data:", error);
         }
       }
     };

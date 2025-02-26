@@ -142,7 +142,7 @@ function Loginpage() {
   };
 
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("https://kakalolyapi.org/users/check-username", {
+    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),

@@ -8,6 +8,7 @@
     justify-content:space-between !important; 
     align-items: flex-start;
     display: flex;
+    margin-top: 30px;
 }
 .nameCustomer{
     color: #915B43;
@@ -21,11 +22,11 @@
 .header__left{
     background-color: red;
 }
-.icon__person{
-    width: 35px;
-    height: 35px;
+// .icon__person{
+//     width: 35px;
+//     height: 35px;
 
-}
+// }
 .go__backicon {
     width: 10px !important; /* กำหนดความกว้าง */
     height: 19px !important; /* กำหนดความสูง */
