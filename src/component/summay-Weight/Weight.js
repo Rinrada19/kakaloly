@@ -21,7 +21,7 @@ function Weight({ user }) {
       <div className={styles.weightbox1}>
         <div>
           <span className={styles.fontchange}>น้ำหนักปัจจุบัน</span>{" "}
-          <img src={editpen} className={styles.pen} alt="editpen"></img>
+          {/* <img src={editpen} className={styles.pen} alt="editpen"></img> */}
         </div>
         <div>
           <span className={styles.weight_current}>{user?.weight || "0"}</span>{" "}
@@ -33,7 +33,7 @@ function Weight({ user }) {
       <div className={styles.weightbox1}>
         <div>
           <span className={styles.fontchange}>น้ำหนักเป้าหมาย</span>{" "}
-          <img src={editpen} className={styles.pen} alt="editpen"></img>
+          {/* <img src={editpen} className={styles.pen} alt="editpen"></img> */}
         </div>
         <div>
           <span className={styles.weight_goal}>

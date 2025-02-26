@@ -10,12 +10,14 @@ import NutritionalDetails from "../summary_page/component/content-NutritionalDet
 import { getEatToDay } from "../../api/api_eat_today"; // นำเข้า API
 import { useUser } from "../../api/UserContext"; // นำเข้า context ถ้ามี
 import Loading from "../../component/loader/loading";
+import { getWaterIntake } from "../../api/api_water"; // นำเข้า API สำหรับน้ำดื่ม
 
 function Summarypage() {
   const [nutritionData, setNutritionData] = useState(null); // สถานะเก็บข้อมูลโภชนาการ
   const [loading, setLoading] = useState(true); // สถานะโหลดข้อมูล
   const { user } = useUser(); // ถ้ามี context สำหรับ user
   const token = user?.token || localStorage.getItem("token"); // ดึง token จาก user context หรือ localStorage
+  const [waterData, setWaterData] = useState(null); // สถานะเก็บข้อมูลน้ำดื่ม
 
   useEffect(() => {
     const fetchNutritionData = async () => {
@@ -36,6 +38,21 @@ function Summarypage() {
 
     fetchNutritionData();
   }, [token]);
+
+  useEffect(() => {
+    const fetchWaterData = async () => {
+      if (token) {
+        try {
+          const data = await getWaterIntake(token); // เรียกใช้ฟังก์ชัน getWaterIntake
+          setWaterData(data); // อัปเดตสถานะน้ำดื่ม
+        } catch (error) {
+          //   console.error("Error fetching water intake data:", error);
+        }
+      }
+    };
+
+    fetchWaterData();
+  }, [token]); // เมื่อ token เปลี่ยนแปลง
 
   if (loading) {
     return (
@@ -60,7 +77,7 @@ function Summarypage() {
         )}
         <SummaryCard nutritionData={nutritionData} />
         <BMIbar user={user} />
-        <Nutrients nutritionData={nutritionData} />
+        <Nutrients nutritionData={nutritionData} waterData={waterData} />
         <NutritionalDetails nutritionData={nutritionData} />
       </div>
     </div>

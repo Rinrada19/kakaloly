@@ -99,7 +99,7 @@ export const getWaterIntake = async (token) => {
       throw new Error(`Error: ${response.status}`);
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลน้ำดื่ม: ", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลน้ำดื่ม: ", error);
     const errorResponse = await error.response?.text();
     // console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
     throw error;
@@ -113,7 +113,7 @@ export const updateWaterIntake = async (data) => {
     data.water_amount === undefined ||
     data.water_intake_id === undefined
   ) {
-    console.error("Invalid data: ", data);
+    // console.error("Invalid data: ", data);
     throw new Error("Missing water_intake_id or water_amount");
   }
 
@@ -135,14 +135,14 @@ export const updateWaterIntake = async (data) => {
   } catch (error) {
     // ตรวจสอบข้อผิดพลาดจาก API
     if (error.response) {
-      console.error("Error Response:", error.response.data); // แสดงข้อมูลที่ตอบกลับจาก API
-      alert("Error updating water intake: " + error.response.data.message); // แสดงข้อความแสดงข้อผิดพลาด
+      // console.error("Error Response:", error.response.data); // แสดงข้อมูลที่ตอบกลับจาก API
+      //  alert("Error updating water intake: " + error.response.data.message); // แสดงข้อความแสดงข้อผิดพลาด
     } else if (error.request) {
-      console.error("No response received:", error.request);
-      alert("No response from server.");
+      //   console.error("No response received:", error.request);
+      //alert("No response from server.");
     } else {
-      console.error("Error details:", error.message);
-      alert("An error occurred: " + error.message);
+      //  console.error("Error details:", error.message);
+      ///   alert("An error occurred: " + error.message);
     }
     throw error;
   }
@@ -182,18 +182,18 @@ export const postWater = async (waterAmount) => {
     // ตรวจสอบ response และ return ข้อมูล
     return response.data;
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลโภชนาการที่ทานวันนี้:", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลโภชนาการที่ทานวันนี้:", error);
 
     // จัดการข้อผิดพลาดเพิ่มเติม
     if (error.response) {
       if (error.response.status === 401) {
         console.error("Token is invalid or expired, please refresh the token.");
       }
-      console.error("Response error:", error.response.data);
+      // console.error("Response error:", error.response.data);
     } else if (error.request) {
-      console.error("No response received:", error.request);
+      //  console.error("No response received:", error.request);
     } else {
-      console.error("Error details:", error.message);
+      //   console.error("Error details:", error.message);
     }
 
     throw error;

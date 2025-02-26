@@ -85,7 +85,7 @@ function RegistrationForm() {
       username: formData.username,
       // email: formData.email,
       password: formData.password,
-      gender: formData.gender === "false" ? "false" : "true", // แปลงค่า gender ให้ถูกต้อง
+      gender: formData.gender, // แปลงค่า gender ให้ถูกต้อง
       age: parseInt(formData.age, 10),
       height: parseInt(formData.height, 10),
       weight: parseInt(formData.weight, 10),
@@ -98,7 +98,7 @@ function RegistrationForm() {
         : parseInt(formData.weight, 10), // ใช้ require_weight หรือใช้ weight ถ้าไม่มี
     };
 
-    // console.log("ข้อมูลที่จะส่งไปยัง API:", formDataToSend); // เช็คข้อมูลที่ส่งไป
+    console.log("ข้อมูลที่จะส่งไปยัง API:", formDataToSend); // เช็คข้อมูลที่ส่งไป
 
     // ส่งข้อมูลไปยัง backend
     sendToBackend(formDataToSend);
@@ -110,7 +110,7 @@ function RegistrationForm() {
   const sendToBackend = async (data) => {
     try {
       const response = await registerUser(data);
-      //   console.log("การสมัครสำเร็จ:", response);
+      console.log("การสมัครสำเร็จ:", response);
     } catch (error) {
       console.error("การสมัครไม่สำเร็จ:", error);
     }

@@ -35,7 +35,7 @@ const Water = ({ waterData, token }) => {
       await postWater(filledGlassesCount); // ส่งแค่ค่า filledGlassesCount
       setShowPopup(false);
     } catch (error) {
-      console.error("Error updating water intake:", error);
+      // console.error("Error updating water intake:", error);
     }
   };
 
@@ -49,7 +49,7 @@ const Water = ({ waterData, token }) => {
       // console.log("waterData:", waterData);
       // console.log("Updated glasses:", filledGlasses);
     } else {
-      console.error("Invalid waterData:", waterData);
+      // console.error("Invalid waterData:", waterData);
       setGlasses(Array(12).fill(false)); // Set to 0 glasses if data is invalid
     }
   }, [waterData]);
@@ -74,10 +74,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //  console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        // console.error("Error updating water intake:", error);
       }
     }
   };
@@ -101,10 +101,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //  console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        //  console.error("Error updating water intake:", error);
       }
     } else {
       try {
@@ -115,10 +115,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //     console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        //    console.error("Error updating water intake:", error);
       }
     }
   };
