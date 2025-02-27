@@ -28,7 +28,7 @@ function GoalSelection({
     } else if (goal === "เพิ่มน้ำหนัก") {
       setCurrentStep(10); // Go directly to Frame 10
     } else {
-      alert("Please select a goal");
+      alert("กรุณาเลือกเป้าหมาย");
     }
   };
 

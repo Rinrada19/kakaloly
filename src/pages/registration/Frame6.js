@@ -44,7 +44,7 @@ function HealthConditionSelection({
     if (formData.congenital_disease.length > 0 || noneSelected) {
       nextStep(); // ส่งข้อมูลไปยังขั้นตอนถัดไป
     } else {
-      alert("Please select at least one health condition");
+      alert("กรุณาเลือกโรคประจำตัว");
     }
   };
 

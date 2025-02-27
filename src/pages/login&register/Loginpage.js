@@ -180,7 +180,7 @@ function Loginpage() {
     } catch (error) {
       console.error("การล็อกอินไม่สำเร็จ:", error);
 
-      alert(error.message);
+      alert("การล็อกอินไม่สำเร็จ");
     }
   };
 
@@ -253,7 +253,7 @@ function Loginpage() {
         <div className={styles.div2}>
           <h3 className={styles.wellcome}>Welcome</h3>
           <h3 className={styles.wellcome}>
-            To <span className={styles.kakaloryhead}>Kakalory</span>
+            To <span className={styles.kakaloryhead}>Kakaloly</span>
           </h3>
           <img src={imgfood1} className={styles.responsiveimg} alt="imgfood1" />
         </div>

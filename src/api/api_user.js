@@ -34,7 +34,7 @@ export const getUser = async (data, token) => {
 
     if (error.response && error.response.status === 401) {
       // ถ้า token หมดอายุ หรือไม่ถูกต้อง ให้รีไดเรกต์ผู้ใช้ไปยังหน้า login
-      alert("Token หมดอายุ กรุณาเข้าสู่ระบบใหม่");
+      alert("กรุณาเข้าสู่ระบบใหม่");
       // อาจจะทำการลบ token ออกจาก localStorage
       localStorage.removeItem("token");
 

@@ -19,7 +19,7 @@ const Header = () => {
       }}
     >
       <div className="header__left">
-        <h1 className={styles.h1__header}>Kakalory</h1>
+        <h1 className={styles.h1__header}>Kakaloly</h1>
         <p className={styles.nameCustomer1}>
           สวัสดีคุณ{" "}
           <>

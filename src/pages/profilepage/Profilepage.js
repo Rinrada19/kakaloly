@@ -60,7 +60,7 @@ const Profilepage = () => {
     sessionStorage.clear(); // Clears all data in sessionStorage
     navigate("/");
   };
-  console.log("userrr", user);
+  // console.log("userrr", user);
   return (
     <>
       {user ? (

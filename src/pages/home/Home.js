@@ -11,6 +11,7 @@ import { getUser } from "../../api/api_user";
 import { getWaterIntake } from "../../api/api_water"; // นำเข้า API สำหรับน้ำดื่ม
 import NavigationBar from "../../component/navbar/NavigationBar";
 import Loading from "../../component/loader/loading";
+//import Disease from "../../component/disease/Disease";
 
 function Home() {
   const { user, setUser } = useUser();
@@ -103,6 +104,9 @@ function Home() {
         <div style={{ marginBottom: "40px" }}>
           <Header />
         </div>
+        {/* <div style={{ marginBottom: "40px" }}>
+          <Disease />
+        </div> */}
         <div>
           <Link
             to="/Summarypage"

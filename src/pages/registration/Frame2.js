@@ -14,7 +14,7 @@ function GenderSelection({ nextStep, prevStep, formData, setFormData }) {
     if (formData.gender !== undefined) {
       nextStep(); // ไปยังขั้นตอนถัดไป
     } else {
-      alert("Please select your gender"); // แจ้งเตือนหากยังไม่เลือกเพศ
+      alert("กรุณาเลือกเพศ"); // แจ้งเตือนหากยังไม่เลือกเพศ
     }
   };
 
