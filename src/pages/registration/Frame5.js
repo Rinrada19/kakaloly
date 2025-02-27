@@ -37,7 +37,7 @@ function Fooddietary_restrictionelection({
     if (formData.dietary_restriction.length > 0 || noneSelected) {
       nextStep();
     } else {
-      alert("Please select at least one food restriction");
+      alert("กรุณาเลือกข้อจำกัดด้านอาหาร");
     }
   };
 

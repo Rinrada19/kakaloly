@@ -83,6 +83,6 @@ export const createFriend = async (friend_username) => {
       return { error: error.response.data?.error || "เกิดข้อผิดพลาดบางอย่าง" }; // ✅ คืนค่า error
     }
 
-    return { error: "ไม่สามารถเชื่อมต่อ API ได้" }; // ✅ กรณีไม่มี response
+    return { error: "เกิดข้อผิดพลาด กรุณาลองใหม่" }; // ✅ กรณีไม่มี response
   }
 };

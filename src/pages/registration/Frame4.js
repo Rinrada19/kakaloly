@@ -14,7 +14,7 @@ function HeightWeightForm({ nextStep, prevStep, formData, setFormData }) {
     ) {
       nextStep();
     } else {
-      alert("Please enter valid height and weight");
+      alert("กรุณากรอกส่วนสูงและน้ำหนักอีกครั้ง");
     }
   };
 

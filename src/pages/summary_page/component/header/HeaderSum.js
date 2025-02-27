@@ -14,7 +14,7 @@ const HeaderSum = ({ link, title = "ภาพรวม" }) => {
   return (
     <header className={styles.container}>
       <div className="header__left">
-        <h1 className={styles.h1__header}>Kakalory</h1>
+        <h1 className={styles.h1__header}>Kakaloly</h1>
         <div className={styles.go__back}>
           {/* ใช้ Link เพื่อกำหนดเส้นทาง */}
           <Link to={link}>

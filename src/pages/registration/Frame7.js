@@ -46,7 +46,7 @@ function PhysicalActivitySelection({
     if (physical_activity) {
       nextStep();
     } else {
-      alert("Please select your physical activity level");
+      alert("กรุณาเลือกระดับกิจกรรมทางกายภาพ");
     }
   };
 

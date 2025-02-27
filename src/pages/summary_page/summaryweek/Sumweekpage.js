@@ -51,12 +51,15 @@ const WeeklySummary = () => {
       </div>
     );
   }
+  const avgCalPerDay = eatWeek.length
+    ? eatWeek.reduce((sum, item) => sum + item.calories, 0) / eatWeek.length
+    : 0;
 
   if (error) {
     return <div>{error}</div>;
   }
-  //   console.log("eatWeekall----", eatWeekall);
-  //   console.log("eatWeek----", eatWeek);
+  console.log("eatWeekall----", eatWeekall);
+  console.log("eatWeek----", eatWeek);
   return (
     <div className={styles.custombackground}>
       <div
@@ -80,8 +83,8 @@ const WeeklySummary = () => {
             <div className={styles.boxinfo}>
               <h4 className={styles.inforight}>เเคลอรี่ กินโดยเฉลี่ย</h4>
               <h4 className={styles.infoleft}>
-                {Math.floor(eatWeekall.avg_cal_per_day)} Kcal
-              </h4>{" "}
+                {Math.floor(avgCalPerDay)} Kcal
+              </h4>
               {/* ค่าแคลอรี่เฉลี่ยจาก API */}
             </div>
             <div className={styles.lineinfo}></div>
