@@ -1,0 +1,109 @@
+.createMenu {
+    position: fixed; /* ทำให้ modal ลอยอยู่บนหน้าจอ */
+    bottom: 0; /* ให้ติดขอบล่าง */
+    left: 0;
+    width: 100%; /* กว้างเต็มจอ */
+    max-height: 80vh; /* กำหนดความสูงไม่ให้เต็มหน้าจอ */
+    background-color: white;
+    border-top-left-radius: 20px; /* มุมโค้งด้านบนซ้าย */
+    border-top-right-radius: 20px; /* มุมโค้งด้านบนขวา */
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ดูมีมิติ */
+    padding: 35px 20px;
+    overflow-y: auto; /* เลื่อนเมนูขึ้นลงได้ */
+    z-index: 1000; /* ให้แน่ใจว่าอยู่ด้านบน */
+  }
+  .gobackicon{
+    left: 0px;
+    position: absolute;
+    width: 10px;
+    height: 19px;
+  }
+  .containerfillter{
+    position: relative;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-right: 26px;
+    padding-left : 26px;
+    width: 100%;
+    justify-content: center; /* กระจายให้เต็มแถว */
+    display: flex;
+  }
+  .menu_page_header{
+    width: 100%;
+  }
+  .boxcontainerfillter{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  .button_add{
+    background-color: #fff;
+    border :1px solid #EF7430;
+    color: #915B43;
+    width: 100%;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .containerinput{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .input{
+    letter-spacing: 1px;
+    padding-left: 20px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #EF7430;
+    border-radius: 3px;
+    font-size: 16px;
+    -webkit-text-fill-color: #EF7430;
+  }
+  .createbut{
+    letter-spacing: 1px;
+    background-color: #EF7430;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 44px;
+    border-radius: 20px;
+  }
+  /* ปิดสไตล์เดิมของ select */
+.custom_select {
+  appearance: none; /* ซ่อน UI พื้นฐาน */
+  -webkit-text-fill-color: #EF7430;
+  height: 40px;
+  padding-left: 20px;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #EF7430;
+}
+
+/* ทำให้ลูกศรอยู่ทางขวา */
+.custom_select_wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom_select_wrapper::after {
+  content: "v"; /* ลูกศร dropdown */
+  position: absolute;
+  top: 40%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #ffa263;
+  pointer-events: none;
+}
+
+/* สไตล์ตัวเลือก */
+.custom_select option {
+  background-color: white;
+  color: rgb(100, 100, 100);
+}
+
+/* ใช้ :checked แทน hover */
+.custom_select option:checked {
+  background-color: #007bff !important; /* พื้นหลังฟ้า */
+  color: white !important; /* ตัวอักษรขาว */
+}
