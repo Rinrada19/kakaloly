@@ -17,7 +17,7 @@ function MenuDetail() {
   const [step, setStep] = useState(0);
   // สเตตัสที่ใช้ในการควบคุมขั้นตอน
 
-  console.log("foddddd--", food);
+  console.log("🟢Showfood", food);
   // ถ้าไม่มีข้อมูลอาหาร
   if (!food) {
     return <div>ไม่พบข้อมูลอาหาร</div>;
@@ -141,7 +141,12 @@ function MenuDetail() {
       </div>
 
       {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-      {step === 4 && <FormMeal selectedMenu={food} setStep={setStep} />}
+      {step === 4 && (
+        <>
+          <FormMeal selectedMenu={food} setStep={setStep} />
+          <div className={styles.overlay} onClick={() => setStep(0)}></div>
+        </>
+      )}
     </div>
   );
 }
