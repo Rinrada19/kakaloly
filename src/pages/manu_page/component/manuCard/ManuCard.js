@@ -23,17 +23,21 @@ function ManuCard({ foods }) {
               className={styles.card}
               onClick={() => handleNavigate(item)} // เมื่อคลิกจะไปยังหน้า MenuDetail
             >
-              {/* <img
-                src={
-                  "https://www.shutterstock.com/image-vector/food-icon-lunch-fork-knife-260nw-399958996.jpg"
-                }
-                alt={item.name}
-                className={styles.image}
-              /> */}
+              <div>
+                <img
+                  src={`/img/imgfood/${item.food_id}.webp`} // ใช้ public folder
+                  alt={item.food_name}
+                  className={styles.image}
+                  onError={(e) => (e.target.src = "/images/default-food.jpg")} // ถ้ารูปหาย ให้ใช้ default
+                />
+              </div>
+
               <div className={styles.info}>
                 <h3 className={styles.name}>{item.food_name}</h3>
                 <p className={styles.calories}>
-                  <span className={styles.caloriesValue}>{item.cal}</span>{" "}
+                  <span className={styles.caloriesValue}>
+                    {Math.floor(item.cal)}
+                  </span>{" "}
                   <span style={{ color: "#EF7430" }}>·</span> Calories
                 </p>
               </div>
