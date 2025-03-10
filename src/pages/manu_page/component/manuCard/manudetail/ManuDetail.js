@@ -32,103 +32,125 @@ function MenuDetail() {
 
   return (
     <div className={styles.container}>
-      <div className="container">
-        <div className={styles.header}>
-          <div>
-            <img
-              src={backbutton}
-              alt="Back"
-              className={styles.backButton}
-              onClick={() => window.history.back()}
-            />
+      <div
+        className="container"
+        style={{
+          paddingBottom: "30px",
+          height: "100%",
+          backgroundColor: "#FFF2EA",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div style={{ flexGrow: "1" }}>
+          <div className={styles.header}>
+            <div>
+              <img
+                src={backbutton}
+                alt="Back"
+                className={styles.backButton}
+                onClick={() => window.history.back()}
+              />
+            </div>
+            <h1>{food.food_name}</h1>{" "}
+            {/* เปลี่ยนจาก menu.name เป็น food.food_name */}
+            <div></div>
           </div>
-          <h1>{food.food_name}</h1>{" "}
-          {/* เปลี่ยนจาก menu.name เป็น food.food_name */}
-          <div></div>
-        </div>
 
-        <div className={styles.contentder}>
-          {/* info แคลอรี่ */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
+          <div className={styles.contentder}>
+            {/* info แคลอรี่ */}
+            <div
+              className="row"
+              style={{ padding: "0 40px", marginBottom: "30px" }}
+            >
               <img
-                src={Freameicon}
+                className={styles.imgdetail}
+                src={`/img/imgfood/${food.food_id}.webp`} // ใช้ public folder
                 alt={food.food_name}
-                className={styles.imageicon}
               />
-              <p className={styles.namecal}>แคลอรี่</p>
             </div>
-            <div>
-              <p className={styles.mount}>
-                {food.cal} <span className={styles.unit}>kcal</span>
-              </p>
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <img
+                  src={Freameicon}
+                  alt={food.food_name}
+                  className={styles.imageicon}
+                />
+                <p className={styles.namecal}>แคลอรี่</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.cal} <span className={styles.unit}>kcal</span>
+                </p>
+              </div>
             </div>
-          </div>
-          {/* info คาร์โบไฮเดรต */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
-              <img
-                src={carbonicon}
-                alt={food.food_name}
-                className={styles.imageicon}
-              />
-              <p className={styles.namecal}>คาร์โบไฮเดรต</p>
+            {/* info คาร์โบไฮเดรต */}
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <img
+                  src={carbonicon}
+                  alt={food.food_name}
+                  className={styles.imageicon}
+                />
+                <p className={styles.namecal}>คาร์โบไฮเดรต</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.carb} <span className={styles.unit}>g</span>
+                </p>
+              </div>
             </div>
-            <div>
-              <p className={styles.mount}>
-                {food.carb} <span className={styles.unit}>g</span>
-              </p>
+            {/* info โปรตีน */}
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <img
+                  src={potienicon}
+                  alt="protein"
+                  className={styles.imageicon}
+                />
+                <p className={styles.namecal}>โปรตีน</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.protein} <span className={styles.unit}>g</span>
+                </p>
+              </div>
             </div>
-          </div>
-          {/* info โปรตีน */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
-              <img
-                src={potienicon}
-                alt="protein"
-                className={styles.imageicon}
-              />
-              <p className={styles.namecal}>โปรตีน</p>
+            {/* info ไขมัน */}
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <img src={oilicon} alt="fat" className={styles.imageicon} />
+                <p className={styles.namecal}>ไขมัน</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.fat} <span className={styles.unit}>g</span>
+                </p>
+              </div>
             </div>
-            <div>
-              <p className={styles.mount}>
-                {food.protein} <span className={styles.unit}>g</span>
-              </p>
+            {/* info โซเดียม */}
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <p className={styles.namecal}>โซเดียม</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.sodium} <span className={styles.unit}>mg</span>
+                </p>
+              </div>
             </div>
-          </div>
-          {/* info ไขมัน */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
-              <img src={oilicon} alt="fat" className={styles.imageicon} />
-              <p className={styles.namecal}>ไขมัน</p>
+            {/* info น้ำตาล */}
+            <div className={styles.info}>
+              <div className={styles.nameinfo}>
+                <p className={styles.namecal}>น้ำตาล</p>
+              </div>
+              <div>
+                <p className={styles.mount}>
+                  {food.sugar} <span className={styles.unit}>g</span>
+                </p>
+              </div>
             </div>
-            <div>
-              <p className={styles.mount}>
-                {food.fat} <span className={styles.unit}>g</span>
-              </p>
-            </div>
-          </div>
-          {/* info โซเดียม */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
-              <p className={styles.namecal}>โซเดียม</p>
-            </div>
-            <div>
-              <p className={styles.mount}>
-                {food.sodium} <span className={styles.unit}>mg</span>
-              </p>
-            </div>
-          </div>
-          {/* info น้ำตาล */}
-          <div className={styles.info}>
-            <div className={styles.nameinfo}>
-              <p className={styles.namecal}>น้ำตาล</p>
-            </div>
-            <div>
-              <p className={styles.mount}>
-                {food.sugar} <span className={styles.unit}>g</span>
-              </p>
-            </div>
+            <div className={styles.description_food}>{food_description}</div>
           </div>
         </div>
 
@@ -137,16 +159,14 @@ function MenuDetail() {
             เพิ่มมื้ออาหาร
           </button>
         </div>
-        <div style={{ padding: "20px" }}>{food_description}</div>
+        {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
+        {step === 4 && (
+          <>
+            <FormMeal selectedMenu={food} setStep={setStep} />
+            <div className={styles.overlay} onClick={() => setStep(0)}></div>
+          </>
+        )}
       </div>
-
-      {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-      {step === 4 && (
-        <>
-          <FormMeal selectedMenu={food} setStep={setStep} />
-          <div className={styles.overlay} onClick={() => setStep(0)}></div>
-        </>
-      )}
     </div>
   );
 }

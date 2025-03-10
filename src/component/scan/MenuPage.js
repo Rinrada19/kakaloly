@@ -155,6 +155,7 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
           label="อาหาร"
           isActive={selectedCategory === "อาหาร"}
           onClick={() => setSelectedCategory("อาหาร")}
+          iconStyle={{ width: "20px", height: "20px" }}
         />
         <FilterButton
           icon={watericon}
