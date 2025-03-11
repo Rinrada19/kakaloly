@@ -38,7 +38,7 @@ function Summarypage() {
 
     fetchNutritionData();
   }, [token]);
-
+  console.log("nutritionData-----", nutritionData);
   useEffect(() => {
     const fetchWaterData = async () => {
       if (token) {
