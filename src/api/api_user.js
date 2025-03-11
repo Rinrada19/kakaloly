@@ -17,10 +17,12 @@ export const getUser = async (data, token) => {
     // หากไม่ส่ง token มา ให้ดึงจาก localStorage
     const authToken = token || localStorage.getItem("token");
 
+    // ตรวจสอบว่า authToken มีค่า หากไม่มีจะโยนข้อผิดพลาด
     if (!authToken) {
       throw new Error("Token is required to access this resource");
     }
 
+    // ส่งคำขอ GET ไปยัง API พร้อมกับ headers ที่มี token และ params
     const response = await API_URL.get("/users", {
       headers: {
         Authorization: `Bearer ${authToken}`, // ใช้ token ที่ได้
@@ -28,20 +30,23 @@ export const getUser = async (data, token) => {
       params: data, // ข้อมูลที่ส่งผ่าน URL query string
     });
 
+    // คืนค่าข้อมูลที่ได้รับจาก API
     return response.data;
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการเข้าสู่ระบบ: ", error);
+    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้: ", error);
 
+    // ตรวจสอบว่า error.response มีค่าและสถานะเป็น 401 หรือไม่
     if (error.response && error.response.status === 401) {
-      // ถ้า token หมดอายุ หรือไม่ถูกต้อง ให้รีไดเรกต์ผู้ใช้ไปยังหน้า login
       alert("กรุณาเข้าสู่ระบบใหม่");
-      // อาจจะทำการลบ token ออกจาก localStorage
+
+      // ลบ token ออกจาก localStorage
       localStorage.removeItem("token");
 
-      // นำทางผู้ใช้ไปหน้า login
+      // นำทางผู้ใช้ไปยังหน้า login
       window.location.href = "/"; // เปลี่ยนเป็นเส้นทางที่เหมาะสม
     }
 
-    throw error; // ส่งข้อผิดพลาดต่อไป
+    // หากเกิดข้อผิดพลาดอื่น ๆ ให้โยนข้อผิดพลาดต่อไป
+    throw error;
   }
 };
