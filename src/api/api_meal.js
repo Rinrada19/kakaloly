@@ -60,3 +60,41 @@ export const getMealDate = async (date) => {
     throw error; // โยน error ต่อ
   }
 };
+
+export const deleteFood = async (meal_id, token) => {
+  try {
+    console.log("Token ที่ใช้:", token); // log token เพื่อตรวจสอบว่า token ถูกต้อง
+    const response = await API_URL.delete(`/meals/${meal_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(`Error: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("เกิดข้อผิดพลาดในการลบเมนู: ", error);
+
+    // ตรวจสอบว่า error.response มีข้อมูลหรือไม่
+    if (error.response) {
+      // ถ้ามีการตอบกลับจากเซิร์ฟเวอร์
+      console.error("Response error:", error.response.data);
+      if (error.response.status === 401) {
+        console.error("Token is invalid or expired, please refresh the token.");
+      }
+    } else if (error.request) {
+      // ถ้าไม่ได้รับการตอบกลับจากเซิร์ฟเวอร์
+      console.error("No response received:", error.request);
+    } else {
+      // ถ้ามีข้อผิดพลาดอื่นๆ
+      console.error("Error details:", error.message);
+    }
+
+    throw error; // โยน error ต่อ
+  }
+};

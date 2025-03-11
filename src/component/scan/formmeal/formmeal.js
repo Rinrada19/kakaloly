@@ -93,6 +93,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       สันในวัว: 190,
       ปู: 97,
       ปูทอด: 250,
+      ปลาหมึก: 100,
     };
 
     function calculateCalories(default_meat, selectMeat, cal) {

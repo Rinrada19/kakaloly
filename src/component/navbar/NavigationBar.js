@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import NavItem from "./NavItem"; // เเท็ก a
 import "./navigationbarcss.scss";
+import Step from "../scan/step/step"; // นำเข้า Step.js
+
+//icon  img
 import historyicon from "../../imgAll/icon/historyicon.webp";
 import mainicon from "../../imgAll/icon/mainicon.webp";
 import recipesicon from "../../imgAll/icon/recipesicon.webp";
 import shareicon from "../../imgAll/icon/shareicon.webp";
 import photoicon from "../../imgAll/icon/photoicon.webp";
-import Step from "../scan/step/step"; // นำเข้า Step.js
 
 const NavigationBar = () => {
   const [showCamera, setShowCamera] = useState(false); // สร้าง state สำหรับแสดงหรือซ่อน CameraComponent
@@ -36,7 +38,7 @@ const NavigationBar = () => {
 
   return (
     <nav>
-      <ul>
+      <ul className="navcion">
         <NavItem img={mainicon} label="หน้าเเรก" link="/Home" />
         <NavItem img={historyicon} label="ประวัติ" link="/historypage" />
         <NavItem

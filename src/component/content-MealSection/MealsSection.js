@@ -15,6 +15,7 @@ const MealsSection = () => {
   const token = user?.token || localStorage.getItem("token");
 
   // ฟังก์ชันในการดึงข้อมูลมื้ออาหารจาก API
+
   const fetchMeals = async () => {
     if (!token) {
       console.error("ไม่พบ token");
@@ -52,6 +53,12 @@ const MealsSection = () => {
   useEffect(() => {
     fetchMeals();
   }, [token]); // ตรวจสอบการเปลี่ยนแปลงของ token
+
+  const deleteFoodItem = (mealId) => {
+    setMeals((prevMeals) =>
+      prevMeals.filter((meal) => meal.meal_id !== mealId)
+    );
+  };
 
   // จัดกลุ่มมื้ออาหารตาม mealType
   const groupedMeals = {
@@ -94,7 +101,12 @@ const MealsSection = () => {
           <Loading /> // ถ้ากำลังโหลดให้แสดง Loading
         ) : (
           mealData.map((mealItem, index) => (
-            <MealItem key={index} mealItem={mealItem} />
+            <MealItem
+              key={index}
+              mealItem={mealItem}
+              deleteFoodItem={deleteFoodItem} // ส่งฟังก์ชัน deleteFoodItem ไปที่ MealItem
+              token={token}
+            /> // ส่ง token ไปยัง MealItem
           ))
         )}
       </section>

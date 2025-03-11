@@ -10,6 +10,7 @@
     padding: 28px 20px;
     padding-right: 0px;
     overflow-y: auto; /* ✅ ให้ scroll ได้ */
+    z-index: 101;
 }
 
 .type-container {
