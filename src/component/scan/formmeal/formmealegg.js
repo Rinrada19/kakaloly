@@ -5,7 +5,7 @@ const FormMealEgg = ({ selectEgg, handleEggButtonClick }) => {
 
   return (
     <div className="egg-container">
-      <span>เพิ่มไข่ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)</span>
+      <p>เพิ่มไข่ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)</p>
       <div className="sugar-button-container">
         {["ไม่เพิ่มไข่", "ไข่ดาว", "ไข่เจียว", "ไข่ต้ม"].map((egg) => (
           <button
@@ -21,7 +21,7 @@ const FormMealEgg = ({ selectEgg, handleEggButtonClick }) => {
 
       {/* ช่องให้กรอกจำนวนไข่ที่เหลือ */}
       <div className="rice-button-container">
-        <label>จำนวนฟอง:</label>
+        <label>จำนวนฟอง :</label>
         <input
           type="number"
           min="0"

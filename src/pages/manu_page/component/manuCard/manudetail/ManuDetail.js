@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./MenuDetail.module.scss";
-import FormMeal from "../../../../../component/scan/formmeal/formmeal";
+import FormMeal45 from "../../../../../component/scan/formmeal/formmeal4.5";
 
 // img icon
 import backbutton from "../../../../../imgAll/icon/backgray.png";
@@ -25,7 +25,7 @@ function MenuDetail() {
 
   const handleAddMeal = () => {
     // เปลี่ยนขั้นตอนเป็น 4 เมื่อเลือกเมนู
-    setStep(4);
+    setStep(4.5);
   };
 
   const { food_description } = food;
@@ -160,9 +160,9 @@ function MenuDetail() {
           </button>
         </div>
         {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-        {step === 4 && (
+        {step === 4.5 && (
           <>
-            <FormMeal selectedMenu={food} setStep={setStep} />
+            <FormMeal45 selectedMenu={food} setStep={setStep} />
             <div className={styles.overlay} onClick={() => setStep(0)}></div>
           </>
         )}
