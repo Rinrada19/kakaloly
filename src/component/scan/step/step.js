@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import CameraComponent from "../camera/camera";
 import ShowDetail from "../showdetail/showdetail";
+import FormMeal45 from "../formmeal/formmeal4.5";
 import FormMeal from "../formmeal/formmeal";
 import Succesful from "../successful/successful";
 import List from "../list/list";
 import Close from "../successful/close";
+import MenuPage from "../MenuPage"; // เรียก MenuPage
+import CreateMenu from "../createManu/CreateMenu"; // นำเข้าไฟล์ CreateMenu
+import { useEffect } from "react"; // ✅ เพิ่ม useEffect
 
 const Step = ({ setShowCamera }) => {
   const [imageData, setImage] = useState(null);
@@ -39,6 +43,13 @@ const Step = ({ setShowCamera }) => {
       setShowCamera(false);
     }
   };
+  useEffect(() => {
+    console.log("🟢 ค่า step ที่รับมาใน Step.js:", step);
+    console.log("🟢 ค่า step ที่รับมาใน selectedMenu:", selectedMenu);
+  }, [step]);
+  console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า step:", step);
+  console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า selectedMenu:", step);
+  const [, forceUpdate] = useState();
 
   return (
     <div className="step-container">
@@ -66,15 +77,37 @@ const Step = ({ setShowCamera }) => {
           setStep={setStep}
         />
       )}
-      {step === 4 && imageData && selectedMenu && (
+      {/* {step === 4 && imageData && selectedMenu && (
         <FormMeal
           imageData={imageData}
           selectedMenu={selectedMenu}
           setStep={setStep}
         />
+      )}  อันของ ลูกน้ำ*/}
+      {step === 4 && selectedMenu && (
+        <>
+          {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
+          <FormMeal selectedMenu={selectedMenu} setStep={setStep} />
+        </>
+      )}
+      {step === 4.5 && selectedMenu && (
+        <>
+          {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
+          <FormMeal45 selectedMenu={selectedMenu} setStep={setStep} />
+        </>
       )}
       {step === 5 && <Succesful setShowCamera={handleFormCompletion} />}
       {step === 6 && <Close />}
+      {step === 7 && (
+        <MenuPage
+          setStep={setStep}
+          step={step}
+          setSelectedMenu={setSelectedMenu} // ส่ง setSelectedMenu
+          selectedMenu={selectedMenu} // ส่ง selectedMenu
+        />
+      )}
+
+      {step === 8 && <CreateMenu setStep={setStep} />}
     </div>
   );
 };

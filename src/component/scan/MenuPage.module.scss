@@ -1,0 +1,137 @@
+.menu_page {
+    position: fixed; /* ทำให้ modal ลอยอยู่บนหน้าจอ */
+    bottom: 0; /* ให้ติดขอบล่าง */
+    left: 0;
+    width: 100%; /* กว้างเต็มจอ */
+    max-height: 80vh; /* กำหนดความสูงไม่ให้เต็มหน้าจอ */
+    background-color: white;
+    border-top-left-radius: 20px; /* มุมโค้งด้านบนซ้าย */
+    border-top-right-radius: 20px; /* มุมโค้งด้านบนขวา */
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ดูมีมิติ */
+    padding: 35px 20px;
+    overflow-y: auto; /* เลื่อนเมนูขึ้นลงได้ */
+    z-index: 1000; /* ให้แน่ใจว่าอยู่ด้านบน */
+  }
+  .gobackicon{
+    width: 10px !important;
+    height: 19px;
+  }
+.menu_page_header{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.searchinput{
+    padding-left: 45px;
+    width: 100%;
+    height: 44px;
+    border: 1px solid #EF7430;
+    border-radius: 30px;
+    font-size: 16px;
+    -webkit-text-fill-color: #F49E6E;
+}
+.icon {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 19px !important;
+    height: 17px; /* ขนาดไอคอน */
+  }
+  .menu_page_header_text{
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 9px;
+  }
+  .text{
+    margin: 0;
+    font-weight: 400;
+  }
+.iconelement{
+    width: 20px;
+    height: 20px;
+}
+.containerfillter{
+  margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    justify-content: space-between; /* กระจายให้เต็มแถว */
+    display: flex;
+    gap: 10px;
+}
+.foodfilter{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    flex: 1;
+    border: 1px solid #EF7430;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    // transition: background-color 0.1s ease, color 0.1s ease;
+  }
+.foodfilter.active {
+background-color: #EF7430; /* เปลี่ยนเป็นสีส้มเมื่อคลิก */
+}
+.foodfilter.active .text {
+color: white; /* ฟอนต์สีขาว */
+}
+.iconelement.active{
+    background-color: #EF7430;
+}
+.containerfillter1{
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  justify-content: space-between; /* กระจายให้เต็มแถว */
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}  
+.foodfilter1{
+    flex: 1;
+}
+.menu_contentadd{
+  width: 100%;
+  padding: 0 10px;
+}
+.addmenu{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 11px 0px;
+    border: none;
+    background-color: #EF7430;
+    color: white;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    // transition: background-color 0.1s ease, color 0.1s ease;
+  }
+.wrappercontent{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.button_add{
+  background-color: #fff;
+  border :1px solid #EF7430;
+  color: #915B43;
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+}
+.boxcontent{
+  margin-top: 10px;
+  padding: 0px 10px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}

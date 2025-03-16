@@ -1,0 +1,55 @@
+.icon {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 19px;
+    height: 17px; /* ขนาดไอคอน */
+  }
+  .menu_page_header_text{
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 9px;
+  }
+  .text{
+    margin: 0;
+    font-weight: 400;
+  }
+.iconelement{
+    width: 20px ;
+    height: 20px;
+}
+.containerfillter{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    justify-content: space-between; /* กระจายให้เต็มแถว */
+    display: flex;
+    gap: 10px;
+}  
+.foodfilter{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    flex: 1;
+    border: 1px solid #EF7430;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    // transition: background-color 0.1s ease, color 0.1s ease;
+  }
+.foodfilter.active {
+background-color: #EF7430; /* เปลี่ยนเป็นสีส้มเมื่อคลิก */
+}
+.foodfilter.active .text {
+color: white; /* ฟอนต์สีขาว */
+}
+.iconelement.active{
+    background-color: #EF7430;
+}
+.activeIcon{
+  width: 20px;
+  height: 20px;
+}
