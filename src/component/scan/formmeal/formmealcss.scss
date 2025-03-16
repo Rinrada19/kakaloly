@@ -1,187 +1,247 @@
 .form-container {
-    width: 100vw;
-    height: auto; /* ✅ ให้ขนาดตามเนื้อหาจริง */
-    max-height: 90vh; /* ✅ จำกัดไม่ให้สูงเกิน viewport */
-    background-color: rgb(255, 255, 255);
-    position: absolute;
-    left: 0px;
-    bottom: 0; /* ✅ ตั้งค่าที่ 0 เพื่อให้ไม่ล้น */
-    border-radius: 15px 15px 0px 0px;
-    padding: 28px 20px;
-    padding-right: 0px;
-    overflow-y: auto; /* ✅ ให้ scroll ได้ */
-    z-index: 101;
+  width: 100vw;
+  height: auto; /* ✅ ให้ขนาดตามเนื้อหาจริง */
+  max-height: 90vh; /* ✅ จำกัดไม่ให้สูงเกิน viewport */
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 0px;
+  bottom: 0; /* ✅ ตั้งค่าที่ 0 เพื่อให้ไม่ล้น */
+  border-radius: 15px 15px 0px 0px;
+  padding: 28px 20px;
+  padding-right: 0px;
+  overflow-y: auto; /* ✅ ให้ scroll ได้ */
+  z-index: 101;
 }
 
+.egg-button-container {
+ 
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  overflow-x: auto;
+  display: flex
+;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+}
+.egg-button-container input{
+  margin-top: 10px;
+  margin-right: 20px;
+  height: 35px;
+  min-width: 120px; /* ความกว้างขั้นต่ำ */
+  max-width: 160px; /* ความกว้างสูงสุด */
+  width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
+  white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
+  text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
+  overflow: hidden;  /* ซ่อนข้อความที่เกิน */
+  padding: 2px 10px;
+  border:solid #EF7430 1px;
+  background-color: #ffffff;
+  color: #EF7430;
+  border-radius: 33px;
+  cursor: pointer;
+  text-align: center;
+}
 .type-container {
-    color: #915B43;
+  color: #915B43;
+
+  margin-bottom:20px;
   
-    margin-bottom:20px;
-    
 }
 .rice-container{
-    color: #915B43;
-    margin-top:20px;
-    margin-bottom:20px;
-    
+  color: #915B43;
+  margin-top:20px;
+  margin-bottom:20px;
+  
 }
 .sugar-container{
-    color: #915B43;
-    margin-top:60px;
-    margin-bottom:20px;
-    
+  color: #915B43;
+  margin-top:60px;
+  margin-bottom:20px;
+  
 }
 .meat-container,.egg-container {
-    color: #915B43;
-    margin-top:20px;
-    margin-bottom:20px;
-    
+  color: #915B43;
+  margin-top:20px;
+  margin-bottom:20px;
+  
 }
 .rice-button-container {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-    overflow-x: auto;
-    display: flex;
-    align-items: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
 }
 .rice-button-container label {
-    margin-right: 10px; /* เพิ่มระยะห่างจาก label ไปยัง input */
-  }
+  margin-right: 10px; /* เพิ่มระยะห่างจาก label ไปยัง input */
+}
 .rice-button-container input{
-    margin-right: 20px;
-    height: 35px;
-    min-width: 120px; /* ความกว้างขั้นต่ำ */
-    max-width: 160px; /* ความกว้างสูงสุด */
-    width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
-    white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
-    text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
-    overflow: hidden;  /* ซ่อนข้อความที่เกิน */
-    padding: 2px 10px;
-    border:solid #EF7430 1px;
-    background-color: #ffffff;
-    color: #EF7430;
-    border-radius: 33px;
-    cursor: pointer;
-    text-align: center;
+  margin-right: 20px;
+  height: 35px;
+  min-width: 120px; /* ความกว้างขั้นต่ำ */
+  max-width: 160px; /* ความกว้างสูงสุด */
+  width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
+  white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
+  text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
+  overflow: hidden;  /* ซ่อนข้อความที่เกิน */
+  padding: 2px 10px;
+  border:solid #EF7430 1px;
+  background-color: #ffffff;
+  color: #EF7430;
+  border-radius: 33px;
+  cursor: pointer;
+  text-align: center;
 }
 .sugar-button-container{
-    margin-bottom: 5px;
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-    overflow-x: auto; /* ให้สามารถเลื่อนแนวนอนได้ */
-    display: flex;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  overflow-x: auto; /* ให้สามารถเลื่อนแนวนอนได้ */
+  display: flex;
 
 }   
 .sugar-button{
-    margin-right: 20px;
-    height: 35px;
-    min-width: 120px; /* ความกว้างขั้นต่ำ */
-    max-width: 160px; /* ความกว้างสูงสุด */
-    width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
-    white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
-    text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
-    overflow: hidden;  /* ซ่อนข้อความที่เกิน */
-    padding: 2px 10px;
-    border: none;
-    background-color: #FFD8C2;
-    color: #EF7430;
-    border-radius: 33px;
-    cursor: pointer;
+  margin-right: 20px;
+  height: 35px;
+  min-width: 120px; /* ความกว้างขั้นต่ำ */
+  max-width: 160px; /* ความกว้างสูงสุด */
+  width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
+  white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
+  text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
+  overflow: hidden;  /* ซ่อนข้อความที่เกิน */
+  padding: 2px 10px;
+  border: none;
+  background-color: #FFD8C2;
+  color: #EF7430;
+  border-radius: 33px;
+  cursor: pointer;
 }
 .sugar-button.selected {
-    background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
-    color: white;
-  }
+  background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
+  color: white;
+}
 
 .type-button-container{
-    margin-top: 10px;
-    text-align: center;
-    float: left;
+  margin-top: 10px;
+  text-align: center;
+  float: left;
 }    
 
 .type-button {
-    margin-right: 20px;
-    height: 35px;
-    min-width: 85px;  /* ความกว้างขั้นต่ำ */
-    max-width: 160px; /* ความกว้างสูงสุด */
-    width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
-    white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
-    text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
-    overflow: hidden;  /* ซ่อนข้อความที่เกิน */
-    padding: 2px 10px;
-    border: none;
-    background-color: #FFD8C2;
-    color: #EF7430;
-    border-radius: 33px;
-    cursor: pointer;
+  margin-right: 20px;
+  height: 35px;
+  min-width: 85px;  /* ความกว้างขั้นต่ำ */
+  max-width: 160px; /* ความกว้างสูงสุด */
+  width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
+  white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
+  text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
+  overflow: hidden;  /* ซ่อนข้อความที่เกิน */
+  padding: 2px 10px;
+  border: none;
+  background-color: #FFD8C2;
+  color: #EF7430;
+  border-radius: 33px;
+  cursor: pointer;
 }
 .type-button.selected {
-    background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
-    color: white;
-  }
-  .button-container{
-    text-align: center;
-    margin-top: 5vh;
-    margin-right: 3vw;
+  background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
+  color: white;
 }
-  
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Transparent black background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it's on top of everything */
-  }
+.button-container{
+  text-align: center;
+  margin-top: 5vh;
+  margin-right: 3vw;
+}
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+}
+
+.popup {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  padding: 45px 50px;
+  border-radius: 20px;
+  width: 80%; /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
+  max-width: 600px; /* กำหนดขนาดสูงสุดไม่เกิน 600px */
+  margin: 0 auto; /* ให้อยู่ตรงกลางของหน้าจอ */
+  // & p{
+  //     font-size: 20px;
+  //     font-weight: 500;
+  // }
+}
+.button_manudetail{
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EF7430;
+  color: #ffffff;
+  border: none;
+  padding: 12px 0px; 
+  height: 50px;
+  width: 100%;
+  max-width: 80%;
+  min-width: 150px;
+  border-radius: 30px;
+}
+.next-button45{
+  background-color: #EF7430;
+  color: #ffffff;
+  border: none;
+  height: 50px;
+  padding: 12px 0px; 
+  min-width: 200px;    /* ความกว้างขั้นต่ำ */
+  max-width: 400px;    /* กำหนดความกว้างสูงสุดที่ 400px */
+  width: 100%;
+  border-radius: 30px;
+}
+.button_container{
+  width: 100%;
+  gap: 12px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 527px) {
   .popup {
-    gap: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: white;
-    padding: 45px 50px;
-    border-radius: 20px;
-    width: 80%; /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
-    max-width: 600px; /* กำหนดขนาดสูงสุดไม่เกิน 600px */
-    margin: 0 auto; /* ให้อยู่ตรงกลางของหน้าจอ */
-    // & p{
-    //     font-size: 20px;
-    //     font-weight: 500;
-    // }
+    font-size: 14px; // ลดขนาดฟอนต์ของ .popup
+    padding: 30px 16px; // ลด padding เพื่อให้ดูเล็กลง
   }
-  .button_manudetail{
-    letter-spacing: 1px;
+  .button_manudetail {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #EF7430;
-    color: #ffffff;
-    border: none;
-    padding: 12px 0px; 
-    height: 50px;
-    width: 100%;
+    height: 0px; // ลดความสูงของปุ่ม
+    font-size: 14px; // ลดขนาดฟอนต์ของปุ่ม
+    padding: 18px 0px; 
+    width: 140px;
     max-width: 80%;
-    min-width: 150px;
-    border-radius: 30px;
+    min-width: 100px;
   }
-  .next-button45{
-    background-color: #EF7430;
-    color: #ffffff;
-    border: none;
-    height: 50px;
-    padding: 12px 0px; 
-    min-width: 200px;    /* ความกว้างขั้นต่ำ */
-    max-width: 400px;    /* กำหนดความกว้างสูงสุดที่ 400px */
-    width: 100%;
-    border-radius: 30px;
+}
+@media (max-width: 321px) {
+  .popup{
+    padding: 30px 12px; // ลด padding เพื่อให้ดูเล็กลง
+    width: 85%; /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
   }
   .button_container{
     width: 100%;
@@ -189,58 +249,30 @@
     display: flex;
     justify-content: center;
   }
-  @media (max-width: 527px) {
-    .popup {
-      font-size: 14px; // ลดขนาดฟอนต์ของ .popup
-      padding: 30px 16px; // ลด padding เพื่อให้ดูเล็กลง
-    }
-    .button_manudetail {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 0px; // ลดความสูงของปุ่ม
-      font-size: 14px; // ลดขนาดฟอนต์ของปุ่ม
-      padding: 18px 0px; 
-      width: 140px;
-      max-width: 80%;
-      min-width: 100px;
-    }
-  }
-  @media (max-width: 321px) {
-    .popup{
-      padding: 30px 12px; // ลด padding เพื่อให้ดูเล็กลง
-      width: 85%; /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
-    }
-    .button_container{
-      width: 100%;
-      gap: 12px;
-      display: flex;
-      justify-content: center;
-    }
-    .button_manudetail {
-      display: flex;
-      letter-spacing: 0.5px;
-      justify-content: center;
-      align-items: center;
-      height: 0px; // ลดความสูงของปุ่ม
-      font-size: 12px; // ลดขนาดฟอนต์ของปุ่ม
-      padding: 16px 0px; 
-      width: 100px;
-    }
-  }
-  .message_p{
-
-    font-size: 20px;
-    font-weight: 600;
-  }
-  .message_sub{
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .message_container{
+  .button_manudetail {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    letter-spacing: 0.5px;
     justify-content: center;
-    gap: 5px;
+    align-items: center;
+    height: 0px; // ลดความสูงของปุ่ม
+    font-size: 12px; // ลดขนาดฟอนต์ของปุ่ม
+    padding: 16px 0px; 
+    width: 100px;
   }
+}
+.message_p{
+
+  font-size: 20px;
+  font-weight: 600;
+}
+.message_sub{
+  font-size: 16px;
+  font-weight: 400;
+}
+.message_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
