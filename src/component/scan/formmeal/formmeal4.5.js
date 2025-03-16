@@ -13,6 +13,7 @@ import FormMealSugar from "./formmealsugar";
 import FormMealMeat from "./formmealmeat";
 import FormMealEgg from "./formmealegg";
 import FormMealRice from "./formmealrice";
+import { Style } from "@mui/icons-material";
 
 const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
   const [selectType, setselectType] = useState(null);
@@ -251,20 +252,40 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       {isPopupVisible && (
         <div className="popup-overlay">
           <div className="popup">
-            <p>{message}</p>
-            <button
-              className="button_manudetail"
-              onClick={() => {
-                setIsPopupVisible(false); // Hide the popup
-                navigate("/home");
-              }}
-            >
-              ปิด
-            </button>{" "}
+            <div className="message_container">
+              <p className="message_p">{message}</p>
+              <p className="message_sub">
+                คุณต้องการเพิ่มเมนูอาหารอีก หรือไม่?
+              </p>
+            </div>
+            <div className="button_container">
+              <button
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #FFA088",
+                  color: "#000000",
+                }}
+                className="button_manudetail"
+                onClick={() => {
+                  // setIsPopupVisible(false); // Hide the popup
+                  navigate("/Manupage");
+                }}
+              >
+                เพิ่มอีก
+              </button>
+              <button
+                className="button_manudetail"
+                onClick={() => {
+                  // setIsPopupVisible(false); // Hide the popup
+                  navigate("/home");
+                }}
+              >
+                กลับไปหน้าแรก
+              </button>
+            </div>
           </div>
         </div>
       )}
-      {/* {step === 5 && <Succesful />} */}
     </form>
   );
 };
