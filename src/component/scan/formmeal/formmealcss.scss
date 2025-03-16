@@ -12,6 +12,38 @@
     overflow-y: auto; /* ✅ ให้ scroll ได้ */
 }
 
+.egg-button-container {
+   
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+    display: flex
+;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+.egg-button-container input{
+    margin-top: 10px;
+    margin-right: 20px;
+    height: 35px;
+    min-width: 120px; /* ความกว้างขั้นต่ำ */
+    max-width: 160px; /* ความกว้างสูงสุด */
+    width: auto;      /* ความกว้างจะปรับตามเนื้อหา */
+    white-space: nowrap;  /* ป้องกันข้อความแตกบรรทัด */
+    text-overflow: ellipsis; /* ถ้ามีข้อความยาวเกินไปจะใส่ '...' */
+    overflow: hidden;  /* ซ่อนข้อความที่เกิน */
+    padding: 2px 10px;
+    border:solid #EF7430 1px;
+    background-color: #ffffff;
+    color: #EF7430;
+    border-radius: 33px;
+    cursor: pointer;
+    text-align: center;
+}
 .type-container {
     color: #915B43;
   
