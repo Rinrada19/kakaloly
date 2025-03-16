@@ -7,10 +7,10 @@ const FormMealMeat = ({ selectMeat, handleMeatButtonClick, foodId }) => {
   ];
 
   const numericFoodId = Number(foodId); // แปลง foodId เป็น number
-  //console.log("foodId received:", foodId, "numericFoodId:", numericFoodId);
+  console.log("foodId received:", foodId, "numericFoodId:", numericFoodId);
 
   if (excludedFoodIds.includes(numericFoodId)) {
-    // console.log("Food ID is excluded:", numericFoodId);
+    console.log("Food ID is excluded:", numericFoodId);
     return null;
   }
 

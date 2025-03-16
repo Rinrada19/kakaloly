@@ -83,7 +83,7 @@ function RegistrationForm() {
   const handleSubmit = async () => {
     const formDataToSend = {
       username: formData.username,
-      email: formData.email,
+      // email: formData.email,
       password: formData.password,
       gender: formData.gender, // แปลงค่า gender ให้ถูกต้อง
       age: parseInt(formData.age, 10),

@@ -1,19 +1,7 @@
 import React, { useState } from "react";
 
-const FormMealEgg = ({
-  selectEgg,
-  handleEggButtonClick,
-  handleEggCountChange,
-}) => {
-  const [eggCount, setEggCount] = useState("");
-
-  const handleChange = (e) => {
-    const count = Number(e.target.value);
-    setEggCount(count);
-    if (typeof handleEggCountChange === "function") {
-      handleEggCountChange(count); // ✅ ตรวจสอบก่อนเรียกใช้
-    }
-  };
+const FormMealEgg = ({ selectEgg, handleEggButtonClick }) => {
+  const [eggCount, setEggCount] = useState(0); // สร้าง state สำหรับจำนวนไข่ที่เหลือ
 
   return (
     <div className="egg-container">
@@ -31,13 +19,14 @@ const FormMealEgg = ({
         ))}
       </div>
 
-      <div className="egg-button-container">
-        <label>จำนวนฟอง</label>
+      {/* ช่องให้กรอกจำนวนไข่ที่เหลือ */}
+      <div className="rice-button-container">
+        <label>จำนวนฟอง :</label>
         <input
           type="number"
           min="0"
           value={eggCount}
-          onChange={handleChange} // ใช้ฟังก์ชันใหม่
+          onChange={(e) => setEggCount(e.target.value)}
         />
       </div>
     </div>

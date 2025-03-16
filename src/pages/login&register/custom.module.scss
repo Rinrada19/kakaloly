@@ -39,19 +39,6 @@
   margin-bottom: 50px;
  
 }
-
-.iconshowpassword {
-  color: #EF7430 !important;
-  background-color: #FFF2EA !important; /* สีของไอคอนเป็น #EF7430 */
-  transition: none !important; /* ไม่ให้มีการเปลี่ยนแปลงใดๆ เมื่อ hover */
-}
-
-.iconshowpassword:hover {
-  color: #EF7430 !important; /* กำหนดสีให้เหมือนเดิมเมื่อ hover */
-  background-color: #FFF2EA !important;
-  transition: none !important; /* ป้องกันการเปลี่ยนแปลงใดๆ */
-}
-
 // Responsive
 @media (min-width: 1500px) { /* กำหนดจอใหญ่กว่า 1500px  ขึ้นไป */
   .responsiveimg{

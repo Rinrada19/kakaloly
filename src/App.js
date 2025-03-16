@@ -16,8 +16,6 @@ import Friendpage from "../src/pages/Friend_page/Friendpage";
 import Profilepage from "../src/pages/profilepage/Profilepage";
 import WeeklySummary from "./pages/summary_page/summaryweek/Sumweekpage";
 import { UserProvider } from "./api/UserContext";
-import ForgotPasswordPage from "./pages/login&register/forgotpassword/ForgotPassword";
-import ResetPassword from "./pages/login&register/forgotpassword/ResetPassword";
 
 function App() {
   return (
@@ -37,8 +35,6 @@ function App() {
           <Route path="/friendpage" element={<Friendpage />} />
           <Route path="/Profilepage" element={<Profilepage />} />
           <Route path="/weeklysummary" element={<WeeklySummary />} />
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </Router>
     </UserProvider>

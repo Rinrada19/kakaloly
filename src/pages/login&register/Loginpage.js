@@ -15,7 +15,6 @@ function Loginpage() {
 
   const navigate = useNavigate(); // ใช้เพื่อเปลี่ยนหน้า
   const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState(""); // เพิ่ม state สำหรับ emailErrorMessage
 
   const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] =
@@ -38,9 +37,6 @@ function Loginpage() {
       ...prevData,
       [name]: value,
     }));
-  };
-  const handleForgotPasswordClick = () => {
-    navigate("/forgot-password"); // กำหนดเส้นทางที่ต้องการนำทางไป
   };
 
   useEffect(() => {
@@ -72,41 +68,41 @@ function Loginpage() {
     }
   };
 
-  const handleInputEmailChange = async (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  // const handleInputEmailChange = async (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
 
-    if (name === "email") {
-      const emailValue = value.trim();
+  //   if (name === "email") {
+  //     const emailValue = value.trim();
 
-      // ตรวจสอบว่าอีเมลมี @ หรือไม่
-      if (!emailValue.includes("@")) {
-        setEmailErrorMessage("อีเมลต้องมี @");
-        return;
-      }
+  //     // ตรวจสอบว่าอีเมลมี @ หรือไม่
+  //     if (!emailValue.includes("@")) {
+  //       setEmailErrorMessage("อีเมลต้องมี @");
+  //       return;
+  //     }
 
-      try {
-        // console.log(`🔍 Checking email availability for: ${emailValue}`);
-        const isEmailAvailable = await checkEmailAvailability(emailValue);
-        // console.log("✅ API Response:", isEmailAvailable);
+  //     try {
+  //       // console.log(`🔍 Checking email availability for: ${emailValue}`);
+  //       const isEmailAvailable = await checkEmailAvailability(emailValue);
+  //       // console.log("✅ API Response:", isEmailAvailable);
 
-        // ตรวจสอบค่าที่ได้รับจาก API
-        if (isEmailAvailable === false) {
-          setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
-        } else if (typeof isEmailAvailable === "string") {
-          setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
-        } else {
-          setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
-        }
-      } catch (error) {
-        console.error("❌ Error checking email:", error);
-        setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
-      }
-    }
-  };
+  //       // ตรวจสอบค่าที่ได้รับจาก API
+  //       if (isEmailAvailable === false) {
+  //         setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
+  //       } else if (typeof isEmailAvailable === "string") {
+  //         setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
+  //       } else {
+  //         setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
+  //       }
+  //     } catch (error) {
+  //       console.error("❌ Error checking email:", error);
+  //       setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
+  //     }
+  //   }
+  // };
   // const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   // const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] = useState("");
 
@@ -143,16 +139,6 @@ function Loginpage() {
     } else {
       setconfirmPasswordErrorMessage(""); // เคลียร์ข้อความเมื่อยืนยันรหัสผ่านถูกต้อง
     }
-  };
-
-  const checkEmailAvailability = async (email) => {
-    const res = await fetch("http://54.79.173.230:5000/users/check-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    });
-    const result = await res.json();
-    return result.available || result.message;
   };
 
   const checkUsernameAvailability = async (username) => {
@@ -363,21 +349,6 @@ function Loginpage() {
                     }}
                   />
                 </div>
-                <div>
-                  <p
-                    style={{
-                      color: "#915B43",
-                      fontWeight: "600",
-                      letterSpacing: "0.5px",
-                      marginBottom: "4px",
-                      width: "267px",
-                      paddingLeft: "6px",
-                    }}
-                    onClick={handleForgotPasswordClick}
-                  >
-                    ลืมรหัสผ่าน
-                  </p>
-                </div>
                 {/* ปุ่มเข้าสู่ระบบ */}
                 <Button
                   variant="contained"
@@ -455,61 +426,6 @@ function Loginpage() {
                         }}
                       >
                         {usernameErrorMessage}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className={styles.formfield}>
-                    <p
-                      style={{
-                        color: "#915B43",
-                        fontWeight: "600",
-                        letterSpacing: "0.5px",
-                        marginBottom: "4px",
-                        width: "267px",
-                        paddingLeft: "6px",
-                      }}
-                    >
-                      อีเมล
-                    </p>
-                    <TextField
-                      name="email"
-                      variant="outlined"
-                      fullWidth
-                      value={formData.email}
-                      onChange={handleInputEmailChange}
-                      placeholder=" "
-                      sx={{
-                        marginBottom: "6px",
-                        borderRadius: "20px",
-                        width: "100%",
-                        height: "36px",
-                        "& .MuiOutlinedInput-root": {
-                          borderRadius: "20px",
-                          height: "36px",
-                          borderColor: emailErrorMessage ? "red" : "#915B43",
-                        },
-                        "& fieldset": {
-                          borderColor: emailErrorMessage ? "red" : "#915B43",
-                        },
-                      }}
-                      InputProps={{
-                        style: {
-                          borderRadius: "20px",
-                          fontSize: "16px",
-                          color: emailErrorMessage ? "red" : "gray", // เปลี่ยนสีข้อความให้เป็นแดงเมื่อมีข้อผิดพลาด
-                        },
-                      }}
-                    />
-                    {emailErrorMessage && (
-                      <p
-                        style={{
-                          color: "red",
-                          fontSize: "12px",
-                          marginTop: "4px",
-                        }}
-                      >
-                        {emailErrorMessage}
                       </p>
                     )}
                   </div>
