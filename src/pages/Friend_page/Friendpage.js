@@ -205,10 +205,10 @@ function Friendpage() {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div
+                      className={styles.modalclose_header}
                       style={{
                         display: "flex",
                         justifyContent: "end",
-                        marginRight: "-20px",
                       }}
                     >
                       <button

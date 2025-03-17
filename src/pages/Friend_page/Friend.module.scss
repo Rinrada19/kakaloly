@@ -7,9 +7,9 @@
 }
 .date{
     color: #915B43;
-    font-size: 16;
+    font-size: 16px;
     padding-left: 35px;
-    padding-bottom: 54px;
+    padding-bottom: 40px;
 }
 .modalContainer {
     height: 500px;
@@ -32,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 1001;
   }
 .elementicon{
   width: 40px;
@@ -116,4 +116,25 @@
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease-in-out;
+}
+.modalclose_header{
+  margin-right: -20px;
+}
+@media (max-width: 376px) {
+  .modal_content{
+    padding: 20px 25px;
+    width: 325px;
+    height: 433px;
+ 
+  }
+}
+@media (max-width: 321px) {
+  .modal_content{
+    padding: 20px 20px;
+    width: 290px;
+    height: 433px;
+  }
+  .modalclose_header{
+    margin-right: 0;
+  }
 }
