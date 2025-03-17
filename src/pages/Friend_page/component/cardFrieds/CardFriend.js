@@ -1,18 +1,30 @@
 import React from "react";
 import styles from "./CardFriend.module.scss";
 import ChartDonut from "../chartdonut/ChartDonut";
+import cheese from "../../../../imgAll/imgfood_friendpage/cheeese.webp";
+import bread from "../../../../imgAll/imgfood_friendpage/brand.webp";
+import chicken from "../../../../imgAll/imgfood_friendpage/chicken.webp";
+import eggs from "../../../../imgAll/imgfood_friendpage/eggs.webp";
+import hotdog from "../../../../imgAll/imgfood_friendpage/hotdog.webp";
+import lemon from "../../../../imgAll/imgfood_friendpage/lemon.webp";
+import tomato from "../../../../imgAll/imgfood_friendpage/tomato.webp";
+
+const foodImages = [cheese, bread, chicken, eggs, hotdog, lemon, tomato];
 
 function CardFriend({ friend, isSelected, onClick }) {
   const { friend_username, total_cal, goal_cal, avarta } = friend;
 
-  // console.log("frirend---", friend[0]);
+  // เลือกรูปแบบสุ่มถ้าไม่มี avarta
+  const randomImage = foodImages[Math.floor(Math.random() * foodImages.length)];
+  const avatarSrc = avarta || randomImage;
+
   return (
     <div
       className={`${styles.box_friend} ${isSelected ? styles.selected : ""}`}
       onClick={onClick}
     >
       <div className={styles.leftside}>
-        <img src={avarta} alt="Friend Avatar" className={styles.avarta} />
+        <img src={avatarSrc} alt="Friend Avatar" className={styles.avarta} />
         <div className={styles.info}>
           <p style={{ fontWeight: "600", fontSize: "16px" }}>
             {friend_username}

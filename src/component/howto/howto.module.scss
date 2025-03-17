@@ -1,0 +1,120 @@
+/* Modal.module.scss */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  height: auto;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.header{
+    margin-top: 20px;
+    color:  #EF7430;
+    font-weight: bold; 
+}
+.content{
+    margin-top: 20px;
+}
+.section {
+    display: flex; /* ใช้ Flexbox */
+    flex-direction: column; /* เปลี่ยนการจัดเรียงจากแนวนอนเป็นแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลางในแนวนอน */
+    justify-content: flex-start; /* จัดตำแหน่งให้อยู่ที่ด้านบน */
+    /* กำหนดช่องว่างระหว่างรูปภาพและข้อความ */
+    border: 1px solid #EF7430;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.section1_row1 {
+    display: flex; /* ใช้ Flexbox */
+    align-items: center; /* จัดให้อยู่ในแนวกลางตามแกนขวาง */
+    justify-content: flex-start; /* จัดตำแหน่งให้ติดซ้าย */
+    gap: 15px; /* กำหนดช่องว่างระหว่างรูปภาพและข้อความ */
+   
+  }
+
+.section1_row1 img{
+     width: 40px;
+    height: 40px;
+ }
+
+ .section2 {
+    display: flex; /* ใช้ Flexbox */
+    align-items: center; /* จัดให้อยู่ในแนวกลางตามแกนขวาง */
+    justify-content: flex-start; /* จัดตำแหน่งให้ติดซ้าย */
+    gap: 15px; /* กำหนดช่องว่างระหว่างรูปภาพและข้อความ */
+   
+  }
+  .section2 img{
+    width: 60px;
+   height: 60px;
+}
+
+ /* ตัวอย่างใน SCSS */
+.small_text{
+    font-size: 12px; /* ปรับขนาดฟอนต์ตามที่ต้องการ */
+    text-align: center; /* จัดข้อความให้อยู่ตรงกลางในแนวนอน */
+    display: flex;
+    justify-content: center; /* จัดข้อความให้ตรงกลางแนวนอน */
+    align-items: center; /* จัดข้อความให้ตรงกลางในแนวตั้ง */
+    height: 100%; /* ให้แน่ใจว่า div นี้มีความสูงเต็ม */
+    width: 100%; /* ให้แน่ใจว่า div นี้มีความกว้างเต็ม */
+  }
+.small_text_menu{
+    font-size: 12px; /* ปรับขนาดฟอนต์ตามที่ต้องการ */
+    text-align: center; /* จัดข้อความให้อยู่ตรงกลางในแนวนอน */
+    display: flex;
+    justify-content: center; /* จัดข้อความให้ตรงกลางแนวนอน */
+    align-items: center; /* จัดข้อความให้ตรงกลางในแนวตั้ง */
+    height: 100%; /* ให้แน่ใจว่า div นี้มีความสูงเต็ม */
+    width: 100%; /* ให้แน่ใจว่า div นี้มีความกว้างเต็ม */
+    color:  #EF7430;
+    font-weight: bold; 
+}
+
+.button_section{
+    width: 100%;
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 10px;
+} 
+.button_section button{
+    background-color: #EF7430;
+    color: #ffffff;
+    border: none;
+    height: 50px;
+    padding: 12px 0px; 
+    min-width: 200px;    /* ความกว้างขั้นต่ำ */
+    max-width: 400px;    /* กำหนดความกว้างสูงสุดที่ 400px */
+    width: 100%;
+    border-radius: 30px;
+}
