@@ -17,7 +17,7 @@ import goalicon from "./icon/goalicon.png";
 import appleicon from "./icon/appleicon.png";
 import pillicon from "./icon/pillicon.png";
 import exiticon from "./icon/exit.png";
-
+import star from "../../imgAll/img/star.jpg";
 import { getUser } from "../../api/api_user";
 import { useUser } from "../../api/UserContext";
 
@@ -111,9 +111,9 @@ const Profilepage = () => {
                       {user.username}
                     </p>
                   </div>
-                  {/* <p style={{ color: "#747B82", fontWeight: "500" }}>
+                  <p style={{ color: "#747B82", fontWeight: "500" }}>
                     {user.email}
-                  </p> */}
+                  </p>
                 </div>
               </div>
               {/* เส้น */}
@@ -312,6 +312,35 @@ const Profilepage = () => {
                 </div>
               </div>
             </div>
+
+            <div className={styles.logout}>
+              <div className="col-12">
+                <div className={styles.content}>
+                  <div className={styles.contentleft}>
+                    <div className={styles.insideleft}>
+                      <img
+                        src={star}
+                        className={styles.star}
+                        style={{ width: "24px", height: "24px" }}
+                      />
+                    </div>
+                    <a
+                      href="https://forms.gle/uc8iWaWCy8czGSov5" // ลิงก์ Google Form ของคุณ
+                      target="_blank" // เปิดลิงก์ในแท็บใหม่
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "#EF7430 !important",
+                        cursor: "pointer",
+                        fontSize: "16px",
+                      }}
+                    >
+                      ประเมินเว็ปแอปพลิเคชั่น
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* ปุ้ม logout */}
             <div className={styles.logout}>
               <div className="col-12">
