@@ -75,7 +75,7 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
           <p className={styles["gallery-label"]}>คลังภาพ</p>
         </div>
 
-        <div onClick={takePhoto}>
+        <div onClick={takePhoto} className={styles["divtake_photo"]}>
           <img src={takephoto} alt="icon" className={styles["take_photo"]} />
         </div>
 
