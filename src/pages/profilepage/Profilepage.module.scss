@@ -18,7 +18,7 @@
     font-size: 24px;
 }
 .info{
-    margin-left: 12px;
+    // margin-left: 12px;
     margin-top: 40px;
     gap: 16px;
     display: flex;
@@ -31,7 +31,7 @@
 .line {
     margin-top:  22px;
     background-color: #EF7430;
-    width: 90%;
+    width: 100%;
     border-radius: 20px;
     height: 1px;
     position: absolute;
@@ -68,4 +68,7 @@
 }
 .contents {
     flex-grow: 1; /* ดันเนื้อหาหลักให้อยู่ด้านบน */
+}
+.icon__person{
+    width: 40px;
 }

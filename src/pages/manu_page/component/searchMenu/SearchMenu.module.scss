@@ -1,6 +1,6 @@
 .searchMenu {
     display: flex;
-    justify-content: center; /* จัดให้อยู่ตรงกลาง */
+    justify-content: start; /* จัดให้อยู่ตรงกลาง */
     align-items: center;
     width: 100%; /* ใช้ความกว้างเต็ม */
     padding: 0px 5px;
@@ -9,7 +9,7 @@
   .inputWrapper {
     position: relative; /* ใช้สำหรับจัดตำแหน่งไอคอน */
     width: 100%;
-    max-width: 400px; /* กำหนดขนาดความกว้างของกล่อง */
+    max-width: 800px; 
   }
   
   .searchIcon {
@@ -23,7 +23,7 @@
   }
   
   .searchInput {
-    height: 50px;
+    height: 45px;
     letter-spacing: 0.5px;
     width: 100%;
     padding: 10px 10px 10px 55px; /* เพิ่ม padding ซ้ายเพื่อเว้นที่สำหรับไอคอน */
