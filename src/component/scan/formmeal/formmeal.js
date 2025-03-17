@@ -6,7 +6,7 @@ import { getUser } from "../../../api/api_user";
 import { useUser } from "../../../api/UserContext";
 import "./formmealcss.scss"; // ไฟล์ CSS
 import { addMeal } from "../../../api/api_add_meal"; // เรียก API addMeal
-import Succesful from "../successful/successful";
+// import Succesful from "../successful/successful";
 
 import FormMealType from "./formmealtype";
 import FormMealSugar from "./formmealsugar";
@@ -251,8 +251,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
           </button>
         </div>
       </div>
-
-      {/* {step === 5 && <Succesful />} */}
+      {/* เพิ่มมา 4.5 isPopupVisible */}
     </form>
   );
 };
