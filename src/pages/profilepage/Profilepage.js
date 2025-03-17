@@ -85,12 +85,13 @@ const Profilepage = () => {
                 <h3 className={styles.namehead}>โปรไฟล์</h3>
                 <div></div>
               </div>
-              {/* ชื่อ อีเมล */}
+              {/* icon ชื่อ อีเมล */}
               <div className={styles.info}>
                 <img
                   src={user ? imgprofile : imgprofile2} // เช็คว่า user เป็น true หรือ false
                   alt="Iconprofile"
                   className={styles.icon__person}
+                  style={{ width: "40px", height: "40px" }}
                 />
                 <div>
                   <div
