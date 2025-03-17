@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CameraComponent from "../camera/camera";
 import ShowDetail from "../showdetail/showdetail";
+import FormMeal45 from "../formmeal/formmeal4.5";
 import FormMeal from "../formmeal/formmeal";
 import Succesful from "../successful/successful";
 import List from "../list/list";
@@ -87,6 +88,12 @@ const Step = ({ setShowCamera }) => {
         <>
           {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
           <FormMeal selectedMenu={selectedMenu} setStep={setStep} />
+        </>
+      )}
+      {step === 4.5 && selectedMenu && (
+        <>
+          {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
+          <FormMeal45 selectedMenu={selectedMenu} setStep={setStep} />
         </>
       )}
       {step === 5 && <Succesful setShowCamera={handleFormCompletion} />}
