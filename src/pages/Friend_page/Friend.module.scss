@@ -1,5 +1,9 @@
-.wapper{
-    min-height: 100vh;
+.wrapper{
+  background-color: #FFF2EA;
+  min-height: 100vh; 
+  position: relative;
+  padding-bottom: 150px;
+  padding-top: 30px;
 }
 .date{
     color: #915B43;
@@ -112,5 +116,4 @@
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease-in-out;
-
 }

@@ -164,11 +164,8 @@ function Friendpage() {
   return (
     <>
       {/* ส่วนหัวมีheader วันที่ เเอดเพื่อน */}
-      <div className={styles.wrapper} style={{ backgroundColor: "#FBF3E6" }}>
-        <div
-          className="container"
-          style={{ height: "100vh", paddingTop: "30px" }}
-        >
+      <div className={styles.wrapper}>
+        <div className="container">
           <Gobackhead text="เพื่อนของฉัน" link="/home" />
           {/* วันที่เเสดง */}
           <p className={styles.date}>
