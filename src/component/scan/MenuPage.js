@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"; // ✅ เพิ่ม useRef
 import styles from "./MenuPage.module.scss";
-import "../../styles/custom.scss";
+// import "../../styles/custom.scss";
 
 import { useNavigate } from "react-router-dom";
 import FilterButton from "./component/FilterButton";

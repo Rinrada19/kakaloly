@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Camera } from "react-camera-pro";
 import { Scan } from "../../../api/api_scan"; // เรียก API Scan
-import "./cameracss.scss";
+import styles from "./camera.module.scss";
 
 import gallery from "../../../imgAll/icon/gallery.svg";
 import menu_book from "../../../imgAll/icon/menu_book.svg";
-import take_photo from "../../../imgAll/icon/take_photo.svg";
+import takephoto from "../../../imgAll/icon/take_photo.svg";
 
 const CameraComponent = ({ setImage, setStep, setImageData }) => {
   const cameraRef = useRef(null);
@@ -57,36 +57,36 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
   };
 
   return (
-    <div className="camera-container">
-      <div className="video-container">
+    <div className={styles["camera-container"]}>
+      <div className={styles["video-container"]}>
         <Camera ref={cameraRef} facingMode="environment" />
       </div>
 
-      <div className="controls">
-        <button
+      <div className={styles["controls"]}>
+        <div
           onClick={() => fileInputRef.current?.click()}
-          className="gallery-btn"
+          className={styles["gallery-btn"]}
         >
-          <img src={gallery} alt="Gallery icon" className="gallery-icon" />
-          <span className="gallery-label">คลังภาพ</span>
-        </button>
-
-        <button onClick={takePhoto} className="take_photo-btn">
           <img
-            src={take_photo}
-            alt="take_photo icon"
-            className="take_photo-icon"
+            src={gallery}
+            alt="Gallery icon"
+            className={styles["gallery-icon"]}
           />
-        </button>
+          <p className={styles["gallery-label"]}>คลังภาพ</p>
+        </div>
 
-        <button onClick={() => setStep(7)} className="menu_book-btn">
+        <div onClick={takePhoto}>
+          <img src={takephoto} alt="icon" className={styles["take_photo"]} />
+        </div>
+
+        <div onClick={() => setStep(7)} className={styles["menu_book-btn"]}>
           <img
             src={menu_book}
             alt="menu_book icon"
-            className="menu_book-icon"
+            className={styles["menu_book-icon"]}
           />
-          <span className="menu_book-label">เมนู</span>
-        </button>
+          <p className={styles["menu_book-label"]}>เมนู</p>
+        </div>
 
         <input
           type="file"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavItem from "./NavItem"; // เเท็ก a
-import "./navigationbarcss.scss";
+import styles from "./navigationbarcss.module.scss";
 import Step from "../scan/step/step"; // นำเข้า Step.js
 
 //icon  img
@@ -38,12 +38,12 @@ const NavigationBar = () => {
 
   return (
     <nav>
-      <ul className="navcion">
+      <ul className={styles.navcion}>
         <NavItem img={mainicon} label="หน้าเเรก" link="/Home" />
         <NavItem img={historyicon} label="ประวัติ" link="/historypage" />
         <NavItem
           img={photoicon}
-          className="icon-photo"
+          className={styles["icon-photo"]}
           onClick={handleIconClick} // เมื่อคลิกที่ไอคอนจะเปิดกล้อง
         />
 
@@ -51,8 +51,8 @@ const NavigationBar = () => {
         {showCamera && (
           <>
             {/* Overlay คลุมเต็มหน้าจอ เมื่อคลิกที่นี้จะปิดกล้อง */}
-            <div className="overlay" onClick={closeCamera}></div>
-            <div className="section-container">
+            <div className={styles.overlay} onClick={closeCamera}></div>
+            <div className={styles["section-container"]}>
               <Step setShowCamera={setShowCamera} />{" "}
               {/* ส่ง setShowCamera ให้ Step.js */}
             </div>
