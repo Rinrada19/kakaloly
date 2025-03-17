@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRef } from "react"; // นำ useRef เข้ามาใช้งาน
 import { useNavigate } from "react-router-dom";
 
 import { getUser } from "../../../api/api_user";
 import { useUser } from "../../../api/UserContext";
 import "./formmealcss.scss"; // ไฟล์ CSS
 import { addMeal } from "../../../api/api_add_meal"; // เรียก API addMeal
-// import Succesful from "../successful/successful";
 
 import FormMealType from "./formmealtype";
 import FormMealSugar from "./formmealsugar";
 import FormMealMeat from "./formmealmeat";
 import FormMealEgg from "./formmealegg";
 import FormMealRice from "./formmealrice";
-import { Style } from "@mui/icons-material";
 
 const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
   const [selectType, setselectType] = useState(null);
@@ -26,11 +25,12 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
   const { user, setUser } = useUser();
   const [message, setMessage] = useState(""); // State for displaying messages
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  // const [step, setStep] = useState(0); // กำหนดค่าเริ่มต้นของ step เป็น 0
 
+  // const [step, setStep] = useState(0); // กำหนดค่าเริ่มต้นของ step เป็น 0
+  const [eggCount, setEggCount] = useState(0); // Track egg count here
   const token = localStorage.getItem("token");
 
-  const navigate = useNavigate(); // ใช้ useNavigate hook เพื่อเปลี่ยนหน้า
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -73,6 +73,13 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     formState: { errors },
   } = useForm();
 
+  const handleChange = (event) => {
+    setEggCount(Number(event.target.value)); // ✅ ใช้ setEggCount ที่ได้รับจาก props
+  };
+
+  const previousMeat = useRef(selectMeat); // เก็บค่าเนื้อก่อนหน้า
+  const [calorie, setCalorie] = useState(cal); // ใช้ useState แทนการรีเซ็ตค่า
+
   useEffect(() => {
     const meatCalories = {
       ไม่มี: 0,
@@ -102,48 +109,51 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       ปลาหมึก: 100,
     };
 
-    function calculateCalories(default_meat, selectMeat, cal) {
-      let updatedCal = cal;
+    let updatedCal = calorie; // ใช้ค่าของ calorie ที่มีอยู่แล้ว
 
-      if (default_meat !== "none") {
-        updatedCal -= meatCalories[default_meat] || 0;
+    if (selectMeat === default_meat) {
+      return; // หยุดการคำนวณ ถ้า selectMeat เท่ากับ default_meat
+    }
+
+    // ถ้าเลือก default_meat ให้ลบแคลอรี่จากเนื้อที่เลือกล่าสุด
+    if (selectMeat === "default_meat") {
+      const previousMeatCalories = meatCalories[previousMeat.current] || 0; // เอาค่าแคลอรี่จาก previousMeat
+      updatedCal -= previousMeatCalories; // ลบแคลอรี่จากเนื้อเดิม
+    } else {
+      // ถ้าเลือกเนื้อใหม่หรือเปลี่ยนจาก default_meat
+      const selectMeatCalories = meatCalories[selectMeat] || 0;
+      // ถ้า meat ยังไม่เปลี่ยนจาก previousMeat.current ไม่ต้องทำอะไร
+      if (selectMeat !== previousMeat.current) {
+        updatedCal += selectMeatCalories; // เพิ่มแคลอรี่จากเนื้อใหม่
       }
-
-      updatedCal += meatCalories[selectMeat] || 0;
-
-      return updatedCal;
     }
-    let updatedCal = calculateCalories(default_meat, selectMeat, cal);
 
+    // คำนวณน้ำตาล
     let sugar = selectedMenu?.sugar || 0;
-    if (selectSugar === "ไม่มีน้ำตาล") {
-      sugar = 0;
-    } else if (selectSugar === "ใส่น้ำตาล") {
-      sugar += 5;
-    } else if (selectSugar === "ใส่น้ำตาลเยอะ") {
-      sugar += 11;
-    }
+    if (selectSugar === "ไม่มีน้ำตาล") sugar = 0;
+    else if (selectSugar === "ใส่น้ำตาล") sugar += 5;
+    else if (selectSugar === "ใส่น้ำตาลเยอะ") sugar += 11;
 
-    if (selectEgg === "ไข่ดาว") {
-      updatedCal += selectValueEgg * 90;
-    } else if (selectEgg === "ไข่เจียว") {
-      updatedCal += selectValueEgg * 110;
-    } else if (selectEgg === "ไข่ต้ม") {
-      updatedCal += selectValueEgg * 70;
-    }
+    // คำนวณแคลอรี่จากไข่
+    let eggCalories = 0;
+    if (selectEgg === "ไข่ดาว") eggCalories = eggCount * 90;
+    else if (selectEgg === "ไข่เจียว") eggCalories = eggCount * 110;
+    else if (selectEgg === "ไข่ต้ม") eggCalories = eggCount * 70;
 
-    updatedCal += selectRice * 60;
+    // เพิ่มแคลอรี่จากไข่และข้าว
+    updatedCal += eggCalories;
+    updatedCal += selectRice * 60; // คำนวณข้าวเพิ่ม
 
-    setCalories(updatedCal);
+    setCalories(updatedCal); // อัปเดตค่าแคลอรี่
+    previousMeat.current = selectMeat; // อัปเดตค่าเนื้อที่เลือกล่าสุด
   }, [
     selectMeat,
     selectEgg,
-    selectValueEgg,
+    eggCount,
     selectRice,
     selectSugar,
-    default_meat,
-    cal,
     selectedMenu?.sugar,
+    calorie, // เพิ่ม calorie ใน dependency เพื่อให้การคำนวณแคลอรี่อัปเดตได้ถูกต้อง
   ]);
 
   const onSubmit = async (data) => {
@@ -230,7 +240,9 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
         <FormMealEgg
           selectEgg={selectEgg}
           handleEggButtonClick={setselectEgg}
+          handleEggCountChange={setEggCount} // ✅ ส่งฟังก์ชัน setEggCount ไป
         />
+
         <FormMealRice
           selectRice={selectRice}
           handleRiceButtonClick={setselectRice}
@@ -241,7 +253,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
         <div className="button-container">
           <button
-            className="next-button45"
+            className="next-button"
             type="submit" // ต้องใช้ type="submit" เพื่อให้ฟอร์มส่งข้อมูล
             onClick={handleSubmit(onSubmit)} // ใช้ handleSubmit สำหรับส่งฟอร์ม
           >
@@ -249,6 +261,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
           </button>
         </div>
       </div>
+
       {isPopupVisible && (
         <div className="popup-overlay">
           <div className="popup">
