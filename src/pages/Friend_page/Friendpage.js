@@ -227,6 +227,7 @@ function Friendpage() {
                           color: "#ABABAB",
                           marginBottom: "15px",
                           paddingLeft: "5px",
+                          letterSpacing: "0.5px",
                         }}
                       >
                         เพิ่มเพื่อน
@@ -261,12 +262,18 @@ function Friendpage() {
                           fontWeight: "600",
                           fontSize: "16px",
                           color: "#ABABAB",
+                          marginBottom: "5px",
                         }}
                       >
                         ค้นหาเพื่อนของคุณ
                       </p>
                       <div>
                         <input
+                          style={{
+                            fontSize: "14px",
+                            letterSpacing: "0.5px",
+                            height: "38px",
+                          }}
                           type="text"
                           className="form-control"
                           placeholder="กรอกชื่อผู้ใช้เพื่อน"

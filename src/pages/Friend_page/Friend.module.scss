@@ -5,6 +5,7 @@
   padding-bottom: 150px;
   padding-top: 30px;
 }
+
 .date{
     color: #915B43;
     font-size: 16px;
@@ -16,7 +17,7 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     position: fixed;
-    bottom: 50px;
+    bottom: 0; /* ติดขอบล่างของจอ */
     left: 0;
     width: 100%;
     background: #FFFFFF; /* ทำให้ดูโปร่งแสงเล็กน้อย */
@@ -64,7 +65,7 @@
   width: 32px;
 }
 .modal_content{
-  padding: 20px 40px;
+  padding: 20px 50px;
   border-radius: 20px;
   width: 357px;
   height: 433px;
@@ -112,7 +113,7 @@
   height: 40px;
   font-size: 16px;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 30px;
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease-in-out;
@@ -137,4 +138,17 @@
   .modalclose_header{
     margin-right: 0;
   }
+}
+@media screen and (max-width: 321px){
+  .wrapper{
+    padding-bottom: 120px;
+  }
+  .date{
+    padding-bottom: 30px;
+  }
+  .addfriend{
+    width: 30px;
+    margin-right: -20px;
+  }
+
 }
