@@ -33,3 +33,8 @@
     background-color: #EF7430;
     border-radius: 10px;
   }
+  @media (max-width: 321px) {
+    .custom-progress{
+      width: 90%;
+    }
+  }

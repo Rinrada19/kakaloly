@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "./HomeStyle.module.scss";
 import "../../styles/custom.scss";
 import { Link } from "react-router-dom";
 import Header from "../../component/headerUpper/Header";
@@ -87,20 +88,8 @@ function Home() {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "#FFF2EA",
-        minHeight: "100vh",
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          position: "relative",
-          paddingBottom: "150px",
-          paddingTop: "30px",
-        }}
-      >
+    <div className={styles.wrapperall}>
+      <div className="container">
         <div style={{ marginBottom: "40px" }}>
           <Header />
         </div>

@@ -1,6 +1,17 @@
 // src/pages/Home/Home.scss
-
-
+.wrapperall{
+    background-color: #FFF2EA;
+    min-height: 100vh; 
+    position: relative;
+    padding-bottom: 150px;
+    padding-top: 30px;
+}
+@media screen and (max-width: 426px){
+    .wrapperall{
+        padding-bottom: 120px;
+    }
+    
+}
 @import "../../styles/color"; // นำเข้า _colors.scss
 
 // .home {
