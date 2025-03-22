@@ -59,17 +59,17 @@
     display: none;
    } 
    .container{
-    gap: 80px;
+    gap: 100px;
     flex-direction: row;
     align-items: center;
    }
    .responsiveimg1{
-    width: 700px;
+    width: 600px;
    }
 }
 @media (min-width: 1700px) { /* กำหนดจอใหญ่กว่า 768px */
   .responsiveimg1{
-    width: 800px;
+    width: 700px;
    }
    .container{
     gap: 170px;

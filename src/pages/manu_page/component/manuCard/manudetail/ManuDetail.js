@@ -35,7 +35,7 @@ function MenuDetail() {
       <div
         className="container"
         style={{
-          paddingBottom: "30px",
+          paddingBottom: "40px",
           height: "100%",
           backgroundColor: "#FFF2EA",
           display: "flex",
@@ -150,7 +150,9 @@ function MenuDetail() {
                 </p>
               </div>
             </div>
-            <div className={styles.description_food}>{food_description}</div>
+            <div className={styles.container_description}>
+              <div className={styles.description_food}>{food_description}</div>
+            </div>
           </div>
         </div>
 

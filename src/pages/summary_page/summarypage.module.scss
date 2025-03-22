@@ -1,6 +1,14 @@
 .custombackground{
     background-color: #FFF2EA;
-    min-height: 100vh;
-    padding: 30px 0;
+    min-height: 100vh; 
+    position: relative;
     padding-bottom: 150px;
+    padding-top: 30px;
+}
+
+@media screen and (max-width: 426px){
+    .custombackground{
+        padding-bottom: 120px;
+    }
+    
 }

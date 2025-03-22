@@ -1,6 +1,8 @@
 .container{
     background-color: #FFF2EA;
-    height: 100vh;
+    min-height: 100vh; 
+    position: relative;
+    padding-top: 30px;
 }
 .backButton{
     cursor: pointer;
@@ -80,22 +82,40 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 100; // กำหนดค่าต่ำกว่า FormMeal
 }
-.imgdetail{
+.imgdetail {
+    max-width: 700px; /* ความกว้างสูงสุดไม่เกิน 600px */
+    height: auto; /* ปรับอัตโนมัติตามสัดส่วน */
+    display: block; /* ป้องกันการมีระยะขอบล่าง */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
     border-radius: 7%;
-}
+  }
 .description_food {
-    padding: 10px 40px;
+    margin-top: 20px;
+    padding: 0px 40px;
+    margin-bottom: 40px;
   }
-@media only screen and (max-width: 380px) {
+@media screen and (max-width: 769px){
+    .container{
+        padding-top: 20px;
+    } 
+}
+
+@media screen and (max-width: 426px){
+    .container{
+        padding-top: 0px;
+    } 
     .description_food {
-      font-size: 14px;
+        margin-bottom: 30px;
     }
-    .imgdetail{
-        border-radius: 8%;
-        height: 160px;
+}
+@media screen and (max-width: 321px){
+    .info{
+        padding: 4px 20px;    
     }
-    .buttoncontainer {
-        padding-top: 15px;
+    .description_food {
+        margin-top: 0px;
+        font-size: 14px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
     }
-  }
-  
+}

@@ -366,7 +366,7 @@ function Loginpage() {
                     type="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    placeholder="กดปุ่มเพื่อใส่รหัสผ่าน"
+                    placeholder="กรอกรหัสผ่าน"
                     sx={{
                       marginBottom: "6px",
                       borderRadius: "20px",

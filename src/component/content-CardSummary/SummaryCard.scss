@@ -90,15 +90,31 @@ p , h3{
   justify-content: center;
   align-items: center;
   display: flex;
-
 }
 .bar-Allnutrition{
   display: flex;
    gap: 30px;
 }
-@media (max-width: 390px) {
+@media (max-width: 376px) {
   .bar-Allnutrition{
     display: flex;
-    gap: 40px;
+    gap: 30px;
+  }
+}
+@media (max-width: 320px) {
+  .bar-Allnutrition{
+    gap: 20px;
+  }
+  .container-box{
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .summary-detail-info{
+    gap: 10px;
+  }
+  .wrapper-sum{
+    padding: 36px 10px;
   }
 }
