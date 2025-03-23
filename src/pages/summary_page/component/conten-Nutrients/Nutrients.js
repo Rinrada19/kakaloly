@@ -9,8 +9,8 @@ function Nutrients({ nutritionData, waterData }) {
 
   const { sodium, sodium_goal, sugar_goal, sugar } = nutritionData || {};
   const { water } = waterData || { water: {} };
-  console.log("waterData", waterData);
-  console.log("waterrr", waterData?.water_amount);
+  // console.log("waterData", waterData);
+  // console.log("waterrr", waterData?.water_amount);
 
   return (
     <div className={styles["warpperAllnutrition"]}>

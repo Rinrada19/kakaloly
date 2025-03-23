@@ -22,7 +22,7 @@ function Home() {
   const [waterData, setWaterData] = useState(null); // สถานะเก็บข้อมูลน้ำดื่ม
 
   const token = localStorage.getItem("token");
-  console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
+  // console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
 
   // ดึงข้อมูล user จาก API
   useEffect(() => {
@@ -62,7 +62,7 @@ function Home() {
 
     fetchNutritionData();
   }, []);
-  console.log("NutritionData---", nutritionData);
+  // console.log("NutritionData---", nutritionData);
   // ดึงข้อมูลน้ำดื่มจาก API
   useEffect(() => {
     const fetchWaterData = async () => {

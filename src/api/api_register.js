@@ -26,7 +26,7 @@ export const registerUser = async (data) => {
 
     return response.data; // ส่งข้อมูลกลับ
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการลงทะเบียน: ", error); // แสดงข้อผิดพลาด
+    // console.error("เกิดข้อผิดพลาดในการลงทะเบียน: ", error); // แสดงข้อผิดพลาด
     throw error; // ส่งข้อผิดพลาดออกไป
   }
 };

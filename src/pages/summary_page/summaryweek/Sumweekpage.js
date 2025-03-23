@@ -34,7 +34,7 @@ const WeeklySummary = () => {
           setError("ข้อมูลที่ได้รับไม่ถูกต้อง");
         }
       } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
+        //   console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
         setError("เกิดข้อผิดพลาดในการดึงข้อมูล");
       } finally {
         setLoading(false); // ปิดสถานะโหลด
@@ -58,8 +58,8 @@ const WeeklySummary = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  console.log("eatWeekall----", eatWeekall);
-  console.log("eatWeek----", eatWeek);
+  // console.log("eatWeekall----", eatWeekall);
+  // console.log("eatWeek----", eatWeek);
   return (
     <div className={styles.custombackground}>
       <div

@@ -18,7 +18,7 @@ const MealsSection = () => {
 
   const fetchMeals = async () => {
     if (!token) {
-      console.error("ไม่พบ token");
+      // console.error("ไม่พบ token");
       return;
     }
 
@@ -41,7 +41,7 @@ const MealsSection = () => {
         setMeals([]); // ป้องกันกรณีข้อมูลไม่ถูกต้อง
       }
     } catch (error) {
-      console.error("ไม่สามารถดึงข้อมูลมื้ออาหารได้", error);
+      // console.error("ไม่สามารถดึงข้อมูลมื้ออาหารได้", error);
       setMeals([]); // กำหนดให้ไม่มีข้อมูล
       setError("ไม่สามารถดึงข้อมูลได้");
     } finally {
@@ -65,6 +65,7 @@ const MealsSection = () => {
     Breakfast: [],
     Lunch: [],
     Dinner: [],
+    Others: [], // เพิ่มหมวดหมู่อื่นๆ
   };
 
   if (Array.isArray(meals) && meals.length > 0) {
@@ -81,6 +82,8 @@ const MealsSection = () => {
         groupedMeals.Lunch.push(meal);
       } else if (mealType === "มื้อเย็น" || mealType === "Dinner") {
         groupedMeals.Dinner.push(meal);
+      } else {
+        groupedMeals.Others.push(meal); // ถ้าไม่ตรงเงื่อนไขไหนเลย ให้จัดอยู่ใน "อื่นๆ"
       }
     });
   }
@@ -90,7 +93,9 @@ const MealsSection = () => {
     { name: "มื้อเช้า", meals: groupedMeals.Breakfast },
     { name: "มื้อเที่ยง", meals: groupedMeals.Lunch },
     { name: "มื้อเย็น", meals: groupedMeals.Dinner },
+    { name: "อื่นๆ", meals: groupedMeals.Others }, // เพิ่มหมวดหมู่อื่นๆ
   ];
+
   // console.log("Grouped Meals:", groupedMeals);
 
   return (

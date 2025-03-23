@@ -6,6 +6,7 @@ import { deleteFood } from "../../../api/api_meal";
 import iconMorning from "../../../imgAll/icon/iconicon-morningfood.webp";
 import iconLunch from "../../../imgAll/icon/icon-lunchfood.webp";
 import iconDinner from "../../../imgAll/icon/icon-dinnerfood.webp";
+import iconVegetables from "../../../imgAll/icon//icon-vegetabless.png";
 
 const MealItem = ({ mealItem, deleteFoodItem, token }) => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -16,14 +17,14 @@ const MealItem = ({ mealItem, deleteFoodItem, token }) => {
 
   // ฟังชันต้องกดค้าง 0.8 วิ
   const handleClick = (item) => {
-    console.log("Item ที่ได้รับ:", item); // เพิ่มการ log เพื่อดูค่าของ item
+    // console.log("Item ที่ได้รับ:", item); // เพิ่มการ log เพื่อดูค่าของ item
     if (!item.meal_id) {
-      console.error("ไม่พบ ID สำหรับรายการนี้");
+      //  console.error("ไม่พบ ID สำหรับรายการนี้");
       return;
     }
     setSelectedItem(item);
     setShowConfirm(true); // แสดง modal ยืนยันการลบเมื่อคลิก
-    console.log("กดเเล้ว จะถูกไปส่งในdelete:", item.meal_id);
+    // console.log("กดเเล้ว จะถูกไปส่งในdelete:", item.meal_id);
   };
   const handleMouseEnter = (item) => {
     setHoveredItem(item);
@@ -38,25 +39,25 @@ const MealItem = ({ mealItem, deleteFoodItem, token }) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      console.error("ไม่พบ Token");
+      //   console.error("ไม่พบ Token");
       return; // หยุดทำงานถ้าไม่มี Token
     }
 
     if (!selectedItem || !selectedItem.meal_id) {
-      console.error("ID ของเมนูไม่ถูกต้อง");
+      //   console.error("ID ของเมนูไม่ถูกต้อง");
       return; // หยุดทำงานถ้าไม่พบ ID
     }
 
-    console.log("Item ที่จะลบ:", selectedItem);
+    // console.log("Item ที่จะลบ:", selectedItem);
     try {
       // ส่ง meal_id และ token ไปยังฟังก์ชัน deleteFood
       await deleteFood(selectedItem.meal_id, token);
       deleteFoodItem(selectedItem.meal_id); // ใช้ meal_id ในการลบ
-      console.log("Item ที่จะลบ:", selectedItem); //
-      console.log(`ลบ "${selectedItem.food_name}" สำเร็จ`);
+      // console.log("Item ที่จะลบ:", selectedItem); //
+      // console.log(`ลบ "${selectedItem.food_name}" สำเร็จ`);
       setShowConfirm(false);
     } catch (error) {
-      console.error("เกิดข้อผิดพลาดในการลบ:", error);
+      // console.error("เกิดข้อผิดพลาดในการลบ:", error);
     }
   };
 
@@ -75,6 +76,8 @@ const MealItem = ({ mealItem, deleteFoodItem, token }) => {
         return iconLunch;
       case "มื้อเย็น":
         return iconDinner;
+      case "อื่นๆ": // เพิ่มกรณี "อื่นๆ"
+        return iconVegetables;
       default:
         return null;
     }

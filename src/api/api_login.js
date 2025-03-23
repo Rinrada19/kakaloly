@@ -56,7 +56,7 @@ export const loginUser = async (data) => {
   try {
     // เรียก API login
     const response = await axios.post(
-      "http://54.79.173.230:5000/users/login", // แก้ URL
+      "https://kakalolyapi.org/users/login", // แก้ URL
       data,
       {
         withCredentials: true, // ส่ง cookies หรือ session credentials
@@ -79,24 +79,24 @@ export const loginUser = async (data) => {
       throw new Error("No data received from login");
     }
   } catch (error) {
-    console.error(
-      "Login error:",
-      error.response ? error.response.data : error.message
-    );
+    // console.error(
+    //   "Login error:",
+    //   error.response ? error.response.data : error.message
+    // );
 
     // ถ้ามี response ข้อผิดพลาดจาก API ให้แสดงผลลัพธ์ที่ได้รับ
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("Invalid credentials, please check your login details.");
+        // console.error("Invalid credentials, please check your login details.");
       }
       return {
         error: error.response.data || "An error occurred during login.",
       };
     } else if (error.request) {
-      console.error("No response received from server:", error.request);
+      // console.error("No response received from server:", error.request);
       return { error: "Server did not respond. Please try again later." };
     } else {
-      console.error("Unexpected error:", error.message);
+      // console.error("Unexpected error:", error.message);
       return { error: "An unexpected error occurred. Please try again." };
     }
   }

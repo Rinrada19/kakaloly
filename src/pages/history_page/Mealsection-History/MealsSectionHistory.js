@@ -12,7 +12,7 @@ const MealsSectionHistory = ({ date, token }) => {
   // ฟังก์ชันในการดึงข้อมูลมื้ออาหารตามวันที่
   const fetchMealsByDate = async () => {
     if (!date) {
-      console.error("ไม่พบวันที่");
+      //   console.error("ไม่พบวันที่");
       return;
     }
 
@@ -20,7 +20,7 @@ const MealsSectionHistory = ({ date, token }) => {
     setError(null);
 
     try {
-      console.log("กำลังดึงข้อมูลมื้ออาหารสำหรับวันที่: ", date);
+      // console.log("กำลังดึงข้อมูลมื้ออาหารสำหรับวันที่: ", date);
       const fetchedMeals = await getMealDate(date, token);
 
       if (
@@ -34,7 +34,7 @@ const MealsSectionHistory = ({ date, token }) => {
         setMeals([]); // ป้องกันกรณีข้อมูลไม่ถูกต้อง
       }
     } catch (error) {
-      console.error("เกิดข้อผิดพลาดในการดึงข้อมูลมื้ออาหาร:", error);
+      // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลมื้ออาหาร:", error);
       setMeals([]); // กำหนดเป็น [] ถ้าเกิด error
       setError("ไม่สามารถดึงข้อมูลได้");
     } finally {

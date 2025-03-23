@@ -23,7 +23,7 @@ const Water = ({ waterData, token }) => {
 
     // ตรวจสอบว่าเป็นตัวเลขที่ถูกต้องหรือไม่
     if (isNaN(filledGlassesCount) || filledGlassesCount <= 0) {
-      console.error("Invalid water amount provided");
+      //  console.error("Invalid water amount provided");
       return;
     }
 

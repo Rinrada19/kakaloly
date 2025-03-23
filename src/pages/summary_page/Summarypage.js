@@ -30,10 +30,10 @@ function Summarypage() {
           setNutritionData(data); // อัปเดตสถานะด้วยข้อมูลที่ได้รับ
           // console.log("userrrrrrrrrrrrrr", user);
         } else {
-          console.error("Token is missing or invalid.");
+          //     console.error("Token is missing or invalid.");
         }
       } catch (error) {
-        console.error("Error fetching nutrition data:", error);
+        //   console.error("Error fetching nutrition data:", error);
       } finally {
         setLoading(false); // ตั้งสถานะโหลดข้อมูลเป็น false
       }
@@ -41,7 +41,7 @@ function Summarypage() {
 
     fetchNutritionData();
   }, [token]);
-  console.log("nutritionData-----", nutritionData);
+  // console.log("nutritionData-----", nutritionData);
   useEffect(() => {
     const fetchWaterData = async () => {
       if (token) {

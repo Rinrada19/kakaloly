@@ -108,7 +108,7 @@ function Loginpage() {
           setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
         }
       } catch (error) {
-        console.error("❌ Error checking email:", error);
+        //  console.error("❌ Error checking email:", error);
         setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
       }
     }
@@ -152,7 +152,7 @@ function Loginpage() {
   };
 
   const checkEmailAvailability = async (email) => {
-    const res = await fetch("http://54.79.173.230:5000/users/check-email", {
+    const res = await fetch("https://kakalolyapi.org/users/check-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -162,7 +162,7 @@ function Loginpage() {
   };
 
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
+    const res = await fetch("https://kakalolyapi.org/users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
@@ -198,7 +198,7 @@ function Loginpage() {
       // ล็อกอินสำเร็จจึงเปลี่ยนหน้า
       navigate("/Home");
     } catch (error) {
-      console.error("การล็อกอินไม่สำเร็จ:", error);
+      //    console.error("การล็อกอินไม่สำเร็จ:", error);
 
       alert("การล็อกอินไม่สำเร็จ");
     }

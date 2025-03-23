@@ -70,7 +70,7 @@ const CreateMenu = ({ setStep }) => {
     try {
       // ส่งข้อมูลไปยัง API
       const response = await postManuitem(menuData, token);
-      console.log("Response from API:", response);
+      // console.log("Response from API:", response);
 
       if (response.error) {
         alert("เกิดข้อผิดพลาด: " + response.error);
@@ -91,7 +91,7 @@ const CreateMenu = ({ setStep }) => {
   };
 
   const handleGoToStep7 = () => {
-    console.log("✅ Going to step 7");
+    // console.log("✅ Going to step 7");
     setStep(7);
   };
 

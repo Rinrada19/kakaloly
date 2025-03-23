@@ -26,17 +26,17 @@ export const getEatDate = async (date) => {
 
     return response.data;
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลโภชนาการที่ทานวันนี้:", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลโภชนาการที่ทานวันนี้:", error);
 
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("Token is invalid or expired, please refresh the token.");
+        // console.error("Token is invalid or expired, please refresh the token.");
       }
-      console.error("Response error:", error.response.data);
+      // console.error("Response error:", error.response.data);
     } else if (error.request) {
-      console.error("No response received:", error.request);
+      // console.error("No response received:", error.request);
     } else {
-      console.error("Error details:", error.message);
+      // console.error("Error details:", error.message);
     }
 
     throw error;

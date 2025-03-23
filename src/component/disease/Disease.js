@@ -5,8 +5,8 @@ import "./Diseasecss.scss"; // นำเข้าไฟล์ SCSS ปกติ
 
 const Disease = () => {
   const { user } = useUser(); // ใช้ข้อมูล user จาก Context
-  console.log("userrr", user);
-  console.log("userrr--", user.congenital_disease);
+  // console.log("userrr", user);
+  // console.log("userrr--", user.congenital_disease);
 
   let advice = "";
 

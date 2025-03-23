@@ -187,7 +187,7 @@ export const postWater = async (waterAmount) => {
     // จัดการข้อผิดพลาดเพิ่มเติม
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("Token is invalid or expired, please refresh the token.");
+        //  console.error("Token is invalid or expired, please refresh the token.");
       }
       // console.error("Response error:", error.response.data);
     } else if (error.request) {

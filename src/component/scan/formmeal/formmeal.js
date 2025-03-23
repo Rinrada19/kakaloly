@@ -37,7 +37,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
             setUser(response[0]);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          //      console.error("Error fetching user data:", error);
         } finally {
           setLoading(false);
         }
@@ -153,7 +153,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
 
   const onSubmit = async (data) => {
     if (!selectedMenu || !user.user_id) {
-      console.error("Missing selected menu or user_id");
+      //   console.error("Missing selected menu or user_id");
       return;
     }
 
@@ -173,24 +173,24 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       sodium: selectedMenu.sodium || 0,
     };
 
-    console.log("Data being sent:", mealData);
+    // console.log("Data being sent:", mealData);
 
     try {
       const response = await addMeal(mealData);
-      console.log("API response:", response);
+      // console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
-        console.log("Meal added successfully");
+        // console.log("Meal added successfully");
         setStep(5); // ✅ อัปเดตไปยังขั้นตอน 5
       } else {
-        console.error("Meal creation failed:", response?.message);
+        //     console.error("Meal creation failed:", response?.message);
       }
     } catch (error) {
-      console.error("Error adding meal:", error.response || error);
+      //   console.error("Error adding meal:", error.response || error);
     }
   };
 
-  console.log("foodis---", selectedMenu?.food_id);
+  // console.log("foodis---", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
     setselectType(meal);
   };

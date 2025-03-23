@@ -33,7 +33,7 @@ export const getUser = async (data, token) => {
     // คืนค่าข้อมูลที่ได้รับจาก API
     return response.data;
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้: ", error);
+    //  console.error("เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้: ", error);
 
     // ตรวจสอบว่า error.response มีค่าและสถานะเป็น 401 หรือไม่
     if (error.response && error.response.status === 401) {
