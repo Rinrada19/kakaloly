@@ -6,15 +6,22 @@ import { TextField, Button } from "@mui/material";
 import ToggleButton from "../login&register/ButtonLoginandRegister/ToggleButton";
 //import { registerUser } from "../../api/api_register.js"; // ตรวจสอบให้แน่ใจว่า path ถูกต้อง
 import { loginUser } from "../../api/api_login.js"; // ตรวจสอบให้แน่ใจว่า path ถูกต้อง
+import InputAdornment from "@mui/material/InputAdornment";
 
-//img
+//img icon
 import imgfood1 from "../../imgAll/img/imgfood1.webp";
+import PersonIcon from "@mui/icons-material/Person";
+import LockIcon from "@mui/icons-material/Lock";
+import EmailIcon from "@mui/icons-material/Email";
+import PasswordIcon from "@mui/icons-material/Password";
+import KeyIcon from "@mui/icons-material/Key";
 
 function Loginpage() {
   const [activeTab, setActiveTab] = useState("login");
 
   const navigate = useNavigate(); // ใช้เพื่อเปลี่ยนหน้า
   const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState(""); // เพิ่ม state สำหรับ emailErrorMessage
 
   const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] =
@@ -37,6 +44,9 @@ function Loginpage() {
       ...prevData,
       [name]: value,
     }));
+  };
+  const handleForgotPasswordClick = () => {
+    navigate("/forgot-password"); // กำหนดเส้นทางที่ต้องการนำทางไป
   };
 
   useEffect(() => {
@@ -68,41 +78,41 @@ function Loginpage() {
     }
   };
 
-  // const handleInputEmailChange = async (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
+  const handleInputEmailChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
 
-  //   if (name === "email") {
-  //     const emailValue = value.trim();
+    if (name === "email") {
+      const emailValue = value.trim();
 
-  //     // ตรวจสอบว่าอีเมลมี @ หรือไม่
-  //     if (!emailValue.includes("@")) {
-  //       setEmailErrorMessage("อีเมลต้องมี @");
-  //       return;
-  //     }
+      // ตรวจสอบว่าอีเมลมี @ หรือไม่
+      if (!emailValue.includes("@")) {
+        setEmailErrorMessage("อีเมลต้องมี @");
+        return;
+      }
 
-  //     try {
-  //       // console.log(`🔍 Checking email availability for: ${emailValue}`);
-  //       const isEmailAvailable = await checkEmailAvailability(emailValue);
-  //       // console.log("✅ API Response:", isEmailAvailable);
+      try {
+        // console.log(`🔍 Checking email availability for: ${emailValue}`);
+        const isEmailAvailable = await checkEmailAvailability(emailValue);
+        // console.log("✅ API Response:", isEmailAvailable);
 
-  //       // ตรวจสอบค่าที่ได้รับจาก API
-  //       if (isEmailAvailable === false) {
-  //         setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
-  //       } else if (typeof isEmailAvailable === "string") {
-  //         setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
-  //       } else {
-  //         setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
-  //       }
-  //     } catch (error) {
-  //       console.error("❌ Error checking email:", error);
-  //       setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
-  //     }
-  //   }
-  // };
+        // ตรวจสอบค่าที่ได้รับจาก API
+        if (isEmailAvailable === false) {
+          setEmailErrorMessage("อีเมลนี้ถูกใช้ไปแล้ว");
+        } else if (typeof isEmailAvailable === "string") {
+          setEmailErrorMessage(isEmailAvailable); // ใช้ข้อความที่ API ส่งมา
+        } else {
+          setEmailErrorMessage(""); // อีเมลใช้ได้ ไม่มี error
+        }
+      } catch (error) {
+        console.error("❌ Error checking email:", error);
+        setEmailErrorMessage("เกิดข้อผิดพลาดในการตรวจสอบอีเมล");
+      }
+    }
+  };
   // const [PasswordErrorMessage, setPasswordErrorMessage] = useState("");
   // const [confirmPasswordErrorMessage, setconfirmPasswordErrorMessage] = useState("");
 
@@ -141,8 +151,18 @@ function Loginpage() {
     }
   };
 
+  const checkEmailAvailability = async (email) => {
+    const res = await fetch("http://54.79.173.230:5000/users/check-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const result = await res.json();
+    return result.available || result.message;
+  };
+
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("https://kakalolyapi.org/users/check-username", {
+    const res = await fetch("http://54.79.173.230:5000/users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
@@ -283,8 +303,9 @@ function Loginpage() {
                     fullWidth
                     value={formData.username}
                     onChange={handleInputChange}
-                    placeholder=" "
+                    placeholder="ชื่อผู้ใช้"
                     sx={{
+                      display: "flex",
                       marginBottom: "6px",
                       borderRadius: "20px",
                       width: "100%",
@@ -298,11 +319,30 @@ function Loginpage() {
                       },
                     }}
                     InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PersonIcon
+                            style={{
+                              color: "#EF7430",
+                              fontSize: "16px",
+                              marginBottom: "2px",
+                            }}
+                          />
+                        </InputAdornment>
+                      ),
                       style: {
                         borderRadius: "20px",
-                        fontSize: "16px",
                         color: "gray",
                       },
+                    }}
+                    inputProps={{
+                      style: {
+                        fontSize: "14px",
+                        fontFamily: "'FC Minimal', sans-serif",
+                        letterSpacing: "1px",
+                        color: "#ff7528",
+                        fontWeight: "400",
+                      }, // ✅ แก้ไขตรงนี้
                     }}
                   />
                 </div>
@@ -326,7 +366,7 @@ function Loginpage() {
                     type="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    placeholder=" "
+                    placeholder="กรอกรหัสผ่าน"
                     sx={{
                       marginBottom: "6px",
                       borderRadius: "20px",
@@ -341,13 +381,42 @@ function Loginpage() {
                       },
                     }}
                     InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <LockIcon
+                            style={{ color: "#EF7430", fontSize: "16px" }}
+                          />
+                        </InputAdornment>
+                      ),
                       style: {
-                        borderRadius: "20px",
-                        fontSize: "16px",
-                        color: "gray",
+                        fontSize: "14px",
+                        fontFamily: "'FC Minimal', sans-serif",
+                        letterSpacing: "1px",
+                        color: "#ff7528",
+                        fontWeight: "400",
                       },
                     }}
                   />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginTop: "5px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "#BD9D8E",
+                      fontWeight: "600",
+                      letterSpacing: "0.5px",
+                      paddingRight: "6px",
+                    }}
+                    onClick={handleForgotPasswordClick}
+                  >
+                    ลืมรหัสผ่าน?
+                  </p>
                 </div>
                 {/* ปุ่มเข้าสู่ระบบ */}
                 <Button
@@ -394,11 +463,11 @@ function Loginpage() {
                       fullWidth
                       value={formData.username}
                       onChange={handleInputUsernameChange}
-                      placeholder=" "
+                      placeholder="กรอกชื่อผู้ใช้"
                       sx={{
                         marginBottom: "6px",
                         borderRadius: "20px",
-                        width: "100%",
+                        width: "267px",
                         height: "36px",
                         "& .MuiOutlinedInput-root": {
                           borderRadius: "20px",
@@ -408,12 +477,32 @@ function Loginpage() {
                         "& fieldset": {
                           borderColor: usernameErrorMessage ? "red" : "#915B43",
                         },
+                        "& .MuiInputBase-input::placeholder": {
+                          fontSize: "14px",
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: usernameErrorMessage ? "red" : "#ff7528", // เปลี่ยนสีข้อความ placeholder เป็นแดงเมื่อมีข้อผิดพลาด
+                        },
                       }}
                       InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PersonIcon
+                              style={{
+                                color: usernameErrorMessage ? "red" : "#EF7430",
+                                fontSize: "16px",
+                                marginTop: "3px",
+                              }}
+                            />
+                          </InputAdornment>
+                        ),
                         style: {
                           borderRadius: "20px",
                           fontSize: "16px",
-                          color: usernameErrorMessage ? "red" : "gray", // เปลี่ยนสีข้อความให้เป็นแดงเมื่อมีข้อผิดพลาด
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: usernameErrorMessage ? "red" : "gray",
+                          paddingBottom: "3px",
                         },
                       }}
                     />
@@ -423,9 +512,85 @@ function Loginpage() {
                           color: "red",
                           fontSize: "12px",
                           marginTop: "4px",
+                          paddingTop: "5px",
                         }}
                       >
                         {usernameErrorMessage}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className={styles.formfield}>
+                    <p
+                      style={{
+                        color: "#915B43",
+                        fontWeight: "600",
+                        letterSpacing: "0.5px",
+                        marginBottom: "4px",
+                        width: "267px",
+                        paddingLeft: "6px",
+                      }}
+                    >
+                      อีเมล
+                    </p>
+                    <TextField
+                      name="email"
+                      variant="outlined"
+                      fullWidth
+                      value={formData.email}
+                      onChange={handleInputEmailChange}
+                      placeholder="กรอกอีเมล"
+                      sx={{
+                        marginBottom: "6px",
+                        borderRadius: "20px",
+                        width: "100%",
+                        height: "36px",
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: "20px",
+                          height: "36px",
+                          borderColor: emailErrorMessage ? "red" : "#915B43",
+                        },
+                        "& fieldset": {
+                          borderColor: emailErrorMessage ? "red" : "#915B43",
+                        },
+                        "& .MuiInputBase-input::placeholder": {
+                          fontSize: "14px",
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: emailErrorMessage ? "red" : "#EF7430", // เปลี่ยนสีข้อความ placeholder เป็นแดงเมื่อมีข้อผิดพลาด
+                        },
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon
+                              style={{
+                                color: emailErrorMessage ? "red" : "#EF7430",
+                                fontSize: "16px",
+                                marginTop: "5px",
+                              }}
+                            />
+                          </InputAdornment>
+                        ),
+                        style: {
+                          borderRadius: "20px",
+                          fontSize: "16px",
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: emailErrorMessage ? "red" : "gray",
+                          paddingBottom: "2px",
+                        },
+                      }}
+                    />
+                    {emailErrorMessage && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {emailErrorMessage}
                       </p>
                     )}
                   </div>
@@ -451,7 +616,7 @@ function Loginpage() {
                       type="password"
                       value={formData.password}
                       onChange={handlePasswordChange}
-                      placeholder=" "
+                      placeholder="กรอกรหัสผ่าน"
                       sx={{
                         marginBottom: "6px",
                         borderRadius: "20px",
@@ -463,6 +628,25 @@ function Loginpage() {
                         },
                         "& fieldset": {
                           borderColor: PasswordErrorMessage ? "red" : "#915B43",
+                        },
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PasswordIcon
+                              style={{
+                                color: PasswordErrorMessage ? "red" : "#EF7430", // เปลี่ยนสีไอคอนเมื่อมีข้อผิดพลาด
+                                fontSize: "16px",
+                              }}
+                            />
+                          </InputAdornment>
+                        ),
+                        style: {
+                          borderRadius: "20px",
+                          fontSize: "14px",
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: PasswordErrorMessage ? "red" : "#EF7430", // เปลี่ยนสีข้อความเมื่อมีข้อผิดพลาด
                         },
                       }}
                     />
@@ -499,7 +683,7 @@ function Loginpage() {
                       type="password"
                       value={formData.confirmPassword}
                       onChange={handleConfirmPasswordChange}
-                      placeholder=" "
+                      placeholder="กรอกยืนยันรหัสผ่าน"
                       sx={{
                         marginBottom: "6px",
                         borderRadius: "20px",
@@ -513,6 +697,29 @@ function Loginpage() {
                           borderColor: confirmPasswordErrorMessage
                             ? "red"
                             : "#915B43",
+                        },
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <KeyIcon
+                              style={{
+                                color: confirmPasswordErrorMessage
+                                  ? "red"
+                                  : "#EF7430", // เปลี่ยนสีไอคอนเมื่อมีข้อผิดพลาด
+                                fontSize: "16px",
+                              }}
+                            />
+                          </InputAdornment>
+                        ),
+                        style: {
+                          borderRadius: "20px",
+                          fontSize: "14px",
+                          fontFamily: "'FC Minimal', sans-serif",
+                          letterSpacing: "0.5px",
+                          color: confirmPasswordErrorMessage
+                            ? "red"
+                            : "#EF7430", // เปลี่ยนสีข้อความเมื่อมีข้อผิดพลาด
                         },
                       }}
                     />

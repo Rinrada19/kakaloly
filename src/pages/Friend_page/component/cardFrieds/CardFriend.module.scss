@@ -12,7 +12,7 @@
 .avarta{
     width: 50px;
     height: 50px;
-    border: 1px solid black;
+    border: 1px solid #EF7430;
     border-radius: 80px;
 }
 .leftside{
@@ -25,4 +25,20 @@
 }
 .selected {
     background-color: #FFE1CC; /* สีพื้นหลังเมื่อ card ถูกเลือก */
+}
+//reponsive
+@media screen and (max-width: 426px){
+    .box_friend{
+        margin: 0 15px;
+        gap: 30px;
+    }
+}
+@media screen and (max-width: 321px){
+    .box_friend{
+        margin: 0 0px;
+        gap: 25px;
+    }
+    .leftside{
+        gap: 10px;
+    }
 }

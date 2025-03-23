@@ -20,3 +20,30 @@
 .header__left{
     background-color: red;
 }
+.icon__person{
+    border: 1px solid #EF7430;
+    border-radius: 180px;
+    width: 45px;
+}
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 12px; // เพิ่มระยะห่างระหว่างไอคอน
+  }
+ 
+
+  .howto svg{
+    width: 30px;
+    height: 30px;  
+
+  }
+  .howto {
+    background-color: transparent;  /* ไม่มีสีพื้นหลัง */
+    border: none;  /* เอาขอบออก */
+    padding: 0;  /* เอาระยะขอบออก */
+    cursor: pointer;  /* ให้เคอร์เซอร์เปลี่ยนเป็นมือเมื่อ hover */
+    display: flex;  /* เพื่อจัดตำแหน่งไอคอนให้ดี */
+    align-items: center;
+    justify-content: center;
+  }
+  

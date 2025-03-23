@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRef } from "react"; // นำ useRef เข้ามาใช้งาน
 
 import { getUser } from "../../../api/api_user";
 import { useUser } from "../../../api/UserContext";
 import "./formmealcss.scss"; // ไฟล์ CSS
 import { addMeal } from "../../../api/api_add_meal"; // เรียก API addMeal
 import Succesful from "../successful/successful";
+
+import FormMealType from "./formmealtype";
+import FormMealSugar from "./formmealsugar";
+import FormMealMeat from "./formmealmeat";
+import FormMealEgg from "./formmealegg";
+import FormMealRice from "./formmealrice";
 
 const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [selectType, setselectType] = useState(null);
@@ -17,7 +24,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useUser();
   // const [step, setStep] = useState(0); // กำหนดค่าเริ่มต้นของ step เป็น 0
-
+  const [eggCount, setEggCount] = useState(0); // Track egg count here
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -61,6 +68,13 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     formState: { errors },
   } = useForm();
 
+  const handleChange = (event) => {
+    setEggCount(Number(event.target.value)); // ✅ ใช้ setEggCount ที่ได้รับจาก props
+  };
+
+  const previousMeat = useRef(selectMeat); // เก็บค่าเนื้อก่อนหน้า
+  const [calorie, setCalorie] = useState(cal); // ใช้ useState แทนการรีเซ็ตค่า
+
   useEffect(() => {
     const meatCalories = {
       ไม่มี: 0,
@@ -87,50 +101,54 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       สันในวัว: 190,
       ปู: 97,
       ปูทอด: 250,
+      ปลาหมึก: 100,
     };
 
-    function calculateCalories(default_meat, selectMeat, cal) {
-      let updatedCal = cal;
+    let updatedCal = calorie; // ใช้ค่าของ calorie ที่มีอยู่แล้ว
 
-      if (default_meat !== "none") {
-        updatedCal -= meatCalories[default_meat] || 0;
+    if (selectMeat === default_meat) {
+      return; // หยุดการคำนวณ ถ้า selectMeat เท่ากับ default_meat
+    }
+
+    // ถ้าเลือก default_meat ให้ลบแคลอรี่จากเนื้อที่เลือกล่าสุด
+    if (selectMeat === "default_meat") {
+      const previousMeatCalories = meatCalories[previousMeat.current] || 0; // เอาค่าแคลอรี่จาก previousMeat
+      updatedCal -= previousMeatCalories; // ลบแคลอรี่จากเนื้อเดิม
+    } else {
+      // ถ้าเลือกเนื้อใหม่หรือเปลี่ยนจาก default_meat
+      const selectMeatCalories = meatCalories[selectMeat] || 0;
+      // ถ้า meat ยังไม่เปลี่ยนจาก previousMeat.current ไม่ต้องทำอะไร
+      if (selectMeat !== previousMeat.current) {
+        updatedCal += selectMeatCalories; // เพิ่มแคลอรี่จากเนื้อใหม่
       }
-
-      updatedCal += meatCalories[selectMeat] || 0;
-
-      return updatedCal;
     }
-    let updatedCal = calculateCalories(default_meat, selectMeat, cal);
 
+    // คำนวณน้ำตาล
     let sugar = selectedMenu?.sugar || 0;
-    if (selectSugar === "ไม่มีน้ำตาล") {
-      sugar = 0;
-    } else if (selectSugar === "ใส่น้ำตาล") {
-      sugar += 5;
-    } else if (selectSugar === "ใส่น้ำตาลเยอะ") {
-      sugar += 11;
-    }
+    if (selectSugar === "ไม่มีน้ำตาล") sugar = 0;
+    else if (selectSugar === "ใส่น้ำตาล") sugar += 5;
+    else if (selectSugar === "ใส่น้ำตาลเยอะ") sugar += 11;
 
-    if (selectEgg === "ไข่ดาว") {
-      updatedCal += selectValueEgg * 90;
-    } else if (selectEgg === "ไข่เจียว") {
-      updatedCal += selectValueEgg * 110;
-    } else if (selectEgg === "ไข่ต้ม") {
-      updatedCal += selectValueEgg * 70;
-    }
+    // คำนวณแคลอรี่จากไข่
+    let eggCalories = 0;
+    if (selectEgg === "ไข่ดาว") eggCalories = eggCount * 90;
+    else if (selectEgg === "ไข่เจียว") eggCalories = eggCount * 110;
+    else if (selectEgg === "ไข่ต้ม") eggCalories = eggCount * 70;
 
-    updatedCal += selectRice * 60;
+    // เพิ่มแคลอรี่จากไข่และข้าว
+    updatedCal += eggCalories;
+    updatedCal += selectRice * 60; // คำนวณข้าวเพิ่ม
 
-    setCalories(updatedCal);
+    setCalories(updatedCal); // อัปเดตค่าแคลอรี่
+    previousMeat.current = selectMeat; // อัปเดตค่าเนื้อที่เลือกล่าสุด
   }, [
     selectMeat,
     selectEgg,
-    selectValueEgg,
+    eggCount,
     selectRice,
     selectSugar,
-    default_meat,
-    cal,
     selectedMenu?.sugar,
+    calorie, // เพิ่ม calorie ใน dependency เพื่อให้การคำนวณแคลอรี่อัปเดตได้ถูกต้อง
   ]);
 
   const onSubmit = async (data) => {
@@ -172,6 +190,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     }
   };
 
+  console.log("foodis---", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
     setselectType(meal);
   };
@@ -195,185 +214,29 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-container">
-        <div className="type-container">
-          <span>เพิ่มมื้ออาหาร</span>
-          <div className="type-button-container">
-            <button
-              type="button"
-              className={`type-button ${
-                selectType === "มื้อเช้า" ? "selected" : ""
-              }`}
-              onClick={() => handleButtonClick("มื้อเช้า")}
-            >
-              มื้อเช้า
-            </button>
-            <button
-              type="button"
-              className={`type-button ${
-                selectType === "มื้อกลางวัน" ? "selected" : ""
-              }`}
-              onClick={() => handleButtonClick("มื้อกลางวัน")}
-            >
-              มื้อกลางวัน
-            </button>
-            <button
-              type="button"
-              className={`type-button ${
-                selectType === "มื้อเย็น" ? "selected" : ""
-              }`}
-              onClick={() => handleButtonClick("มื้อเย็น")}
-            >
-              มื้อเย็น
-            </button>
-          </div>
-        </div>
-        {/* ***************************************************************************** */}
-        <div className="sugar-container">
-          <span>ความหวานของมื้อที่กิน</span>
-          <div className="sugar-button-container">
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectSugar === "ไม่มีน้ำตาล" ? "selected" : ""
-              }`}
-              onClick={() => handleSugarButtonClick("ไม่มีน้ำตาล")}
-            >
-              ไม่มีน้ำตาล
-            </button>
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectSugar === "ใส่น้ำตาลปกติ" ? "selected" : ""
-              }`}
-              onClick={() => handleSugarButtonClick("ใส่น้ำตาลปกติ")}
-            >
-              ใส่น้ำตาลปกติ
-            </button>
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectSugar === "ใส่น้ำตาลเยอะ" ? "selected" : ""
-              }`}
-              onClick={() => handleSugarButtonClick("ใส่น้ำตาลเยอะ")}
-            >
-              ใส่น้ำตาลเยอะ
-            </button>
-          </div>
-        </div>
-        {/* ****************************************************************************** */}
-        <div className="meat-container">
-          <span>เนื้อสัตว์ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)</span>
-          <div className="sugar-button-container">
-            {[
-              "ไม่มี",
-              "หมูสับ",
-              "หมู",
-              "หมูสามชั้น",
-              "ไก่",
-              "ไก่สับ",
-              "อกไก่",
-              "สะโพกไก่",
-              "ปีกไก่",
-              "หนังไก่",
-              "กุ้ง",
-              "กุ้งสด",
-              "กุ้งต้ม",
-              "กุ้งทอด",
-              "ปลา",
-              "ปลาแซลมอน",
-              "หอยแมลงภู่",
-              "หอยแครง",
-              "หอยนางรม",
-              "วัว",
-              "วัวติดมัน",
-              "สันในวัว",
-              "ปู",
-              "ปูทอด",
-              "เป็ด",
-              "ปลาหมึก",
-              "เต้าหู้",
-            ].map((meat) => (
-              <button
-                key={meat}
-                type="button"
-                className={`sugar-button ${
-                  selectMeat === meat ? "selected" : ""
-                }`}
-                onClick={() => handleMeatButtonClick(meat)}
-              >
-                {meat} {/* ✅ เพิ่มชื่อเนื้อสัตว์ตรงนี้ */}
-              </button>
-            ))}
-          </div>
-        </div>
+        <FormMealType
+          selectType={selectType}
+          handleButtonClick={setselectType}
+        />
+        <FormMealSugar
+          selectSugar={selectSugar}
+          handleSugarButtonClick={setselectSugar}
+        />
+        <FormMealMeat
+          selectMeat={selectMeat}
+          handleMeatButtonClick={setselectMeat}
+          foodId={selectedMenu?.food_id}
+        />
+        <FormMealEgg
+          selectEgg={selectEgg}
+          handleEggButtonClick={setselectEgg}
+          handleEggCountChange={setEggCount} // ✅ ส่งฟังก์ชัน setEggCount ไป
+        />
 
-        {/* ***************************************************************************** */}
-        <div className="egg-container">
-          <span>เพิ่มไข่ (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก) </span>
-          <div className="sugar-button-container">
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectEgg === "ไม่เพิ่มไข่" ? "selected" : ""
-              }`}
-              onClick={() => handleEggButtonClick("ไม่เพิ่มไข่")}
-            >
-              ไม่เพิ่มไข่
-            </button>
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectEgg === "ไข่ดาว" ? "selected" : ""
-              }`}
-              onClick={() => handleEggButtonClick("ไข่ดาว")}
-            >
-              ไข่ดาว
-            </button>
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectEgg === "ไข่เจียว" ? "selected" : ""
-              }`}
-              onClick={() => handleEggButtonClick("ไข่เจียว")}
-            >
-              ไข่เจียว
-            </button>
-            <button
-              type="button"
-              className={`sugar-button ${
-                selectEgg === "ไข่ต้ม" ? "selected" : ""
-              }`}
-              onClick={() => handleEggButtonClick("ไข่ต้ม")}
-            >
-              ไข่ต้ม
-            </button>
-          </div>
-        </div>
-        <div className="rice-container">
-          <span>ปริมาณไข่ (ต่อ 1 ฟอง)</span>
-          <div className="rice-button-container">
-            <input
-              type="number"
-              value={selectValueEgg ?? ""} // ใช้ค่าว่างหากเป็น null หรือ undefined
-              onChange={handleValueEggButtonClick} // อัพเดตค่าตามที่กรอก
-            />
-          </div>
-        </div>
-        {/* ****************************************************************************** */}
-        <div className="rice-container">
-          <span>
-            ปริมาณข้าวทัพพี (1 ทัพพี = 60 กรัม) <br />
-            (หากเป็นเครื่องดื่ม / ของหวานไม่ต้องเลือก)
-          </span>
-          <div className="rice-button-container">
-            <input
-              type="number"
-              value={selectRice ?? ""} // ใช้ค่าว่างหากเป็น null หรือ undefined
-              onChange={handleRiceButtonClick} // อัพเดตค่าตามที่กรอก
-            />
-          </div>
-        </div>
-
+        <FormMealRice
+          selectRice={selectRice}
+          handleRiceButtonClick={setselectRice}
+        />
         <div className="meat-container">
           <span>แคลอรี่ทั้งหมด: {calories} kcal</span>
         </div>

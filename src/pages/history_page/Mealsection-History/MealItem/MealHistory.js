@@ -41,7 +41,11 @@ const MealItem = ({ mealItem }) => {
       {/* บรรทัดแรก: รูปภาพ, ชื่อมื้อ, แคลอรี่รวม */}
       <div className={styles["meal-header"]} onClick={toggleDetails}>
         <div className={styles.boxleft}>
-          <img src={getMealIcon(mealItem.name)} alt={mealItem.name} />
+          <img
+            src={getMealIcon(mealItem.name)}
+            alt={mealItem.name}
+            style={{ width: "56px" }}
+          />
           <h3>{mealItem.name}</h3>
         </div>
         <p className={styles["total-calories"]}>

@@ -18,7 +18,6 @@
     object-fit:scale-down;
     border-bottom: 2px solid #f0f0f0;
 }
-
 .info {
     text-align: left;
     padding: 17px 20px;
@@ -42,4 +41,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #EF7430;
+}
+.image{
+    object-fit:cover;
 }

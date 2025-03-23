@@ -109,15 +109,7 @@ function Historypage() {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "#FFF2EA",
-        minHeight: "100vh",
-        position: "relative",
-        paddingBottom: "150px",
-        paddingTop: "30px",
-      }}
-    >
+    <div className={styles.wrapperall}>
       <div className="container">
         <div style={{ marginBottom: "40px" }}>
           <Gobackhead text="ประวัติมื้ออาหาร" link="/home" />

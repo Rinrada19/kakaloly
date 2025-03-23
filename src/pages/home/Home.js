@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "./HomeStyle.module.scss";
 import "../../styles/custom.scss";
 import { Link } from "react-router-dom";
 import Header from "../../component/headerUpper/Header";
@@ -21,7 +22,7 @@ function Home() {
   const [waterData, setWaterData] = useState(null); // สถานะเก็บข้อมูลน้ำดื่ม
 
   const token = localStorage.getItem("token");
-  // console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
+  console.log("Token from localStorage:", token); // ตรวจสอบว่า token ถูกดึงออกมาหรือไม่
 
   // ดึงข้อมูล user จาก API
   useEffect(() => {
@@ -61,7 +62,7 @@ function Home() {
 
     fetchNutritionData();
   }, []);
-
+  console.log("NutritionData---", nutritionData);
   // ดึงข้อมูลน้ำดื่มจาก API
   useEffect(() => {
     const fetchWaterData = async () => {
@@ -87,20 +88,8 @@ function Home() {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "#FFF2EA",
-        minHeight: "100vh",
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          position: "relative",
-          paddingBottom: "150px",
-          paddingTop: "30px",
-        }}
-      >
+    <div className={styles.wrapperall}>
+      <div className="container">
         <div style={{ marginBottom: "40px" }}>
           <Header />
         </div>

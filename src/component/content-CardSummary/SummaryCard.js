@@ -33,7 +33,7 @@ const SummaryCard = ({ nutritionData }) => {
   const carbConsumed = Math.floor(carb) || 0;
   const proteinConsumed = Math.floor(protein) || 0;
   const fatConsumed = Math.floor(fat) || 0;
-
+  console.log("nutritionData cardddddddd------", nutritionData);
   return (
     <div className="container" style={{ padding: "0" }}>
       <section className="wrapper-sum">

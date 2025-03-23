@@ -28,6 +28,8 @@
   margin-top: 20px;
 }
 .formfield{
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }
 .div3{
@@ -35,27 +37,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-Top: 30px;
-  margin-bottom: 50px;
- 
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
+
+.iconshowpassword {
+  color: #EF7430 !important;
+  background-color: #FFF2EA !important; /* สีของไอคอนเป็น #EF7430 */
+  transition: none !important; /* ไม่ให้มีการเปลี่ยนแปลงใดๆ เมื่อ hover */
+}
+
+.iconshowpassword:hover {
+  color: #EF7430 !important; /* กำหนดสีให้เหมือนเดิมเมื่อ hover */
+  background-color: #FFF2EA !important;
+  transition: none !important; /* ป้องกันการเปลี่ยนแปลงใดๆ */
+}
+
 // Responsive
 @media (min-width: 1500px) { /* กำหนดจอใหญ่กว่า 1500px  ขึ้นไป */
   .responsiveimg{
     display: none;
    } 
    .container{
-    gap: 80px;
+    gap: 100px;
     flex-direction: row;
     align-items: center;
    }
    .responsiveimg1{
-    width: 700px;
+    width: 600px;
    }
 }
 @media (min-width: 1700px) { /* กำหนดจอใหญ่กว่า 768px */
   .responsiveimg1{
-    width: 800px;
+    width: 700px;
    }
    .container{
     gap: 170px;
@@ -77,5 +91,20 @@
 @media (max-width: 500px) { /* กำหนดจอใหญ่กว่า 768px */
   .responsiveimg{
    width: 300px;
+  }
+}
+@media (max-width: 376px) { 
+  .responsiveimg{
+   width: 200px;
+  }
+  .container{
+    padding-top: 30px;
+    box-sizing: border-box;
+  }
+  .wellcome{
+    padding-top: 20px;
+  }
+.div3{
+  padding-bottom: 40px;
   }
 }

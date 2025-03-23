@@ -164,11 +164,8 @@ function Friendpage() {
   return (
     <>
       {/* ส่วนหัวมีheader วันที่ เเอดเพื่อน */}
-      <div className={styles.wrapper} style={{ backgroundColor: "#FBF3E6" }}>
-        <div
-          className="container"
-          style={{ height: "100vh", paddingTop: "30px" }}
-        >
+      <div className={styles.wrapper}>
+        <div className="container">
           <Gobackhead text="เพื่อนของฉัน" link="/home" />
           {/* วันที่เเสดง */}
           <p className={styles.date}>
@@ -208,10 +205,10 @@ function Friendpage() {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div
+                      className={styles.modalclose_header}
                       style={{
                         display: "flex",
                         justifyContent: "end",
-                        marginRight: "-20px",
                       }}
                     >
                       <button
@@ -230,6 +227,7 @@ function Friendpage() {
                           color: "#ABABAB",
                           marginBottom: "15px",
                           paddingLeft: "5px",
+                          letterSpacing: "0.5px",
                         }}
                       >
                         เพิ่มเพื่อน
@@ -264,12 +262,18 @@ function Friendpage() {
                           fontWeight: "600",
                           fontSize: "16px",
                           color: "#ABABAB",
+                          marginBottom: "5px",
                         }}
                       >
                         ค้นหาเพื่อนของคุณ
                       </p>
                       <div>
                         <input
+                          style={{
+                            fontSize: "14px",
+                            letterSpacing: "0.5px",
+                            height: "38px",
+                          }}
                           type="text"
                           className="form-control"
                           placeholder="กรอกชื่อผู้ใช้เพื่อน"

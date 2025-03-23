@@ -1,6 +1,8 @@
 .container{
     background-color: #FFF2EA;
-    height: 100vh;
+    min-height: 100vh; 
+    position: relative;
+    padding-top: 30px;
 }
 .backButton{
     cursor: pointer;
@@ -16,13 +18,13 @@
     margin-bottom: 30px;
     padding-top: 30px;
 }
-.image{
-    border-radius: 20px;
-    width: 353px;
-    height: 300px;
-    object-fit: cover;
-    margin-bottom: 25px;
-}
+// .image{
+//     border-radius: 20px;
+//     width: 353px;
+//     height: 300px;
+//     object-fit: cover;
+//     margin-bottom: 25px;
+// }
 .contentder{
   flex-direction: column;
   align-items: center;
@@ -59,17 +61,61 @@
 .button{
     color: #fff;
     background-color: #4A8854;
-    padding: 12px 50px;
-    border-radius: 20px;
+    padding: 12px 70px;
+    border-radius: 30px;
     border: none;
     font-size: 16px;
     letter-spacing: 0.5px;
-    margin-bottom: 30px;
-    margin-top: 30px;
 }
 .buttoncontainer {
     text-align: center;
 }
 .contents {
     flex-grow: 1; /* ดัน logout ลงล่าง */
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100; // กำหนดค่าต่ำกว่า FormMeal
+}
+.imgdetail {
+    max-width: 700px; /* ความกว้างสูงสุดไม่เกิน 600px */
+    height: auto; /* ปรับอัตโนมัติตามสัดส่วน */
+    display: block; /* ป้องกันการมีระยะขอบล่าง */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    border-radius: 7%;
+  }
+.description_food {
+    margin-top: 20px;
+    padding: 0px 40px;
+    margin-bottom: 40px;
+  }
+@media screen and (max-width: 769px){
+    .container{
+        padding-top: 20px;
+    } 
+}
+
+@media screen and (max-width: 426px){
+    .container{
+        padding-top: 0px;
+    } 
+    .description_food {
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 321px){
+    .info{
+        padding: 4px 20px;    
+    }
+    .description_food {
+        margin-top: 0px;
+        font-size: 14px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+    }
 }
