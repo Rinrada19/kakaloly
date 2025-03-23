@@ -31,10 +31,10 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
   const isMounted = useRef(true);
 
   useEffect(() => {
-    console.log("🚀 ค่า step ที่ตรวจสอบ:", step); // ตรวจสอบค่า step
-    console.log("📌 selectedMenu ใน useEffect: ", selectedMenu); // ตรวจสอบค่า selectedMenu
+    // console.log("🚀 ค่า step ที่ตรวจสอบ:", step); // ตรวจสอบค่า step
+    // console.log("📌 selectedMenu ใน useEffect: ", selectedMenu); // ตรวจสอบค่า selectedMenu
     if (step === 4 && selectedMenu) {
-      console.log("🔥 ค่าที่จะส่งไป FormMeal: ", selectedMenu);
+      // console.log("🔥 ค่าที่จะส่งไป FormMeal: ", selectedMenu);
       setStep(4); // ที่นี่คุณต้องการให้ `setStep(4)` ไปที่หน้าของ `FormMeal`
     }
   }, [step, selectedMenu]);
@@ -45,13 +45,13 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
     const fetchFoodData = async () => {
       const token = localStorage.getItem("token"); // ✅ ดึง token
       if (!token) {
-        console.error("❌ ไม่มี token");
+        //   console.error("❌ ไม่มี token");
         setError("ไม่พบ token กรุณาเข้าสู่ระบบใหม่");
         setLoading(false);
         return;
       }
 
-      console.log("🔑 Token ที่ใช้:", token); // ✅ Debug Log
+      // console.log("🔑 Token ที่ใช้:", token); // ✅ Debug Log
 
       // ✅ ข้อมูลที่ต้องส่งไป API
       const data = {
@@ -59,7 +59,7 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
         otherParam: "some_value", // เปลี่ยนค่าตามต้องการ
       };
 
-      console.log("📦 ส่งค่าไป API:", data); // ✅ Debug Log
+      // console.log("📦 ส่งค่าไป API:", data); // ✅ Debug Log
 
       try {
         const [foodData, manuItemData] = await Promise.all([
@@ -68,18 +68,18 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
         ]);
 
         if (isMounted) {
-          console.log("✅ ดึงข้อมูลสำเร็จ!", { foodData, manuItemData }); // ✅ Debug Log
+          // console.log("✅ ดึงข้อมูลสำเร็จ!", { foodData, manuItemData }); // ✅ Debug Log
           setFoods(foodData);
           setMenuItems(manuItemData);
         }
       } catch (error) {
         if (isMounted) {
-          console.error("❌ Error fetching data:", error);
+          //    console.error("❌ Error fetching data:", error);
           setError("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู");
         }
       } finally {
         if (isMounted) {
-          console.log("🛑 โหลดข้อมูลเสร็จแล้ว");
+          // console.log("🛑 โหลดข้อมูลเสร็จแล้ว");
           setLoading(false);
         }
       }
@@ -110,7 +110,7 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
     setStep(1);
   };
   const handleGoToStep8 = () => {
-    console.log("✅ Going to step 8");
+    // console.log("✅ Going to step 8");
     setStep(8);
   };
   const handleNavigate = (item) => {

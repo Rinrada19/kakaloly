@@ -27,7 +27,7 @@ export const addMeal = async (data) => {
 
     return response.data;
   } catch (error) {
-    console.error("เกิดข้อผิดพลาด:", error.message);
+    // console.error("เกิดข้อผิดพลาด:", error.message);
     throw error;
   }
 };

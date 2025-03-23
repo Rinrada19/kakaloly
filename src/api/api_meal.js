@@ -16,7 +16,7 @@ export const getMeal = async (data, token) => {
       throw new Error(`Error: ${response.status}`);
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
     const errorResponse = await error.response?.text();
     // console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
     throw error;
@@ -44,17 +44,17 @@ export const getMealDate = async (date) => {
     // console.log("data ======", response.data);
     return response.data; // คืนค่าข้อมูลที่ได้รับจาก API
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
 
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("Token is invalid or expired, please refresh the token.");
+        // console.error("Token is invalid or expired, please refresh the token.");
       }
-      console.error("Response error:", error.response.data);
+      // console.error("Response error:", error.response.data);
     } else if (error.request) {
-      console.error("No response received:", error.request);
+      // console.error("No response received:", error.request);
     } else {
-      console.error("Error details:", error.message);
+      // console.error("Error details:", error.message);
     }
 
     throw error; // โยน error ต่อ
@@ -63,7 +63,7 @@ export const getMealDate = async (date) => {
 
 export const deleteFood = async (meal_id, token) => {
   try {
-    console.log("Token ที่ใช้:", token); // log token เพื่อตรวจสอบว่า token ถูกต้อง
+    // console.log("Token ที่ใช้:", token); // log token เพื่อตรวจสอบว่า token ถูกต้อง
     const response = await API_URL.delete(`/meals/${meal_id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,21 +78,21 @@ export const deleteFood = async (meal_id, token) => {
       throw new Error(`Error: ${response.status}`);
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการลบเมนู: ", error);
+    // console.error("เกิดข้อผิดพลาดในการลบเมนู: ", error);
 
     // ตรวจสอบว่า error.response มีข้อมูลหรือไม่
     if (error.response) {
       // ถ้ามีการตอบกลับจากเซิร์ฟเวอร์
-      console.error("Response error:", error.response.data);
+      //  console.error("Response error:", error.response.data);
       if (error.response.status === 401) {
-        console.error("Token is invalid or expired, please refresh the token.");
+        // console.error("Token is invalid or expired, please refresh the token.");
       }
     } else if (error.request) {
       // ถ้าไม่ได้รับการตอบกลับจากเซิร์ฟเวอร์
-      console.error("No response received:", error.request);
+      //  console.error("No response received:", error.request);
     } else {
       // ถ้ามีข้อผิดพลาดอื่นๆ
-      console.error("Error details:", error.message);
+      //  console.error("Error details:", error.message);
     }
 
     throw error; // โยน error ต่อ

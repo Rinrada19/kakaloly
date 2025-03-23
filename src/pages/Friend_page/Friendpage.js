@@ -38,7 +38,7 @@ function Friendpage() {
             setUser(response[0]);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          //  console.error("Error fetching user data:", error);
         } finally {
           setLoading(false);
         }
@@ -63,11 +63,11 @@ function Friendpage() {
         if (Array.isArray(friendData)) {
           setFriends(friendData); // ตั้งค่าข้อมูลเพื่อน
         } else {
-          console.error("API response is not an array:", friendData);
+          //  console.error("API response is not an array:", friendData);
           setError("ข้อมูลที่ได้รับไม่ถูกต้อง");
         }
       } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเพื่อน:", error);
+        // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเพื่อน:", error);
         setError("เกิดข้อผิดพลาดในการดึงข้อมูลเพื่อน");
       } finally {
         setLoading(false); // ปิดสถานะโหลด
@@ -124,7 +124,7 @@ function Friendpage() {
           // console.log("fetchFriendData", response); // แสดงผลข้อมูลที่ได้รับ
         } catch (err) {
           setError("เกิดข้อผิดพลาดในการดึงข้อมูล");
-          console.error("Error fetching friend data", err);
+          //  console.error("Error fetching friend data", err);
         } finally {
           setLoading(false);
         }

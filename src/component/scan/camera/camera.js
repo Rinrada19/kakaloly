@@ -50,7 +50,7 @@ const CameraComponent = ({ setImage, setStep, setImageData }) => {
           await handleUpload(imageFile); // อัปโหลดรูปไป API
         }
       } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการถ่ายรูป", error);
+        // console.error("เกิดข้อผิดพลาดในการถ่ายรูป", error);
         alert("ไม่สามารถถ่ายรูปได้");
       }
     }

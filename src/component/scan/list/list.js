@@ -29,7 +29,7 @@ const List = ({
   const handleButtonClick = (food) => {
     setSelectMenu(food.food_name); // เลือกเมนูที่คลิก
     setSelectedMenu(food); // เก็บข้อมูลเมนูที่เลือก
-    console.log("food ที่ส่ง ---", food);
+    // console.log("food ที่ส่ง ---", food);
   };
 
   // ฟังก์ชันต่อไปเมื่อเลือกเมนูแล้ว

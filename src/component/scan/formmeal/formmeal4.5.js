@@ -42,7 +42,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
             setUser(response[0]);
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          //   console.error("Error fetching user data:", error);
         } finally {
           setLoading(false);
         }
@@ -158,7 +158,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
   const onSubmit = async (data) => {
     if (!selectedMenu || !user.user_id) {
-      console.error("Missing selected menu or user_id");
+      //    console.error("Missing selected menu or user_id");
       return;
     }
 
@@ -178,29 +178,29 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       sodium: selectedMenu.sodium || 0,
     };
 
-    console.log("Data being sent:", mealData);
+    // console.log("Data being sent:", mealData);
 
     try {
       const response = await addMeal(mealData);
-      console.log("API response:", response);
+      // console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
         setMessage("เพิ่มมื้ออาหารสำเร็จ");
         setIsPopupVisible(true); // Show the popup
-        console.log("เพิ่มมื้ออาหารสำเร็จ");
+        // console.log("เพิ่มมื้ออาหารสำเร็จ");
       } else {
         setMessage("เพื่มมื้ออาหารไม่สำเร็จ: " + response?.message);
         setIsPopupVisible(true); // Show the popup
-        console.error("เพื่มมื้ออาหารไม่สำเร็จ:", response?.message);
+        //   console.error("เพื่มมื้ออาหารไม่สำเร็จ:", response?.message);
       }
     } catch (error) {
       setMessage("Error adding meal: " + (error.response || error));
       setIsPopupVisible(true); // Show the popup
-      console.error("Error adding meal:", error.response || error);
+      //  console.error("Error adding meal:", error.response || error);
     }
   };
 
-  console.log("foodis---", selectedMenu?.food_id);
+  // console.log("foodis---", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
     setselectType(meal);
   };

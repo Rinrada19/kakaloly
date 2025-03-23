@@ -32,7 +32,7 @@ function Historypage() {
 
         setToken(userData?.token || localStorage.getItem("token")); // เก็บ token
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        //    console.error("Error fetching user data:", error);
         setLoading(false); // หากมีข้อผิดพลาดเกิดขึ้นก็หยุดโหลด
       }
     };
@@ -65,7 +65,7 @@ function Historypage() {
 
       try {
         if (!token) {
-          console.error("Token is missing or invalid.");
+          //  console.error("Token is missing or invalid.");
           return; // ถ้าไม่มี token ก็ไม่ดึงข้อมูล
         }
 
@@ -79,7 +79,7 @@ function Historypage() {
         // console.log("Nutrition data:", data);
         setNutritionData(data); // ตั้งค่า nutritionData ด้วยข้อมูลที่ได้รับ
       } catch (error) {
-        console.error("Error fetching nutrition data:", error); // ถ้ามีข้อผิดพลาดเกิดขึ้น
+        //  console.error("Error fetching nutrition data:", error); // ถ้ามีข้อผิดพลาดเกิดขึ้น
       } finally {
         setLoading(false); // เมื่อเสร็จแล้วก็หยุดการโหลด
       }

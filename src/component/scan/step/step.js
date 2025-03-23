@@ -44,11 +44,11 @@ const Step = ({ setShowCamera }) => {
     }
   };
   useEffect(() => {
-    console.log("🟢 ค่า step ที่รับมาใน Step.js:", step);
-    console.log("🟢 ค่า step ที่รับมาใน selectedMenu:", selectedMenu);
+    // console.log("🟢 ค่า step ที่รับมาใน Step.js:", step);
+    // console.log("🟢 ค่า step ที่รับมาใน selectedMenu:", selectedMenu);
   }, [step]);
-  console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า step:", step);
-  console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า selectedMenu:", step);
+  // console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า step:", step);
+  // console.log("🔄 [RENDER] Step.js รีเรนเดอร์ UI พร้อมค่า selectedMenu:", step);
   const [, forceUpdate] = useState();
 
   return (
@@ -86,13 +86,13 @@ const Step = ({ setShowCamera }) => {
       )}  อันของ ลูกน้ำ*/}
       {step === 4 && selectedMenu && (
         <>
-          {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
+          {/* {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)} */}
           <FormMeal selectedMenu={selectedMenu} setStep={setStep} />
         </>
       )}
       {step === 4.5 && selectedMenu && (
         <>
-          {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)}
+          {/* {console.log("เเล้วส่งมาที่นี้อีกรอบ:", step)} */}
           <FormMeal45 selectedMenu={selectedMenu} setStep={setStep} />
         </>
       )}

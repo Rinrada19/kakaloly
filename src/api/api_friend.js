@@ -16,7 +16,7 @@ export const getFriend = async (data, token) => {
       throw new Error(`Error: ${response.status}`);
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error);
     const errorResponse = await error.response?.text();
     // console.log("Error Response:", errorResponse); // แสดงรายละเอียดของข้อผิดพลาดจากเซิร์ฟเวอร์
     throw error;
@@ -41,7 +41,7 @@ export const getFriendInfo = async (data, token) => {
       throw new Error(`Error: ${response.status}`);
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error.message || error);
+    // console.error("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู: ", error.message || error);
 
     // เช็คว่า error.response มีค่าหรือไม่
     if (error.response) {
@@ -76,7 +76,7 @@ export const createFriend = async (friend_username) => {
     // console.log("ข้อมูลที่ได้รับจาก API:", response.data);
     return response.data;
   } catch (error) {
-    console.error("📌 เกิดข้อผิดพลาด:", error);
+    // console.error("📌 เกิดข้อผิดพลาด:", error);
 
     if (error.response) {
       // console.log("📌 API Error Response:", error.response.data);

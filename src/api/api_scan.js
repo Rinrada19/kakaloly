@@ -20,7 +20,7 @@ export const Scan = async (imageFile) => {
       throw new Error("ไม่มีข้อมูลจาก API");
     }
   } catch (error) {
-    console.error("เกิดข้อผิดพลาดในการอัปโหลด:", error);
+    // console.error("เกิดข้อผิดพลาดในการอัปโหลด:", error);
     // if (error.response) {
     //   console.log("ข้อผิดพลาดจาก API:", error.response.data);
     // } else {
