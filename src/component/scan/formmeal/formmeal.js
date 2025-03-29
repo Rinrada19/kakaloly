@@ -247,7 +247,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
             type="submit" // ต้องใช้ type="submit" เพื่อให้ฟอร์มส่งข้อมูล
             onClick={handleSubmit(onSubmit)} // ใช้ handleSubmit สำหรับส่งฟอร์ม
           >
-            สร้าง
+            เพิ่มมื้ออาหาร
           </button>
         </div>
       </div>

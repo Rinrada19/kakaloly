@@ -93,7 +93,7 @@ const MealItem = ({ mealItem, deleteFoodItem, token }) => {
           <h3>{mealItem.name}</h3> {/* ชื่อมื้ออาหาร */}
         </div>
         <p className={styles["total-calories"]}>
-          {totalCalories} <span className={styles["cal-unit"]}>cal</span>
+          {totalCalories} <span className={styles["cal-unit"]}>kcal</span>
         </p>{" "}
         {/* จำนวนแคลอรี่รวม */}
       </div>
@@ -114,7 +114,7 @@ const MealItem = ({ mealItem, deleteFoodItem, token }) => {
               <p className={styles["food-name"]}>{item.food_name}</p>{" "}
               {/* ชื่ออาหาร */}
               <p className={styles["food-calories"]}>
-                {item.cal} <span className={styles["cal-unit"]}>cal</span>{" "}
+                {item.cal} <span className={styles["cal-unit"]}>kcal</span>{" "}
                 {/* cal อาหาร */}
               </p>
             </div>

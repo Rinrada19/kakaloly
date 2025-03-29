@@ -49,7 +49,7 @@ const MealItem = ({ mealItem }) => {
           <h3>{mealItem.name}</h3>
         </div>
         <p className={styles["total-calories"]}>
-          {totalCalories} <span className={styles["cal-unit"]}>cal</span>
+          {totalCalories} <span className={styles["cal-unit"]}>kcal</span>
         </p>
       </div>
 
@@ -64,7 +64,7 @@ const MealItem = ({ mealItem }) => {
             <div key={index} className={styles["food-item"]}>
               <p className={styles["food-name"]}>{item.food_name}</p>
               <p className={styles["food-calories"]}>
-                {item.cal} <span className={styles["cal-unit"]}>cal</span>
+                {item.cal} <span className={styles["cal-unit"]}>kcal</span>
               </p>
             </div>
           ))

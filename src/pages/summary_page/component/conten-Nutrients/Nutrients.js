@@ -22,6 +22,7 @@ function Nutrients({ nutritionData, waterData }) {
             {sodium}
             <span className={styles["proteinGoal"]}>/{sodium_goal}g</span>
           </p>
+          {/* เพิ่มการตรวจสอบการเตือนหากโซเดียมเกินขีดจำกัด */}
         </div>
 
         <div className={styles["bar-Eachnutriion"]}>
@@ -43,15 +44,21 @@ function Nutrients({ nutritionData, waterData }) {
         </div>
       </div>
 
-      {/* เพิ่มการจัดวาง Warningtext */}
+      {/* เพิ่มการจัดวาง Warningtext สำหรับน้ำตาล */}
       {sugar !== undefined &&
         sugar !== null &&
         sugar !== 0 &&
         sugar > sugar_goal && (
           <div className={styles["Eachnutriion"]}>
-            <p className={styles.Warningtext}>น้ำตาลเกินขีดจำกัดวันนี้ !</p>
+            <p className={styles.Warningtext}>❗ น้ำตาลเกินขีดจำกัดวันนี้ !</p>
           </div>
         )}
+
+      {sodium !== undefined && sodium !== null && sodium > sodium_goal && (
+        <div className={styles["Eachnutriion"]}>
+          <p className={styles.Warningtext}>❗ โซเดียมเกินขีดจำกัดวันนี้ !</p>
+        </div>
+      )}
     </div>
   );
 }
