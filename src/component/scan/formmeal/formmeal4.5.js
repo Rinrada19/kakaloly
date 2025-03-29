@@ -156,9 +156,14 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     calorie, // เพิ่ม calorie ใน dependency เพื่อให้การคำนวณแคลอรี่อัปเดตได้ถูกต้อง
   ]);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (data) => {
+    //console.log("Submit Called", isSubmitting);
+    if (isSubmitting) return; // ห้ามส่งข้อมูลซ้ำ
+    setIsSubmitting(true);
+
     if (!selectedMenu || !user.user_id) {
-      //    console.error("Missing selected menu or user_id");
       return;
     }
 
@@ -178,27 +183,25 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       sodium: selectedMenu.sodium || 0,
     };
 
-    // console.log("Data being sent:", mealData);
-
     try {
       const response = await addMeal(mealData);
-      // console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
         setMessage("เพิ่มมื้ออาหารสำเร็จ");
-        setIsPopupVisible(true); // Show the popup
-        // console.log("เพิ่มมื้ออาหารสำเร็จ");
+        setIsPopupVisible(true);
       } else {
         setMessage("เพื่มมื้ออาหารไม่สำเร็จ: " + response?.message);
-        setIsPopupVisible(true); // Show the popup
-        //   console.error("เพื่มมื้ออาหารไม่สำเร็จ:", response?.message);
+        setIsPopupVisible(true);
       }
     } catch (error) {
       setMessage("Error adding meal: " + (error.response || error));
-      setIsPopupVisible(true); // Show the popup
-      //  console.error("Error adding meal:", error.response || error);
+      setIsPopupVisible(true);
+    } finally {
+      setIsSubmitting(false); // รีเซ็ตสถานะหลังการส่งข้อมูล
     }
   };
+
+  // console.log("Data being sent:", mealData);
 
   // console.log("foodis---", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
@@ -254,8 +257,8 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
         <div className="button-container">
           <button
             className="next-button"
-            type="submit" // ต้องใช้ type="submit" เพื่อให้ฟอร์มส่งข้อมูล
-            onClick={handleSubmit(onSubmit)} // ใช้ handleSubmit สำหรับส่งฟอร์ม
+            type="submit"
+            disabled={isSubmitting} // เพิ่มการปิดการใช้งานปุ่มเมื่อกำลังส่งข้อมูล
           >
             สร้าง
           </button>
@@ -279,18 +282,18 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
                   color: "#000000",
                 }}
                 className="button_manudetail"
-                onClick={() => {
-                  // setIsPopupVisible(false); // Hide the popup
-                  navigate("/Manupage");
+                onClick={(e) => {
+                  e.preventDefault(); // หยุดการส่งข้อมูล
+                  navigate("/Manupage"); // เปลี่ยนหน้าไปยังหน้า Manupage
                 }}
               >
                 เพิ่มอีก
               </button>
               <button
                 className="button_manudetail"
-                onClick={() => {
-                  // setIsPopupVisible(false); // Hide the popup
-                  navigate("/home");
+                onClick={(e) => {
+                  e.preventDefault(); // หยุดการส่งข้อมูล
+                  navigate("/home"); // เปลี่ยนหน้าไปยังหน้า Home
                 }}
               >
                 กลับไปหน้าแรก

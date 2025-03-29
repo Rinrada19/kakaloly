@@ -38,7 +38,7 @@ function ManuCard({ foods }) {
                   <span className={styles.caloriesValue}>
                     {Math.floor(item.cal)}
                   </span>{" "}
-                  <span style={{ color: "#EF7430" }}>·</span> Calories
+                  <span style={{ color: "#EF7430" }}>·</span> kcal
                 </p>
               </div>
             </div>

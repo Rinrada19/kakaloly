@@ -54,13 +54,13 @@ const SummaryCard = ({ nutritionData }) => {
               </div>
               <div className="sumCal_info">
                 <p className="highlight__black">
-                  {totalCaloriesConsumed} <span className="cal-unit">cal</span>
+                  {totalCaloriesConsumed} <span className="cal-unit">kcal</span>
                 </p>
                 <p className="highlight__black">
-                  {Math.floor(cal_goal)} <span className="cal-unit">cal</span>
+                  {Math.floor(cal_goal)} <span className="cal-unit">kcal</span>
                 </p>
                 <p className="highlight__green">
-                  {remainingCalories} <span className="cal-unit">cal</span>
+                  {remainingCalories} <span className="cal-unit">kcal</span>
                 </p>
               </div>
             </div>

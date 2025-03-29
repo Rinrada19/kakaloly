@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Title, Button, Input } from "./styles";
 import backbutton from "../../imgAll/icon/backbutton.webp";
 
 function HeightWeightForm({ nextStep, prevStep, formData, setFormData }) {
+  const [errors, setErrors] = useState({ height: "", weight: "" });
+
+  const validateHeight = (value) => {
+    const height = parseFloat(value);
+    if (!value) {
+      setErrors((prev) => ({ ...prev, height: "กรุณากรอกส่วนสูงของคุณ" }));
+    } else if (isNaN(height) || height < 100 || height > 250) {
+      setErrors((prev) => ({
+        ...prev,
+        height: "กรุณากรอกส่วนสูงที่ถูกต้อง (100-250 ซม.)",
+      }));
+    } else {
+      setErrors((prev) => ({ ...prev, height: "" }));
+    }
+  };
+
+  const validateWeight = (value) => {
+    const weight = parseFloat(value);
+    if (!value) {
+      setErrors((prev) => ({ ...prev, weight: "กรุณากรอกน้ำหนักของคุณ" }));
+    } else if (isNaN(weight) || weight < 20 || weight > 300) {
+      setErrors((prev) => ({
+        ...prev,
+        weight: "กรุณากรอกน้ำหนักที่ถูกต้อง (20-300 กก.)",
+      }));
+    } else {
+      setErrors((prev) => ({ ...prev, weight: "" }));
+    }
+  };
+
   const handleNextStep = () => {
     if (
+      !errors.height &&
+      !errors.weight &&
       formData.height &&
-      !isNaN(formData.height) &&
-      formData.height > 0 &&
-      formData.weight &&
-      !isNaN(formData.weight) &&
-      formData.weight > 0
+      formData.weight
     ) {
       nextStep();
     } else {
-      alert("กรุณากรอกส่วนสูงและน้ำหนักอีกครั้ง");
+      alert("กรุณากรอกส่วนสูงและน้ำหนักให้ถูกต้อง");
     }
   };
 
@@ -39,15 +67,16 @@ function HeightWeightForm({ nextStep, prevStep, formData, setFormData }) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "30px",
+          gap: "20px",
         }}
       >
+        {/* ส่วนสูง */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "12px",
+            gap: "6px",
           }}
         >
           <p
@@ -62,19 +91,27 @@ function HeightWeightForm({ nextStep, prevStep, formData, setFormData }) {
           </p>
           <Input
             type="number"
-            value={formData.height}
-            onChange={(e) =>
-              setFormData({ ...formData, height: e.target.value })
-            }
+            value={formData.height || ""}
+            onChange={(e) => {
+              const value = e.target.value;
+              setFormData({ ...formData, height: value });
+              validateHeight(value);
+            }}
           />
+          {errors.height && (
+            <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>
+              {errors.height}
+            </p>
+          )}
         </div>
 
+        {/* น้ำหนัก */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "12px",
+            gap: "6px",
           }}
         >
           <p
@@ -89,17 +126,45 @@ function HeightWeightForm({ nextStep, prevStep, formData, setFormData }) {
           </p>
           <Input
             type="number"
-            value={formData.weight}
-            onChange={(e) =>
-              setFormData({ ...formData, weight: e.target.value })
-            }
+            value={formData.weight || ""}
+            onChange={(e) => {
+              const value = e.target.value;
+              setFormData({ ...formData, weight: value });
+              validateWeight(value);
+            }}
           />
+          {errors.weight && (
+            <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>
+              {errors.weight}
+            </p>
+          )}
         </div>
       </div>
 
       <Button
         onClick={handleNextStep}
-        disabled={!formData.height || !formData.weight}
+        disabled={
+          !formData.height ||
+          !formData.weight ||
+          !!errors.height ||
+          !!errors.weight
+        }
+        style={{
+          opacity:
+            !formData.height ||
+            !formData.weight ||
+            !!errors.height ||
+            !!errors.weight
+              ? 0.5
+              : 1,
+          cursor:
+            !formData.height ||
+            !formData.weight ||
+            !!errors.height ||
+            !!errors.weight
+              ? "not-allowed"
+              : "pointer",
+        }}
       >
         ถัดไป
       </Button>

@@ -43,7 +43,7 @@ const ProgressChart = ({ value, max }) => {
         }}
       >
         <div style={{ fontSize: "22px", fontWeight: "500" }}>{value}</div>
-        <div style={{ fontSize: "14px", fontWeight: "400" }}>cal</div>
+        <div style={{ fontSize: "14px", fontWeight: "400" }}>kcal</div>
       </div>
     </div>
   );

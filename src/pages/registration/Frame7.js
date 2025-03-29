@@ -17,23 +17,40 @@ function PhysicalActivitySelection({
   }, [formData]);
 
   const activityLevels = [
-    { label: "นั่งทำงานอยู่กับที่", value: "Sedentary" },
     {
-      label: "ออกกำลังกาย หรือเล่นกีฬา แบบเบาๆ 1-3 วันต่อสัปดาห์",
+      label: "นั่งทำงานอยู่กับที่",
+      value: "Sedentary",
+      description:
+        "กิจกรรมที่ไม่เคลื่อนไหว เช่น นั่งทำงาน, ดูทีวี, หรือใช้คอมพิวเตอร์",
+    },
+    {
+      label: (
+        <>
+          ออกกำลังกาย หรือเล่นกีฬา แบบเบาๆ <br /> 1-3 วันต่อสัปดาห์
+        </>
+      ),
       value: "Light",
+      description:
+        "กิจกรรมเบาๆ เช่น เดิน, โยคะ, หรือปั่นจักรยานช้าๆ 1-3 วันต่อสัปดาห์",
     },
     {
       label: "ออกกำลังกาย หรือเล่นกีฬา ความหนักปานกลาง 3-5 วันต่อสัปดาห์",
       value: "Moderate",
+      description:
+        "กิจกรรมที่มีความหนักปานกลาง เช่น วิ่ง, ว่ายน้ำ, หรือปั่นจักรยานในระดับปานกลาง 3-5 วันต่อสัปดาห์",
     },
     {
       label: "ออกกำลังกาย หรือเล่นกีฬา ความหนักสูง 6-7 วันต่อสัปดาห์",
       value: "High",
+      description:
+        "กิจกรรมที่มีความหนักสูง เช่น วิ่งเร็ว, โยคะเข้มข้น, หรือฝึกซ้อมกีฬา 6-7 วันต่อสัปดาห์",
     },
     {
       label:
         "ออกกำลังกาย หรือเล่นกีฬาหนัก แบบการซ้อมเพื่อแข่งขัน เป็นประจำทุกวัน",
       value: "Very High",
+      description:
+        "กิจกรรมที่มีความเข้มข้นสูงสุด เช่น การซ้อมหรือแข่งขันกีฬาแบบเต็มที่ทุกวัน",
     },
   ];
 
@@ -87,10 +104,11 @@ function PhysicalActivitySelection({
           gap: "20px",
         }}
       >
-        {activityLevels.map(({ label, value }) => (
+        {activityLevels.map(({ label, value, description }) => (
           <Button
             key={value}
             onClick={() => handleActivitySelection(value)}
+            title={description} // ใช้คำอธิบายในการแสดง Tooltip
             style={{
               height: "75px",
               width: "280px",
