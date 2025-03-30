@@ -23,6 +23,8 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [selectValueEgg, setselectValueEgg] = useState(null);
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useUser();
+  const [message, setMessage] = useState(""); // State for displaying messages
+
   // const [step, setStep] = useState(0); // กำหนดค่าเริ่มต้นของ step เป็น 0
   const [eggCount, setEggCount] = useState(0); // Track egg count here
   const token = localStorage.getItem("token");
@@ -50,6 +52,8 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   }, [token, setUser]);
 
   const [calories, setCalories] = useState(selectedMenu?.cal || 0);
+  const [sugarValue, setSugarValue] = useState(selectedMenu?.sugar || 0); // State for sugarValue
+
   const {
     food_name,
     cal,
@@ -74,6 +78,23 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
 
   const previousMeat = useRef(selectMeat); // เก็บค่าเนื้อก่อนหน้า
   const [calorie, setCalorie] = useState(cal); // ใช้ useState แทนการรีเซ็ตค่า
+
+  useEffect(() => {
+    let sugar = selectedMenu?.sugar || 0;
+    console.log("selectedsugar", sugar);
+
+    if (selectSugar === "ไม่ใส่น้ำตาล") sugar = selectedMenu?.sugar;
+    else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
+    else if (selectSugar === "พอดี") sugar += 10;
+    else if (selectSugar === "มาก") sugar += 20;
+    else if (selectSugar === "น้ำตาลมาก") sugar += 30;
+
+    setSugarValue(sugar); // Update sugarValue state
+    setMessage(`น้ำตาลทั้งหมด: ${sugar} กรัม`);
+    console.log("selectedsugar", sugar);
+  }, [selectSugar, selectedMenu?.sugar]);
+
+  const previousCalories = useRef(calories); // ใช้ useRef เก็บค่า calories เดิม
 
   useEffect(() => {
     const meatCalories = {
@@ -123,12 +144,6 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       }
     }
 
-    // คำนวณน้ำตาล
-    let sugar = selectedMenu?.sugar || 0;
-    if (selectSugar === "ไม่มีน้ำตาล") sugar = 0;
-    else if (selectSugar === "ใส่น้ำตาล") sugar += 5;
-    else if (selectSugar === "ใส่น้ำตาลเยอะ") sugar += 11;
-
     // คำนวณแคลอรี่จากไข่
     let eggCalories = 0;
     if (selectEgg === "ไข่ดาว") eggCalories = eggCount * 90;
@@ -151,6 +166,8 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     calorie, // เพิ่ม calorie ใน dependency เพื่อให้การคำนวณแคลอรี่อัปเดตได้ถูกต้อง
   ]);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (data) => {
     if (!selectedMenu || !user.user_id) {
       //   console.error("Missing selected menu or user_id");
@@ -169,11 +186,10 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       fat: selectedMenu.fat || 0,
       carb: selectedMenu.carb || 0,
       protein: selectedMenu.protein || 0,
-      sugar: sugar || 0,
+      sugar: sugarValue || 0,
       sodium: selectedMenu.sodium || 0,
     };
-
-    // console.log("Data being sent:", mealData);
+    console.log("3selectedsugar", sugarValue);
 
     try {
       const response = await addMeal(mealData);
@@ -239,6 +255,9 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
         />
         <div className="meat-container">
           <span>แคลอรี่ทั้งหมด: {calories} kcal</span>
+        </div>
+        <div className="meat-container">
+          <span>{message}</span>
         </div>
 
         <div className="button-container">
