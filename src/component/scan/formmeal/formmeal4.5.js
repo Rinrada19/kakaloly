@@ -85,7 +85,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
   useEffect(() => {
     let sugar = selectedMenu?.sugar || 0;
 
-    if (selectSugar === "ไม่ใส่น้ำตาล") sugar = selectedMenu?.sugar;
+    if (selectSugar === "ไม่ใส่น้ำตาล") sugar = selectedMenu?.sugar || 0;
     else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
     else if (selectSugar === "พอดี") sugar += 10;
     else if (selectSugar === "มาก") sugar += 20;
