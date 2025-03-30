@@ -39,7 +39,7 @@ function MenuDetail() {
         style={{
           paddingBottom: "40px",
           display: "flex",
-          height: "100vh",
+          height: "100%",
           justifyContent: "space-between",
           flexDirection: "column",
           backgroundColor: "#FFF2EA",

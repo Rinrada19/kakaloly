@@ -12,6 +12,8 @@ const FormMealRice = ({ selectRice, handleRiceButtonClick }) => {
           type="number"
           value={selectRice ?? ""}
           onChange={(e) => handleRiceButtonClick(e.target.value)}
+          placeholder="ไม่ใส่ก็ได้"
+          style={{ color: "black", letterSpacing: "0.5px" }}
         />
       </div>
     </div>

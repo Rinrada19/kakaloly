@@ -2,6 +2,8 @@
     background-color: #FFF2EA;
     min-height: 100vh; 
     position: relative;
+    display: flex;
+    align-items: flex-start;
 }
 .backButton{
     cursor: pointer;
@@ -15,7 +17,12 @@
     align-items: baseline;
     border-bottom: 1px solid #915B43;
     margin-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 40px;
+}
+@media screen and (min-width: 769px){
+    .header{
+        padding-top: 60px;
+    } 
 }
 // .image{
 //     border-radius: 20px;
@@ -67,7 +74,7 @@
     letter-spacing: 0.5px;
 }
 .buttoncontainer {
-    // padding-top: 50px;
+    padding-top: 50px;
     // padding-bottom: 40px;
     text-align: center;
 }
