@@ -42,7 +42,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
             setUser(response[0]);
           }
         } catch (error) {
-          //   console.error("Error fetching user data:", error);
+          console.error("Error fetching user data:", error);
         } finally {
           setLoading(false);
         }
@@ -55,6 +55,8 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
   }, [token, setUser]);
 
   const [calories, setCalories] = useState(selectedMenu?.cal || 0);
+  const [sugarValue, setSugarValue] = useState(selectedMenu?.sugar || 0); // State for sugarValue
+
   const {
     food_name,
     cal,
@@ -79,6 +81,20 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
   const previousMeat = useRef(selectMeat); // เก็บค่าเนื้อก่อนหน้า
   const [calorie, setCalorie] = useState(cal); // ใช้ useState แทนการรีเซ็ตค่า
+
+  useEffect(() => {
+    let sugar = selectedMenu?.sugar || 0;
+
+    if (selectSugar === "ไม่ใส่น้ำตาล") sugar = selectedMenu?.sugar;
+    else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
+    else if (selectSugar === "พอดี") sugar += 10;
+    else if (selectSugar === "มาก") sugar += 20;
+    else if (selectSugar === "น้ำตาลมาก") sugar += 30;
+
+    setSugarValue(sugar); // Update sugarValue state
+    setMessage(`น้ำตาลทั้งหมด: ${sugar} กรัม`);
+    console.log("selectedsugar", sugar);
+  }, [selectSugar, selectedMenu?.sugar]);
 
   useEffect(() => {
     const meatCalories = {
@@ -128,12 +144,6 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       }
     }
 
-    // คำนวณน้ำตาล
-    let sugar = selectedMenu?.sugar || 0;
-    if (selectSugar === "ไม่มีน้ำตาล") sugar = 0;
-    else if (selectSugar === "ใส่น้ำตาล") sugar += 5;
-    else if (selectSugar === "ใส่น้ำตาลเยอะ") sugar += 11;
-
     // คำนวณแคลอรี่จากไข่
     let eggCalories = 0;
     if (selectEgg === "ไข่ดาว") eggCalories = eggCount * 90;
@@ -156,14 +166,9 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     calorie, // เพิ่ม calorie ใน dependency เพื่อให้การคำนวณแคลอรี่อัปเดตได้ถูกต้อง
   ]);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const onSubmit = async (data) => {
-    //console.log("Submit Called", isSubmitting);
-    if (isSubmitting) return; // ห้ามส่งข้อมูลซ้ำ
-    setIsSubmitting(true);
-
     if (!selectedMenu || !user.user_id) {
+      console.error("Missing selected menu or user_id");
       return;
     }
 
@@ -179,31 +184,31 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
       fat: selectedMenu.fat || 0,
       carb: selectedMenu.carb || 0,
       protein: selectedMenu.protein || 0,
-      sugar: sugar || 0,
+      sugar: sugarValue || 0,
       sodium: selectedMenu.sodium || 0,
     };
 
     try {
       const response = await addMeal(mealData);
+      console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
         setMessage("เพิ่มมื้ออาหารสำเร็จ");
-        setIsPopupVisible(true);
+        setIsPopupVisible(true); // Show the popup
+        console.log("เพิ่มมื้ออาหารสำเร็จ");
       } else {
         setMessage("เพื่มมื้ออาหารไม่สำเร็จ: " + response?.message);
-        setIsPopupVisible(true);
+        setIsPopupVisible(true); // Show the popup
+        console.error("เพื่มมื้ออาหารไม่สำเร็จ:", response?.message);
       }
     } catch (error) {
       setMessage("Error adding meal: " + (error.response || error));
-      setIsPopupVisible(true);
-    } finally {
-      setIsSubmitting(false); // รีเซ็ตสถานะหลังการส่งข้อมูล
+      setIsPopupVisible(true); // Show the popup
+      console.error("Error adding meal:", error.response || error);
     }
   };
 
-  // console.log("Data being sent:", mealData);
-
-  // console.log("foodis---", selectedMenu?.food_id);
+  console.log("foodis:", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
     setselectType(meal);
   };
@@ -222,6 +227,18 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
   const handleRiceButtonClick = (e) => {
     setselectRice(e.target.value);
+  };
+  const handlePopupClose = () => {
+    setselectType(null);
+    setselectSugar(null);
+    setselectRice(null);
+    setselectMeat("defual_meat");
+    setselectEgg(null);
+    setselectValueEgg(null);
+    setEggCount(0);
+    setCalories(0);
+    setMessage("");
+    setIsPopupVisible(false);
   };
 
   return (
@@ -253,14 +270,17 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
         <div className="meat-container">
           <span>แคลอรี่ทั้งหมด: {calories} kcal</span>
         </div>
+        <div className="meat-container">
+          <span> {message}</span>
+        </div>
 
         <div className="button-container">
           <button
             className="next-button"
-            type="submit"
-            disabled={isSubmitting} // เพิ่มการปิดการใช้งานปุ่มเมื่อกำลังส่งข้อมูล
+            type="submit" // ต้องใช้ type="submit" เพื่อให้ฟอร์มส่งข้อมูล
+            // ใช้ handleSubmit สำหรับส่งฟอร์ม
           >
-            สร้าง
+            เพิ่มมื้ออาหาร
           </button>
         </div>
       </div>
@@ -282,18 +302,19 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
                   color: "#000000",
                 }}
                 className="button_manudetail"
-                onClick={(e) => {
-                  e.preventDefault(); // หยุดการส่งข้อมูล
-                  navigate("/Manupage"); // เปลี่ยนหน้าไปยังหน้า Manupage
+                onClick={() => {
+                  handlePopupClose();
+                  navigate("/Manupage");
                 }}
               >
                 เพิ่มอีก
               </button>
               <button
                 className="button_manudetail"
-                onClick={(e) => {
-                  e.preventDefault(); // หยุดการส่งข้อมูล
-                  navigate("/home"); // เปลี่ยนหน้าไปยังหน้า Home
+                onClick={() => {
+                  handlePopupClose();
+                  // setIsPopupVisible(false); // Hide the popup
+                  navigate("/home");
                 }}
               >
                 กลับไปหน้าแรก

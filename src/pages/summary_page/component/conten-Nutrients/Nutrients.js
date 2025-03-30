@@ -11,7 +11,8 @@ function Nutrients({ nutritionData, waterData }) {
   const { water } = waterData || { water: {} };
   // console.log("waterData", waterData);
   // console.log("waterrr", waterData?.water_amount);
-
+  console.log("น้ำตาลที่ได้รับ:", sugar);
+  console.log("Token:", localStorage.getItem("token"));
   return (
     <div className={styles["warpperAllnutrition"]}>
       <div className={styles["bar-Allnutrition"]}>

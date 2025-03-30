@@ -9,8 +9,8 @@ import Freameicon from "../../../../../imgAll/element/Frameicon.png";
 import carbonicon from "../../../../../imgAll/element/carboicon.png";
 import oilicon from "../../../../../imgAll/element/oilicon.png";
 import potienicon from "../../../../../imgAll/element/potienicon.png";
-import salt from "../../../../../imgAll/element/salt.jpg";
-import sugar from "../../../../../imgAll/element/sugar.png";
+import salt from "../../../../../imgAll/element/salt.png";
+import sugar from "../../../../../imgAll/element/bagsugar.png";
 
 function MenuDetail() {
   const { id } = useParams(); // รับค่า id จาก URL
@@ -38,13 +38,14 @@ function MenuDetail() {
         className="container"
         style={{
           paddingBottom: "40px",
-          height: "100%",
-          backgroundColor: "#FFF2EA",
           display: "flex",
+          height: "100vh",
+          justifyContent: "space-between",
           flexDirection: "column",
+          backgroundColor: "#FFF2EA",
         }}
       >
-        <div style={{ flexGrow: "1" }}>
+        <div>
           <div className={styles.header}>
             <div>
               <img
@@ -159,20 +160,20 @@ function MenuDetail() {
             </div>
           </div>
         </div>
-
         <div className={styles.buttoncontainer}>
           <button className={styles.button} onClick={handleAddMeal}>
             เพิ่มมื้ออาหาร
           </button>
         </div>
-        {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
-        {step === 4.5 && (
-          <>
-            <FormMeal45 selectedMenu={food} setStep={setStep} />
-            <div className={styles.overlay} onClick={() => setStep(0)}></div>
-          </>
-        )}
       </div>
+
+      {/* ถ้า step เป็น 4 ให้แสดง FormMeal และส่ง selectedMenu */}
+      {step === 4.5 && (
+        <>
+          <FormMeal45 selectedMenu={food} setStep={setStep} />
+          <div className={styles.overlay} onClick={() => setStep(0)}></div>
+        </>
+      )}
     </div>
   );
 }
