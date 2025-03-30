@@ -135,6 +135,7 @@ function MenuDetail() {
             <div className={styles.info}>
               <div className={styles.nameinfo}>
                 <img src={salt} alt="sodium" className={styles.imageicon} />
+                <img src={salt} alt="sodium" className={styles.imageicon} />
                 <p className={styles.namecal}>โซเดียม</p>
               </div>
               <div>
