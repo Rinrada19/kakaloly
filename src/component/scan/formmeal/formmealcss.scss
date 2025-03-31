@@ -118,7 +118,7 @@
     background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
     color: white;
   }
-.egg-button{
+  .egg-button{
     margin-right: 20px;
     height: 35px;
     min-width: 120px; /* ความกว้างขั้นต่ำ */
@@ -134,8 +134,8 @@
     border-radius: 33px;
     cursor: pointer;
 }
-.egg-butto .selected {
-    background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
+  .egg-button.selected {
+    background-color: #EF7430;
     color: white;
   }
 .type-button-container{
