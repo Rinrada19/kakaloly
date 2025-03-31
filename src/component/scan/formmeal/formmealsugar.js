@@ -4,10 +4,11 @@ import spoon from "../../../imgAll/element/spoon.png";
 const FormMealSugar = ({ selectSugar, handleSugarButtonClick }) => {
   const sugarLevels = [
     { label: "ไม่ใส่น้ำตาล", spoons: 0 },
+    { label: "พอดี", spoons: 0 },
     { label: "น้ำตาลน้อย", spoons: 1 },
-    { label: "พอดี", spoons: 2 },
+    { label: "ปานกลาง", spoons: 2 },
     { label: "มาก", spoons: 3 },
-    { label: "น้ำตาลมาก", spoons: 4 },
+    { label: "น้ำตาลมากๆ", spoons: 4 },
   ];
 
   return (
