@@ -134,8 +134,8 @@
     border-radius: 33px;
     cursor: pointer;
 }
-.egg-butto .selected {
-    background-color:#EF7430; /* สีพื้นหลังเมื่อปุ่มถูกเลือก */
+  .egg-button.selected {
+    background-color: #EF7430;
     color: white;
   }
 .type-button-container{
