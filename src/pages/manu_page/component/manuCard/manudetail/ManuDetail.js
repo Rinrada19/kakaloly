@@ -9,8 +9,8 @@ import Freameicon from "../../../../../imgAll/element/Frameicon.png";
 import carbonicon from "../../../../../imgAll/element/carboicon.png";
 import oilicon from "../../../../../imgAll/element/oilicon.png";
 import potienicon from "../../../../../imgAll/element/potienicon.png";
-import salt from "../../../../../imgAll/element/salt.png";
-import sugar from "../../../../../imgAll/element/bagsugar.png";
+import salt from "../../../../../imgAll/element2/salt.png";
+import sugar from "../../../../../imgAll/element2/sugar.png";
 
 function MenuDetail() {
   const { id } = useParams(); // รับค่า id จาก URL
