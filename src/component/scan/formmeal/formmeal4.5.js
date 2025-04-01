@@ -86,7 +86,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     let sugar = selectedMenu?.sugar || 0;
 
     if (selectSugar === "ไม่ใส่น้ำตาล") sugar = 0;
-    else if (selectSugar === "พอดี") sugar += selectedMenu?.sugar || 0;
+    else if (selectSugar === "พอดี") sugar = selectedMenu?.sugar || 0;
     else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
     else if (selectSugar === "ปานกลาง") sugar += 10;
     else if (selectSugar === "มาก") sugar += 15;
@@ -94,7 +94,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
     setSugarValue(sugar); // Update sugarValue state
     setMessage(`น้ำตาลทั้งหมด: ${sugar} กรัม`);
-    console.log("selectedsugar", sugar);
+    // console.log("selectedsugar", sugar);
   }, [selectSugar, selectedMenu?.sugar]);
 
   useEffect(() => {
@@ -191,12 +191,12 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
 
     try {
       const response = await addMeal(mealData);
-      console.log("API response:", response);
+      // console.log("API response:", response);
 
       if (response && response.message === "Meal created successfully!") {
         setMessage("เพิ่มมื้ออาหารสำเร็จ");
         setIsPopupVisible(true); // Show the popup
-        console.log("เพิ่มมื้ออาหารสำเร็จ");
+        // console.log("เพิ่มมื้ออาหารสำเร็จ");
       } else {
         setMessage("เพื่มมื้ออาหารไม่สำเร็จ: " + response?.message);
         setIsPopupVisible(true); // Show the popup
@@ -209,7 +209,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     }
   };
 
-  console.log("foodis:", selectedMenu?.food_id);
+  // console.log("foodis:", selectedMenu?.food_id);
   const handleButtonClick = (meal) => {
     setselectType(meal);
   };
