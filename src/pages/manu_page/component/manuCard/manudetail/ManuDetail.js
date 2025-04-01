@@ -9,8 +9,8 @@ import Freameicon from "../../../../../imgAll/element/Frameicon.png";
 import carbonicon from "../../../../../imgAll/element/carboicon.png";
 import oilicon from "../../../../../imgAll/element/oilicon.png";
 import potienicon from "../../../../../imgAll/element/potienicon.png";
-import salt from "../../../../../../public/img/imgfood/salt.png";
-import sugar from "../../../../../../public/img/imgfood/sugar.png";
+// import salt from "../../../../../../public/img/imgfood/salt.png";
+// import sugar from "../../../../../../public/img/imgfood/sugar.png";
 
 function MenuDetail() {
   const { id } = useParams(); // รับค่า id จาก URL
@@ -134,7 +134,11 @@ function MenuDetail() {
             {/* info โซเดียม */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
-                <img src={salt} alt="sodium" className={styles.imageicon} />
+                <img
+                  src={`${process.env.PUBLIC_URL}/img/imgfood/salt.png`}
+                  alt="sodium"
+                  className={styles.imageicon}
+                />
                 <p className={styles.namecal}>โซเดียม</p>
               </div>
               <div>
@@ -146,7 +150,10 @@ function MenuDetail() {
             {/* info น้ำตาล */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
-                <img src={sugar} alt="sugar" className={styles.imageicon} />
+                <img
+                  src={`${process.env.PUBLIC_URL}/img/imgfood/sugar.png`}
+                  className={styles.imageicon}
+                />
                 <p className={styles.namecal}>น้ำตาล</p>
               </div>
               <div>
