@@ -83,7 +83,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     let sugar = selectedMenu?.sugar || 0;
 
     if (selectSugar === "ไม่ใส่น้ำตาล") sugar = 0;
-    else if (selectSugar === "พอดี") sugar += selectedMenu?.sugar || 0;
+    else if (selectSugar === "พอดี") sugar = selectedMenu?.sugar || 0;
     else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
     else if (selectSugar === "ปานกลาง") sugar += 10;
     else if (selectSugar === "มาก") sugar += 15;
@@ -91,7 +91,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
 
     setSugarValue(sugar); // Update sugarValue state
     setMessage(`น้ำตาลทั้งหมด: ${sugar} กรัม`);
-    console.log("selectedsugar", sugar);
+    // console.log("selectedsugar", sugar);
   }, [selectSugar, selectedMenu?.sugar]);
 
   const previousCalories = useRef(calories); // ใช้ useRef เก็บค่า calories เดิม
@@ -189,7 +189,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
       sugar: sugarValue || 0,
       sodium: selectedMenu.sodium || 0,
     };
-    console.log("3selectedsugar", sugarValue);
+    // console.log("3selectedsugar", sugarValue);
 
     try {
       const response = await addMeal(mealData);
