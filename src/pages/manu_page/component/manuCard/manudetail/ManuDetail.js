@@ -134,6 +134,10 @@ function MenuDetail() {
             {/* info โซเดียม */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
+                {/* <img src={salt} alt="sodium" className={styles.imageicon} /> */}
+                <p className={styles.namecal} style={{ paddingLeft: "30px" }}>
+                  โซเดียม
+                </p>
                 <img
                   src={`${process.env.PUBLIC_URL}/img/imgfood/salt.png`}
                   alt="sodium"
@@ -150,6 +154,10 @@ function MenuDetail() {
             {/* info น้ำตาล */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
+                {/* <img src={sugar} alt="sugar" className={styles.imageicon} /> */}
+                <p className={styles.namecal} style={{ paddingLeft: "30px" }}>
+                  น้ำตาล
+                </p>
                 <img
                   src={`${process.env.PUBLIC_URL}/img/imgfood/sugar.png`}
                   className={styles.imageicon}
