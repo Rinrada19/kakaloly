@@ -9,9 +9,6 @@ import Freameicon from "../../../../../imgAll/element/Frameicon.png";
 import carbonicon from "../../../../../imgAll/element/carboicon.png";
 import oilicon from "../../../../../imgAll/element/oilicon.png";
 import potienicon from "../../../../../imgAll/element/potienicon.png";
-import salt from "../../../../../imgAll/element/salt.png";
-import sugar from "../../../../../imgAll/element/bagsugar.png";
-import { width } from "@mui/system";
 
 function MenuDetail() {
   const { id } = useParams(); // รับค่า id จาก URL
@@ -135,7 +132,6 @@ function MenuDetail() {
             {/* info โซเดียม */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
-                {/* <img src={salt} alt="sodium" className={styles.imageicon} /> */}
                 <p className={styles.namecal} style={{ paddingLeft: "30px" }}>
                   โซเดียม
                 </p>
@@ -149,7 +145,6 @@ function MenuDetail() {
             {/* info น้ำตาล */}
             <div className={styles.info}>
               <div className={styles.nameinfo}>
-                {/* <img src={sugar} alt="sugar" className={styles.imageicon} /> */}
                 <p className={styles.namecal} style={{ paddingLeft: "30px" }}>
                   น้ำตาล
                 </p>
