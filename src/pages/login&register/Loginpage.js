@@ -398,7 +398,7 @@ function Loginpage() {
                     }}
                   />
                 </div>
-                <div
+                {/* <div
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
@@ -417,7 +417,7 @@ function Loginpage() {
                   >
                     ลืมรหัสผ่าน?
                   </p>
-                </div>
+                </div> */}
                 {/* ปุ่มเข้าสู่ระบบ */}
                 <Button
                   variant="contained"
