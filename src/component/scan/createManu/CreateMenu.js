@@ -24,6 +24,7 @@ const CreateMenu = ({ setStep }) => {
     sugar: "",
     sodium: "",
     ingredient: [""],
+    default_meat: "",
   });
 
   const handleInputChange = (e) => {
@@ -61,16 +62,33 @@ const CreateMenu = ({ setStep }) => {
   const token = localStorage.getItem("token");
 
   const handleCreateMenu = async () => {
-    // ตรวจสอบว่าผู้ใช้กรอกข้อมูลครบหรือไม่
-    if (!menuData.food_name || !menuData.cal || !menuData.fat) {
-      alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+    // ตรวจสอบว่าผู้ใช้กรอกข้อมูลที่จำเป็นครบหรือไม่
+    if (!menuData.food_name || !menuData.cal || !menuData.food_category) {
+      alert("กรุณากรอกข้อมูลให้ครบถ้วน (ชื่อ, แคลอรี่, และประเภทอาหาร)");
       return;
     }
 
+    // ตรวจสอบและตั้งค่าเริ่มต้นให้กับข้อมูลที่ไม่ได้กรอก
+    const updatedMenuData = {
+      ...menuData,
+      food_description: menuData.food_description || "ไม่มี",
+      ingredient:
+        menuData.ingredient.length === 0 ? ["ไม่มี"] : menuData.ingredient,
+      default_meat: menuData.default_meat || "ไม่มี",
+      fat: parseFloat(menuData.fat) || 0, // แปลงเป็นเลขทศนิยม
+      carb: parseFloat(menuData.carb) || 0, // แปลงเป็นเลขทศนิยม
+      protein: parseFloat(menuData.protein) || 0, // แปลงเป็นเลขทศนิยม
+      sugar: parseFloat(menuData.sugar) || 0, // แปลงเป็นเลขทศนิยม
+      sodium: parseFloat(menuData.sodium) || 0, // แปลงเป็นเลขทศนิยม
+      cal: parseFloat(menuData.cal) || 0, // แปลงเป็นเลขทศนิยม
+    };
+
     try {
+      // แสดงข้อมูลที่ส่งไปยัง API
+      //  console.log("ข้อมูลที่ส่งไปยัง API:", updatedMenuData);
+
       // ส่งข้อมูลไปยัง API
-      const response = await postManuitem(menuData, token);
-      // console.log("Response from API:", response);
+      const response = await postManuitem(updatedMenuData, token);
 
       if (response.error) {
         alert("เกิดข้อผิดพลาด: " + response.error);
@@ -81,8 +99,16 @@ const CreateMenu = ({ setStep }) => {
         // รีเซ็ตค่า input
         setMenuData({
           food_name: "",
+          food_description: "",
+          food_category: "",
           cal: "",
           fat: "",
+          carb: "",
+          protein: "",
+          sugar: "",
+          sodium: "",
+          ingredient: [""],
+          default_meat: "",
         });
       }
     } catch (error) {
@@ -187,6 +213,42 @@ const FoodForm = ({ menuData, onInputChange }) => {
             }}
           >
             (Kcal)
+          </div>
+          <div className={styles.custom_select_wrapper}>
+            <select
+              name="default_meat"
+              onChange={onInputChange}
+              value={menuData.default_meat || ""}
+              className={styles.custom_select}
+              style={{ marginBottom: "10px" }}
+            >
+              <option value="">เลือกประเภทเนื้อ</option>
+              <option value="ไม่มี">ไม่มี</option>
+              <option value="หมูสับ">หมูสับ</option>
+              <option value="หมู">หมู</option>
+              <option value="หมูสามชั้น">หมูสามชั้น</option>
+              <option value="ไก่">ไก่</option>
+              <option value="ไก่สับ">ไก่สับ</option>
+              <option value="อกไก่">อกไก่</option>
+              <option value="สะโพกไก่">สะโพกไก่</option>
+              <option value="ปีกไก่">ปีกไก่</option>
+              <option value="หนังไก่">หนังไก่</option>
+              <option value="กุ้ง">กุ้ง</option>
+              <option value="กุ้งสด">กุ้งสด</option>
+              <option value="กุ้งต้ม">กุ้งต้ม</option>
+              <option value="กุ้งทอด">กุ้งทอด</option>
+              <option value="ปลา">ปลา</option>
+              <option value="ปลาแซลมอน">ปลาแซลมอน</option>
+              <option value="หอยแมลงภู่">หอยแมลงภู่</option>
+              <option value="หอยแครง">หอยแครง</option>
+              <option value="หอยนางรม">หอยนางรม</option>
+              <option value="วัว">วัว</option>
+              <option value="วัวติดมัน">วัวติดมัน</option>
+              <option value="สันในวัว">สันในวัว</option>
+              <option value="ปู">ปู</option>
+              <option value="ปูทอด">ปูทอด</option>
+              <option value="ปลาหมึก">ปลาหมึก</option>
+            </select>
           </div>
         </div>
         <div style={{ position: "relative" }}>

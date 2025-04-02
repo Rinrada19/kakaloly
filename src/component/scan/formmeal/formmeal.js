@@ -65,6 +65,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
     sodium,
     default_meat,
   } = selectedMenu || {};
+  // console.log("selectedMenu:", selectedMenu);
 
   const {
     register,

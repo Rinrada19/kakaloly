@@ -45,21 +45,15 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
     const fetchFoodData = async () => {
       const token = localStorage.getItem("token"); // ✅ ดึง token
       if (!token) {
-        //   console.error("❌ ไม่มี token");
         setError("ไม่พบ token กรุณาเข้าสู่ระบบใหม่");
         setLoading(false);
         return;
       }
 
-      // console.log("🔑 Token ที่ใช้:", token); // ✅ Debug Log
-
-      // ✅ ข้อมูลที่ต้องส่งไป API
       const data = {
         userId: localStorage.getItem("userId") || "", // สมมติว่าต้องการ userId
         otherParam: "some_value", // เปลี่ยนค่าตามต้องการ
       };
-
-      // console.log("📦 ส่งค่าไป API:", data); // ✅ Debug Log
 
       try {
         const [foodData, manuItemData] = await Promise.all([
@@ -68,18 +62,18 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
         ]);
 
         if (isMounted) {
-          // console.log("✅ ดึงข้อมูลสำเร็จ!", { foodData, manuItemData }); // ✅ Debug Log
           setFoods(foodData);
-          setMenuItems(manuItemData);
+          setMenuItems(manuItemData); // ตั้งค่า menuItems
+
+          // เพิ่มการแสดงข้อมูล manuItemData ใน console
+          //console.log("manuItemData ที่ได้รับ:", manuItemData);
         }
       } catch (error) {
         if (isMounted) {
-          //    console.error("❌ Error fetching data:", error);
           setError("เกิดข้อผิดพลาดในการดึงข้อมูลเมนู");
         }
       } finally {
         if (isMounted) {
-          // console.log("🛑 โหลดข้อมูลเสร็จแล้ว");
           setLoading(false);
         }
       }
@@ -87,8 +81,9 @@ const MenuPage = ({ setStep, step, setSelectedMenu, selectedMenu }) => {
 
     fetchFoodData();
 
+    // Cleanup function to set isMounted to false when the component unmounts
     return () => {
-      isMounted = false; // ✅ Cleanup function
+      isMounted = false;
     };
   }, []);
 
