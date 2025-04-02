@@ -11,17 +11,19 @@ const ResetPassword = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // สถานะการแสดงรหัสผ่าน
-
+  console.log(token);
   const handleResetPassword = async () => {
+    setLoading(true); // เริ่มโหลด
     try {
-      // เรียกฟังก์ชัน resetPassword ที่ต้องใช้ token และ newPassword
-      const data = await resetPassword(token, newPassword); // เรียกฟังก์ชันที่คุณสร้าง
+      const data = await resetPassword(token, newPassword);
       setMessage(data.message || "รีเซ็ตรหัสผ่านสำเร็จ");
     } catch (error) {
       setMessage(
         "เกิดข้อผิดพลาด: " +
           (error.response?.data?.message || "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้")
       );
+    } finally {
+      setLoading(false); // สิ้นสุดโหลด
     }
   };
 
@@ -29,7 +31,7 @@ const ResetPassword = () => {
     <div className="container" style={{ maxWidth: "400px", marginTop: "50px" }}>
       <div className="card shadow-sm p-4">
         <h5 className="card-title text-center mb-4">รีเซ็ตรหัสผ่าน</h5>
-        {/* <p className="text-center mb-4">Token: {token}</p> */}
+        <p className="text-center mb-4">Token: {token}</p>
         <div className="mb-3">
           <label htmlFor="newPassword" className="form-label">
             กรุณากรอกรหัสผ่านใหม่
