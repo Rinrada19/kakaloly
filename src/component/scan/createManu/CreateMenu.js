@@ -348,7 +348,7 @@ const FoodForm = ({ menuData, onInputChange }) => {
             <option value="">เลือกประเภท/หมวดหมู่</option>
             <option value="อาหาร">อาหาร</option>
             <option value="เครื่องดื่ม">เครื่องดื่ม</option>
-            <option value="ของว่าง">ของว่าง</option>
+            <option value="ของหวาน">ของว่าง</option>
           </select>
         </div>
 
