@@ -3,7 +3,8 @@ import React from "react";
 const FormMealMeat = ({ selectMeat, handleMeatButtonClick, foodId }) => {
   const excludedFoodIds = [
     0, 1, 2, 5, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 20, 21, 23, 24, 25, 28, 29,
-    30, 31, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47,
+    30, 31, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47, 52, 53, 54, 55, 56, 57,
+    58, 59, 60, 61, 62,
   ];
 
   const numericFoodId = Number(foodId); // แปลง foodId เป็น number
