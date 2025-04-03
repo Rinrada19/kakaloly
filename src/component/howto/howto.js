@@ -77,16 +77,14 @@ const Howto = ({ isOpen, onClose }) => {
                 </p>
               </div>
             </div>
-            <div
-              className={styles.section}
-              style={{ paddingTop: "14px", paddingBottom: "14px" }}
-            >
+            <div className={styles.section}>
               <p style={{ fontSize: "16px" }}>
                 คู่มือการใช้งาน{" "}
                 <a
                   href="https://www.canva.com/design/DAGjf7fDj0c/nTPKVSIhP6QMSc3ul4vDog/view?utm_content=DAGjf7fDj0c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf123a0c656"
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ color: "#EF7430", fontSize: "16px" }}
                 >
                   KakaLoLy
                 </a>
