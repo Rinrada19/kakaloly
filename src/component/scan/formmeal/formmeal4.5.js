@@ -93,7 +93,7 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
     else if (selectSugar === "น้ำตาลมากๆ") sugar += 20;
 
     setSugarValue(sugar); // Update sugarValue state
-    setMessage(`น้ำตาลทั้งหมด: ${sugar} กรัม`);
+    setMessage(`${sugar}`);
     // console.log("selectedsugar", sugar);
   }, [selectSugar, selectedMenu?.sugar]);
 
@@ -268,16 +268,18 @@ const FormMeal45 = ({ imageData, setStep, selectedMenu }) => {
           selectRice={selectRice}
           handleRiceButtonClick={setselectRice}
         />
-        <div className="meat-container">
-          <span>แคลอรี่ทั้งหมด: {calories} kcal</span>
-        </div>
-        <div className="meat-container">
-          <span> {message}</span>
+        <div className="sumary_container">
+          <p style={{ color: "#915B43", fontWeight: "400" }}>
+            แคลอรี่ทั้งหมด:<span className="cal_unit">{calories}</span> kcal
+          </p>
+          <p style={{ color: "#915B43", fontWeight: "400" }}>
+            น้ำตาลทั้งหมด:<span className="cal_unit">{message}</span> กรัม
+          </p>
         </div>
 
         <div className="button-container">
           <button
-            className="next-button"
+            className="nextbutton"
             type="submit" // ต้องใช้ type="submit" เพื่อให้ฟอร์มส่งข้อมูล
             // ใช้ handleSubmit สำหรับส่งฟอร์ม
           >

@@ -223,19 +223,17 @@
     min-width: 150px;
     border-radius: 30px;
   } 
-
-  .next-button45{
-    // font-size: 20px;
-    // font-weight: 600;
+  .nextbutton{
     background-color: #EF7430;
     color: #ffffff;
-    border: none;
     height: 50px;
-    padding: 12px 0px; 
-    min-width: 200px;    /* ความกว้างขั้นต่ำ */
-    max-width: 400px;    /* กำหนดความกว้างสูงสุดที่ 400px */
     width: 100%;
+    border: none;
     border-radius: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    min-width: 200px;    /* ความกว้างขั้นต่ำ */
+    max-width: 300px;    /* กำหนดความกว้างสูงสุดที่ 400px */
   }
   .button_container{
     width: 100%;
@@ -296,4 +294,14 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+  }
+  .sumary_container{
+    display:grid;
+    gap: 3px;
+  }
+  .cal_unit{
+    font-size: 16px;
+    font-weight: 500;
+    color: #EF7430;
+    margin-left: 5px;
   }
