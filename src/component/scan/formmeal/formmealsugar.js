@@ -13,7 +13,8 @@ const FormMealSugar = ({ selectSugar, handleSugarButtonClick }) => {
 
   return (
     <div className="sugar-container">
-      <span>ความหวานของมื้อที่กิน</span>
+      <span style={{ fontWeight: "500" }}>ความหวานของมื้อที่กิน</span>{" "}
+      <span>(1ช้อนชา = 5กรัม)</span>
       <div className="sugar-button-container">
         {sugarLevels.map(({ label, spoons }) => (
           <button
