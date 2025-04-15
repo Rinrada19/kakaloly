@@ -1,4 +1,5 @@
 .list-container {
+   
     width: 100vw;
     height: 75vh;
     background-color: rgb(255, 255, 255);
@@ -7,12 +8,13 @@
     bottom: -100px;
     border-radius: 15px;
     padding: 28px 20px;
-    padding-right: 0px;
+    // padding-right: 0px;
     overflow-y: auto;
     max-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; // จัดให้ทุกอย่างอยู่ตรงกลาง
+    align-items: center; // จัดให้ทุกอย่างอยู่ตรงกลาง 
+    padding-top: 30px;
   }
   .list-container span{
     color: #EF7430;
@@ -48,7 +50,7 @@
   .button-container {
     text-align: center;
     margin-top: 3.5vh;
-    margin-right: 3vw;
+    // margin-right: 3vw;
 }
 
   .next-button{
