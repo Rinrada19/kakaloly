@@ -40,7 +40,8 @@ function Nutrients({ nutritionData, waterData }) {
           <ProgressBar value={waterData?.water_amount || 0} max={10} />
 
           <p className={styles["proteinIntake"]}>
-            {waterData?.water_amount || 0} แก้ว
+            {waterData?.water_amount || 0}{" "}
+            <span style={{ fontSize: "12px", color: "#ABABAB" }}>แก้ว</span>
           </p>
         </div>
       </div>

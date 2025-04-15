@@ -15,6 +15,12 @@ const BMIbar = ({ user }) => {
           fontWeight: "400",
         }}
       >
+        <span
+          style={{ fontSize: "18px", color: "#915B43", marginRight: "3px" }}
+        >
+          BMI
+        </span>
+        <span styles={{ fontSize: "16px", color: "#915B43" }}>(Kg/m2)</span>{" "}
         ตอนนี้
       </p>
       <p className="bmivalues">
