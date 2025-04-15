@@ -22,7 +22,7 @@
    // margin: 80px;    font-size: 6vw;
 }
 .text-section span {
-      font-size: 6vw;
+      font-size: 16px;
 }
 .button-section{
     margin-top: 10vh;
@@ -81,4 +81,8 @@
     box-shadow: none;
     background-color: #ff9659; /* สี hover ที่อ่อนลง */
   }
-  
+  @media (min-width: 768px) {
+    .text-section span {
+        font-size: 30px;
+  }
+}
