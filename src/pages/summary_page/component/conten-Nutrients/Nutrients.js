@@ -20,7 +20,7 @@ function Nutrients({ nutritionData, waterData }) {
           <p>โซเดียม</p>
           <ProgressBar value={sodium} max={sodium_goal} color="#FD4600" />
           <p className={styles["proteinIntake"]}>
-            {sodium}
+            {Math.floor(sodium)}
             <span className={styles["proteinGoal"]}>/{sodium_goal}g</span>
           </p>
           {/* เพิ่มการตรวจสอบการเตือนหากโซเดียมเกินขีดจำกัด */}
@@ -30,7 +30,7 @@ function Nutrients({ nutritionData, waterData }) {
           <p>น้ำตาล</p>
           <ProgressBar value={sugar} max={sugar_goal} color="#FECA39" />
           <p className={styles["proteinIntake"]}>
-            {sugar}
+            {Math.floor(sugar)}
             <span className={styles["proteinGoal"]}>/{sugar_goal}g</span>
           </p>
         </div>
