@@ -28,6 +28,9 @@
     font-weight: 500;
     color: #333;
     margin-bottom: 11px;
+    white-space: nowrap;  /* ไม่ให้ข้อความตัดบรรทัด */
+    overflow: hidden;  /* ซ่อนส่วนที่เกิน */
+    text-overflow: ellipsis; /* แสดง ... เมื่อข้อความยาวเกิน */
 }
 
 .calories {
