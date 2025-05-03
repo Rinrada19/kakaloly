@@ -6,22 +6,11 @@ import editpen from "../../imgAll/element/editpen.png";
 function Weight({ user }) {
   // เพิ่ม props user เพื่อรับข้อมูลจาก Home
   return (
-    <div
-      className="container"
-      style={{
-        backgroundColor: "#FFFFFF",
-        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)", // ใช้ CamelCase
-        borderRadius: "20px",
-        display: "flex",
-        justifyContent: "center",
-        gap: "40px",
-        padding: "26px 39px",
-      }}
-    >
+    <div className={styles.warpperbox}>
       <div className={styles.weightbox1}>
         <div>
           <span className={styles.fontchange}>น้ำหนักปัจจุบัน</span>{" "}
-          {/* <img src={editpen} className={styles.pen} alt="editpen"></img> */}
+          <img src={editpen} className={styles.pen} alt="editpen"></img>
         </div>
         <div>
           <span className={styles.weight_current}>{user?.weight || "0"}</span>{" "}

@@ -121,15 +121,15 @@ function Historypage() {
         <div style={{ marginBottom: "25px" }}>
           <SummaryCard nutritionData={nutritionData} />
         </div>
-        <div style={{ marginBottom: "25px" }}>
+        <div style={{ marginBottom: "20px" }}>
           <MealsSectionHistory date={date} token={token} />
         </div>
         <div className={styles.wrapper}>
           <div className={styles.wrapper}>
             <div
-              className="row g-3"
+              className="row"
               style={{
-                marginBottom: "15px",
+                marginBottom: "20px",
               }}
             >
               <div className="col-6">

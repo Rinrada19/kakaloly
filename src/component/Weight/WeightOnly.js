@@ -9,26 +9,13 @@ function WeightOnly({ user }) {
   // console.log("น้ำหนักที่ได้รับจาก props:", currentWeight);
 
   return (
-    <div
-      className="container"
-      style={{
-        backgroundColor: "#FFFFFF",
-        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)", // ใช้ CamelCase
-        borderRadius: "20px",
-        display: "flex",
-        justifyContent: "center",
-        gap: "40px",
-        padding: "26px 39px",
-      }}
-    >
-      <div className={styles.weightbox1}>
-        <div>
-          <span className={styles.fontchange}>น้ำหนักปัจจุบัน</span>{" "}
-        </div>
-        <div>
-          <span className={styles.weight_current}>{currentWeight}</span>{" "}
-          <span className={styles.kilo}>kg</span>
-        </div>
+    <div className={styles.weightbox1}>
+      <div>
+        <span className={styles.fontchange}>น้ำหนักปัจจุบัน</span>{" "}
+      </div>
+      <div>
+        <span className={styles.weight_current}>{currentWeight}</span>{" "}
+        <span className={styles.kilo}>kg</span>
       </div>
     </div>
   );

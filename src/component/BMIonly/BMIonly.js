@@ -11,27 +11,14 @@ function BMIonly({ user }) {
   const bmi = weight / heightInMeters ** 2; // คำนวณค่า BMI
 
   return (
-    <div
-      className="container"
-      style={{
-        backgroundColor: "#FFFFFF",
-        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)", // ใช้ CamelCase
-        borderRadius: "20px",
-        display: "flex",
-        justifyContent: "center",
-        gap: "40px",
-        padding: "26px 39px",
-      }}
-    >
-      <div className={styles.weightbox1}>
-        <div>
-          <span className={styles.fontchange}>BMI (Kg/m²)</span>{" "}
-        </div>
-        <div>
-          <span className={styles.weight_current}>{Math.floor(bmi)}</span>{" "}
-          {/* ใช้ Math.round() เพื่อปัดเศษ */}
-          {/* แสดงค่า BMI */}
-        </div>
+    <div className={styles.weightbox1}>
+      <div>
+        <span className={styles.fontchange}>BMI (Kg/m²)</span>{" "}
+      </div>
+      <div>
+        <span className={styles.weight_current}>{Math.floor(bmi)}</span>{" "}
+        {/* ใช้ Math.round() เพื่อปัดเศษ */}
+        {/* แสดงค่า BMI */}
       </div>
     </div>
   );
