@@ -3,46 +3,31 @@ import styles from "./Calendar.module.scss";
 import backgray from "../../../../imgAll/icon/backgray.png";
 
 function Calendar({ onDateSelect }) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [highlightedDay, setHighlightedDay] = useState(new Date().getDate());
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [direction, setDirection] = useState("");
   const today = new Date();
 
-  const generateDays = (baseDate) => {
+  // ดึงวันที่ที่เลือกจาก localStorage ถ้ามี
+  const savedSelectedDate = localStorage.getItem("selectedDate");
+  const initialSelectedDate = savedSelectedDate
+    ? new Date(savedSelectedDate)
+    : today;
+
+  const [selectedDate, setSelectedDate] = useState(initialSelectedDate);
+  const [highlightedDay, setHighlightedDay] = useState(initialSelectedDate);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [direction, setDirection] = useState("");
+
+  const generateDays = (centerDate) => {
+    const baseDate = new Date(
+      centerDate.getFullYear(),
+      centerDate.getMonth(),
+      centerDate.getDate()
+    );
     const days = [];
-
-    const startDay = new Date(baseDate);
-    const todayDate = new Date(); // ใช้วันนี้เป็นวันที่สำหรับเปรียบเทียบ
-
-    // ปรับเริ่มต้นของวันที่เพื่อให้สามารถแสดง 5 วันรอบวันที่เลือก
-    startDay.setDate(startDay.getDate() - Math.floor(5 / 2)); // เลื่อนวันเริ่มต้นไปครึ่งหนึ่งของช่วงที่ต้องการ
-    let index = 0;
-
-    while (days.length < 5) {
-      const day = new Date(startDay);
-      day.setDate(startDay.getDate() + index);
-
-      // ตรวจสอบว่า วันที่ไม่เกินจำนวนวันของเดือนนั้นๆ
-      const daysInMonth = new Date(
-        day.getFullYear(),
-        day.getMonth() + 1,
-        0
-      ).getDate();
-
-      // ถ้าหากวันที่เกินจำนวนวันที่ของเดือน ให้หยุดลูป
-      if (day.getDate() > daysInMonth) {
-        break;
-      }
-
-      // ถ้าหากวันที่อยู่ในเดือนเดียวกัน
-      if (day.getMonth() === baseDate.getMonth()) {
-        days.push(day); // เพิ่มวันลงใน array
-      }
-
-      index++;
+    for (let i = -2; i <= 2; i++) {
+      const day = new Date(baseDate);
+      day.setDate(baseDate.getDate() + i);
+      days.push(day);
     }
-
     return days;
   };
 
@@ -50,22 +35,22 @@ function Calendar({ onDateSelect }) {
 
   useEffect(() => {
     setDays(generateDays(selectedDate));
+    // เซฟวันที่ที่เลือกใน localStorage
+    localStorage.setItem("selectedDate", selectedDate.toISOString());
   }, [selectedDate]);
 
   const handlePreviousDays = () => {
-    setDirection("left"); // เลื่อนซ้าย
+    setDirection("left");
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() - 5);
     setSelectedDate(newDate);
-    setHighlightedDay(null);
   };
 
   const handleNextDays = () => {
-    setDirection("right"); // เลื่อนขวา
+    setDirection("right");
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() + 5);
     setSelectedDate(newDate);
-    setHighlightedDay(null);
   };
 
   const getShortMonth = (date) => {
@@ -73,11 +58,23 @@ function Calendar({ onDateSelect }) {
   };
 
   const handleDateSelect = (day) => {
-    const selectedDate = `${day.getFullYear()}-${(day.getMonth() + 1)
+    const normalizedDay = new Date(
+      day.getFullYear(),
+      day.getMonth(),
+      day.getDate()
+    );
+    setSelectedDate(normalizedDay);
+    setHighlightedDay(normalizedDay);
+
+    const selectedDateString = `${normalizedDay.getFullYear()}-${(
+      normalizedDay.getMonth() + 1
+    )
       .toString()
-      .padStart(2, "0")}-${day.getDate().toString().padStart(2, "0")}`;
-    setHighlightedDay(day.getDate());
-    onDateSelect(selectedDate); // ส่งวันที่ที่เลือกไปยัง parent component
+      .padStart(2, "0")}-${normalizedDay
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`;
+    onDateSelect(selectedDateString);
   };
 
   return (
@@ -107,7 +104,6 @@ function Calendar({ onDateSelect }) {
         </div>
       </div>
 
-      {/* Days Row */}
       <div
         className={`${styles.daysRow} ${
           direction === "left" ? styles["daysRow-moving-left"] : ""
@@ -115,12 +111,15 @@ function Calendar({ onDateSelect }) {
       >
         {days.map((day, index) => {
           const isHighlighted =
-            highlightedDay === day.getDate() &&
-            day.getMonth() === selectedDate.getMonth();
+            highlightedDay &&
+            day.getDate() === highlightedDay.getDate() &&
+            day.getMonth() === highlightedDay.getMonth() &&
+            day.getFullYear() === highlightedDay.getFullYear();
+
           const isToday =
             day.getDate() === today.getDate() &&
-            day.getMonth() === today.getMonth();
-
+            day.getMonth() === today.getMonth() &&
+            day.getFullYear() === today.getFullYear();
           return (
             <button
               key={index}
@@ -137,8 +136,7 @@ function Calendar({ onDateSelect }) {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              className={isHighlighted ? styles.selected : ""}
-              onClick={() => handleDateSelect(day)} // เรียก handleDateSelect เมื่อเลือกวัน
+              onClick={() => handleDateSelect(day)}
             >
               <span style={{ fontSize: "22px", fontWeight: "bold" }}>
                 {day.getDate()}
@@ -156,13 +154,8 @@ function Calendar({ onDateSelect }) {
           );
         })}
       </div>
-
-      {isCalendarOpen && (
-        <div className={styles.calendarPopup}>
-          <p>แสดงปฏิทินเต็มรูปแบบที่นี่</p>
-        </div>
-      )}
     </div>
   );
 }
+
 export default Calendar;
