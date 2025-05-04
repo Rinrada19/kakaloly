@@ -62,7 +62,7 @@ function MenuDetail() {
             {/* info แคลอรี่ */}
             <div
               className="row"
-              style={{ padding: "0 40px", marginBottom: "30px" }}
+              style={{ width: "100%", padding: "0 40px", marginBottom: "30px" }}
             >
               <img
                 className={styles.imgdetail}
