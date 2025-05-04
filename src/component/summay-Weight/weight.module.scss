@@ -1,6 +1,6 @@
 .pen{
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
 }
 .weightbox1{
     display: flex;
@@ -29,4 +29,21 @@
     font-size: 16px;
     font-weight: 400;
     color: #EF7430;
+}
+.warpperbox{
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 26px 6px;
+}
+@media (max-width: 410px) {
+    .fontchange{
+        font-size: 16px;
+    }
+    .warpperbox{
+        gap: 20px;
+    }
 }

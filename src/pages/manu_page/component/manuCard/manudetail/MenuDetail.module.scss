@@ -113,11 +113,14 @@
     z-index: 100; // กำหนดค่าต่ำกว่า FormMeal
 }
 .imgdetail {
+    width: 100%;
     max-width: 700px; /* ความกว้างสูงสุดไม่เกิน 600px */
-    height: auto; /* ปรับอัตโนมัติตามสัดส่วน */
+    max-height: 400px; /* ปรับอัตโนมัติตามสัดส่วน */
     display: block; /* ป้องกันการมีระยะขอบล่าง */
     margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
     border-radius: 7%;
+    display: block;
+    object-fit: cover;
   }
 .description_food {
     margin-top: 20px;

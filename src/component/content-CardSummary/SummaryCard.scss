@@ -6,7 +6,7 @@ p , h3{
     // border: 1px solid #ddd;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    gap: 30px;
+    gap: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@ p , h3{
             font-weight: 600;
         }
       p {
-        padding-bottom: 10px;
+        padding-bottom: 6px;
         // margin-bottom: 10px;
         font-size: 14px;
       }
@@ -43,6 +43,10 @@ p , h3{
 }
 .highlight__green {
   color: #76C660; /* สีเขียวที่กำหนด */
+  font-weight: bold; /* ทำให้ข้อความดูเด่น */
+}
+.highlight__blue{
+  color: #5BD1F8; /* สีเขียวที่กำหนด */
   font-weight: bold; /* ทำให้ข้อความดูเด่น */
 }
 .sumCal_info{
@@ -88,6 +92,17 @@ p , h3{
 }
 .bar-Allnutrition{
   display: flex;
+  gap: 30px;
+}
+.container_box{ 
+  color: #EB3223;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.warpper_barAllnutrition{
+  display: flex;
+  flex-direction: column;
   gap: 30px;
 }
 @media (max-width: 376px) {
