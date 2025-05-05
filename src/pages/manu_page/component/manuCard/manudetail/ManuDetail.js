@@ -59,7 +59,7 @@ function MenuDetail() {
           </div>
 
           <div className={styles.contentder}>
-            {/* info แคลอรี่ fixxxxx*/}
+            {/* info แคลอรี่ fixxxxxxxxx*/}
             <div
               className="row"
               style={{ width: "100%", padding: "0 40px", marginBottom: "30px" }}
