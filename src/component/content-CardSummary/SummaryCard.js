@@ -7,7 +7,7 @@ import ProgressBar from "./progressbar/progressbar";
 import { getWaterIntake } from "../../api/api_water";
 import { getEatToDay } from "../../api/api_eat_today";
 
-const SummaryCard = ({ nutritionData }) => {
+const SummaryCard = ({ nutritionData, date }) => {
   const [waterData, setWaterData] = useState(null);
   const token = localStorage.getItem("token");
   const [overLimit, setOverLimit] = useState(false);
@@ -24,7 +24,7 @@ const SummaryCard = ({ nutritionData }) => {
   useEffect(() => {
     const fetchWaterData = async () => {
       try {
-        const data = await getWaterIntake(token);
+        const data = await getWaterIntake(token, date);
         setWaterData(data);
       } catch (error) {
         console.error("โหลดข้อมูลน้ำดื่มล้มเหลว", error);
@@ -32,7 +32,7 @@ const SummaryCard = ({ nutritionData }) => {
     };
 
     fetchWaterData();
-  }, []);
+  }, [token, date]);
 
   if (!nutritionData) {
     return (

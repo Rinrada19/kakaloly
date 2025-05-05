@@ -80,21 +80,20 @@
 import { API_URL } from "../api/main";
 import axios from "axios";
 
-export const getWaterIntake = async (token) => {
+export const getWaterIntake = async (token, date) => {
   try {
     // สร้างวันที่ในรูปแบบ yyyy-mm-dd
-    const today = new Date();
-    const date = today.toISOString().split("T")[0]; // ได้ค่าในรูปแบบ "2025-01-14"
+    const formattedDate = date || new Date().toISOString().split("T")[0];
 
     const response = await API_URL.get("/water-intake", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      params: { date }, // ส่งพารามิเตอร์ date เป็นวันปัจจุบัน
+      params: { date: formattedDate }, // ใช้วันที่ที่รับมา
     });
 
-    if (response.status === 200) {
-      return response.data;
+    if (response.status === 200 || response.status === 201) {
+      return response.data || null; // เผื่อ response.data เป็น undefined
     } else {
       throw new Error(`Error: ${response.status}`);
     }
