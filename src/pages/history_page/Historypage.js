@@ -50,7 +50,6 @@ function Historypage() {
       setLoading(false);
     }
   }, [user]);
-
   // กำหนด date ที่จะใช้ในการดึงข้อมูล
   useEffect(() => {
     const receivedDate = new Date().toISOString().split("T")[0]; // ได้รูปแบบ YYYY-MM-DD
@@ -119,7 +118,7 @@ function Historypage() {
           <Calendar onDateSelect={setDate} />
         </div>
         <div style={{ marginBottom: "25px" }}>
-          <SummaryCard nutritionData={nutritionData} />
+          <SummaryCard nutritionData={nutritionData} date={date} />
         </div>
         <div style={{ marginBottom: "20px" }}>
           <MealsSectionHistory date={date} token={token} />

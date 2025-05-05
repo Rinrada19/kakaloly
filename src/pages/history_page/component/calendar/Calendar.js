@@ -34,10 +34,29 @@ function Calendar({ onDateSelect }) {
   const [days, setDays] = useState(generateDays(today));
 
   useEffect(() => {
+    const today = new Date();
+    const savedSelectedDate = localStorage.getItem("selectedDate");
+
+    if (savedSelectedDate) {
+      const savedDate = new Date(savedSelectedDate);
+      // หากวันที่ที่เก็บไว้ไม่ใช่วันนี้ ให้รีเซ็ต selectedDate เป็นวันนี้
+      if (savedDate.toDateString() !== today.toDateString()) {
+        setSelectedDate(today); // รีเซ็ตไปที่วันที่ปัจจุบัน
+      } else {
+        setSelectedDate(savedDate); // ถ้าใช่ก็ใช้วันที่ใน localStorage
+      }
+    } else {
+      setSelectedDate(today); // ถ้าไม่มีวันที่เก็บไว้ให้ใช้วันนี้
+    }
+  }, []); // ใส่ [] เพื่อให้ useEffect เรียกครั้งเดียวเมื่อ component mount
+
+  useEffect(() => {
+    // อัปเดตวันต่างๆ ที่แสดงในปฏิทิน
     setDays(generateDays(selectedDate));
+
     // เซฟวันที่ที่เลือกใน localStorage
     localStorage.setItem("selectedDate", selectedDate.toISOString());
-  }, [selectedDate]);
+  }, [selectedDate]); // จะทำงานเมื่อ selectedDate เปลี่ยนแปลง
 
   const handlePreviousDays = () => {
     setDirection("left");
