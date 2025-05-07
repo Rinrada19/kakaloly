@@ -7,7 +7,7 @@ import ProgressBar from "./progressbar/progressbar";
 import { getWaterIntake } from "../../api/api_water";
 import { getEatToDay } from "../../api/api_eat_today";
 
-const SummaryCard = ({ nutritionData, date }) => {
+const SummaryCard = ({ nutritionData, date, showWater }) => {
   const [waterData, setWaterData] = useState(null);
   const token = localStorage.getItem("token");
   const [overLimit, setOverLimit] = useState(false);
@@ -81,7 +81,7 @@ const SummaryCard = ({ nutritionData, date }) => {
                 <p>กินไป</p>
                 <p>เป้าหมาย</p>
                 <p className="fade_text">ต้องกินอีก</p>
-                <p>จำนวนน้ำ</p>
+                {showWater && <p>จำนวนน้ำ</p>}
               </div>
               <div className="sumCal_info">
                 <p className="highlight__black">
@@ -93,10 +93,12 @@ const SummaryCard = ({ nutritionData, date }) => {
                 <p className="highlight__green">
                   {remainingCalories} <span className="cal-unit">kcal</span>
                 </p>
-                <p className="highlight__blue">
-                  {waterData?.water_amount ?? 0}{" "}
-                  <span className="cal-unit">แก้ว</span>
-                </p>
+                {showWater && (
+                  <p className="highlight__blue">
+                    {waterData?.water_amount ?? 0}
+                    <span className="cal-unit">แก้ว</span>
+                  </p>
+                )}
               </div>
             </div>
           </div>

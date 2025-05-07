@@ -118,7 +118,11 @@ function Historypage() {
           <Calendar onDateSelect={setDate} />
         </div>
         <div style={{ marginBottom: "25px" }}>
-          <SummaryCard nutritionData={nutritionData} date={date} />
+          <SummaryCard
+            nutritionData={nutritionData}
+            date={date}
+            showWater={false}
+          />
         </div>
         <div style={{ marginBottom: "20px" }}>
           <MealsSectionHistory date={date} token={token} />

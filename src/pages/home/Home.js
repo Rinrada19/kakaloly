@@ -105,7 +105,7 @@ function Home() {
               marginBottom: "40px",
             }}
           >
-            <SummaryCard nutritionData={nutritionData} />
+            <SummaryCard nutritionData={nutritionData} showWater={true} />
           </Link>
         </div>
         <div>
