@@ -54,18 +54,56 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [calories, setCalories] = useState(selectedMenu?.cal || 0);
   const [sugarValue, setSugarValue] = useState(selectedMenu?.sugar || 0); // State for sugarValue
 
+  const formatValue = (val) => {
+    // ตรวจสอบค่าที่ได้รับมา
+    // console.log("Original Value:", val);
+
+    // แปลงค่าที่เป็น '0E-10' หรือค่าผิดปกติเป็น 0
+    if (val === "0E-10" || val === undefined || val === null || isNaN(val)) {
+      // console.log("Converted to 0");
+      return 0;
+    }
+
+    const num = parseFloat(val);
+    const result = isNaN(num) ? 0 : num;
+
+    // แสดงผลค่า
+    // console.log("Formatted Value:", result);
+    return result;
+  };
+
   const {
     food_name,
-    cal,
-    carb,
-    protein,
-    fat,
     food_description,
-    sugar,
-    sodium,
     default_meat,
+    cal: rawCal,
+    carb: rawCarb,
+    protein: rawProtein,
+    fat: rawFat,
+    sugar: rawSugar,
+    sodium: rawSodium,
   } = selectedMenu || {};
+
   // console.log("selectedMenu:", selectedMenu);
+
+  // ใช้ฟังก์ชัน formatValue เพื่อแปลงค่า
+  const cal = formatValue(rawCal);
+  const carb = formatValue(rawCarb);
+  const protein = formatValue(rawProtein);
+  const fat = formatValue(rawFat);
+  const sugar = formatValue(rawSugar);
+  const sodium = formatValue(rawSodium);
+
+  // console.log("Selected Menu carb:", selectedMenu.carb);
+  // console.log("Formatted carb:", carb);
+
+  // // แสดงผลใน console.log
+  // console.log("cal:", cal); // ค่าควรเป็น 300 (หรือค่าที่แปลงแล้ว)
+  // console.log("carb:", carb); // ค่าควรเป็น 0 ถ้า rawCarb = '0E-10'
+  // console.log("protein:", protein); // ค่าควรเป็น 0 ถ้า rawProtein = '0E-10'
+  // console.log("fat:", fat); // ค่าควรเป็น 0 ถ้า rawFat = '0E-10'
+  // console.log("sugar:", sugar); // ค่าควรเป็น 0 ถ้า rawSugar = '0E-10'
+  // console.log("sodium:", sodium); // ค่าควรเป็น 0 ถ้า rawSodium = '0E-10'
 
   const {
     register,
@@ -81,19 +119,19 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
   const [calorie, setCalorie] = useState(cal); // ใช้ useState แทนการรีเซ็ตค่า
 
   useEffect(() => {
-    let sugar = selectedMenu?.sugar || 0;
+    if (!selectedMenu) return;
+
+    let sugar = formatValue(selectedMenu.sugar); // แปลง '0E-10' เป็น 0
 
     if (selectSugar === "ไม่ใส่น้ำตาล") sugar = 0;
-    else if (selectSugar === "พอดี") sugar = selectedMenu?.sugar || 0;
+    else if (selectSugar === "พอดี") sugar = formatValue(selectedMenu.sugar);
     else if (selectSugar === "น้ำตาลน้อย") sugar += 5;
     else if (selectSugar === "ปานกลาง") sugar += 10;
     else if (selectSugar === "มาก") sugar += 15;
     else if (selectSugar === "น้ำตาลมากๆ") sugar += 20;
 
-    setSugarValue(sugar); // Update sugarValue state
-    setMessage(`${sugar}`);
-    // console.log("selectedsugar", sugar);
-  }, [selectSugar, selectedMenu?.sugar]);
+    setSugarValue(sugar);
+  }, [selectSugar, selectedMenu]);
 
   const previousCalories = useRef(calories); // ใช้ useRef เก็บค่า calories เดิม
 
@@ -259,7 +297,7 @@ const FormMeal = ({ imageData, setStep, selectedMenu }) => {
             แคลอรี่ทั้งหมด:<span className="cal_unit">{calories}</span> kcal
           </p>
           <p style={{ color: "#915B43", fontWeight: "400" }}>
-            น้ำตาลทั้งหมด:<span className="cal_unit">{message}</span> กรัม
+            น้ำตาลทั้งหมด:<span className="cal_unit">{sugarValue}</span> กรัม
           </p>
         </div>
 

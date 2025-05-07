@@ -64,9 +64,13 @@ const WeeklySummary = () => {
     <div className={styles.custombackground}>
       <div
         className="container"
-        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+        }}
       >
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "20px", marginTop: "30px" }}>
           <HeaderSum link="/home" title="ภาพรวม" />
         </div>
         <ButtonSumDandW />

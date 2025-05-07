@@ -75,12 +75,12 @@ const CreateMenu = ({ setStep }) => {
       ingredient:
         menuData.ingredient.length === 0 ? ["ไม่มี"] : menuData.ingredient,
       default_meat: menuData.default_meat || "ไม่มี",
-      fat: parseFloat(menuData.fat) || 0, // แปลงเป็นเลขทศนิยม
-      carb: parseFloat(menuData.carb) || 0, // แปลงเป็นเลขทศนิยม
-      protein: parseFloat(menuData.protein) || 0, // แปลงเป็นเลขทศนิยม
-      sugar: parseFloat(menuData.sugar) || 0, // แปลงเป็นเลขทศนิยม
-      sodium: parseFloat(menuData.sodium) || 0, // แปลงเป็นเลขทศนิยม
-      cal: parseFloat(menuData.cal) || 0, // แปลงเป็นเลขทศนิยม
+      fat: Number(parseFloat(menuData.fat).toFixed(2)) || 0,
+      carb: Number(parseFloat(menuData.carb).toFixed(2)) || 0,
+      protein: Number(parseFloat(menuData.protein).toFixed(2)) || 0,
+      sugar: Number(parseFloat(menuData.sugar).toFixed(2)) || 0,
+      sodium: Number(parseFloat(menuData.sodium).toFixed(2)) || 0,
+      cal: Number(parseFloat(menuData.cal).toFixed(2)) || 0,
     };
 
     try {
