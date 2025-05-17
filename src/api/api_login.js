@@ -56,7 +56,8 @@ export const loginUser = async (data) => {
   try {
     // เรียก API login
     const response = await axios.post(
-      "https://kakalolyapi.org/users/login", // แก้ URL
+      "http://54.79.173.230:5000
+/users/login", // แก้ URL
       data,
       {
         withCredentials: true, // ส่ง cookies หรือ session credentials

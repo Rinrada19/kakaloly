@@ -32,7 +32,8 @@ export const UserProvider = ({ children }) => {
       // จำลองการดึงข้อมูลผู้ใช้จาก API
       const fetchUser = async () => {
         try {
-          const response = await fetch("https://kakalolyapi.org/users", {
+          const response = await fetch("http://54.79.173.230:5000
+/users", {
             headers: {
               Authorization: `Bearer ${token}`,
             },

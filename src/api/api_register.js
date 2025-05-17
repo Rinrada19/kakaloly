@@ -20,7 +20,8 @@ export const registerUser = async (data) => {
     console.log("data api (ก่อนส่ง):", data); // ดูข้อมูลก่อนส่ง
 
     const response = await axios.post(
-      " https://kakalolyapi.org/users/register", // ตรวจสอบ URL ให้ถูกต้อง
+      " http://54.79.173.230:5000
+/users/register", // ตรวจสอบ URL ให้ถูกต้อง
       data,
       {
         headers: {
