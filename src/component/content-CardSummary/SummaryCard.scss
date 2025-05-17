@@ -45,10 +45,13 @@ p , h3{
   justify-content: flex-end;
   display: flex;
   gap: 6px;
-  color: #5BD1F8; /* สีเขียวที่กำหนด */
+  color: #76c660; /* สีเขียวที่กำหนด */
   font-weight: bold; /* ทำให้ข้อความดูเด่น */
 }
 .highlight__blue{
+  justify-content: flex-end;
+  display: flex;
+  gap: 6px;
   color: #5BD1F8; /* สีเขียวที่กำหนด */
   font-weight: bold; /* ทำให้ข้อความดูเด่น */
 }
