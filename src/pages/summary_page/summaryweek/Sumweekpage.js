@@ -68,6 +68,7 @@ const WeeklySummary = () => {
           display: "flex",
           flexDirection: "column",
           gap: "20px",
+          paddingTop: "30px",
         }}
       >
         <div style={{ marginBottom: "20px", marginTop: "30px" }}>
