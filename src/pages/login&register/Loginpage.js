@@ -152,8 +152,7 @@ function Loginpage() {
   };
 
   const checkEmailAvailability = async (email) => {
-    const res = await fetch("https://kakalolyapi.org
-/users/check-email", {
+    const res = await fetch("https://kakalolyapi.org/users/check-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -163,8 +162,7 @@ function Loginpage() {
   };
 
   const checkUsernameAvailability = async (username) => {
-    const res = await fetch("https://kakalolyapi.org
-/users/check-username", {
+    const res = await fetch("https://kakalolyapi.org/users/check-username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
