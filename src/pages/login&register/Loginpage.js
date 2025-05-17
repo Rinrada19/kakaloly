@@ -82,7 +82,7 @@ function Loginpage() {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      email: e.target.value,
+      [name]: value,
     }));
 
     if (name === "email") {
@@ -95,9 +95,9 @@ function Loginpage() {
       }
 
       try {
-        //console.log(`🔍 Checking email availability for: ${emailValue}`);
+        // console.log(`🔍 Checking email availability for: ${emailValue}`);
         const isEmailAvailable = await checkEmailAvailability(emailValue);
-        //console.log("✅ API Response:", isEmailAvailable);
+        // console.log("✅ API Response:", isEmailAvailable);
 
         // ตรวจสอบค่าที่ได้รับจาก API
         if (isEmailAvailable === false) {
@@ -229,7 +229,6 @@ function Loginpage() {
     const userData = {
       username: formData.username,
       password: formData.password,
-      email: formData.email,
     };
     localStorage.setItem("userData", JSON.stringify(userData)); // เก็บข้อมูลใน localStorage
     navigate("/RegistrationForm"); // นำทางไปยังหน้าลงทะเบียน
@@ -538,7 +537,7 @@ function Loginpage() {
                       name="email"
                       variant="outlined"
                       fullWidth
-                      value={formData.email || ""}
+                      value={formData.email}
                       onChange={handleInputEmailChange}
                       placeholder="กรอกอีเมล"
                       sx={{
