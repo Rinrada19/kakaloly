@@ -21,7 +21,7 @@ function RegistrationForm() {
 
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
+    // email: "",
     password: "",
     age: "",
     gender: "",
@@ -38,7 +38,6 @@ function RegistrationForm() {
   useEffect(() => {
     // ดึงข้อมูลจาก localStorage ที่เก็บไว้ในหน้า RegistrationPage
     const userData = JSON.parse(localStorage.getItem("userData"));
-
     if (userData) {
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -46,7 +45,6 @@ function RegistrationForm() {
         email: userData.email,
         password: userData.password,
       }));
-      //console.log("email :", userData.email);
     }
   }, []);
 
@@ -87,30 +85,23 @@ function RegistrationForm() {
       username: formData.username,
       email: formData.email,
       password: formData.password,
-      gender: true,
-      //gender: formData.gender, // ให้แน่ใจเป็น boolean
+      gender: formData.gender, // แปลงค่า gender ให้ถูกต้อง
       age: parseInt(formData.age, 10),
       height: parseInt(formData.height, 10),
       weight: parseInt(formData.weight, 10),
-      dietary_restriction: formData.dietary_restriction.length
-        ? formData.dietary_restriction
-        : ["ไม่มี"],
-      congenital_disease: formData.congenital_disease.length
-        ? formData.congenital_disease
-        : ["ไม่มี"],
-      physical_activity: formData.physical_activity.toLowerCase(), // แปลงเป็น lowercase
+      dietary_restriction: formData.dietary_restriction, // ส่งเป็น array
+      congenital_disease: formData.congenital_disease, // ส่งเป็น array
+      physical_activity: formData.physical_activity,
       goal: formData.goal,
       require_weight: formData.require_weight
         ? parseInt(formData.require_weight, 10)
-        : parseInt(formData.weight, 10),
+        : parseInt(formData.weight, 10), // ใช้ require_weight หรือใช้ weight ถ้าไม่มี
     };
 
-    // console.log(
-    //   "ข้อมูลที่จะส่งไปยัง API:",
-    //   JSON.stringify(formDataToSend, null, 2)
-    // );
+    // console.log("ข้อมูลที่จะส่งไปยัง API:", formDataToSend); // เช็คข้อมูลที่ส่งไป
 
-    await sendToBackend(formDataToSend);
+    // ส่งข้อมูลไปยัง backend
+    sendToBackend(formDataToSend);
     alert("กรุณาเข้าสู่ระบบเพื่อเริ่มต้นใช้งาน");
     navigate("/");
   };
@@ -118,11 +109,10 @@ function RegistrationForm() {
   // ฟังก์ชันเพื่อส่งข้อมูลไปยัง backend
   const sendToBackend = async (data) => {
     try {
-      //console.log("ส่งข้อมูลไป backend:", data);
-      //const response = await registerUser(data);
+      const response = await registerUser(data);
       // console.log("การสมัครสำเร็จ:", response);
     } catch (error) {
-      console.error("การสมัครไม่สำเร็จ:", error);
+      //  console.error("การสมัครไม่สำเร็จ:", error);
     }
   };
 

@@ -28,7 +28,7 @@ const Water = ({ waterData, token }) => {
     }
 
     const dataToSend = { water_amount: filledGlassesCount };
-    console.log("dataToSend", dataToSend); // ตรวจสอบค่าก่อนส่ง
+    // console.log("dataToSend", dataToSend); // ตรวจสอบค่าก่อนส่ง
 
     try {
       // ส่งข้อมูลไปที่ API
@@ -46,10 +46,10 @@ const Water = ({ waterData, token }) => {
         if (i < 12) filledGlasses[i] = true;
       }
       setGlasses(filledGlasses);
-      console.log("waterData:", waterData);
-      console.log("Updated glasses:", filledGlasses);
+      // console.log("waterData:", waterData);
+      // console.log("Updated glasses:", filledGlasses);
     } else {
-      console.error("Invalid waterData:", waterData);
+      // console.error("Invalid waterData:", waterData);
       setGlasses(Array(12).fill(false)); // Set to 0 glasses if data is invalid
     }
   }, [waterData]);
@@ -63,8 +63,8 @@ const Water = ({ waterData, token }) => {
 
       const filledGlassesCount = newGlasses.filter((filled) => filled).length;
 
-      console.log("Added water: ", newGlasses);
-      console.log("Number of glasses with water: ", filledGlassesCount);
+      // console.log("Added water: ", newGlasses);
+      // console.log("Number of glasses with water: ", filledGlassesCount);
 
       try {
         if (waterData && waterData.water_intake_id) {
@@ -74,10 +74,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //  console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        // console.error("Error updating water intake:", error);
       }
     }
   };
@@ -90,8 +90,8 @@ const Water = ({ waterData, token }) => {
       setGlasses(newGlasses);
 
       const remainingWaterCount = newGlasses.filter(Boolean).length;
-      console.log("Removed water: ", newGlasses);
-      console.log("Number of glasses with water: ", remainingWaterCount);
+      // console.log("Removed water: ", newGlasses);
+      // console.log("Number of glasses with water: ", remainingWaterCount);
 
       try {
         if (waterData && waterData.water_intake_id) {
@@ -101,10 +101,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //  console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        //  console.error("Error updating water intake:", error);
       }
     } else {
       try {
@@ -115,10 +115,10 @@ const Water = ({ waterData, token }) => {
           };
           await updateWaterIntake(dataToSend);
         } else {
-          console.error("No valid waterData or water_intake_id available");
+          //     console.error("No valid waterData or water_intake_id available");
         }
       } catch (error) {
-        console.error("Error updating water intake:", error);
+        //    console.error("Error updating water intake:", error);
       }
     }
   };
