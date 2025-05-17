@@ -313,34 +313,6 @@ const Profilepage = () => {
               </div>
             </div>
 
-            <div className={styles.logout}>
-              <div className="col-12">
-                <div className={styles.content}>
-                  <div className={styles.contentleft}>
-                    <div className={styles.insideleft}>
-                      <img
-                        src={star}
-                        className={styles.star}
-                        style={{ width: "24px", height: "24px" }}
-                      />
-                    </div>
-                    <a
-                      href="https://forms.gle/uc8iWaWCy8czGSov5" // ลิงก์ Google Form ของคุณ
-                      target="_blank" // เปิดลิงก์ในแท็บใหม่
-                      rel="noopener noreferrer"
-                      style={{
-                        color: "#EF7430 !important",
-                        cursor: "pointer",
-                        fontSize: "16px",
-                      }}
-                    >
-                      ประเมินเว็ปแอปพลิเคชั่น
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* ปุ้ม logout */}
             <div className={styles.logout}>
               <div className="col-12">

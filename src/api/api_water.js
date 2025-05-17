@@ -130,7 +130,7 @@ export const updateWaterIntake = async (data) => {
         "Content-Type": "application/json",
       },
     });
-    // console.log("Water intake updated:", response.data);
+    console.log("Water intake updated:", response.data);
     return response.data;
   } catch (error) {
     // ตรวจสอบข้อผิดพลาดจาก API
@@ -176,8 +176,8 @@ export const postWater = async (waterAmount) => {
     );
 
     // console.log("Header:", {
-    //   Authorization: `Bearer ${token}`,
-    // });
+    //  Authorization: `Bearer ${token}`,
+    //  });
 
     // ตรวจสอบ response และ return ข้อมูล
     return response.data;

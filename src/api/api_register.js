@@ -17,16 +17,34 @@ import { API_URL } from "../api/main"; // นำเข้า api ที่ตั
 
 export const registerUser = async (data) => {
   try {
-    const response = await API_URL.post("/users/register", data); // ส่งข้อมูลผู้ใช้ไปยัง API
-    // ตรวจสอบว่า response มี token หรือไม่
+    console.log("data api (ก่อนส่ง):", data); // ดูข้อมูลก่อนส่ง
+
+    const response = await axios.post(
+      " https://kakalolyapi.org/users/register", // ตรวจสอบ URL ให้ถูกต้อง
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+
     if (response.data && response.data.token) {
       localStorage.setItem("token", response.data.token);
-      // console.log("Token saved in localStorage:", response.data.token);
+      //console.log("Token saved in localStorage:", response.data.token);
     }
 
-    return response.data; // ส่งข้อมูลกลับ
+    return response.data;
   } catch (error) {
-    // console.error("เกิดข้อผิดพลาดในการลงทะเบียน: ", error); // แสดงข้อผิดพลาด
-    throw error; // ส่งข้อผิดพลาดออกไป
+    // if (error.response) {
+    //   console.error("Error response data:", error.response.data);
+    //   console.error("Error response status:", error.response.status);
+    // } else if (error.request) {
+    //   console.error("Error request:", error.request);
+    // } else {
+    //   console.error("Error message:", error.message);
+    // }
+    throw error;
   }
 };
