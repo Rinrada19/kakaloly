@@ -55,7 +55,7 @@ function GenderSelection({ nextStep, prevStep, formData, setFormData }) {
           ชาย
         </Button>
         <Button
-          onClick={() => handleGenderSelection(false)} // false = Female
+          onClick={() => handleGenderSelection(true)} // false = Female
           style={{
             width: "267px",
             height: "40px",
