@@ -40,7 +40,8 @@ graph TD
         B3 -- Fetch Prediction --> A8
     end
 ```
-🛠 Tech Stack (เครื่องมือที่ใช้)
+**🛠 Tech Stack (เครื่องมือที่ใช้)**
+
 Frontend: Vercel, HTML/CSS/JS (Figma for UI)
 
 Backend: AWS EC2, Postman (API Testing)
@@ -49,7 +50,7 @@ Database: AWS RDS, pgAdmin 4 (PostgreSQL)
 
 Machine Learning: Google Colab, Roboflow, AWS
 
-4. How to Use (การติดตั้งและใช้งาน)
+## 4. How to Use (การติดตั้งและใช้งาน)
 Note: เนื่องจากโปรเจคนี้มีการแบ่งส่วน Frontend และ Backend ควรเปิด Terminal 2 หน้าต่างเพื่อรันระบบพร้อมกัน
 
 Prerequisites
