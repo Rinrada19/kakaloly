@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# 🍛 KaKaloly - Thai Food Calorie Tracking & Analysis Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Overview (ภาพรวมของโปรเจค)
+**KaKaloly** เป็นเว็บแอปพลิเคชันสำหรับบันทึก ติดตาม และวิเคราะห์ปริมาณแคลอรี่ที่ได้รับจากอาหาร โดยใช้เทคโนโลยีการจำแนกภาพอาหารไทยด้วย Machine Learning (Image Classification)
 
-## Available Scripts
+โปรเจคนี้ถูกพัฒนาขึ้นเพื่อแก้ปัญหาพฤติกรรมการบริโภคในยุคเร่งด่วน ที่ผู้คนมักมองข้ามสารอาหารและขาดการบันทึกข้อมูลโภชนาการ โดยแอปพลิเคชันสามารถ:
+- สแกนรูปภาพเพื่อจำแนกเมนูอาหารไทยได้ 10 ชนิด (เช่น ต้มจืด, ผัดผงกะหรี่, ไก่ย่าง, ทอดมัน, ไข่พะโล้, กุ้งเผา, ยำวุ้นเส้น, ผัดคะน้า, ข้าวคลุกกะปิ, ก๋วยจั๊บ)
+- คำนวณและแสดงปริมาณแคลอรี่ที่เหมาะสมสำหรับผู้ใช้งานแต่ละคน
+- แจ้งเตือนเมื่อผู้ใช้งานรับประทานอาหารที่มีแคลอรี่สูงเกินขีดจำกัดที่ส่งผลเสียต่อสุขภาพ
 
-In the project directory, you can run:
+## 2. Objectives (วัตถุประสงค์)
+- เพื่อพัฒนาเว็บแอปพลิเคชันสำหรับบันทึกและวิเคราะห์แคลอรี่จากรูปภาพอาหารไทยด้วย Machine Learning
+- เพื่อประเมินคุณภาพของเว็บแอปพลิเคชันโดยผู้เชี่ยวชาญเฉพาะทาง
+- เพื่อประเมินความพึงพอใจของกลุ่มผู้ใช้งานจริงที่มีต่อแอปพลิเคชัน
 
-### `npm start`
+## 3. Project Architecture & Flow (แผนภาพการทำงาน)
+ภาพรวมการทำงานของระบบถูกแบ่งออกเป็น 2 ส่วนหลัก คือ ส่วนของการสร้างโมเดล (Machine Learning) และส่วนของการพัฒนาเว็บไซต์ (Web Application)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```mermaid
+graph TD
+    %% Machine Learning Flow
+    subgraph Machine_Learning_Pipeline
+        A1[Data Collection] --> A2[Clean Data]
+        A2 --> A3[Image Annotate: Roboflow]
+        A3 --> A4[Image Augmentation]
+        A4 --> A5[Dataset Split]
+        A5 --> A6[Dataset Training: Colab]
+        A6 --> A7[Model Performance Testing]
+        A7 --> A8[Deploy Model API]
+    end
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    %% Web Application Flow
+    subgraph Web_Application_System
+        B1[UI Design: Figma] --> B2[Frontend: Vercel]
+        B1 --> B3[Backend: AWS EC2]
+        B1 --> B4[(Database: AWS RDS / pgAdmin 4)]
+        
+        B2 -- API Request --> B3
+        B3 -- Query/Save --> B4
+        B3 -- Fetch Prediction --> A8
+    end
+```
+🛠 Tech Stack (เครื่องมือที่ใช้)
+Frontend: Vercel, HTML/CSS/JS (Figma for UI)
 
-### `npm test`
+Backend: AWS EC2, Postman (API Testing)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Database: AWS RDS, pgAdmin 4 (PostgreSQL)
 
-### `npm run build`
+Machine Learning: Google Colab, Roboflow, AWS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. How to Use (การติดตั้งและใช้งาน)
+Note: เนื่องจากโปรเจคนี้มีการแบ่งส่วน Frontend และ Backend ควรเปิด Terminal 2 หน้าต่างเพื่อรันระบบพร้อมกัน
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Prerequisites
+Node.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+PostgreSQL (หรือการเชื่อมต่อ AWS RDS ที่ใช้งานได้)
 
-### `npm run eject`
+ขั้นตอนการรันโปรเจค (Local Development)
+Clone repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Bash
+git clone [https://github.com/Rinrada19/kakaloly.git](https://github.com/Rinrada19/kakaloly)
+cd kakaloly
+ตั้งค่า Backend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Bash
+cd backend
+npm install
+# สร้างไฟล์ .env ในโฟลเดอร์ backend และระบุค่า DB_URL และ API_KEY
+npm run dev
+ตั้งค่า Frontend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Bash
+cd ../frontend
+npm install
+npm run dev
+การใช้งาน:
+เปิด Browser ไปที่ http://localhost:3000
